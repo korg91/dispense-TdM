@@ -18,7 +18,7 @@ Due ordini densi numerabili e senza estremi sono isomorfi. Questo \`e un risulta
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Gli ordini densi}
 \label{ordinilinearidensi}
-Il linguaggio $L$ degli ordini stretti contenete un solo simbolo di relazione binaria $<$ che useremo con notazione infissa. Una struttura $M$ di segnatura $L$ \`e un \emph{ordine parziale (stretto)} se rende validi i seguenti assiomi (usiamo le usuali abbreviazioni con l'ovvio significato, inoltre, scriviamo delle formule intendendo la loro chiusura universale)
+Il linguaggio $L$ degli ordini stretti contenente un solo simbolo di relazione binaria $<$ che useremo con notazione infissa. Una struttura $M$ di segnatura $L$ \`e un \emph{ordine parziale (stretto)} se rende validi i seguenti assiomi (usiamo le usuali abbreviazioni con l'ovvio significato, inoltre, scriviamo delle formule intendendo la loro chiusura universale)
 
 \begin{itemize}
 \item[ir.] $x \not< x$
@@ -98,11 +98,11 @@ Sia $\<a_i:i<\omega\>$ un'enumerazione di $M$. Definiremo per induzione una cate
 
 Dalla proposizione~\ref{cateneisomorfismiparziali} sappiamo che $h:M\imp N$, in quanto unione di una catena di immersioni parziali, \`e un'immersione parziale. Qui sotto definiremo $h_{i+1}$ in modo che $a_i\in\dom h_{i+1}$, quindi $h$ sar\`a totale. Al passo base dell'induzione definiamo $h_0=k$ in modo da soddisfare la richiesta $k\subseteq h$. Supponiamo di aver definito $h_i$, al passo $i+1$ estendiamo il dominio di definizione di $h_i$ all'elemento $a_i$ come segue.
 
-Come prima cosa controlliamo se $a_i$ appartiene gi\`a al dominio di definizione $h_i$. (Pu\`o succedere che $a_i$ stia nel dominio di definizione di $k$, o che l'enumerazione scelta abbia delle ripetizioni.) In questo caso non serve fare nulla, \`e sufficiente porre $h_{i+1}=h_i$. Nel caso in cui $a_i\notin\dom h_i$ definiamo $h_{i+1}=h_i\cup\{\<a_i,c\>\}$ dove elemento $c$ \`e un elemento di $N$ scelto nel modo che ora mostriamo. Denotiamo con $A$ e $B$ i seguenti insiemi
+Come prima cosa controlliamo se $a_i$ appartiene gi\`a al dominio di definizione $h_i$. (Pu\`o succedere che $a_i$ stia nel dominio di definizione di $k$, o che l'enumerazione scelta abbia delle ripetizioni.) In questo caso non serve fare nulla, \`e sufficiente porre $h_{i+1}=h_i$. Nel caso in cui $a_i\notin\dom h_i$ definiamo $h_{i+1}=h_i\cup\{\<a_i,c\>\}$ dove l'elemento $c$ \`e un elemento di $N$ scelto nel modo che ora mostriamo. Denotiamo con $A$ e $B$ i seguenti insiemi
 
 \hfil$A\displaystyle \ =\ \big\{a\in\dom(h_i)\;:\;a<a_i\big\}$\hfil e\hfil $B\ =\ \big\{b\in\dom(h_i)\;:\;a_i<b\big\}$
 
-e con $h_i[A]$ ed $h_i[B]$ le loro immagini secondo $h_i$. Per la linearit\`a di $M$, e poich\'e $a_i\notin\dom h_i$ questi insiemi formano una partizione di $\dom h_i$. Osserviamo che, $A<B$ e, poich\'e $h_i$ \`e un immersione parziale, anche $h_i[A]<h_i[B]$. Quindi scegliamo come $c$ un qualsiasi elemento $h_i[A]<c<h_i[B]$. Un tale $c$ esiste perch\'e $N$ \`e denso e senza estremi.
+e con $h_i[A]$ ed $h_i[B]$ le loro immagini secondo $h_i$. Per la linearit\`a di $M$, e poich\'e $a_i\notin\dom h_i$ questi insiemi formano una partizione di $\dom h_i$. Osserviamo che, $A<B$ e, poich\'e $h_i$ \`e un immersione parziale, anche $h_i[A]<h_i[B]$. Quindi scegliamo come $c$ un qualsiasi elemento $h_i[A]<c<h_i[B]$. Un tale $c$ esiste perch\'e $N$ \`e denso e senza estremi, e $h_i[A],h_i[B]$ sono finiti.
 
 Per completare la dimostrazione \`e sufficiente verificare che $h_{i+1}$ \`e un immersione parziale, ovvero preserva l'ordine. Come ipotesi induttiva abbiamo assunto che $h_i$ preservava l'ordine. Sappiamo anche che $h_{i+1}$ coincide con $h_i$ in tutto il suo dominio di definizione tranne che per $a_i$ in cui vale $c$, quindi rimane solo da controllare che per ogni $d\in\dom h_i$ se $d<a_i$ allora $h_i(d)<c$ e se $a_i<d$ allora $c<h_i(d)$. Ma questo \`e chiaro per la scelta di $c$ e perch\'e $A$ e $B$ ricoprono $\dom h_i$.
 \end{proof}
@@ -426,7 +426,7 @@ Si dimostri che se $\R$ \`e una classe elementare, cio\`e $\R=\Mod\big(\Th(R)\bi
 \begin{definition}\label{def_omogenea_universale}
 Sia $\M$ una classe di strutture e $\lambda$ un cardinale infinito. Diremo che una struttura $N\in\M$ \`e \emph{$\lambda\jj$universale\/} se per ogni $M\in\M$ di cardinalit\`a $\le\lambda$ esiste un'immersione $h:M\imp N$ che estende $k$. 
 
-Diremo che $N$ \`e \emph{$\lambda\jj$(ultra)omogenea\/} se per ogni immersione parziale finita $k:N\imp N$ di cardinalit\`a $<\lambda$ esiste un automorfismo $h:M\imp N$ che estende $k$. Come per la ricchezza, se $\lambda=|N|$, diremo semplicemente \emph{universale\/} e \emph{omogenea}.
+Diremo che $N$ \`e \emph{$\lambda\jj$(ultra)omogenea\/} se per ogni immersione parziale finita $k:N\imp N$ di cardinalit\`a $<\lambda$ esiste un automorfismo $h:N\imp N$ che estende $k$. Come per la ricchezza, se $\lambda=|N|$, diremo semplicemente \emph{universale\/} e \emph{omogenea}.
 \end{definition}
 
 Per esempio, il grafo vuoto, o quello completo sono omogenei. A aggiungendo ad un grafo aleatorio un nodo sconnesso da tutti gli altri, otteniamo un grafo universale che per\`o non \`e omogeneo.

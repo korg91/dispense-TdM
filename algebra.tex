@@ -137,7 +137,7 @@ Equivalentemente, se $\<A\>_M\cap\<c\>_M=\{0\}$.\QED
 Questa definizione trasporta ai moduli la nozione di indipendenza lineare nel caso $M$ sia uno spazio vettoriale. In questo caso $c$ \`e indipendente da $A$ se e solo se \`e linearmente indipendente da $A$.
 
 \begin{remark}\label{oss_liberi_qf}
-Sia $k:M\to N$ \`e un immersione parziale, $a$ una tupla di elementi di $\dom k$, e fissiamo due elementi $c\in M$ e $d\in N$ liberi rispettivamente su $a$ e $ka$. Allora $M,c,a\,\equiv_{\rm at}N,d,ka$. Infatti, se $c$ \`e libero su $a$ e $\phi(x,z)\in\aL$ \`e tale che $M\models\phi(c,a)$, allora 
+Sia $k:M\to N$ \`e un immersione parziale, $a$ una tupla di elementi di $\dom k$, e fissiamo due elementi $c\in M$ e $d\in N$ indipendenti rispettivamente su $a$ e $ka$. Allora $M,c,a\,\equiv_{\rm at}N,d,ka$. Infatti, se $c$ \`e libero su $a$ e $\phi(x,z)\in\aL$ \`e tale che $M\models\phi(c,a)$, allora 
 
 \ceq{\hfill T_\Rmod\ \cup\ \Diag(M/a)}{\proves}{\phi(x,a).}
 
@@ -158,10 +158,10 @@ Sia $M$ \`e un $R\jj$modulo, diremo che $M$ \`e \emph{senza torsione\/} se per o
 \item[st] $rx= 0\imp x=0$.
 \end{itemize}
 
-La seguente proposizione \`e essenziale per dimostrare l'equivalente dei lemmi~\ref{lem_ordinericco} e~\ref{lem_graforicco}. Nel capitolo~\ref{relazionali} non serviva esplicitare un simile risultato, l'assenza di funzioni lo rende quasi banale, cfr.\@  esercizio~\ref{ex_ol+grf_tipi_princ_comp}. Si osservi che in questi esercizi si ottiene che tutti i tipi senza quantificatori sono principali, nella seguente proposizione invece il tipo degli elementi liberi rimane escluso.
+La seguente proposizione \`e essenziale per dimostrare l'equivalente dei lemmi~\ref{lem_ordinericco} e~\ref{lem_graforicco}. Nel capitolo~\ref{relazionali} non serviva esplicitare un simile risultato, l'assenza di funzioni lo rende quasi banale, cfr.\@  esercizio~\ref{ex_ol+grf_tipi_princ_comp}. Si osservi che in questi esercizi si ottiene che tutti i tipi senza quantificatori sono principali, nella seguente proposizione invece il tipo degli elementi indipendenti rimane escluso.
 
 \begin{proposition}\label{prop_mst_tipi princ_comp}
-Sia $R$ un dominio di integrit\`a e sia $T$ la teoria degli $R\jj$moduli senza torsione. Fissiamo $A\subseteq M\models T$ ed un elemento $c\in M$. Sia $p(x)=\pmatp_M(c/A)$ allora vale una delle seguenti due possibilit\`a:   
+Sia $R$ un dominio di integrit\`a (quindi commutativo) e sia $T$ la teoria degli $R\jj$moduli senza torsione. Fissiamo $A\subseteq M\models T$ ed un elemento $c\in M$. Sia $p(x)=\pmatp_M(c/A)$ allora vale una delle seguenti due possibilit\`a:   
 \begin{itemize}
 \item[1.] $c$ \`e indipendente da $A$;
 \item[2.] $M\models\phi(c)$ per una qualche $\phi(x)\in\aL(A)$ tale che 
@@ -208,7 +208,7 @@ In questo paragrafo $R$ \`e sempre un dominio di integrit\`a. Diremo che $M$ \`e
 \item[div] $\E x\ rx=y$.
 \end{itemize} 
 
-La seguente proposizione traduce l'assioma di divisibilit\`a in una in propriet\`a delle formule atomiche.
+La seguente proposizione traduce l'assioma di divisibilit\`a in una propriet\`a delle formule atomiche.
 
 \begin{proposition}\label{prop_md_cons_sodd}
 Sia $R$ un dominio di integrit\`a, $T$ la teoria degli $R\jj$moduli senza torsione. e $N\models T$. Allora le seguenti affermazioni sono equivalenti:
@@ -230,7 +230,7 @@ Dimostriamo \ssf{1}$\IMP$\ssf{2}. Per il corollario~\ref{corol_formacanonicaterm
 
 Chiameremo \emph{rango\/} di $M$ \`e la minima cardinalit\`a di un insieme $A\subseteq M$ tale che $\<A\>_M=M$. (Quindi, se $A$ ha cardinalit\`a minore del rango, $M$ contiene qualche elemento indipendente da $A$.)
 
-Il seguente \`e teorema corrisponde ai lemmi~\ref{lem_ordinericco} e~\ref{lem_graforicco} con due differenze molto importanti. La prima \`e una limitazione: serve assumere che $N$ ha rango sufficientemente grande, un'ipotesi che non ha corrispondente per le teorie $T_{\rm oldse}$ e $T_{rg}$ e che ha profonde conseguenze perch\'e non \`e traducibile in un assioma del prim'ordine. (La situazione \`e simile a quella della proposizione~\ref{prop_ex_R_omega}.) Quindi dal teorema non segue nessun risultato di $\omega\jj$categoricit\`a. La seconda differenza \`e che qui il teorema \`e esteso ad ogni cardinalit\`a $\lambda$. Poich\'e l'ipotesi sul rango svanisce (viene automaticamente soddisfatta) per $\lambda$ sufficientemente grande, otterremo un risultato di $\lambda\jj$categoricit\`a.
+Il seguente teorema corrisponde ai lemmi~\ref{lem_ordinericco} e~\ref{lem_graforicco} con due differenze molto importanti. La prima \`e una limitazione: serve assumere che $N$ ha rango sufficientemente grande, un'ipotesi che non ha corrispondente per le teorie $T_{\rm oldse}$ e $T_{rg}$ e che ha profonde conseguenze perch\'e non \`e traducibile in un assioma del prim'ordine. (La situazione \`e simile a quella della proposizione~\ref{prop_ex_R_omega}.) Quindi dal teorema non segue nessun risultato di $\omega\jj$categoricit\`a. La seconda differenza \`e che qui il teorema \`e esteso ad ogni cardinalit\`a $\lambda$. Poich\'e l'ipotesi sul rango svanisce (viene automaticamente soddisfatta) per $\lambda$ sufficientemente grande, otterremo un risultato di $\lambda\jj$categoricit\`a.
 
 
 \begin{lemma}\label{lemma_modulo_divisibile_ricco_nonnumer}
@@ -314,7 +314,7 @@ Un anello \`e detto \emph{commutativo\/} se vale
  
 Indicheremo con \emph{$T_{\rm auc}$} la teoria degli anelli (unitari) commutativi.
 
-Se $M$ \`e un anello e $a\in M$, diremo che $a$ \`e nilpotente se $a^n=0$ per qualche intero positivo $a$, dove 
+Se $M$ \`e un anello e $a\in M$, diremo che $a$ \`e nilpotente se $a^n=0$ per qualche intero positivo $n$, dove 
 
 \ceq{\hfill x^n}{\deq}{\smash{\stackrel{n\ \rm volte}{\overbrace{x\cdot x\cdot\dots\cdot x}}}}
 

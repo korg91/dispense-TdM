@@ -32,8 +32,8 @@ Fissiamo $M\models T$ ed una tupla $a$ di elementi di $M$. Sia $p(x)=\Deltatp_M(
 %\item[1'.] $N\models\phi(b)$ per ogni $N\models T$ ed ogni tupla $b$ in $N$ tale che $M,a\Rrightarrow_\Delta N,b$.
 \item[2.] $T\ \proves\  p(x)\imp\phi(x)$.
 \end{itemize}
-Infatti, \ssf{2}$\IMP$\ssf{1} \`e immediata, e per verificare \ssf{1}$\IMP$\ssf{2} 
-assumiamo $\neg$\ssf{2} e fissiamo $N\models T$ ed una tupla $b$ tale che $N\models p(b)\wedge\neg\phi(b)$. La mappa $k:M\to N$ con $k=\{\<a,b\>\}$ prova $\neg\ssf{1}$.\QED
+Infatti, \ssf{2}$\IMP$\ssf{1} \`e immediata (basta prendere l'identit\`a), e per verificare \ssf{1}$\IMP$\ssf{2} 
+assumiamo $\neg$\ssf{2} e fissiamo $N\models T$ ed una tupla $b$ tale che $N\models p(b)\wedge\neg\phi(b)$. La mappa $k:M\to N$ con $k=\{\<a,b\>\}$ prova $\neg\ssf{1}$ ($k$ \`e un $\Delta$-morfismo perch\'e vale $p(b)$).\QED
 \end{remark}
 
 Il seguente \`e a volte chiamato Lyndon-Robinson Lemma: 
@@ -121,10 +121,10 @@ Le seguenti affermazioni sono equivalenti:
 \end{itemize}
 \end{theorem}
 \begin{proof}
-L'implicazione \ssf{1}$\IMP$\ssf{2} \`e immediata. Per dimostrare  \ssf{2}$\IMP$\ssf{1} assumiamo $\neg$\ssf{1}. Per il teorema~\ref{qfdefinability} esiste un $\{\E\wedge\}\Delta$-morfismo $k:M\to N$ tra modelli di $T$ che non preserva $\phi(x)$. Possiamo assumere che $N$ sia $\lambda$-saturo con $\lambda$ sufficientemente grande. Quindi per il corollario~\ref{corol_EDelta_estensione} esiste una $\Delta$-immersione $h:M\to N$ che estende $k$. Questa immersione testimonia $\neg$\ssf{2}.
+L'implicazione \ssf{1}$\IMP$\ssf{2} \`e immediata per \ref{presesis}. Per dimostrare  \ssf{2}$\IMP$\ssf{1} assumiamo $\neg$\ssf{1}. Per il teorema~\ref{qfdefinability} esiste un $\{\E\wedge\}\Delta$-morfismo $k:M\to N$ tra modelli di $T$ che non preserva $\phi(x)$. Possiamo assumere che $N$ sia $\lambda$-saturo con $\lambda$ sufficientemente grande. Quindi per il corollario~\ref{corol_EDelta_estensione} esiste una $\Delta$-immersione $h:M\to N$ che estende $k$. Questa immersione testimonia $\neg$\ssf{2}.
 \end{proof}
 
-Ora dimostriamo il duale delle ultime tre proposizioni. Si osservi che, se $\Delta$ contiene la formula $x=y$ ed \`e chiuso per negazione, allora  $k:M\imp N$ \`e un $\Delta$-morfismo se e solo se lo \`e anche $k^{-1}:N\imp M$. In questo caso, le seguenti tre propozioni sono solo una riformulazione delle precedenti.  Il caso generale richiede una dimostrazione indipendente (ma molto simile).
+Ora dimostriamo il duale delle ultime tre proposizioni. Si osservi che, se $\Delta$ contiene la formula $x=y$ (il che ci assicura l'iniettivit\`a) ed \`e chiuso per negazione, allora  $k:M\imp N$ \`e un $\Delta$-morfismo se e solo se lo \`e anche $k^{-1}:N\imp M$. In questo caso, le seguenti tre propozioni sono solo una riformulazione delle precedenti.  Il caso generale richiede una dimostrazione indipendente (ma molto simile).
 
 \begin{lemma}\label{lem_ADelta_estensione}
 Sia $M$ una struttura $\lambda$-satura e sia $k:M\imp N$ un $\Delta$-morfismo di cardinalit\`a $<\lambda$. Allora le seguenti affermazioni sono equivalenti:

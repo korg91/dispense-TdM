@@ -48,7 +48,7 @@ Con le formule in questo nuovo linguaggio non otteniamo nuovi insiemi definibili
 
 Per quanto osservato sopra, il modello $\U$ realizza tutti i tipi $p(x)\subseteq L(A)$ finitamente consistenti a parametri in un qualsiasi $A\subseteq\U^\eq$. Se $a$ \`e una tupla di elementi reali, scriveremo \emph{$p(x)=\tp(a/A)$} per l'insieme delle formule a parametri in $A$ soddisfatte da $a$; anche la notazione \emph{$a\equiv_Ab$\/} si estende in modo naturale ad insiemi che contengono parametri immaginari. 
 
-\begin{lemma}
+\begin{lemma}\label{lemma_equiv_automorf}
 Sia $A\subseteq\U^\eq$ e siano $a$ e $b$ due tuple reali tali che $a\equiv_Ab$. Allora esiste un automorfismo $h\in\Aut(\U/A)$ tale che $ha=b$.
 \end{lemma} 
 
@@ -72,9 +72,9 @@ Se $a$ \`e un elemento reale diremo che \emph{$a$ \`e definibile su $A$\/} se es
 \end{theorem}
 \begin{proof} L'implicazione \ssf{2}$\,\IMP\,$\ssf{1} \`e immediata. Per dimostrare \ssf{1}$\,\IMP\,$\ssf{2} considereremo separatamente i casi $a$ reale ed $a$ immaginario. (Il formalismo per trattarli simultaneamente non \`e stato introdotto.)
 
-Se $a\in\U$ \`e fissato da tutti gli automorfismi che fissano $A$, allora il tipo $p(x)=\tp(a/A)$ ha come unica soluzione $a$. Per compattezza $p(x)$ contiene una formula $\phi(x)$ con un'unica soluzione.
+Se $a\in\U$ \`e fissato da tutti gli automorfismi che fissano $A$, allora per \ref{lemma_equiv_automorf} il tipo $p(x)=\tp(a/A)$ ha come unica soluzione $a$. Per saturazione $p(x)$ contiene una formula $\phi(x)$ con un'unica soluzione.
 
-Se $a\in\U^\eq\sm\U$ \`e fissato da tutti gli automorfismi che fissano $A$. Sia $\sigma(x;b)$ una qualsiasi definizione di $a$ e sia $p(z)=\tp(b/A)$. Per omogeneit\`a otteniamo
+Sia $a\in\U^\eq\sm\U$ fissato da tutti gli automorfismi che fissano $A$. Sia $\sigma(x;b)$ una qualsiasi definizione di $a$ e sia $p(z)=\tp(b/A)$. Per omogeneit\`a, se $c \equiv_A b$, allora esiste $h\in\Aut(\U/A)$ tale che $h(b)=c$. Quindi $\sigma(\U,c)=\sigma(\U,h(b))=h(\sigma(\U,b))=h(a)=a$, dove la terza uguaglianza vale perch\`e $h$ \`e un automorfismo. Ovvero $c \models \tp(b/A) \, \IMP \, \sigma(\U,c)=a$. Perci\`o otteniamo
 
 \hfil$p(z)\ \ \imp\ \ \A x\,[\sigma(x;z)\iff x\in a]$.
 
@@ -131,7 +131,7 @@ Sia $\epsilon(x,y)\in L(A)$ un'equivalenza. Le classi di equivalenza di $\epsilo
 Scriveremo \emph{${\rm\bf acl^{eq}} A$} per la \emph{chiusura algebrica di $A$ in $\U^\eq$}, ovvero l'insieme degli elementi reali ed immaginari che sono algebrici su $A$. Se $a$ \`e una tupla, diremo che $a$ \`e algebrica se tutti gli elementi enumerati da $a$ sono algebrici.
 Abbiamo bisogno del seguente seguente lemma tecnico.
 
-\begin{lemma}\label{lemmapartizionetipo} Sia $\epsilon(x,y)$ un'equivalenza e sia $p(x)$ un tipo. Se un numero finito di classi di equivalenza di $\epsilon(x,y)$ intersecano $p(x)$, allora esiste un'equivalenza finita $\eta(x,y)$ che coincide con $\epsilon(x,y)$ su $p(x)$. (Tutto con parametri in un qualche $A\subseteq\U^\eq$.)
+\begin{lemma}\label{lemmapartizionetipo} Sia $\epsilon(x,y)$ un'equivalenza e sia $p(x)$ un tipo. Se solo un numero finito di classi di equivalenza di $\epsilon(x,y)$ intersecano $p(x)$, allora esiste un'equivalenza finita $\eta(x,y)$ che coincide con $\epsilon(x,y)$ su $p(x)$. (Tutto con parametri in un qualche $A\subseteq\U^\eq$.)
 \end{lemma}
 
 \begin{proof} \`E sufficiente mostrare $\epsilon(x,y)$ induce una partizione finita di una qualche $\phi(x)$, congiunzione di formule in $p(x)$. Infatti, data la formula $\phi(x)$, come equivalenza $\eta(x,y)$ possiamo prendere 
@@ -142,7 +142,7 @@ Questa \`e un'equivalenza finita perch\'e raccoglie tutte le tuple in $\neg\phi(
 
 \hfil$\displaystyle\bigwedge_{i\le n} p(x_i)\ \ \wedge \ \ \bigwedge_{i<j\le n} \neg\epsilon(x_i,x_j)$.
 
-Se $n$ \`e sufficientemente grande, questo tipo \`e contraddittorio. L'esistenza della formula $\phi(x)$ segue per compattezza.
+Se $n$ \`e sufficientemente grande, questo tipo \`e contraddittorio per ipotesi. L'esistenza della formula $\phi(x)$ segue per saturazione.
 \end{proof}
 
 Dimostriamo per gli elementi di $\U^\eq$ l'analogo del teorema~\ref{cadinalitafinitasaturazione}.% (non avendo introdotto la nozione di tipo di un immaginario, qui lavoriamo con le orbite).
@@ -152,15 +152,30 @@ Fissiamo $A\subseteq\U^\eq$ sia $a\in\U^\eq$ con $\orbit(a/A)$ infinita. Allora 
 \end{lemma}
 
 \begin{proof} 
-Il caso $a$ reale \`e l'esercizio~\ref{cadinalitafinitasaturazione}, quindi assumiamo $a$ sia un elemento immaginario. Fissiamo una definizione $\sigma(x;b)$ di $a$ e sia $p(z)=\tp(b/A)$. Supponiamo per assurdo che $\orbit(a/A)$ abbia cardinalit\`a piccola. Quindi il seguente \`e un tipo inconsistente
+Il caso $a$ reale \`e l'esercizio~\ref{cadinalitafinitasaturazione}, quindi assumiamo $a$ sia un elemento immaginario. Fissiamo una definizione $\sigma(x;b)$ di $a$ e sia $p(z)=\tp(b/A)$. Supponiamo per assurdo che $\orbit(a/A)$ abbia cardinalit\`a piccola. Il seguente \`e un tipo inconsistente
 
 \hfil $\displaystyle p(z)\ \cup\  \Big\{\neg\A x\big[x\in c\iff\sigma(x;z)\big]\ :\ c\in \orbit(a/A)\Big\}$
 
-Per saturazione esiste un insieme finito $C\subseteq\orbit(a/A)$ tale che 
+Infatti, quest'ultimo \`e equivalente a
+\begin{align*}
+ 				& p(z)\ \cup\  \Big\{\neg \big[f_i(a)=\sigma(\U;z)\big]\ :\ f_i\in \Aut(\U/A)\Big\} &\\
+\equiv	\;	& p(z)\ \wedge\ \bigwedge_{f_i \in \Aut(\U,A)} \neg \big[f_i(a)=\sigma(\U;z)\big] &\\
+\equiv	\;	& \neg \Big[ \neg p(z)\ \vee\ \bigvee_{f_i \in \Aut(\U,A)} \big[f_i(a)=\sigma(\U;z)\big] \Big] &\\
+\equiv	\;	& \neg \Big[ p(z)\ \imp\ \bigvee_{f_i \in \Aut(\U,A)} \big[f_i(a)=\sigma(\U;z)\big] \Big]
+\end{align*}
+che \`e chiaramente insoddisfacibile per \ref{lemma_equiv_automorf}. Per saturazione (e per l'ipotesi assurda) esiste un insieme finito $C\subseteq\orbit(a/A)$ tale che 
 
-\hfil $\displaystyle p(z)\ \imp\ \bigvee_{c\in C} \A x\big[x\in c\iff\sigma(x;z)\big]$
+\hfil $\displaystyle p(z)\ \imp\ \bigvee_{c_i \in C} \A x\big[x\in c_i\iff\sigma(x;z)\big]$
 
-Ma questo implica che $\orbit(a/A)$ \`e finita.
+ovvero esistono $f_1,...,f_n \in \Aut(\U/A)$ tali che 
+
+\hfil $\displaystyle p(z)\ \imp\ \bigvee_{i=1}^n f_i(a)=\sigma(\U;z)$
+
+ovvero 
+
+\hfil $\displaystyle d \equiv_A b\ \IMP\ \bigvee_{i=1}^n f_i(a)=\sigma(\U;d)$
+
+Ma questo implica che $\orbit(a/A)$ \`e finita, perch\`e se $h \in \Aut(\U/A)$ allora $h(a)=h(\sigma(\U,b))=\sigma(\U,h(b))=\sigma(\U,d)$ con $d \equiv_A b$, e perci\`o $h(a)=f_1(a) \vee ... \vee h(a)=f_n(a)$.
 \end{proof}
 
 %%%%%%%%
@@ -195,7 +210,7 @@ Questa \`e una relazione di equivalenza finita,  infatti se fissiamo $c_1,\dots,
 
 \ceq{}{$\eta(x,y)$}{$\iff$}$\displaystyle\bigwedge^n_{i=1} \Big[\psi(x;c_i)\iff \psi(y;c_i)\Big]$.
 
-Quindi $\eta(x,y)$, in quanto intersezione di $n$ relazioni di equivalenza con $2$ classi ha al pi\`u $2^n$ classi. L'insieme $\psi(x;b)$ \`e unione di classi di $\eta(x,y)$. Infatti $\psi(x;b)$ \`e una classe di equivalenza di della relazione $\psi(x;b)\iff \psi(y;b)$ che \`e raffinata da $\eta(x,y)$.
+Quindi $\eta(x,y)$, in quanto intersezione di $n$ relazioni di equivalenza, ciascuna con $2$ classi, ha al pi\`u $2^n$ classi. L'insieme $\psi(x;b)$ \`e unione di classi di $\eta(x,y)$. Infatti $\psi(x;b)$ \`e una classe di equivalenza di della relazione $\psi(x;b)\iff \psi(y;b)$ che \`e raffinata da $\eta(x,y)$.
 
 L'implicazione \ssf{2}$\IMP$\ssf{3} segue dalla seguente osservazione. Se $\epsilon(x,y)\in L(A)$ \`e un'equivalenza con $n$ classi, allora queste sono definibili su $A$ pi\`u un qualsiasi insieme di $n$ tuple tra loro non equivalenti. La formula 
 

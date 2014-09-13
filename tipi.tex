@@ -282,9 +282,9 @@ Fissiamo un insieme \emph{$\Delta$\/} di formule con variabili libere tra quelle
 
 Segue immediatamente che congiunzione e disgiunzione del reticolo corrispondono alla congiunzione e disgiunzione tra formule.
 
-Quando diremo in questo paragrafo vale anche, mutatis mutandis, interpretando $\proves$ come conseguenza logica modulo una fissata teoria $T$. \`E in questa forma generalizzata che verr\`a applicato nei prossimi capitoli, ma al momento \`e preferibile non sovraccaricare la notazione. 
+Quanto diremo in questo paragrafo vale anche, mutatis mutandis, interpretando $\proves$ come conseguenza logica modulo una fissata teoria $T$. \`E in questa forma generalizzata che verr\`a applicato nei prossimi capitoli, ma al momento \`e preferibile non sovraccaricare la notazione. 
 
-Chiameremo \emph{$\Delta\jj$tipo\/} un sottoinsieme di $\Delta$. 
+Chiameremo \emph{$\Delta$-tipo\/} un sottoinsieme di $\Delta$. Se $p$ \`e un $\Delta$-tipo, indicheremo talvolta con $\<p\>$ il filtro in $\PP(\Delta)$ generato da $p$.
 
 \begin{lemma}\label{poiuyhdsdfd}
 Dato un tipo $p\subseteq\Delta$ sia $q$ il filtro in $\PP(\Delta)$ generato da $p$. Allora
@@ -322,7 +322,7 @@ Per ogni tipo $p\subseteq\Delta$ consistente le seguenti affermazioni sono equiv
 \end{itemize}
 \end{corollary}
 \begin{proof}
-L'implicazione \ssf{2}$\IMP$\ssf{1} \`e immediata, dimostriamo \ssf{1}$\IMP$\ssf{2}. Per il lemma~\ref{poiuyhdsdfd} se $p$ \`e completo, $\phi\in\Delta$ e $p\notproves\phi$ allora $p\cup\{\phi\}$ genera un filtro banale. Di nuovo per lo stesso lemma, $p\cup\{\phi\}\proves\bot$. Quindi $p\proves\neg\phi$. 
+L'implicazione \ssf{2}$\IMP$\ssf{1} \`e immediata, dimostriamo \ssf{1}$\IMP$\ssf{2}. Osserviamo innanzitutto che se $p$ non fosse coerente, allora per il lemma~\ref{poiuyhdsdfd} si avrebbe che $\bot \in \<p\>$, ovvero $\<p\>=\PP(\Delta)$, contro l'ipotesi. Supponiamo ora $\phi\in\Delta$ e $p\notproves\phi$. Allora per lo stesso lemma significa $\phi\not\in \<p\>$, quindi, poich\`e $p$ \`e completo, otteniamo $\<p \cup \{\phi\}\>=\PP(\Delta)$. Di nuovo per \ref{poiuyhdsdfd} otteniamo $p \cup \{\phi\} \proves \bot$. Siccome $p$ \`e coerente, questo significa $p \proves \neg\phi$.
 \end{proof}
 
 Quest'altro corollario semplifica la verifica della primalit\`a di un tipo.
@@ -359,19 +359,21 @@ Scriveremo \emph{$p=\Delta\jj$tp$_M(c)$}. Quando il modello $M$ \`e chiaro dal c
 Per ogni tipo $p\subseteq\Delta$ le seguenti affermazioni sono equivalenti
 \begin{itemize}
 \item[1.] $p$ \`e primo;
-\item[2.] $p\ \cup\ \Big\{\neg\phi\ :\  \phi\;\in\;\Delta\ \ \textrm{tale che}\ \ p\notproves\phi\ \Big\}$ \`e consistente.
+\item[2.] $q:=p\ \cup\ \Big\{\neg\phi\ :\  \phi\;\in\;\Delta\ \ \textrm{tale che}\ \ p\notproves\phi\ \Big\}$ \`e consistente.
 \item[3.] $\big\{\phi\in\Delta : p\proves\phi\big\}\ = \ \Deltatp_M(c)$ per qualche struttura $M$ e qualche tupla $c\in M^{|x|}$.
 \end{itemize}
 \end{lemma}
 \begin{proof}
-Dimostriamo \ssf{1}$\IMP$\ssf{2}. Per compattezza se il tipo in \ssf{2} \`e inconsistente allora esiste un numero finito di formule $\phi_i$ tali che $p\notproves\phi_1\vee\dots\vee\phi_n$ e $p\notproves\phi_i$. Quindi $\neg$\ssf{1}. Le implicazioni \ssf{2}$\IMP$\ssf{3}$\IMP$\ssf{1} sono immediate.
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Osserviamo innanzitutto che $p$ primo $\IMP \<p\> \neq \PP(\Delta) \IMP p$ consistente. Supponiamo per assurdo $q \proves \psi$ e $q \proves \neg \psi$. Allora per compattezza esiste $q' \subseteq q$ finito tale che $q \proves \psi$ e $q' \proves \neg\psi$. 
+Allora, poich\'e $p$ \`e consistente, $q' \cap \{ \neg\phi : \phi \in \Delta \text{ e } p \notproves \phi \} = \{\neg\phi_1,...,\neg\phi_n\}$ per qualche $n>0$. Quindi $p \cup \{\neg\phi_1,...,\neg\phi_n\} \proves \perp$. Questo significa $p \proves \neg(\neg\phi_1 \wedge ... \wedge \neg\phi_n) \vdash \phi_1 \vee ... \vee \phi_n$. Ma ogni $\phi_i$ sta in $\Delta$ ed \`e tale che $p \notproves \phi_i$, assurdo.
+Dimostriamo \ssf{2}$\IMP$\ssf{3}. Sia $M$ tale che $M \models p$ e sia $c\in M^{|x|}$ tale che $M \models \psi[x/c]$ per ogni $\psi \in q$. Per l'inclusione $\subseteq$, consideriamo $\phi \in \Delta$ tale che $p \proves \phi$. Allora $p \notproves \neg\phi$ perch\'e $p$ consistente. Ma allora $\phi \in q$ e quindi $M \models \phi[x/c]$. Per l'inclusione opposta, sia $\phi \in \Deltatp_M(c)$. Supponiamo $p \notproves \phi$. Allora $\neg\phi \in q$. Quindi $M \models \neg\phi(x/c)$, assurdo. Dimostriamo \ssf{3}$\IMP$\ssf{1}. Siano $M$ e $c$ come in \ssf{3}. Siano $\phi_1,\phi_2 \in \PP(\Delta)$ tali che $\phi_1 \vee \phi_2 \in \<p\>$. Allora $p \proves \phi_1 \vee \phi_2$. Quindi $M \models (\phi_1 \vee \phi_2)[x/c]$, perci\`o $p \proves \phi_1$ o $p \proves \phi_2$.
 \end{proof}
 
-In questo paragrafo abbiamo fissato assieme a $\Delta$ una tupla variabili libere $x$. Nel seguito servir\`a considerare simultaneamente diverse tuple di variabili libere. Tipicamente fisseremo un insieme di formule $\Delta$ senza specificare le variabili libere. Quando il contesto lo suggerisce, per $\Delta$ intenderemo in realt\`a \emph{$\Delta_{\restriction x}$}, ovvero il sottoinsieme delle formule in $\Delta$ con variabili libere tra quelle della tupla $x$. La notazione  $\Delta_{\restriction x}$ non verr\`a quasi mai usata perch\'e il rischio di fraintendimenti \`e minimo. Si noti comunque che la differenza \`e rilevante: un tipo completo $p\subseteq\Delta_{\restriction x}$ non \`e sicuramente completo se considerato come sottoinsieme di $\Delta_{\restriction x,z}$. Spesso scriveremo $p(x)=\Delta\jj$tp$_M(c)$, dove $x$ \`e una tupla di variabili di lunghezza $|c|$, per suggerire che stiamo riferendoci a $\Delta_{\restriction x}$. 
+In questo paragrafo abbiamo fissato assieme a $\Delta$ una tupla di variabili libere $x$. Nel seguito servir\`a considerare simultaneamente diverse tuple di variabili libere. Tipicamente fisseremo un insieme di formule $\Delta$ senza specificare le variabili libere. Quando il contesto lo suggerisce, per $\Delta$ intenderemo in realt\`a \emph{$\Delta_{\restriction x}$}, ovvero il sottoinsieme delle formule in $\Delta$ con variabili libere tra quelle della tupla $x$. La notazione  $\Delta_{\restriction x}$ non verr\`a quasi mai usata perch\'e il rischio di fraintendimenti \`e minimo. Si noti comunque che la differenza \`e rilevante: un tipo completo $p\subseteq\Delta_{\restriction x}$ non \`e sicuramente completo se considerato come sottoinsieme di $\Delta_{\restriction x,z}$. Spesso scriveremo $p(x)=\Delta\jj$tp$_M(c)$, dove $x$ \`e una tupla di variabili di lunghezza $|c|$, per suggerire che stiamo riferendoci a $\Delta_{\restriction x}$. 
 
 L'insieme $\Delta$ pi\`u usato \`e quello di tutte le formule in $L(A)$, in questo caso scriveremo \emph{tp$_M(c/A)$}, o quando $A$ \`e vuoto \emph{tp$_M(c)$}. Quando $x$ e $c$ sono le tuple vuote allora i tipi si riducono a teorie e la notazione diventa \emph{$\Th_\Delta(M/A)$} e \emph{$\Th_\Delta(M)$}.
 
-Spesso insiemi di formule $\Delta$ sono costituiti da classi sintattiche, per esempio: le formule atomiche, le formule atomiche e le loro negazioni, le formule senza quantificatori, e simili.  Quando $\Delta$ \`e l'insieme delle formule atomiche scriveremo \emph{$\atp_M(c)$\/} per $\Deltatp_M(c)$. Quando $\Delta$ \`e l'insieme delle formule atomiche con parametri in $A$ scriveremo \emph{\textrm{at}-$\tp_M(c/A)$}. La notazione \emph{\textrm{at}$^\pm\jj$$\tp_M(c/A)$\/} \`e usata per tipi di formule atomiche e negazioni di formule atomiche, scriveremo \emph{$\Th_{\textrm{\scriptsize at}^\pm}(M/A)$\/} per la corrispondente teoria. Quest'ultima \`e molto usata perch\'e descrive, a meno di isomorfismo la struttura $\<A\>_M$. Viene anche detta \emph{diagramma\/} della struttura $\<A\>_M$.
+Spesso insiemi di formule $\Delta$ sono costituiti da classi sintattiche, per esempio: le formule atomiche, le formule atomiche e le loro negazioni, le formule senza quantificatori, e simili.  Quando $\Delta$ \`e l'insieme delle formule atomiche scriveremo \emph{$\atp_M(c)$\/} per $\Deltatp_M(c)$. Quando $\Delta$ \`e l'insieme delle formule atomiche con parametri in $A$ scriveremo \emph{\textrm{at}-$\tp_M(c/A)$}. La notazione \emph{\textrm{at}$^\pm\jj\tp_M(c/A)$\/} \`e usata per tipi di formule atomiche e negazioni di formule atomiche, scriveremo \emph{$\Th_{\textrm{\scriptsize at}^\pm}(M/A)$\/} per la corrispondente teoria. Quest'ultima \`e molto usata perch\'e descrive, a meno di isomorfismo la struttura $\<A\>_M$. Viene anche detta \emph{diagramma\/} della struttura $\<A\>_M$.
 
 
 
@@ -397,14 +399,14 @@ Una \emph{mappa\/} \`e una tripla $h:M\imp N$ dove
 \end{itemize}
 \end{definition}
 
-Quindi la stessa funzione, nel senso insiemistico di \textit{relazione binaria univoca}, da luogo a mappe diverse se presa con un altro dominio o codominio.  Se $\dom f=M$ la mappa \`e detta \emph{totale}; se $\range f=N$ \`e detta \emph{suriettiva}. Non escludiamo la possibilit\`a che la funzione $h$ sia vuota.
+Quindi la stessa funzione, nel senso insiemistico di \textit{relazione binaria univoca}, d\`a luogo a mappe diverse se presa con un altro dominio o codominio.  Se $\dom f=M$ la mappa \`e detta \emph{totale}; se $\range f=N$ \`e detta \emph{suriettiva}. Non escludiamo la possibilit\`a che la funzione $h$ sia vuota.
 
 La \emph{composizione di due mappe\/} \`e definita solo quando il codominio della prima coincide con il dominio della seconda. La composizione di $h:M\to N$ e $k:N\to Q$ \`e la mappa $k\circ h:M\to Q$ dove $k\circ h$ \`e la funzione che manda $a\mapsto kha$ per ogni elemento $a\in\dom h$ tale che $ha\in\dom k$, cio\`e per tutti gli $a$ per cui la composizione di funzioni \`e definita (quando $\range h$ \`e disgiunto da $\dom k$ il risultato della composizione pu\`o anche essere la mappa vuota). Non essendoci alcun requisito di totalit\`a, la \emph{mappa inversa\/} di $h:M\imp N$ \`e definita non appena $h$ \`e iniettiva: \`e la mappa $h^{-1}:N\imp M$.
 
 \begin{definition}\label{defpreservaveritas}
 Sia $\Delta$ un insieme di formule. Diremo che la mappa $h:M\imp N$ \emph{preserva la verit\`a\/} delle formule in $\Delta$ se
 \begin{itemize}
-\item[p.] $M\models\phi(a)\ \ \IMP\ \ N\models\phi(ha)$\ \ ogni formula $\phi(x)\in\Delta$ ed ogni tupla $a\in(\dom h)^{|x|}$.
+\item[p.] $M\models\phi(a)\ \ \IMP\ \ N\models\phi(ha)$\ \ per ogni formula $\phi(x)\in\Delta$ ed ogni tupla $a\in(\dom h)^{|x|}$.
 \end{itemize}
 Notazione: se $a$ \`e la tupla $\<a_0 \dots a_{n-1}\>$ allora $ha$ sta per la tupla $\<ha_0 \dots ha_{n-1}\>$. Per brevit\`a noi diremo anche \emph{$\Delta\jj$morfismo}, ma quest'ultimo non \`e termine standard. Diremo \emph{$\Delta\jj$immersione\/} e \emph{$\Delta\jj$epimorfismo\/} se la mappa \`e totale, rispettivamente, suriettiva.\QED
 \end{definition}
@@ -429,7 +431,7 @@ Fissiamo un insieme di formule $\Delta$. Per ogni mappa $h:M\imp N$ le seguenti 
 \item[3.] $\Deltatp_M(a)\subseteq\Deltatp_N(ha)$ per ogni tupla $a$ di elementi di $\dom h$;
 %\item[3'.] $\neg\!\Deltatp_N(ha)\subseteq\neg\!\Deltatp_M(a)$ per ogni tupla $a$ di elementi di $\dom h$;
 \item[4.] $N,ha\models p(x)$ per ogni tupla $a$ di elementi di $\dom h$ e per $p(x)=\Deltatp_M(a)$;
-\item[4'.] $M,a\models p(x)$ per ogni tupla $a$ di elementi di $\dom h$ e per $p(x)=\neg\!\Deltatp_N(ha)$.
+\item[4'.] $M,a\models \neg p(x)$ per ogni tupla $a$ di elementi di $\dom h$ e per $p(x)=\neg\!\Deltatp_N(ha)$.
 \end{itemize}
 Abbiamo scritto $\neg\!\Delta$ per l'insieme delle negazioni di formule in $\Delta$.\QED
 \end{remark}
@@ -500,7 +502,7 @@ M\models\E y\,\phi(a,y) %&\IFF&\\
 &\IMP& N\models\E y\,\phi(ha,y).\\
 \end{array}$
 
-Si noti che la seconda implicazione richiede la totalit\`a perch\'e in generale non \`e garantito che $\phi(a,y)$ abbia una soluzione in $\dom h$.
+Si noti che la seconda implicazione richiede la totalit\`a (e l'ipotesi) perch\'e in generale non \`e garantito che $\phi(a,y)$ abbia una soluzione in $\dom h$.
 \end{proof}
 
 La dimostrazione della seguente proposizione \`e lasciata al lettore. (Aggiungendo un'ipotesi, l'iniettivit\`a, potremmo riscrivere $\A x$ come $\neg\E x\neg$ e applicare~\ref{presesis} e~\ref{immparneginv}. Senza ipotesi addizionali, serve ripetere l'argomento usato per~\ref{presesis}.)

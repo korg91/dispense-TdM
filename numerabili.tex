@@ -38,10 +38,12 @@ Un insieme $\C\subseteq\U^{|x|}$ si dice \emph{$\Delta\jj$comagro\/} se \`e inte
 \begin{definition}\label{def_Delta_ceompatto} Fissiamo $\Delta=\{\wedge\!\vee\}\Delta\subseteq L(\U)$ ed una tupla di variabili $x$. Se $\U$ realizza ogni  $\Delta\jj$tipo $p(x)$ finitamente consistente in $\U$, diremo che  $\U^{|x|}$ \`e \emph{$\Delta\jj$compatto}.\QED
 \end{definition}
 
-Dati $a,b\in\U^{|x|}$, scriveremo $a\equiv_{\Delta} b$ quando $\phi(a)\iff\phi(b)$ per ogni $\phi(x)\in\Delta$. La tupla $x$ non compare nella notazione ma sar\`a fissata dal contesto. Per la notazione $\vee\Delta$, $\neg\Delta$, ecc., si rimanda al paragrafo~\ref{TeoremidiPreservazione}. La seguente definizione \`e rilevante quando $\Delta$ non \`e chiuso per negazione.
+Dati $a,b\in\U^{|x|}$, scriveremo $a\equiv_{\Delta} b$ quando $\phi(a)\iff\phi(b)$ per ogni $\phi(x)\in\Delta$. La tupla $x$ non compare nella notazione ma sar\`a fissata dal contesto. Per la notazione $\vee\Delta$, $\neg\Delta$, ecc., si rimanda al paragrafo~\ref{TeoremidiPreservazione}. 
 
 \begin{definition}\label{def_Delta_T2}  Fissiamo $\Delta=\{\wedge\!\vee\}\Delta\subseteq L(\U)$ ed una tupla di variabili $x$. Se per ogni $a,b\in\U^{|x|}$ tali che $a\nequiv_{\Delta} b$ esistono due formule $\phi(x),\psi(x)\in\Delta$ tali che $\neg\phi(a)\wedge\neg\psi(b)$ e $\neg\phi(x)\wedge\neg\psi(x)$ \`e inconsistente, diremo che $\U^{|x|}$ \`e \emph{$\Delta\jj$Hausdorff}.\QED
 \end{definition}
+
+Si noti che la precedente definizione \`e rilevante quando $\Delta$ non \`e chiuso per negazione, perch\'e $a\nequiv_{\Delta} b$ significa che esiste $\gamma(x) \in \Delta$ tale che vale $\gamma(a) \wedge \neg\gamma(b)$, quindi basta prendere $\phi=\gamma$ e $\psi=\neg\gamma$.
 
 Possiamo associare a $\Delta$ una topologia su $\U^{|x|}$. Una base di chiusi della topologia \`e formata dagli insiemi della forma $\phi(\U)$ per $\phi(x)\in\Delta$. I chiusi sono quindi gli insiemi definiti da $\Delta\jj$tipi $p(x)$. Le nozioni di insieme denso o con interno denso, e di spazio compatto definite qui sopra coincidono con quelle usuali in topologia. Solo la definizione~\ref{def_Delta_T2} si allontana da quella standard in topologia (per la nozione standard avremmo dovuto usare $a\neq b$ invece di $a\nequiv_{\Delta} b$). Infatti, a parte casi banali, in $\U^{|x|}$ esistono sempre coppie di elementi distinti $a\equiv_\Delta b$ che quindi hanno gli stessi intorni aperti. Questo mostra che $\U^{|x|}$ non soddisfa l'assioma di separazione T$_0$. Ma la differenza \`e innocua,  perch\'e si verifica facilmente che la richiesta in~\ref{def_Delta_T2} implica che la topologia indotta sul quoziente $\U^{|x|}/\!\equiv_{\Delta}$ soddisfa l'usuale assioma di separazione T$_2$.
 % 
@@ -74,7 +76,7 @@ Fissiamo un arbitrario $b\models\neg\xi(x)$ e sia
 
 \ceq{\hfill q(x)}{=}{\Big\{\phi(x)\in\Delta\ :\ \neg\psi(x)\imp\phi(x) \textrm{ per qualche }\psi(x)\in\Delta\textrm{ tale che }\neg\psi(b)\Big\}}. 
 
-Mostriamo che se $a\models q(x)$ allora $a\equiv_\Delta b$. Se $a\nequiv_\Delta b$ dalla definizione~\ref{def_Delta_T2} otteniamo due formule $\psi(x),\phi(x)\in\Delta$ tali che $\neg\psi(x)\imp\phi(x)$ e $\neg\psi(b)\wedge\neg\phi(a)$. Quindi $a\notmodels q(x)$. Ora verifichiamo che $q(x)\wedge\xi(x)$ \`e inconsistente: se per assurdo esistesse $a\models q(x)\wedge\xi(x)$, per quanto dimostrato sopra, $a\equiv_\Delta b$ contraddicendo $\neg\xi(b)$. 
+Mostriamo che se $a\models q(x)$ allora $a\equiv_\Delta b$. Se $a\nequiv_\Delta b$ dalla definizione~\ref{def_Delta_T2} otteniamo due formule $\psi(x),\phi(x)\in\Delta$ tali che $\neg\psi(x)\imp\phi(x)$ e $\neg\psi(b)\wedge\neg\phi(a)$. Quindi $a\notmodels q(x)$. Ora verifichiamo che $q(x)\wedge\xi(x)$ \`e inconsistente: se per assurdo esistesse $a\models q(x)\wedge\xi(x)$, per quanto dimostrato sopra, $a\equiv_\Delta b$ contraddicendo $\neg\xi(b)$. Quindi $q(x) \proves \neg\xi(x)$ 
 
 Per compattezza, otteniamo $\phi_1(x),\dots,\phi_n(x)\in q(x)$ tali che
 
@@ -121,12 +123,12 @@ Se $\Delta$ contiene tutte le formule della forma $fz\neq x'$, con $f$ simbolo d
 Fissiamo $\Delta=\{\A\!\wedge\!\vee\}\Delta\subseteq L(\U)$ numerabile. Fissiamo anche due tuple di variabili $x$ e $z$. Sia $\D\subseteq\U^{|x|}$ un insieme con interno $\Delta\jj$denso. Sia $\B\subseteq\U^{|z|}$ l'insieme dei $b$ tali che $\D$ ha interno $\Delta(b)\jj$denso. Allora $\B$ \`e $\Delta\jj$comagro.
 \end{lemma}
 
-\begin{proof} Esplicitando la definizione, notiamo che $\B$ contiene le tuple $b$ tali tali che per ogni $\xi(x,z)\in\Delta$ vale una delle seguenti due alternative:\nobreak
+\begin{proof} Esplicitando la definizione, notiamo che $\B$ \`e formato dalle tuple $b$ tali tali che per ogni $\xi(x,z)\in\Delta$ vale una delle seguenti due alternative:\nobreak
 \begin{itemize}
 \item[b1.]  $\neg\xi(x,b)$ \`e inconsistente;
 \item[b2.]  esiste $\phi(x,z)\in\Delta$ non banale tale che $\neg\phi(x,b)\imp x\in\D\wedge\neg\xi(x,b)$.
 \end{itemize}
-Sia $\B_\xi$ l'insieme delle tuple $b$ che soddisfano \ssf{b1} e \ssf{b2} per $\xi(x,z)$ fissata. \`E sufficiente mostrare che ogni $\B_\xi$ ha interno $\Delta\jj$denso. Fissiamo quindi un arbitraria $\psi(z)\in\Delta$ non banale, dobbiamo esibire una $\sigma(z)\in\Delta$ non banale tale che
+Sia $\B_\xi$ l'insieme delle tuple $b$ che soddisfano \ssf{b1} e \ssf{b2} per $\xi(x,z)$ fissata. \`E sufficiente mostrare che ogni $\B_\xi$ ha interno $\Delta\jj$denso (perch\'e allora $\B=\bigcap_{\xi \in \Delta} \B_\xi$, e $\Delta$ numerabile per ipotesi). Fissiamo quindi un arbitraria $\psi(z)\in\Delta$ non banale, dobbiamo esibire una $\sigma(z)\in\Delta$ non banale tale che
 \begin{itemize}
  \item[c.] $\neg\sigma(z)\imp z\in\B_\xi\wedge\neg\psi(z)$.
 \end{itemize}  
@@ -134,6 +136,7 @@ Consideriamo due casi. Se $\neg\psi(z)\wedge\neg\xi(x,z)$ \`e inconsistente, all
 \begin{itemize}
 \item[d.] $\neg\phi(x)\imp  x\in\D\wedge\E z\,[\neg\psi(z)\wedge\neg\xi(x,z)]$.
 \end{itemize} 
+Si noti che la formula $\E z\,[\neg\psi(z)\wedge\neg\xi(x,z)]$ sta in $\neg\Delta$ grazie all'ipotesi $\Delta=\{\A\!\wedge\!\vee\}\Delta$.
 Ora scegliamo come $\neg\sigma(z)$ la formula $\E x\,[\neg\phi(x)\wedge\neg\psi(z)\wedge\neg\xi(x,z)]$ che \`e consistente per \ssf{d}. Verifichiamo \ssf{c}. La verit\`a di $\neg\sigma(z)\imp \neg\psi(z)$ \`e immediata da \ssf{d}. Per verificare $\neg\sigma(z)\imp z\in\B_\xi$, fissiamo un $b$ tale che $\neg\sigma(b)$, ovvero tale che $\neg\phi(x)\wedge\neg\psi(b)\wedge\neg\xi(x,b)$ \`e consistente. Quindi $b\in\B_\xi$ perch\'e, di nuovo per \ssf{d}, la formula $\neg\phi(x)\wedge\neg\psi(b)$ soddisfa quanto richiesto da \ssf{b2}.
 \end{proof}
 
@@ -243,22 +246,22 @@ Ora si $M^{|x|}\subseteq\D$. Per verificare che $M$ \`e atomico prendiamo una qu
 \end{void}
 \end{comment}
 
-Fissati $A$ ed $x$, diremo che \emph{i tipi isolati sono densi\/} se  per ogni $\psi(x)\in L(A)$ esiste una formula $\phi(x)\in L(A)$ completa tale che $\phi(x)\imp\psi(x)$. Con la terminologia \`e introdotta nel paragrafo~\ref{paragrafoOTT} questo vuol dire che l'insieme $\D\subseteq\U^{|x|}$, unione di $\phi(\U)$ per $\phi(x)\in L(A)$ completa, ha interno $L(A)\jj$denso.
+Fissati $A$ ed $x$, diremo che \emph{i tipi isolati sono densi\/} se  per ogni $\psi(x)\in L(A)$ consistente esiste una formula $\phi(x)\in L(A)$ completa tale che $\phi(x)\imp\psi(x)$. Con la terminologia introdotta nel paragrafo~\ref{paragrafoOTT} questo vuol dire che l'insieme $\D\subseteq\U^{|x|}$, unione di $\phi(\U)$ per $\phi(x)\in L(A)$ completa, ha interno $L(A)\jj$denso.
 
 \begin{proposition}\label{prop_atomico_isolatidensi}
 Assumiamo $L$ ed $A$ numerabili. Le seguenti affermazioni sono equivalenti:
 \begin{itemize}
-\item[1.] esiste un modello atomico su $A$;
+\item[1.] esiste un modello $M$ atomico su $A$;
 \item[2.] per ogni tupla $x$ finita, i tipi isolati sono densi. 
 \end{itemize}
 \end{proposition}
 
 \begin{proof}
-L'implicazione \ssf{1}$\IMP$\ssf{2} \`e immediata. Dimostriamo \ssf{2}$\IMP$\ssf{1}. Il modello atomico richiesto \`e unione di una catena di insiemi $\<A_i:i\in\omega\>$. Posto $A_0=A$, assumiamo come ipotesi induttiva che $A_i=A,a$ dove $a$ \`e un tupla finita che \`e soluzione di una formula $\phi(x)$ completa in $L_x(A)$.  Sia dunque $\psi(a,y)$ una formula consistente che vogliamo sia soddisfatta in $M$. (Tralasciamo i dettagli sull'enumerazione delle formule che sono come nella dimostrazione~\ref{dim_II_lowenheimskolemallingiu} del teorema di L\"owenheim-Skolem all'ingi\`u.) Allora $\phi(x)\wedge\psi(x,y)$ \`e consistente e per \ssf{2} esiste una formula completa in $L_{x,y}(A)$ tale che
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Sia $\psi(x) \in L(A)$. Se $\psi(x)$ \`e consistente (in $\U$) allora \`e consistente in ogni modello, quindi anche in $M$. Sia allora $a \in M$ tale che $a \models \psi(x)$. Per l'osservazione di cui sopra, grazie all'ipotesi abbiamo che esiste $\phi(x)$ completa tale che $a \models \phi(x)$. Quindi $\phi(x) \imp \psi(x)$. Dimostriamo ora \ssf{2}$\IMP$\ssf{1}. Il modello atomico richiesto \`e unione di una catena di insiemi $\<A_i:i\in\omega\>$. Posto $A_0=A$, assumiamo come ipotesi induttiva che $A_i=A,a$ dove $a$ \`e un tupla finita che \`e soluzione di una formula $\phi(x)$ completa in $L_x(A)$.  Sia dunque $\psi(a,y)$ una formula consistente che vogliamo sia soddisfatta in $M$. (Tralasciamo i dettagli sull'enumerazione delle formule che sono come nella dimostrazione~\ref{dim_II_lowenheimskolemallingiu} del teorema di L\"owenheim-Skolem all'ingi\`u.) Allora $\phi(x)\wedge\psi(x,y) \in L(A)$ \`e consistente e per \ssf{2} esiste una formula completa in $L_{x,y}(A)$ tale che
 
 \ceq{\hfill\phi'(x,y)}{\imp}{ \phi(x)\wedge\psi(x,y)}
 
-dalla completezza di $\phi(x)$ segue $\phi(x)\imp\E y\ \phi'(x,y)$ e quindi che $\phi'(a,y)$ \`e consistente. Sia $b$ una qualsiasi sua soluzione, che sar\`a quindi anche soluzione di $\psi(a,y)$. Posto $A_{i+1}=A,a,b$ l'ipotesi induttiva \`e preservata. Infine, dal lemma~\ref{lem_isolazione1} segue  che $M$ \`e atomico.
+dalla completezza di $\phi(x)$ segue $\phi(x)\imp\E y\ \phi'(x,y)$ e quindi, poich\`e vale $\phi(a)$, allora vale $\exists y \phi'(a,y)$, ovvero $\phi'(a,y)$ \`e consistente. Sia $b$ una qualsiasi sua soluzione, che sar\`a quindi anche soluzione di $\psi(a,y)$. Posto $A_{i+1}=A,a,b$ l'ipotesi induttiva \`e preservata. Infine, dal lemma~\ref{lem_isolazione1} segue  che $M$ \`e atomico.
 \end{proof}
 
 
@@ -348,7 +351,7 @@ Se $L$ o $A$ non sono numerabili rimangono comunque valide le implicazioni \ssf{
 \begin{proof}
 Per dimostrare \ssf{1}$\IMP$\ssf{2} fissiamo una tupla $c$ che enumera $\dom k$ e sia $\xi(x,y)$ la formula che isola il tipo  $p(x,y)=\tp(c,b/A)$. Poich\'e $k:M\imp N$ \`e elementare $\xi(kc,x)$ ha una soluzione $d\in N$. Poich\'e $\xi(kc,x)\imp p(kc,x)$ otteniamo $p(kc,d)$. Quindi $k=h\cup\{\<b,d\>\}$ \`e l'estensione richiesta.
 
-L'implicazione \ssf{2}$\IMP$\ssf{3} \`e chiara. Per dimostrare \ssf{3}$\,\IMP\,$\ssf{1} assumiamo $\neg$\ssf{1}. Esiste quindi una tupla finita di elementi di $M$ tale che il cui tipo $p(x)=\tp(b/A)$ non \`e isolato. Poich\'e sia $T$ che $A$ sono numerabili, possiamo usare il teorema di omissione dei tipi per ottenere un modello $N$ che contiene $A$ ed omette $p(x)$. Quindi nessuna mappa elementare $h:M\to N$ pu\`o essere definita in $b$.
+L'implicazione \ssf{2}$\IMP$\ssf{3} \`e chiara. Per dimostrare \ssf{3}$\,\IMP\,$\ssf{1} assumiamo $\neg$\ssf{1}. Esiste quindi una tupla finita di elementi di $M$ tale che il tipo $p(x)=\tp(b/A)$ non \`e isolato. Poich\'e sia $T$ che $A$ sono numerabili, possiamo usare il teorema di omissione dei tipi per ottenere un modello $N$ che contiene $A$ ed omette $p(x)$. Quindi nessuna mappa elementare $h:M\to N$ pu\`o essere definita in $b$.
 \end{proof}
 
 \begin{theorem}\label{atomicoprimo}
@@ -360,9 +363,9 @@ Assumiamo $L$ ed $A$ numerabili. Per ogni modello $M$, le seguenti affermazioni 
 \end{theorem}
 
 \begin{proof}
-Per dimostrare la direzione \ssf{1}$\,\IMP\,$\ssf{2} fissiamo un arbitrario modello $N$ che contiene $A$ e costruiamo un'immersione $A\jj$elementare $h:M\to N$ costruendo una catena $\<h_i:i<\omega\>$ tale che ogni $h_i:M\to N$ \`e una mappe $A\jj$elementare finita. La catena comincia con $h_0=\0$ e soddisfa alla condizione $b_i\in\dom h_{i+1}$, dove $b_i$ \`e $i\jj$esimo elemento di $M$ in una qualche fissata enumerazione. La condizione \ssf{2} del lemma~\ref{atomicoestensione} assicura l'esistenza di questa catena. 
+Per dimostrare la direzione \ssf{1}$\,\IMP\,$\ssf{2} fissiamo un arbitrario modello $N$ che contiene $A$ e costruiamo un'immersione $A\jj$elementare $h:M\to N$ costruendo una catena $\<h_i:i<\omega\>$ tale che ogni $h_i:M\to N$ \`e una mappa $A\jj$elementare finita. La catena comincia con $h_0=\0$ e soddisfa alla condizione $b_i\in\dom h_{i+1}$, dove $b_i$ \`e $i\jj$esimo elemento di $M$ in una qualche fissata enumerazione. La condizione \ssf{2} del lemma~\ref{atomicoestensione} assicura l'esistenza di questa catena. 
 
-Per dimostrare la direzione \ssf{2}$\,\IMP\,$\ssf{1} assumiamo che $M$ sia primo su $A$. La numerabilit\`a \`e ovvia: visto che esistono modelli numerabili ed $M$ deve potersi immergere in questi, $M$ non pu\`o che essere numerabile. Inoltre $M$ dev'essere atomico perch\'e verifica la condizione \ssf{3} del lemma~\ref{atomicoestensione}.
+Per dimostrare la direzione \ssf{2}$\,\IMP\,$\ssf{1} assumiamo che $M$ sia primo su $A$. La numerabilit\`a \`e ovvia: visto che esistono modelli numerabili ed $M$ deve potersi immergere in questi, $M$ non pu\`o che essere numerabile. Inoltre $M$ dev'essere atomico perch\'e verifica la condizione \ssf{3} del lemma~\ref{atomicoestensione}, dato che le immersioni elementari sono per definizione mappe elementari totali.
 \end{proof}
 
 \begin{theorem}\label{primiisomorfi}
@@ -408,7 +411,7 @@ Le seguenti affermazioni sono equivalenti:
 \end{itemize}
 \end{proposition}
 \begin{proof}
-L'implicazione \ssf{2}$\IMP$\ssf{1} \`e ovvia, per dimostrare  \ssf{1}$\IMP$\ssf{2} osserviamo che se $T$ \`e sottile esiste un modello numerabile debolmente $\omega$-saturo. Ogni sua estensione \`e ovviamente anche  debolmente satura.  Ogni modello numerabile ha un'estensione ad un modello numerabile omogeneo (esercizio~\ref{exomogeneonumerabile} con $\U$ per $N$). Questo, \`e saturo per l'esercizio~\ref{saturazione debole}.
+L'implicazione \ssf{2}$\IMP$\ssf{1} \`e ovvia, dato che i tipi completi sono tipi di qualche tupla $b \in M$. Quindi sono al pi\`u quanti la cardinalit\`a del modello, ovvero una quantit\`a numerabile per ipotesi. Per dimostrare  \ssf{1}$\IMP$\ssf{2} osserviamo che se $T$ \`e sottile esiste un modello numerabile debolmente $\omega$-saturo. Ogni sua estensione \`e ovviamente anche  debolmente satura.  Ogni modello numerabile ha un'estensione ad un modello numerabile omogeneo (esercizio~\ref{exomogeneonumerabile} con $\U$ per $N$). Questo, \`e saturo per l'esercizio~\ref{saturazione debole}.
 \end{proof}
 
 Quindi le principali teorie introdotte nei capitoli precedenti sono sottili.
@@ -519,7 +522,7 @@ In figura, la rappresentazione di un albero binario di formule:
 
 
 \medskip
-Ad ogni ramo $\alpha\in2^\omega$ di un albero binario associamo il tipo $p_\alpha(x)=\big\{\phi_{\alpha\restriction n}\;:\; n\in\omega\big\}$. Per compattezza, i tipi $p_\alpha(x)$ sono tutti consistenti.
+Ad ogni ramo $\alpha\in2^\omega$ di un albero binario associamo il tipo $p_\alpha(x)=\big\{\phi_{\alpha\restriction n}\;:\; n\in\omega\big\}$. Per saturazione, i tipi $p_\alpha(x)$ sono tutti consistenti.
 
 \begin{proposition}\label{prop_small_tree}
 Se $L$ \`e numerabile, le seguenti affermazioni sono equivalenti:
@@ -574,7 +577,7 @@ Ricordiamo che una teoria $T$ si dice \emph{$\omega\jj$categorica\/} se ha, a me
 \end{theorem}
 
 \begin{proof} 
-Dimostriamo \ssf{1}$\IMP$\ssf{2}. Se $T$ \`e $\omega\jj$categorica  tutti i suoi modelli numerabili sono (banalmente) primi e quindi atomici. Quindi tutti i tipi puri in un numero finito di variabili sono isolati. Dimostriamo \ssf{2}$\IMP$\ssf{1}. Da \ssf{2} segue che tutti i modelli di $T$ sono atomici, ovvero primi, e quindi $T$ \`e $\omega\jj$categorica per il teorema~\ref{primiisomorfi}.
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Se $T$ \`e $\omega\jj$categorica  tutti i suoi modelli numerabili sono primi (dato che tra due modelli numerabili c'\`e un isomorfismo, mentre per L\"owenheim-Skolem ogni modello pi\`u che numerabile ammette un modello numerabile come sottostruttura elementare) e quindi atomici. Osserviamo ora che per ogni tupla finita $a$, grazie a L\"owenheim-Skolem esiste un modello numerabile che la contiene. Questo modello \`e atomico, quindi $\tp(a)$ \`e isolato. Ogni tipo \`e sottoinsieme di un tipo completo, e in particolare ogni tipo soddisfacibile \`e sottoinsieme del tipo di qualche tupla. Quindi \`e anch'esso isolato, ovvero tutti i tipi puri in un numero finito di variabili sono isolati. Dimostriamo \ssf{2}$\IMP$\ssf{1}. Da \ssf{2} segue che tutti i modelli di $T$ sono atomici, quindi tutti quelli numerabili sono primi, e perci\`o $T$ \`e $\omega\jj$categorica per il teorema~\ref{primiisomorfi}.
 %Dimostriamo \ssf{1}$\IMP$\ssf{2}. Se $T$ \`e $\omega\jj$categorica  tutti i suoi modelli numerabli sono (banalmente) primi e quindi atomici. Quindi tutti i tipi puri in un numero finito di variabili sono isolati. Dimostriamo \ssf{2}$\IMP$\ssf{3}. da \ssf{2} segue immediatamente che tutti i modelli numerabili sono atomici, quindi primi. Per dimostrare che sono anche saturi si osservi \ssf{1} implica anche i tipi con un numero finito di parametri sono isolati. Quindi tutti i modelli sono $\omega\jj$saturi. Dimostriamo \ssf{3}$\IMP$\ssf{1}. Fissiamo un modello $N$ primo e saturo (in quanto primo numerabile). Sia $M$ un arbitrario modello numerabile costruiamo un isomorfismo $h:M\imp N$ per andirivieni. Per estendere il dominio usiamo la saturazione di $N$ ed il lemma~\ref{saturo->ricco} per estendere l'immagine l'atomicit\`a di $N$ ed il lemma~\ref{atomicoestensione}.
 \end{proof}
 
@@ -589,7 +592,8 @@ Dal seguente teorema otteniamo immediatamente altre caratterizzazioni dell'$\ome
 \end{itemize}
 \end{theorem}
 
-\begin{proof} L'equivalenza \ssf{1}$\,\IFF\,$\ssf{2} \`e immediata per l'omogeneit\`a di $\U$. Dimostriamo \ssf{1}$\,\IMP\,$\ssf{3}. Se il numero di tipi completi \`e finito, $\neg p(x)$ \`e equivalente alla disgiunzione di tipi. Quindi $p(x)$ \`e equivalente ad una formula, ovvero \`e isolato.  Viceversa, per dimostrare \ssf{3}$\,\IMP\,$\ssf{1}, osserviamo che le formule che isolano i tipi $S_x(A)$ formano un ricoprimento di $\U$. Per compattezza questo ricoprimento dev'essere finito. Mostriamo che \ssf{3}$\,\IMP\,$\ssf{4}. Osserviamo che ogni formula $\psi(x)$ \`e disgiunzione di  formule che isolano tipi completi; queste formule sono in numero finito per \ssf{1}. Il viceversa, \ssf{4}$\,\IMP\,$\ssf{3}, \`e altrettanto semplice.
+\begin{proof} L'equivalenza \ssf{1}$\,\IFF\,$\ssf{2} \`e immediata per l'omogeneit\`a di $\U$, poich\'e in ogni struttura omogenea $N$ vale $O(a/A)=p(N)$ con $p(x)=\tp(a/A)$. Dimostriamo \ssf{1}$\,\IMP\,$\ssf{3}. Se il numero di tipi completi \`e finito, $\neg p(x)$ \`e equivalente alla disgiunzione di tipi. Quindi $p(x)$ \`e equivalente ad una formula, ovvero \`e isolato.  Viceversa, per dimostrare \ssf{3}$\,\IMP\,$\ssf{1}, osserviamo che i tipi $S_x(A)$ ricoprono $\U$, quindi anche le formule che li isolano (che sono a loro equivalenti, dato che i tipi sono completi) formano un ricoprimento di $\U$. Per compattezza questo ricoprimento dev'essere finito. Mostriamo che \ssf{3}$\,\IMP\,$\ssf{4}. 
+Sia $\psi(x) \in L(A)$. Se $\psi(x)$ \`e consistente, allora \`e soddisfatta da qualche $a \in \U$, ovvero $\displaystyle \psi(x) \imp \bigvee_{a \models \psi(x)} \tp(a/A)$. Per ogni $a$, sia $\psi_{\!a}(x)$ una formula che isola $\tp(a/A)$. Poich\'e i $\tp(a/A)$ sono completi, essi sono equivalenti alle $\psi_{\!a}(x)$, e quindi in particolare queste sono formule complete. In conclusione otteniamo $\displaystyle \psi(x) \iff \bigvee_{a \models \psi(x)} \psi_{\!a}(x)$. Ma le formule $\psi_{\!a}(x)$ sono in numero finito per \ssf{1}. Il viceversa, \ssf{4}$\,\IMP\,$\ssf{3}, \`e altrettanto semplice.
 \end{proof}
 
 \begin{corollary}  Le quattro propriet\`a considerate nel teorema~\ref{omegacategoricaequivalenzevarie}

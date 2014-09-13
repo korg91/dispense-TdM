@@ -62,7 +62,7 @@ Dimostriamo \ssf{2}$\IMP$\ssf{1}. Possiamo assumere che $a$ non sia $\0$-definib
 perch\'e $b$ \`e una sua soluzione. Quindi il teorema \`e dimostrato se verifichiamo che la formula \ssf{a} \`e algebrica. Mostreremo che le soluzioni di \ssf{a} sono anche soluzioni di $\delta(w)$. Sia $c$ una qualsiasi soluzione di \ssf{a}. Quindi $\psi(c,c)$ deve essere vera, altrimenti $a$ sarebbe vuoto e quindi $\0$-definibile. Quindi otteniamo $\A x\,\big[x\in a \iff \sigma(x;c)\big]$, ma allora $\psi(w,c)$ \`e equivalente a $\delta(w)$ e da $\psi(c,c)$ segue che $c$ \`e soluzione di $\delta(w)$.
 \end{proof}
 
-Diremo che $a$ e $b$, due tuple di elementi di $\U^\eq$, sono \emph{interdefinibili\/} se $a\in\dcl^\eq(b)$ e $b\in\dcl^\eq(a)$, in breve, se $\dcl^\eq(a)=\dcl^\eq(b)$. Per dal teorema~\ref{thm_Galois_def=def} questo \`e equivalente ad affermare che $\Aut(\U/a)=\Aut(\U/b)$ ovvero ogni automorfismo che fissa $a$ fissa anche $b$ e viceversa.
+Diremo che $a$ e $b$, due tuple di elementi di $\U^\eq$, sono \emph{interdefinibili\/} se $a\in\dcl^\eq(b)$ e $b\in\dcl^\eq(a)$, in breve, se $\dcl^\eq(a)=\dcl^\eq(b)$. Per il teorema~\ref{thm_Galois_def=def} questo \`e equivalente ad affermare che $\Aut(\U/a)=\Aut(\U/b)$ ovvero ogni automorfismo che fissa $a$ fissa anche $b$ e viceversa.
 
 \begin{theorem}\label{elimimd2} 
 Le seguenti affermazioni sono equivalenti:
@@ -73,7 +73,7 @@ Le seguenti affermazioni sono equivalenti:
 \end{theorem}
 
 \begin{proof}
-Dimostriamo \ssf{1}$\IMP$\ssf{2}. Assumiamo \ssf{1} e sia $b$ l'insieme delle soluzioni della formula
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Assumiamo \ssf{1} sia $a$ un immaginario. Sia $b$ l'insieme delle soluzioni della formula
 
 \hspace*{30ex}\llap{$\A x\ \Big[x\in a$}$\ \  \iff\ \  \sigma(x;z)\Big]$.
 
@@ -90,7 +90,7 @@ La seguente \`e una condizione sufficiente per l'eliminazione debole degli immag
 \end{lemma}
 
 \begin{proof}
-Verifichiamo la condizione \ssf{2} del teorema~\ref{elimimd}. Sia $\sigma(x;c)$ una formula che definisce $a$. Usando \ssf{a} per la formula $\A x\,\big[ x\in a\iff\sigma(x;z)\big]$ ha una soluzione in $\acl a$. Quindi $a$ \`e definibile su $\acl a$.
+Verifichiamo la condizione \ssf{2} del teorema~\ref{elimimd}. Sia $\sigma(x;c)$ una formula che definisce $a$. Usando \ssf{a}, la formula $\A x\,\big[ x\in a\iff\sigma(x;z)\big]$ ha una soluzione $b$ in $\acl a$. Quindi $a$ \`e definibile su $\acl a$ da $\sigma(x;b)$.
 \end{proof}
 
 \begin{theorem}\label{elimimsm} 
@@ -98,7 +98,7 @@ Assumiamo che $T$ sia fortemente minimale e che $\acl\0$ sia infinito. Allora $T
 \end{theorem}
 
 \begin{proof}
-Dimostriamo la condizione \ssf{a} del lemma~\ref{tvtestimmaginari}. Sia $\phi(z)$ una formula consistente a parametri in un qualche $A\subseteq\U^\eq$. Procediamo per induzione sull'ariet\`a della tupla $z$. Se $z$ \`e la tupla vuota \`e banalmente vero. Consideriamo la formula $\phi(z,x)$ dove $|x|=1$. Per ipotesi induttiva $\E x\,\phi(z,x)$ ha una soluzione $\acl A$. Sia $c$ questa soluzione. Ora \`e sufficiente mostrare che $\phi(c,x)$ ha soluzione in $\acl A$. Questa \`e una formula a parametri in $\acl A$ con una singola variabile libera. Quindi se \`e algebrica ha una soluzione in $\acl(\acl A)=\acl A$, altrimenti \`e co-algebrica ed ha comunque una soluzione in $\acl A\supseteq\acl\0$ che per ipotesi \`e un insieme infinito.
+Dimostriamo la condizione \ssf{a} del lemma~\ref{tvtestimmaginari}. Sia $\phi(z)$ una formula consistente a parametri in un qualche $A\subseteq\U^\eq$. Procediamo per induzione sull'ariet\`a della tupla $z$. Se $z$ \`e la tupla vuota \`e banalmente vero. Consideriamo la formula $\phi(z,x)$ dove $|x|=1$. Per ipotesi induttiva $\E x\,\phi(z,x)$ ha una soluzione $\acl A$. Sia $c$ questa soluzione. Ora \`e sufficiente mostrare che $\phi(c,x)$ ha soluzione in $\acl A$. Questa \`e una formula a parametri in $\acl A$ con una singola variabile libera. Quindi se \`e algebrica ha una soluzione in $\acl(\acl A)=\acl A$, altrimenti \`e co-algebrica (perch\`e $T$ \`e fortemente minimale) ed ha comunque una soluzione in $\acl A\supseteq\acl\0$ che per ipotesi \`e un insieme infinito.
 \end{proof}
 
 Passiamo a considerare l'eliminazione (forte) degli immaginari.

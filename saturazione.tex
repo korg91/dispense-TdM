@@ -8,7 +8,7 @@
 
 Un tipo $p(x)$ si dice \emph{finitamente consistente\/} (o \emph{finitamente coerente\/}) \emph{in $M$\/} se ogni formula $\phi(x)$, congiunzione di formule in $p(x)$, ha una soluzione in $M$. La consistenza finita \`e una propriet\`a elementare: se $A\subseteq M$ e $p(x)\subseteq L(A)$ \`e finitamente consistente in $M$ allora \`e finitamente consistente in qualsiasi $N\equiv_A M$. Questa osservazione si generalizza nella seguente che nel seguito applicheremo pi\`u volte senza ulteriore riferimento.
 
-\begin{remark}
+\begin{remark}\label{fincoermappaelem}
 Sia $p(z,x)$ un tipo puro, sia $h:M\imp N$ una mappa elementare, e sia $a$ una tupla di elementi di $\dom h$. Se $p(a,x)$ \`e coerente in $M$ (ma \`e sufficiente anche solo \textit{finitamente\/} coerente) allora $p(ha,x)$ \`e finitamente coerente in $N$ (e qui finitamente \textit{non\/} si pu\`o omettere).\QED
 \end{remark}
 
@@ -75,7 +75,7 @@ Sia $\lambda$ un cardinale infinito $\ge|L|$. Sia $N$ una struttura infinita e s
 \begin{proof}
 Per dimostrare l'implicazione \ssf{1}$\IMP$\ssf{2} dobbiamo verificare che ogni mappa elementare $k:M\imp N$ tale che $|k|<\lambda$ ed $|M|\le\lambda$ si estende ad un'immersione elementare. Sia $\<a_i:i<\lambda\>$ un'enumerazione di $M$. Definiamo una catena di mappe elementari $h_i:M\imp N$ di cardinalit\`a $<\lambda$ e tali che $a_i\in\dom h_{i+1}$. Dall'unione della catena otteniamo l'immersione richiesta.
 
-La catena comincia con $h_0=k$. Agli ordinali limite la catena si estende prendendo l'unione. Ora vediamo come estenderla al passo $i+1$. Sia $a$ un'enumerazione di $\dom h_i$, quindi $|a|<\lambda$.  Vogliamo un elemento $c\in N$ per porre $h_{i+1}=h_i\cup\big\{\<a_i,c\>\big\}$. Sia $p(z,x)=\tp_M(a,a_i)$. Il tipo $p(a,x)$ \`e consistente in $M$ per costruzione e quindi il tipo $p(h_ia,\,x)$  \`e finitamente consistente in $N$. L'elemento $c$ cercato \`e una qualsiasi sua realizzazione, che esiste per saturazione. Per verificare che $h_{i+1}:M\imp N$ \`e elementare \`e sufficiente notare che il tipo $p(z,x)$ \`e completo ed \`e soddisfatto da $a,a_i$ in $M$ e da da $h_ia,c$ in $N$.
+La catena comincia con $h_0=k$. Agli ordinali limite la catena si estende prendendo l'unione. Ora vediamo come estenderla al passo $i+1$. Sia $a$ un'enumerazione di $\dom h_i$, quindi $|a|<\lambda$.  Vogliamo un elemento $c\in N$ per porre $h_{i+1}=h_i\cup\big\{\<a_i,c\>\big\}$. Sia $p(z,x)=\tp_M(a,a_i)$. Il tipo $p(a,x)$ \`e consistente in $M$ per costruzione e quindi il tipo $p(h_ia,\,x)$  \`e finitamente consistente in $N$ per \ref{fincoermappaelem}. L'elemento $c$ cercato \`e una qualsiasi sua realizzazione, che esiste per saturazione. Per verificare che $h_{i+1}:M\imp N$ \`e elementare \`e sufficiente notare che il tipo $p(z,x)$ \`e completo ed \`e soddisfatto da $a,a_i$ in $M$ e da da $h_ia,c$ in $N$.
 
 Dimostriamo l'implicazione \ssf{2}$\IMP$\ssf{3}. Sia $x$ una tupla di variabili di lunghezza $\le\lambda$ e sia $p(x)$ un tipo a parametri in un qualche $A\subseteq N$ di cardinalit\`a $<\lambda$ e fintamente coerente in $N$. Sia $N'$ un'estensione elementare di $N$ che realizza $p(x)$, diciamo $N'\models p(b)$ per un qualche $b\in N^{|x|}$. Per L\"owenheim-Skolem esiste un modello $M\preceq N'$ che contiene $A,b$ ed ha cardinalit\`a $\le\lambda$. (Qui usiamo l'ipotesi $|L|\le\lambda$.) Applicando \ssf{2} con $k=\id_A$ e otteniamo un'immersione elementare $h:M\imp N$ che estende $\id_A$, ovvero fissa tutti i parametri che occorrono in $p(x)$, quindi da $M\models p(b)$ segue $N\models p(hb)$, ovvero $hb$ \`e la realizzazione richiesta.
 
@@ -265,7 +265,7 @@ Cominciamo col porre $h_0=k$ ed $A_0=A\cup\dom k\cup\range k$ e dichiarare che a
 
 per opportuni $b$ e $d$ che rendono $h_{i+1}:N\imp N$ una mappa elementare. Questi esistono perch\'e $N$ \`e debolmente $\lambda$-omogeneo per ipotesi (serve applicare questa ipotesi due volte, avanti e indietro, come nella dimostrazione della proposizione~\ref{omogeneo=debolmenteaomogeneo}).
 
-Usando il test di Tarski-Vaught, \`e immediato verificare che $M$ \`e un modello. Dalla costruzione \`e chiaro che $\dom h\subseteq M$ e $\range h\subseteq M$. Le verifiche della totalit\`a e suriettivit\`a sono anche immediate quindi concludiamo che $h:M\to M$ \`e l'automorfismo richiesto.
+Usando il test di Tarski-Vaught, \`e immediato verificare che $M$ \`e un modello. Dalla costruzione \`e chiaro che $\dom h\subseteq M$ e $\range h\subseteq M$. L'iniettivit\`a \`e conseguenza immediata della elementarit\`a. Le verifiche della totalit\`a e suriettivit\`a sono anche immediate quindi concludiamo che $h:M\to M$ \`e l'automorfismo richiesto.
 \end{proof}
 
 

@@ -29,7 +29,7 @@ Le implicazioni \ssf{3}$\IMP$\ssf{1}$\IMP$\ssf{2} sono immediate. Per dimostrare
 
 \hfil$p(z)\ \ =\ \ \Big\{ \E^{> n}x\;\phi(x,z)\ \wedge\ \E^{> n}x\;\neg\phi(x,z) \ \ :\ \ n\in\omega\Big\}$.
 
-Poich\'e $N$ \`e minimale, $N\notmodels \E z\,p(z)$ non \`e finitamente consistente in $N$. Quindi non lo \`e nemmeno in $M$. Ovvero esiste un $n$ tale che
+Poich\'e $N$ \`e minimale, $N\notmodels \E z\,p(z)$, e quindi, siccome $N$ \`e saturo, $p(z)$ non \`e finitamente consistente in $N$. Quindi non lo \`e nemmeno in $M$. Ovvero esiste un $n$ tale che
 
 \hfil$M\ \ \models\ \  \A z\ \Big[\E^{\le n}x\;\phi(x,z)\ \vee\ \E^{\le n}x\;\neg\phi(x,z)\Big]$.
 
@@ -90,7 +90,7 @@ dove le $x_i$ sono tuple di variabili distinte della lunghezza di $x$. Quindi es
 \`e incoerente. Ma questo dice che $\phi(x)$ ha al pi\`u $n$ soluzioni.
 \end{proof}
 
-Sia $a$ un elemento e sia $A$ un insieme di parametri. Diremo che $a$ \`e un \emph{elemento algebrico su $A$\/} se \`e soluzione di una qualche formula algebrica con parametri in $A$. Equivalentemente, se $\tp(a/A)$ \`e un tipo algebrico. L'insieme degli elementi algebrici su $A$ \`e detto \emph{chiusura algebrica\/} di $A$ e si denota con \emph{${\rm\bf acl} A$}. Un insieme $A$ si dice \emph{algebricamente chiuso\/} se $A=\acl A$. Tutti i modelli sono algebricamente chiusi (dovrebbe essere immediato, altrimenti si veda il teorema~\ref{fmgalois}) e gli insiemi algebricamente chiusi sono delle sottostrutture (perch\'e la formula $t(a)=x$ \`e algebrica).
+Sia $a$ un elemento e sia $A$ un insieme di parametri. Diremo che $a$ \`e un \emph{elemento algebrico su $A$\/} se \`e soluzione di una qualche formula algebrica con parametri in $A$. Equivalentemente (grazie a \ref{tipialgebrici}), se $\tp(a/A)$ \`e un tipo algebrico. L'insieme degli elementi algebrici su $A$ \`e detto \emph{chiusura algebrica\/} di $A$ e si denota con \emph{${\rm\bf acl} A$}. Un insieme $A$ si dice \emph{algebricamente chiuso\/} se $A=\acl A$. Tutti i modelli sono algebricamente chiusi (dovrebbe essere immediato, altrimenti si veda il teorema~\ref{fmgalois}) e gli insiemi algebricamente chiusi sono delle sottostrutture (perch\'e la formula $t(a)=x$ \`e algebrica).
 
 La definizione di chiusura algebrica non richiede che $A$ abbia cardinalit\`a piccola ed occasionalmente potremo scrivere $\acl(\Aa)$ per un qualsiasi $\Aa\subseteq\U$. Comunque i seguenti teoremi richiedono che $A$ sia un insieme piccolo.
 
@@ -120,7 +120,7 @@ Sia $A$ un insieme di parametri e sia $a$ un elemento. Allora le seguenti afferm
 \end{theorem}
 
 \begin{proof} 
-L'equivalenza \ssf{1}$\,\IFF\,$\ssf{2} \`e ovvia per la proposizione~\ref{tipialgebrici} se si ricorda che $p(\U)=\orbit(a/A)$ dove $p(x)=\tp(a/A)$. Dimostriamo \ssf{1}$\,\IMP\,$\ssf{3}. Supponiamo che $a$ sia algebrico su $A$. Sia $\phi(x)$ una formula a parametri in $A$ tale che $\phi(a)\wedge\E^{= n}x\,\phi(x)$ per un qualche $n$. Se $M$ contiene $A$ allora $\E^{=n}x\,\phi(x)$ vale anche in $M$. Per elementarit\`a, se $c$ \`e una soluzione di $\phi(x)$ in $\U$ lo \`e anche in $M$ e quindi $\phi(x)$ ha le stesse soluzioni in $M$ ed in $\U$. Quindi $a\in M$.
+L'equivalenza \ssf{1}$\,\IFF\,$\ssf{2} \`e ovvia per la proposizione~\ref{tipialgebrici} se si ricorda che $p(\U)=\orbit(a/A)$ dove $p(x)=\tp(a/A)$ (cfr. \ref{omogeneitaorbitetipi}). Dimostriamo \ssf{1}$\,\IMP\,$\ssf{3}. Supponiamo che $a$ sia algebrico su $A$. Sia $\phi(x)$ una formula a parametri in $A$ tale che $\phi(a)\wedge\E^{= n}x\,\phi(x)$ per un qualche $n$. Se $M$ contiene $A$ allora $\E^{=n}x\,\phi(x)$ vale anche in $M$. Per elementarit\`a, se $c$ \`e una soluzione di $\phi(x)$ in $\U$ lo \`e anche in $M$ e quindi $\phi(x)$ ha le stesse soluzioni in $M$ ed in $\U$. Quindi $a\in M$.
 
 Dimostriamo $\neg$\ssf{2}$\,{\IMP}\neg$\ssf{3}. Supponiamo che $\orbit(a/A)$ sia infinita quindi, per il teorema~\ref{cadinalitafinitasaturazione}, ha la stessa cardinalit\`a di $\U$. Vogliamo trovare un modello che contenga $A$ ma non contenga $a$. Fissiamo un arbitrario modello $M$ che contiene $A$. Per questioni di cardinalit\`a, $\orbit(a/A)\nsubseteq M$, e quindi esiste un automorfismo $f\in\Aut(\U/A)$ tale che $fa\notin M$. Allora $a\notin f^{-1}[M]$ e quindi $f^{-1}[M]$ \`e il modello richiesto.
 \end{proof}
@@ -240,7 +240,7 @@ Sia $B\subseteq A$. Le seguenti affermazioni sono equivalenti.
 \end{itemize}
 \end{corollary}
 
-Scriveremo \emph{acl$(B/A)$\/} per $\acl(B\cup A)$. Una notazione che ha lo scopo di suggere che stiamo interpretando gli elementi di $A$ come costanti in un'espansione del linguaggio. L'operatore di chiusura algebrica su $A$ gode esattamente delle stesse propriet\`a della chiusura algebrica. Le nozioni di indipendenza, base, e dimensione su $A$ si generalizzano nel modo ovvio.
+Scriveremo \emph{acl$(B/A)$\/} per $\acl(B\cup A)$. Una notazione che ha lo scopo di suggerire che stiamo interpretando gli elementi di $A$ come costanti in un'espansione del linguaggio. L'operatore di chiusura algebrica su $A$ gode esattamente delle stesse propriet\`a della chiusura algebrica. Le nozioni di indipendenza, base, e dimensione su $A$ si generalizzano nel modo ovvio.
 
 \begin{theorem} Fissiamo un insieme arbitrario $C$. Allora:
 \begin{itemize}
@@ -257,7 +257,7 @@ Per dimostrare che due basi hanno la stessa cardinalit\`a supponiamo per assurdo
 
 \hfil$\displaystyle D=\bigcup_{b\in B_2}D_b$
 
-Quindi $B_1\subseteq\acl D$ e $|D|<|B_2|$. Per la transitivit\`a della chiusura algebrica, $C\subseteq\acl D$ e questo contraddice l'indipendenza di $B_2$ perch\'e $B_2\sm D$ \`e non vuoto. Anche questo argomento si generalizza immediatamente come richiesto in \ssf{3}. 
+Quindi $B_1\subseteq\acl D$ e $|D|<|B_2|$ (in quanto unione di cardinalit\`a $|B_2|$ di insiemi finiti). Per la transitivit\`a della chiusura algebrica, $C\subseteq\acl D$ e questo contraddice l'indipendenza di $B_2$ perch\'e $B_2\sm D$ \`e non vuoto. Anche questo argomento si generalizza immediatamente come richiesto in \ssf{3}. 
 
 Supponiamo ora che $B_2$ sia finito. Conviene dimostrare direttamente l'affermazione generalizzata come in \ssf{3}. Supponiamo per assurdo che esistano $B_1$ e $B_2$, basi di $C$ su un qualche $A$, tali che $|B_1|<|B_2|=n+1$. Supponiamo che $n$ sia il minimo ottenibile anche al variare di $A$. 
 
@@ -305,7 +305,7 @@ Per dimostrare \ssf{1}$\,\IMP\,$\ssf{2} fissiamo una base $B$ e osserviamo che i
 
 \hfil $p(x)\ \ =\ \ \Big\{\neg\phi(x)\ :\ \phi(x)\textrm{ algebrica a parametri in }B\Big\}$
 
-non \`e realizzato in $N$ perch\'e $N\subseteq\acl B$. Quindi se $N$ \`e saturo $|B|=|N|$.
+non \`e realizzato in $N$ perch\'e $N\subseteq\acl B$. Ma $p(x)$ \`e ovviamente finitamente consistente perch\'e $N$ \`e infinito, mentre qualsiasi disgiunzione finita di formule algebriche a parametri in $B$ ha chiaramente un numero finito di soluzioni. Quindi se $N$ \`e saturo $|B|=|N|$.
 \end{proof}
 
 \begin{exercise}\label{scambioex}
