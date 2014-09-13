@@ -1,0 +1,350 @@
+\chapter{Indiscernibili e indipendenza}
+
+\lavori
+
+Per tutto questo capitolo fissiamo un linguaggio $L$ ed una teoria completa $T$ senza modelli finiti. Fissiamo anche un modello saturo $\U$ di cardinalit\`a $\kappa$, un cardinale inaccessibile maggiore di   $|L|+\omega$. La notazione e le assunzioni implicite sono quelle presentate nel paragrafo~\ref{mostro}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tipi invarianti}\label{tipi_invarianti}
+
+\def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\parbox[t]{5ex}{$\displaystyle\hfil #2$}{$\displaystyle #3$}}
+
+Sia $\D\subseteq\U^{|z|}$, dove $z$ \`e una tupla possibilmente infinita. Scriveremo 
+
+\ceq{\hfill O(\D/A)}{=}{\big\{f[\D]\ :\ f\in\Aut (\U/A)\big\}}
+
+Diremo che $\D$ \`e un \emph{insieme invariante su $A$}, oppure \emph{$A\jj$invariante} se $O(\D/A)=\{\D\}$. Per omogeneit\`a, gli insiemi $A\jj$invarianti sono unione di classi di equivalenza della relazione $\equiv_A$, ovvero unione di insiemi della forma $p(\U)$ per $p\in S_z(A)$. Quindi il numero degli insiemi invarianti \`e $2^{|S_z(A)|}$, dove $|S_z(A)|\le 2^{|L_z(A)|}$.  Diremo che $\D$ \`e  \emph{invariante\/} tout court se \`e invariante su qualche $A$. Poich\'e abbiamo richiesto che $\kappa$ sia inaccessibile, esistono $\kappa$ insiemi invarianti.
+
+Ora sia $x$ una tupla di variabili possibilmente infinita e sia $p(x)\subseteq L(\U)$. Diremo che $p$ \`e un \emph{tipo invariante su $A$}, oppure \emph{$A\jj$invariante}, se per ogni formula $\phi(x,z)$ pura (la tupla $x$ \`e fissa mentre $z$ varia con $\phi$)
+
+\ceq{\ssf{i1}\hfill \phi(x,a)\in p}{\IFF}{\phi(x,fa)\in p}\hfill per ogni ogni $a\in\U^{|z|}$ ed ogni $f\in\Aut(\U/A)$.
+
+%Diremo che $\D$ o $p$ sono \emph{invarianti\/} tout court se sono invarianti su un qualche insieme $A$.
+\`E possibile identificare un tipo con la famiglia di insiemi della forma
+
+\ceq{\hfill\D_{p,\phi}}{=}{\big\{a\in\U^{|z|}\ :\ \phi(x,a)\in p\big\}}
+
+al variare di $\phi(x,z)$ tra le formule pure. Allora dire che $p$ \`e invariante su $A$ \`e equivalente ad affermare che gli insiemi $\D_{p,\phi}$ sono tutti invarianti su $A$. 
+
+Diremo che $p$ \emph{non splitta su $A$\/} se per ogni formula pura  $\phi(x,z)$
+
+\ceq{\ssf{i2}\hfill  a\equiv_Aa'}{\IMP}{\big(\phi(x,a)\in p\,\IFF\,\phi(x,a')\in p\big)}\hfill per ogni $a,a'\in\U^{|z|}$.
+
+Quando $p$ \`e completo \ssf{i2} diventa
+
+\ceq{\ssf{i2'}\hfill  a\equiv_Aa'}{\IMP}{\phi(x,a)\iff\phi(x,a')\,\in\, p}
+
+Per l'omogeneit\`a  di $\U$, non splittare \`e equivalente ad essere invariante. Un'ulteriore formulazione: $p$ \`e invariante su $A$ se e solo se
+
+\ceq{\ssf{i3}\hfill a\equiv_Aa'}{\IMP}{a\equiv_{A,b}a'}\hfill per ogni $a,a'\in\U^{|z|}$ e per ogni $b\models p_{\restriction A,a,a'}$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tipi finitamente soddisfacibili e coeredi}
+
+Sia $p(x)\subseteq L(\U)$ un tipo. Diremo che $p$ \`e \emph{finitamente soddisfacibile\/} in $A$ se $\phi(A)\neq\0$ per ogni $\phi(x)$ congiunzione di formule in $p$. Un tipo $p'$ che estende $p$ ed \`e finitamente soddisfacibile in $A$ si dice essere un \emph{coerede\/} di $p$ su $A$, se $p'$ \`e un tipo globale lo chiameremo \emph{coerede globale}.
+
+\`E importante da tener presente che per elementarit\`a ogni tipo $p(x)\subseteq L(M)$ \`e finitamente soddisfacibile in $M$.
+
+\begin{proposition}\label{prop_coeredi_invarienti}
+Sia $p(x)\in S(\U)$ un tipo globale. Se $p$ \`e finitamente soddisfacibile in $A$, allora $p$ \`e $A\jj$invariante.
+\end{proposition}
+
+\begin{proof}
+Se $p$ non contiene la formula $\phi(x,a)\iff\phi(x,a')$, per completezza contiene la formula $\phi(x,a)\niff\phi(x,a')$. Ma $p$ \`e finitamente soddisfatto in $A$, quindi esiste $c\in A^{|x|}$ tale che $\phi(c,a)\niff\phi(c,a')$. Quindi $a\nequiv_Aa'$. Questo dimostra \ssf{i2'}.
+\end{proof}
+
+\begin{lemma}
+Sia $p(x)\subseteq L(B)$ un tipo finitamente soddisfacibile in $A$ e sia $b$ un elemento arbitrario. Allora $p(x)$ pu\`o essere esteso ad un tipo $p'(x)\in S(B,b)$ finitamente soddisfacibile in $A$.
+\end{lemma}
+
+\begin{proof} %Sia $(\phi_i(x,z):i<\lambda)$ un'enumerazione delle formule in $L(B)$ nelle variabili $x,z$. Costruiamo $p'$ come unione della seguente catena di tipi. Posto $p_0=p$, definiamo induttivamente $p_{i+1}$ essere  $p_i\cup\{\phi_i(x,b)\}$ se questo \`e finitamente soddisfacibile in $A$, altrimenti $p_{i+1}=p_i$. Ai passi limite prendiamo l'unione.
+
+%Chiaramente $p'$ \`e finitamente soddisfacibile in $A$; 
+Esiste un tipo $p'(x)\subseteq L(B,b)$ massimale tra i tipi finitamente soddisfacibili che contengono $p$. Verifichiamo che $p'$ \`e completo. Se per assurdo $p'$ non contiene n\'e $\phi(x,b)$ n\'e $\neg\phi(x,b)$ per una qualche formula $\phi(x,z)\in L(B)$, allora n\'e $p'\cup\big\{\phi(x,b)\big\}$ n\'e $p'\cup\big\{\neg\phi(x,b)\big\}$ sono finitamente soddisfacibili in $A$. Allora per una qualche formula $\psi(x)\in p'$ n\'e $\psi(x)\wedge\phi(x,b)$ n\'e $\psi(x)\wedge\neg\phi(x,b)$ \`e soddisfatta in $A$. Quindi $\psi(x)$ non \`e soddisfatta in $A$, ma questo contraddice la soddisfacibilit\`a finita di $p'$.
+\end{proof}
+
+\begin{corollary}\label{coroll_esistenza_coeredi_globali}
+Ogni $p(x)\subseteq L(\U)$ tipo finitamente soddisfacibile in $A$ ha un coerede globale.\QED
+\end{corollary}
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sequenze di Morley e indiscernibili}
+
+
+Nel seguito $\alpha$ denota un ordinale qualsiasi, ed $x$ \`e una tupla di variabili possibilmente infinita. Se $p(x)\in S(\U)$ \`e un tipo globale $A\jj$invariante, una sequenza $c=\<c_i:i<\alpha\>$ tale che
+
+\ceq{\ssf{1.}\hfill {\mr c_i}}{\models}{p_{\restriction A,c_{\restriction i}}({\mr x})}
+
+si chiama una \emph{sequenza di Morley\/} di $p$ su $A$. In particolare se $p$ \`e finitamente soddisfacibile in $A$ diremo che  $c$ \`e una \emph{sequenza di coeredi}. Spesso diremo semplicemente sequenza di Morley o di coeredi senza specificare il tipo globale $p(x)$ o specificando al suo posto un tipo $q(x)\subseteq L(A)$. In questo caso si intende che $p(x)$ \`e un qualsiasi tipo globale che estende $q(x)$ ed \`e invariante su $A$, rispettivamente, finitamente soddisfacibile in $A$. %Quest'estensione esiste per il corollario~\ref{coroll_esistenza_coeredi_globali}.
+
+\begin{lemma}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[a.] $c=\<c_i:i<\alpha\>$ \`e una sequenza di coeredi;
+\item[b.] ${\mr c_{n+1}}\equiv_{A,c_{\restriction n}} {\mr c_n}$ e inoltre se $\phi(c_{\restriction n},{\mr c_n})$  allora esiste ${\mr a}\in A^{|{\mr x}|}$ tale che $\phi(c_{\restriction n},{\mr a})$. (Per ogni $n<\alpha$ e per ogni formula $\phi(x_{\restriction n},{\mr x})\in L(A)$.)
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+Dimostriamo \ssf{a}$\IMP$\ssf{b}. Assumiamo \ssf{a} e sia $p({\mr x})\in S(\U)$ un tipo globale finitamente soddisfatto in $A$ tale che ${\mr c_i}\models p_{\restriction A,c_{\restriction i}}({\mr x})$. La richiesta ${\mr c_{n+1}}\equiv_{A,c_{\restriction n}} {\mr c_n}$ \`e immediata. Se $\phi(c_{\restriction n},{\mr c_n})$ allora $\phi(c_{\restriction n},{\mr x})$ appartiene a $p$ e quindi $\phi(c_{\restriction n},{\mr A})\neq\0$ per la soddisfacibilit\`a finita di $p$.
+
+Dimostriamo ora \ssf{b}$\IMP$\ssf{a}. Assumiamo \ssf{b} e sia 
+
+\ceq{\hfill q({\mr x})}{=}{\big\{\phi(c_{\restriction n},{\mr x})\in L(A,c_{\restriction n}) \ \ :\ \ \phi(c_{\restriction n},{\mr c_n}),\ \  n<\alpha\big\}.}
+
+Chiaramente $c$ \`e una sequenza di Morley di un qualsiasi tipo globale che estende $q$. Quindi \`e sufficiente mostrare che $q$ \`e finitamente soddisfatto in $A$. Ogni singola formula in $q$ \`e finitamente soddisfatta in $A$ per quanto richiesto da \ssf{b}, quindi \`e sufficiente verificare che $q$ \`e chiuso per congiunzione. Fissiamo due formule in $q$, diciamo $\phi_i(c_{\restriction n_i},{\mr x})$ per $i=1,2$. Queste formule sono soddisfatte da ${\mr c_{n_i}}$, rispettivamente. Per ipotesi ${\mr c_{n+1}}\equiv_{A,c_{\restriction n}}{\mr c_n}$ quindi entrambe le formule sono soddisfatte da ${\mr c_n}$ con $n=\max\{n_1,n_2\}$.
+\end{proof}
+
+\begin{definition}
+Dato un insieme $I$ linearmente ordinato dalla relazione $<_I$, diremo che $c=\<c_i:i\in I\>$ \`e una \emph{sequenza di indiscernibili\/} su $A$ se  se per ogni $n<\omega$
+
+\ceq{\hfill c_{i_0},\dots,c_{i_{n-1}}}{\ \equiv_A}{c_{j_0},\dots,c_{j_{n-1}}}\ \ \ per ogni $i_0<_I\dots<_Ii_{n-1}$ ed ogni $j_0<_I\dots<_Ij_{n-1}$..\QED
+\end{definition}
+
+Per snellire il linguaggio introduciamo alcune abbreviazioni (non sono terminologia standard). Scriveremo \emph{$c'\sqsubseteq c$\/} intendendo che $c'=c_{i_0}\dots,c_{i_n}$ con $i_0<_I\dots<_Ii_n$ e chiameremo $c'$ una \emph{sottosequenza finita\/} di $c$. Se $J\subseteq I$ scriveremo $c_{\restriction J}$ per la sottosequenza $\<c_j:j\in J\>$.
+
+Il seguente lemma mostra che le sequenze di Morley sono in particolare sequenze di indiscernibili.
+
+\begin{lemma}
+Sia $p(x)\in S(\U)$ un tipo globale $A\jj$invariante e sia $c=\<c_i:i<\alpha\>$ una sequenza di Morley di $p$ su $A$. Allora  $c$ \`e una sequenza di indiscernibili su $A$.
+\end{lemma}
+
+\begin{proof}
+
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}{\hspace*{1ex}$\displaystyle #2$\hspace*{1ex}}{$\displaystyle #3$}}
+
+Dimostriamo per induzione su $n<\omega$ che
+
+\ceq{\hfill c_0,\dots,c_{n-1}}{\ \equiv_A}{c_{i_0},\dots,c_{i_{n-1}}}\ \ \ per ogni $i_0<\dots<i_{n-1}<\alpha$.
+
+Per $n=0$ l'affermazione \`e vuota, quindi assumiamo che valga per $n$ e dimostriamo che
+
+\ceq{\hfill c_0,\dots,c_{n-1},{\mr c_n}}{\equiv_A}{c_{i_0},\dots,c_{i_{n-1}},{\mr c_{i_n}}.}
+
+vale per ogni $i_0<\dots< i_{n-1}<{\mr i_n}<\alpha$. Osserviamo che, essendo $c$ una sequenza di Morley, $c_n\equiv_{A,c_{\restriction n}} c_m$ per ogni $m>n$. Quindi possiamo equivalentemente dimostrare che 
+
+\ceq{\hfill c_0,\dots,c_{n-1},{\mr c_{i_n}}}{\equiv_A}{c_{i_0},\dots,c_{i_{n-1}},{\mr c_{i_n}}.}
+
+Ma questa \`e la stessa cosa che scrivere 
+
+\ceq{\hfill c_0,\dots,c_{n-1}}{\equiv_{A,\,{\mr c_{i_n}}}}{c_{i_0},\dots,c_{i_{n-1}}.}
+
+E quest'ultima equivalenza segue dall'ipotesi induttiva e dall'invarianza di $p$ (cfr.\@ \ssf{i3} del paragrafo~\ref{tipi_invarianti}).
+\end{proof}
+
+\begin{comment}
+
+
+\def\EMtp{{\rm {\small EM}\mbox{-}tp}}
+
+Sia $I$ un insieme infinito linearmente ordinato e sia $c=\<c_i: i\in I\>$. Sia $x$ una tupla di variabili di lunghezza $\omega$. Scriveremo $p(x)=\EMtp(c/A)$ e diremo che $p(x)$ \`e il tipo di Erenfeucht-Mostowski di $c$ su $A$ se
+
+\ceq{\hfill p(x)}{=}{\Big\{\phi(x_{\restriction n})\in L(A) \ :\ \phi(c') \textrm{ per ogni } c'\sqsubseteq c,\ |c'|=n<\omega \Big\}} 
+ 
+\end{comment}
+
+Se $c$ \`e una sequenza di indiscernibili su $A$ questo \`e un tipo completo.
+% 
+% \begin{lemma}
+% Per ogni ${\mr a},{\mr b}\in\U^{|z|}$  se $\tp({\mr a}/A)=\tp({\mr b}/A)$ ha un'estensione ad un tipo globale invariante su $A$ allora esiste $c=(c_i:i<\omega)$, sequenza di indiscernibili su $A$, tale che ${\mr a},c$ che ${\mr b},c$ sono indiscernibili su $A$.
+% \end{lemma}
+% 
+% \begin{proof}
+% Se $p(z)$ \`e come richiesto in \ssf{1}, allora qualsiasi $(c_i:i<\omega)$ sequenza di Morley di $p$ su $A,{\mr a},{\mr b}$ soddisfa \ssf{2}.
+% \end{proof}
+% 
+% 
+% \begin{lemma}
+% Se $c=(c_i:i<\alpha)$ \`e una sequenza di indiscernibili su $A$ con $\alpha$ ordinale limite allora esiste una sequenza $d=(d_i:i<\kappa)$ tale che $c,d$ \`e indiscernibile su  su $A$.
+% \end{lemma}
+% 
+% \begin{proof}
+% Sia $q(z)$ l'insieme delle formule $\phi(c,z)$ soddisfatte da infiniti $c_i$. Per l'indiscernibilit\`a $q(z)$ \`e consistente, e quindi \`e completo. Questo tipo \`e finitamente soddisfacibile in $A,c$ quindi ha un'estensione ad un coerede globale $p(z)$. 
+% \end{proof}
+
+
+\begin{proposition}
+Sia $I$ un insieme ordinato di cardinalit\`a $\le\kappa$ e sia $J\subseteq I$ Sia $c=\<c_j:j\in J\>$ una sequenza di indiscernibili su $A$. Allora esiste una sequenza $a=\<a_i:i\in I\>$ di indiscernibili su $A$ che estende $c$ (cio\`e $c=a_{\restriction J}$).
+\end{proposition}
+
+\begin{proof}
+Sia $z=\<z_i:i\in I\>$ una sequenza di variabili. Definiamo
+
+\ceq{\hfill q(z)}{=}{\Big\{\phi(z')\in L(A)\ :\ \textrm {dove } z'\sqsubseteq z\ \textrm{ e }\ \phi(c')\ \textrm{ per ogni }\  c'\sqsubseteq c, \ |c'|=|z'|\Big\}}
+
+\`E immediato che $q$ \`e un tipo completo e che se $a\models q$ allora $a$ \`e una sequenza di indiscernibili tale che $a_{\restriction I}\equiv_A c$. Quindi esiste $f\in\Aut(\U/A)$ tale che $fa$ \`e una sequenza di indiscernibili che prolunga $c$.
+\end{proof}
+
+
+
+\begin{proposition}
+Sia $c$ una sequenza infinita di indiscernibili su $A$. Allora esiste un modello $M\supseteq A$ tale che $c$ \`e indiscernibile su $M$.
+\end{proposition}
+
+La proposizione \`e generalmente dimostrata applicando il teorema di Erd\H{o}s-Rado che vedremo pi\`u avanti. Qui, come esercizio sui coeredi, riportiamo una dimostrazione con metodi meno sofisticati. 
+
+\begin{proof}
+Supponiamo per cominciare che $c=\<c_i:i<\omega\>$. Il seguente tipo \`e finitamente soddisfacibile in $A,c$:
+
+\ceq{\hfill p(x)}{=}{\Big\{\phi(x)\in L(A,c)\ :\ \phi(c_i)  \textrm{ per ogni }i\textrm{ sufficientemente grande }\Big\}} 
+
+Si noti che $p$ \`e un tipo completo finitamente soddisfatto in $c$. Sia $a=\<a_i:i<\omega\>$ una sequenza coeredi su $c$ di $p(x)$. Verifichiamo che $c$ \`e una sequenza di indiscernibili su $A,a$, ovvero che il seguente enunciato \ssf{1$_n$} vale per ogni $n$ ed ogni formula $\phi\in L(A)$. 
+
+\ceq{\ssf{1$_n$}\hfill \phi({\mr{c'}},a_{\restriction n})}{\iff}{\phi({\mr{c''}},a_{\restriction n})} per qualsiasi ${\mr{c'}}, {\mr{c''}}\sqsubseteq c$ di uguale lunghezza finita.
+
+Si osservi che \ssf{1$_{n+1}$} \`e una conseguenza di \ssf{1$_n$} e del seguente \ssf{2$_n$} (rimpiazzando $\psi$ con la formula opportuna)
+
+\ceq{\ssf{2$_n$}\hfill \psi(c,a_{\restriction n},{\mr{a_n}})}{\imp}{\psi(c,a_{\restriction n},{\mr{c_i}})} per qualsiasi $i$ sufficientemente grande.
+
+Dimostriamo \ssf{2$_n$} per induzione su $n$. Verifichiamo \ssf{2$_0$}. Supponiamo $\psi(a_0)$. Poich\'e $p$ \`e completo, $\psi(x)$ appartiene a $p$ e dalla definizione di $p$ otteniamo \ssf{2$_0$}. Assumiamo \ssf{2$_{n-1}$}. Poich\'e $a$ \`e una sequenza di coeredi, da $\psi(c,a_{\restriction n},{\mr{a_n}})$ otteniamo $\psi(c,a_{\restriction n},{\mr{c_i}})$ vale per qualche $i$. Possiamo assumere che $i>j$ per ogni $c_j$ che occorre in $\psi(c,a_{\restriction n},{\mr{a_n}})$. (Perch\'e? Qui si usa $|c|=\omega$.) Quindi da \ssf{1$_{n-1}$} otteniamo $\psi(c,a_{\restriction n},{\mr{c_i}})$  per ogni $i$ sufficientemente grande.
+
+Da quanto dimostrato segue che $c,a$ \`e una sequenza di indiscernibili su $A$. In particolare $fa=c$ per qualche $f\in\Aut(\U/A)$. Ma $a$ \`e una sequenza di indiscernibili su qualsiasi modello $N$ che contiene $c$. Di conseguenza $c$ \`e una sequenza di indiscernibili su $f[N]$. Quindi $f[N]$ \`e il modello $M$ richiesto. 
+\end{proof}
+
+\begin{exercise}
+Si dimostri che se ${\mr a}\equiv_M{\mr b}$ allora esiste una sequenza $\<c_i:i\in\omega\>$ di indiscernibili su $M$ tale che $c_0={\mr a}$ e $c_1={\mr b}$.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Una dimostrazione del teorema di Ramsey}
+
+Vediamo una semplice applicazione delle sequenze di coeredi.
+Introduciamo la seguente notazione (fastidiosamente oscura, ma standard). Scriveremo $[X]^n$ per l'insieme dei sottoinsiemi di $X$ di cardinalit\`a $n$. Dati quattro cardinali $\lambda,\eta$ e $n,k$ scriveremo $\lambda\to(\eta)^n_k$ se per ogni $f:[\lambda]^n\to k$ esiste un $X\subseteq\lambda$ di cardinalit\`a $\ge\eta$ omogeneo per $f$, ovvero tale che $f$ \`e costante sull'insieme $[X]^n$.
+
+\begin{theorem}
+Per $n,k$ un'arbitraria coppia di numeri naturali positivi $\omega\to(\omega)^n_k$.
+\end{theorem}
+\begin{proof}
+Sia $f:[\omega]^n\to k$ una funzione data. Sia $L$ un linguaggio che contiene i simboli di relazione $n\jj$aria $r_0,\dots,r_{k-1}$. Sia $M$ una struttura con dominio $\omega$ con interpretazione 
+
+%\ceq{\hfill r_i^M}{=}{\Big\{ (a_0,\dots,a_{n-1})\ :\ |\{a_0,\dots,a_{n-1}\}|=n \ \textrm { e \ }f\big(\{a_0,\dots,a_{n-1}\}\big)= i\Big\}}
+
+\ceq{\hfill r_i^M}{=}{\Big\{ \<a_0,\dots,a_{n-1}\>\ :\ \{a_0,\dots,a_{n-1}\}\in[\omega]^n\ \textrm { e \ }f\big(\{a_0,\dots,a_{n-1}\}\big)= i\Big\}}
+
+Possiamo assumere che $M$ sia sottostruttura elementare di un modello saturo $\U$. Sia $c=\<c_i:i<\omega\>$ una sequenza di coeredi su $M$. Questa sequenza esiste in $\U$. In $M$ vale 
+
+\ceq{\hfill\bigwedge_{0\le i<j<n} x_i\neq x_j}{\imp}{\bigvee_{i<k}r_i(x_0,\dots,x_{n-1})}
+
+Segue che tutte le $n\jj$tuple di elementi distinti di $c$ soddisfano la stessa relazione $r_h$ che, per risparmiare sugli indici, nel seguito indicheremo semplicemente con $r$. Il teorema segue dall'esistenza di una sequenza $a=\<a_i:i<\omega\>$ con la stessa propriet\`a, ma costituita da elementi di $M$. (Si osservi che nessuno degli elementi di $c$ appartiene ad $M$.) Questa sequenza $a$ \`e costruita per induzione come segue. 
+
+Assumiamo come ipotesi induttiva che che tutte le tuple di $n$ elementi distinti di $a_{\restriction m},c_{\restriction n}$ soddisfano $r$ e definiamo ${\mr{a_m}}$. Osserviamo che per indiscernibilit\`a la stessa propriet\`a vale per la tupla $a_{\restriction m},c_{\restriction n},{\mr{c_n}}$. Questo pu\`o essere scritto con una formula $\phi(a_{\restriction m},c_{\restriction n},{\mr{c_n}})$. Quindi esiste un ${\mr{a_m}}\in M$ tale che $\phi(a_{\restriction m},c_{\restriction n},{\mr{a_m}})$. Chiaramente $a_{\restriction m},{\mr{a_m}},c_{\restriction n}$ soddisfa l'ipotesi induttiva.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Il prodotto di tipi}\label{tipi_prodotto}
+
+La seguente proposizione mostra che possiamo ragionevolmente parlare di tipo delle di Morley di $p$. Questo paragrafo \`e dedicato alla descrizione sintattica di questo tipo.
+
+\begin{proposition}\label{prop_tiposequenzaMorley}
+Sia $p\in S_x(\U)$ un tipo globale $A\jj$invariante e supponiamo che $a$ e $b$ siano due sequenze di Morley di $p$ su $A$. Allora $a\equiv_A c$. 
+\end{proposition}
+\begin{proof}
+%Possiamo assumere che $a=\<a_i:i<\omega\>$ e $\bar c=\<c_i:i<\omega\>$ abbiano lunghezza $\omega$. 
+Per indiscernibilit\`a, \`e sufficiente mostrare che $a_{\restriction i}\equiv_Ac_{\restriction i}$ per ogni $i<\omega$. Ragioniamo per induzione, assumiamo l'equivalenza come ipotesi induttiva, fissiamo una formula $\phi(\bar x_{\restriction i},{\mr x})\in L(A)$ e dimostriamo che 
+
+\ceq{\hfill \phi(a_{\restriction i},{\mr a_i})}{\iff}{\phi(c_{\restriction i},{\mr c_i})} 
+
+Se $\phi(a_{\restriction i},{\mr a_i})$ allora $\phi(a_{\restriction i},{\mr x})\in p$. Per l'ipotesi induttiva e per l'invarianza di $p$ otteniamo che anche  $\phi(c_{\restriction i},{\mr x})\in p$ e di qui $\phi(c_{\restriction i},{\mr c_i})$. L'equivalenza segue per simmetria.
+\end{proof}
+
+Per poter semplificare la definizione~\ref{def_prodotto_tipi} abbiamo bisogno del seguente lemma tecnico:
+
+\begin{lemma}\label{lemma_prodotto}
+Dati $p(x), q(y)\in S(\U)$, e due insiemi $A_i$, per $i=0,1$ su cui $q(y)$ \`e invariante, fissiamo $\phi(x,y)\in L(A_0\cap A_1)$ e delle tuple $a_i,b_i$ tali che $a_i\models p_{\restriction A_i}$ e $b_i\models q_{\restriction A_i,a_i}$. Allora $\phi(a_0,b_0)\iff\phi(a_1,b_1)$.
+\end{lemma}
+\begin{proof}
+Supponiamo per cominciare che $A_0=A_1$ e denotiamo questo insieme con $A$. Assumiamo $\phi(a_0,b_0)$ e quindi, per la completezza di $q$, che $\phi(a_0,y)\in q$. Per la completezza di $p$  abbiamo che $a_0\equiv_Aa_1$. Quindi, per l'invarianza di $q$ otteniamo $\phi(a_1,y)\in q$ e da questo segue $\phi(a_1,b_1)$.
+
+Per concludere, consideriamo il caso $A_0\neq A_1$. Sia $A=A_0\cup A_1$ e fissiamo $a_2\models  p_{\restriction A}$ e $b_2\models q_{\restriction A,a_2}(y)$. Per quanto sopra dimostrato otteniamo $\phi(a_0,b_0)\iff\phi(a_2,b_2)$ ed anche $\phi(a_2,b_2)\iff\phi(a_1,b_1)$.
+\end{proof}
+
+Conviene immaginarsi questa operazione di prodotto come il passo induttivo per la costruzione di una sequenza di Morley.
+
+\begin{definition}\label{def_prodotto_tipi}
+Dati $p(x),q(y)\in S(\U)$ dove $q(y)$ \`e un tipo invariante, definiamo il prodotto di $p$ e $q$ come il tipo:
+
+%\ceq{\hfill p(x)\otimes q(y)}{=}{\Big\{\phi(x,y)\ :\ \phi(b,c) \textrm{ per qualche } a\models p_{\restriction A},\ b\models q_{\restriction A,a}(y) ed $A$ t\Big\}}
+
+\ceq{\hfill\mbox{\emph{$p(x)\otimes q(y)$}}}{=}{\Big\{\phi(x,y)\ :\ \textrm{esistono } a,b\ \models\ \phi(x,y)\ \wedge\ p_{\restriction A}(x)\ \wedge\ q_{\restriction A,a}(y)\Big\}}
+
+L'insieme $A$ nella definizione \`e uno qualsiasi che contiene i parametri di $\phi(x,y)$ e su cui $q(y)$ \`e invariante. Il lemma~\ref{lemma_prodotto} assicura che la definizione non dipende dal particolare insieme scelto.\QED
+\end{definition}
+
+Il lemma~\ref{lemma_prodotto} ha anche la seguente importante conseguenza:
+
+\begin{corollary}\label{cor_otimes_completo}
+Se $p(x),q(y)\in S(\U)$ e $q(y)$ \`e invariante, allora $p(x)\otimes q(y)$ \`e un tipo completo.
+\end{corollary}
+
+\begin{proof}
+Sia $\phi(x,y)\in L(\U)$. Fissiamo un insieme $A$ contenente i parametri di $\phi(x,y)$ e su cui $q(y)$ sia invariante. Fissiamo $a,b$ arbitrari tali che $a\models p_{\restriction A}(x)$ e $b\models q_{\restriction A,a}(y)$. Dal lemma~\ref{lemma_prodotto} otteniamo che $\phi(x,y)\in p(x)\otimes q(y)$ se e solo se $\phi(a,b)$.
+\end{proof}
+
+
+\begin{corollary}
+Se $p(x),q(y)\in S(\U)$ sono tipi globali $A\jj$invarianti, allora anche $p(x)\otimes q(y)$ \`e $A\jj$invariante.
+\end{corollary}
+
+\begin{proof}
+Sia $\phi(x,y,z)\in L$, sia $c$ arbitrario tale che  $\phi(x,y,c)\in p(x)\otimes q(y)$, e sia $c'\equiv_Ac$. Fissiamo $a\models p_{\restriction A,c,c'}$. Poich\'e $p$ \`e invariante su $A$, otteniamo $a,c\equiv_Aa,c'$. Ora fissiamo un $b$ arbitrario tale che $b\models q_{\restriction A,c,c',a}$. Per l'invarianza di $q$ su $A$ otteniamo  $a,b,c\equiv_Aa,b,c'$ e quindi $\phi(a,b,c')$. Seque che $\phi(x,y,c)\in p(x)\otimes q(y)$.
+\end{proof}
+
+\begin{proposition}
+Se $p(x),q(y)\in S(\U)$ sono finitamente soddisfacibili su $A$, allora $p(x)\otimes q(y)$ \`e finitamente soddisfacibile su $A$.
+\end{proposition}
+
+\begin{proof}
+Sia $\phi(x,y)\in p(x)\otimes q(y)$ arbitraria e fissiamo un $B$ contenente $A$ ed i parametri di $\phi(x,y)$. Quindi esistono $a,b\models\phi(x,y)\,\wedge\,p_{\restriction B}(x)\,\wedge\,q_{\restriction B,a}(y)$. Allora $\phi(a,y)\in q$, e quindi $\phi(a,b')$ per un qualche $b'\in A$. Allora $\phi(x,b')\in p$, e quindi $\phi(a',b')$ per qualche $a'\in A$.
+\end{proof}
+
+
+Dato $p(x)\in S(\U)$ un tipo globale invariante. Sia $\<x_i:i<\omega\>$ una sequenza di tuple di variabili con $|x|=|x_i|$. Definiamo induttivamente
+
+\ceq{\hfill p^{(1)}(x_0)}{=}{p(x_0)}; 
+
+\ceq{\hfill p^{(n+1)}(x_0,\dots,x_n)}{=}{p^{(n)}(x_0,\dots,x_{n-1})\otimes p(x_n)};
+
+\ceq{\hfill p^{(\omega)}(x_i:i<\omega)}{=}{\bigcup_{n<\omega}p^{(n+1)}(x_0,\dots, x_n)}.
+
+La seguente proposizione giustifica la definizione di $p^{(\omega)}$, la dimostrazione \`e immediata.
+
+\begin{proposition}\label{prop_p^omega_Morley}
+Sia $p(x)\in S(\U)$ un tipo globale $A\jj$invariante. Allora le seguenti affermazioni sono equivalenti
+\begin{itemize}
+\item[1.]$\<c_i:i<\omega\>$ \`e una sequenze di Morley di $p$ su $A$;
+\item[2.] $\<c_i:i<\omega\>\models p^{(\omega)}|_A$
+\end{itemize}
+\end{proposition}
+
+La seguente proposizione torner\`a utile nei prossimi paragrafi, si osservi che  non \`e una conseguenza della proposizione~\ref{prop_p^omega_Morley} perch\'e qui l'invarianza su $A$ non \`e tra le ipotesi.
+
+\begin{proposition}
+Sia $p(x)\in S(\U)$ un tipo globale invariante ed $A$ un insieme arbitrario. Allora ogni $\<c_i:i<\omega\>\models p^{(\omega)}|_A$ \`e una sequenza di indiscernibili su $A$.
+\end{proposition}
+
+
+\begin{proof}
+\`E sufficiente verificare che se $\<c_i:i<\omega\>\models p^{(\omega)}|_A$ allora $c_{i_0},\dots,c_{i_n}\models p^{(n+1)}|_A$ per ogni $i_0<\dots<i_n<\omega$. 
+\end{proof}
+
+
+%\ceq{\hfill p(x)\otimes q(y)}{=}{\Bigg\{\phi(x,y)\ :\ \parbox{50ex}{$\phi(x,y)\in L(A)\textrm{ per un } A \textrm{ contenente su cui }q(y)\textrm{ \`e invariante e }\\\phi(b,c) \textrm{ per qualche } a\models p_{\restriction A}(x)\textrm{ e }\ b\models q_{\restriction A,a}(y)$}\Bigg\}}
+

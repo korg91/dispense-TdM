@@ -1,0 +1,269 @@
+\chapter{La teoria degli insiemi}\label{insiemi}
+
+
+\section{Gli assiomi di Zermelo-Fraenkel}
+
+Il linguaggio $L$ contiene solo il simbolo di relazione binaria $\in$. 
+
+\begin{itemize}
+\item[a1]$\E x\ x = x\phantom{\big]}$\hfill\emph{Esistenza}
+
+\item[a2]$\A z\ \big[z\in x \iff z\in y\big]\ \imp\ x=y$\hfill \emph{Estensionalit\`a}
+\end{itemize}
+
+(Qui e nel seguito per chiarezza scriveremo delle formule, gli assiomi sono la chiusura universale di queste.) Gli elementi di una struttura $\VV$ di segnatura $L$ che soddisfa (almeno) a questi due assiomi verranno chiamati \emph{insiemi}. C'\`e quindi una omonimia fastidiosa: abbiamo la stessa parola per sottoinsiemi di $\VV$ e gli elementi di $\VV$. Quando \`e importante distinguere cercheremo di usare la parola \emph{classe\/} per indicare un sottoinsieme di $\VV$. Diremo quindi che una classe \`e definibile se \`e della forma $\phi(\VV)$ per qualche formula $\phi(x)$. Ad ogni insieme $a$ associamo la classe definibile che chiameremo la sua \emph{estensione}: l'estensione di $a\in \VV$ \`e la classe definita dalla formula $x\in a$, dove $a$ \`e un parametro.  Spesso confonderemo gli insiemi con le rispettive estensioni: dato l'assioma di estensionalit\`a, i rischi di ambiguit\`a sono limitati. 
+
+Poich\'e ad ogni insieme corrisponde una classe definibile, saremmo tentati di assiomatizzare il viceversa: ad ogni classe definibile corrisponde un insieme. Questo si chiama assioma di \emph{comprensione (illimitata)}:
+
+\begin{itemize}
+\item[{\blue\Large$\lightning$}]$\E x \A z\ \big[ z\in x \iff \phi(z,y)\big]$.\hfill\emph{Comprensione} 
+\end{itemize}
+
+Purtroppo, cos\`i com'\`e l'assioma \`e contradditorio! Prima di tutto dobbiamo escludere che $x$ occorra in $\phi(z,y)$ altrimenti sostituendo $z\notin x$ a $\phi(z,y)$ otteniamo un assurdo. Ma con questo i problemi non sono finiti. Se per $\phi(z,y)$ prendiamo la formula $z\notin z$ otteniamo la famosa antinomia di Russel (scoperta indipendentemente anche da Zermelo). 
+
+Gli assiomi che elenchiamo in questo paragrafo sono tutti versioni ristrette dell'assioma di comprensione illimitata. Ristrette proprio per evitare antinomie. Il primo esempio \`e il seguente:
+
+\begin{itemize}
+\item[a3]$\E x \A z\ \big[ z\in x \iff z\in u\wedge\phi(z,y)\big]$, dove $x$ non occorre in $\phi(z,y)$.\hfill\emph{Separazione} 
+\end{itemize}
+
+Questo assioma afferma l'esistenza dell'insieme che ha per estensione la classe usualmente denotata con $\{z\in u : \phi(z,y)\}$. In \ssf{a3} la variabile $y$ sta semplicemente per un arbitrario parametro, immaginiamola fissata. La variabile $z$ corre sugli elementi che costituiscono $x$, l'insieme $u$ gioca il ruolo (fondamentale) di un limite all'interno del quale gli elementi di $x$ vanno cercati. Nell'assioma di comprensione illimitata non c'\`e limite e gli elementi di $x$ andavano cercati in tutto $\VV$. Possiamo riformulare \ssf{a3} cos\`i: se $A$ \`e una classe definibile e $b$ \`e un insieme tale che $A\subseteq b$ allora $A$ \`e (l'estensione di) un insieme.
+
+Notiamo che \ssf{a3} \`e uno \textit{schema di assiomi\/} cio\`e si consiste di infiniti enunciati al variare di $\phi$ tra tutte le formule del linguaggio della teoria degli insiemi in cui $x$ non occorre. Comunque, per facilit\`a di linguaggio, parleremo semplicemente di \textit{assioma di separazione}. Si osservi che una precisa definizione di formula del linguaggio del prim'ordine \`e un requisito indispensabile per poter assiomatizzare rigorosamente la teoria degli insiemi.
+
+Da \ssf{a1} e separazione otteniamo l'esistenza dell'insieme vuoto che denoteremo con $\0$. Infatti dato un qualsiasi insieme $a$, che esiste per \ssf{a1}, otteniamo per separazione $\0=\{z\in a: z\neq z\}$.
+
+
+Fin qui l'insieme vuoto \`e l'unico insieme la cui esistenza \`e garantita (infatti $\VV=\{\0\}$ \`e un modello di \ssf{a1}-\ssf{a3}). Per poterci costruire almeno tutti gli insiemi finiti introduciamo l'\textit{assioma della coppia\/} che afferma l'esistenza dell'insieme $\{u,v\}$ dati due qualsiasi insiemi $u$ e $v$:
+
+\begin{itemize}
+\item[a4]$\E x \ \big[z\in x \iff  z=u\vee z=v\big]$\hfill \emph{Coppia}
+\end{itemize}
+
+Il seguente \`e detto \textit{assioma dell'unione}:
+\begin{itemize}
+\item[a5]$\E x \A z\ \Big[z\in x \iff \E y\ z\in y\in u\Big]$\hfill \emph{Unione}
+\end{itemize}
+
+Dato $u$, l'assioma afferma l'esistenza dell'insieme che qui denoteremo con $\bigcup u$ e che viene anche denotato con 
+
+\hfil$\displaystyle \bigcup_{y\in u} y$.
+
+L'assioma dell'unione, assieme a quello della coppia, garantisce l'esistenza di $a\cup b=\bigcup\{a,b\}$.
+
+Gli assiomi elencati fin qui non garantiscono l'esistenza di un insieme infinito. Introduciamo queindi il seguente \textit{assioma dell'infinito}:
+
+\begin{itemize}
+\item[a7]$\E x\ \Big[\0\in x \wedge \A z\ \big[z\in x \imp z\cup\{z\}\in x\big]\Big]$\hfill\emph{Infinito} 
+\end{itemize}
+
+Quest'assioma richiede l'esistenza di un insieme che contiene egli elementi:
+
+\hfil $\0,\ \  \{\0\},\ \  \big\{\0,\, \{\0\}\big\},\ \ \Big\{\0,\ \big\{\0\},\ \{\0,\, \{\0\}\big\}\Big\},\   \dots\dots$
+
+Verifichiamo che siano elementi effettivamente diversi tra loro. Conviene prima semplificare la notazione. Denotiamo \textit{temporaneamente\/} l'insieme $\0$ con $\widehat{0}$ e con $\widehat{n+1}$ denoteremo $\widehat{n}\cup\{\widehat{n}\}$. Con questa notazione gli elementi elencati qui sopra sono $\widehat{0},\,\widehat{1},\,\widehat{2},\,\,\widehat{3},\,\dots$. %\`E facile verificare per induzione che $n<m$ se e solo se $\widehat{n}\in\widehat{m}$ se e solo se  $\widehat{n}\subset\widehat{m}$.
+
+\begin{remark}
+Le seguenti afferamzioni sono equivalenti:
+\begin{itemize}
+\item[1.] $n<m$;
+\item[2.] $\widehat{n}\subseteq\widehat{m}$;
+\item[3.] $\widehat{n}\in\widehat{m}$.
+\end{itemize}
+\end{remark}
+\begin{proof}
+L'implicazione \ssf{1}$\IMP$\ssf{2} si dimostra per induzione su $m$ e da questa segue immediatamente and l'implicazione \ssf{1}$\IMP$\ssf{3}. Mostramo ora  \ssf{3}$\IMP$\ssf{1}. Per induzione su $m$ verifichiamo che $x\in\widehat{m}$ allora $x=\widehat{n}$ per un qualche $n<m$. Quando $m=0$ l'affermazione \`e vuota, se $x\in \widehat{m+1}$ allora $x=\widehat{m}$ oppure $x\in\widehat{m}$ e l'affermazione segue per ipotesi induttiva. 
+
+L'implicazione \ssf{2}$\IMP$\ssf{3} \`e immediata per 
+\end{proof}
+
+
+
+
+Per induzione su $m$ \`e immediato che  $n\le m$ implica $\widehat{n}\subseteq\widehat{m}$ e quindi che $n<m$ implica $\widehat{n}\in\widehat{m}$. Verifichiamo il viceversa:
+
+%Quindi $n<m$ e 
+% 
+% Ora verificheamo che $\widehat{n}\in\widehat{m}$ implica $n<m$. .  
+% 
+% 
+% Ora invece per induzione su $n$ verifichiamo che se $n< m$ allora  $\widehat{n}\neq\widehat{m}$. Se $n=0$ l'affermazione vale perch\'e quando $m$ \`e positivo $\widehat{m}$ non \`e mai vuoto. Assumiamo l'affermazione vera per $n$ e dimostriamola per $n+1$. 
+% 
+% Se $n+1<m$ per ipotesi induttiva $\widehat{n}\neq\widehat{m}$. Ma $\widehat{n}\in\widehat{n+1}$
+% 
+% Poich\'e $\widehat{n}\in\widehat{n+1}$ e per ipotesi induttiva nessuno degli elementi di $\widehat{n}$ \`e uguale a $\widehat{n}$. 
+
+In teoria degli insiemi si usa confondere $\widehat{n}$ con $n$. La notazione $\widehat{n}$ non verr\`a pi\`u usata e le espressioni $n<m$, $n\subset m$, e $n\in m$ verranno considerate equivalenti.% Scriveremo  \emph{$\omega$} per $\{0,1,\dots\}$, per il momento semplicemente una classe, servir\`a un po' di lavoro mostrare che \`e un insieme.
+
+La combinazione dell'assioma dell'infinito con il seguente \textit{assioma della potenza\/} genera un universo di insiemi sufficiente mente ricco da poterci formalizzare gran parte della matematica. Si legga l'espressione \emph{$z\subseteq u$\/} come un abbreviazione di $\A w\,\big[w\in z\imp w\in u\big]$.
+
+\begin{itemize}
+\item[a8]$\E x \A z\ \Big[z\in x \iff z\subseteq u\Big]$\hfill\emph{Insieme potenza} 
+\end{itemize}
+
+Sebbene non sia essenziale si preferisce escludere l'esistenza di insiemi appartenenti a se stessi e pi\`u in generale di catene $a_0\in\dots\in a_n$ in cui $a_0=a_n$. In generale si vorrebbero anche escludere catene infinite discendenti $a_0\ni a_1\ni\dots $. Tali catene contrastano con la nostra intuizione di un universo insiemistico costruito dal basso (cio\`e dall'insieme vuoto) verso l'alto. Purtroppo quest'ultima richiesta \`e troppo ottimista (si pensi ai modelli non standard dell'aritmetica). Comunque, col seguente \textit{assioma di regolarit\`a\/} riusciremo ad escludere l'esistenza di catene infinite discendenti \textit{definibili}. 
+
+Scriviamo $u\cap x$ per l'insieme $\{z\in u: z\in x\}$ la cui esistenza \`e garantita dall'assioma di separazione.
+
+\begin{itemize}
+\item[a9]$\A u\neq\0\ \E x\in u\ \ u\cap x=\0$.\hfill\emph{Regolarit\`a} 
+\end{itemize}
+
+Per mostrare la relazione tra questo assioma e le catene discendenti, supponiamo esista un $a_0$ che invalidi l'assioma di regolarit\`a. Sia $a_1$ un qualsiasi elemento di $a_0$. Poich\`e $a_1\cap a_0\neq\0$ possiamo trovare $a_2\in a_1$ che \`e anche in $a_0$ e come tale $a_2\cap a_0\neq\0$. Quindi troveremo $a_3\in a_2\in a_1\in a_0$, ed iterando, una catena infinita discendente. 
+
+Come detto, l'assioma \ssf{a9} equivale all'escludere l'esistenza di catene infinite discendenti  \textit{definibili}, ma la dimostrazione viene posticipata per avere il tempo di introdurre la nozione di catena definibile.
+
+Fin qui gli assiomi proposti da Zermelo (a quel tempo non ancora formalizzati nella logica del prim'ordine). Con questa teoria \`e possibile formalizzare una buona parte della matematica elementare. Argomenti pi\`u sofisticati richiedono l'\textit{assioma del rimpiazzamento\/} dovuto a Fraenkel. 
+
+
+\begin{itemize}
+\item[a10]$\A y\in u\,\E^{= 1} z\,\phi\imp\E x \A z\,\big[z\in x\iff \E y\in u\;\phi\big]$, dove $x$ non occorre in $\phi$\hfill\emph{Rimpiazzamento} 
+\end{itemize}
+
+Il rimpiazzamente \`e un assioma (per la precisione anche questo \`e uno schema) meno semplice da leggere: l'antecedente afferma che $\phi(y,z)$ \`e il grafo di una funzione con dominio $u$. L'insieme $x$ di cui l'assioma afferma che l'immagine di $u$ secondo questa funzione \`e un insieme. %Alcuni testi enunciano l'assioma di rimpiazzamento in versione pi\`u forte del nostro \ssf{a4}. La versione pi\`u forte ha il vantaggio di congiungere in un unico schema la separazione e il rimpiazzamento. Si veda l'esercizio~\ref{ex_sep-rimpiazzamento}. 
+
+\begin{exercise}
+Si dimostri che rimpiazzamento e separazione possono essere sostituiti da quest'unico schema:
+\begin{itemize}
+\item[]$\A y\in u\E^{\le 1} z\,\phi(y,z)\imp\E x \A z\,\big[z\in x\iff \E y\in u\;\phi(y,z)\big]$, dove $x$ non occorre in $\phi(y,z)$
+\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+Si dimostri che l'assioma della coppia segue dai rimanenti. Suggerimento: si usi l'assioma delle parti per costruire un insieme con due elementi, poi il rimpiazzamento.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gli ordinali}
+\def\ord{{\rm ord}}
+\def\Ord{{\rm Ord}}
+%\def\tran{{\rm tran}}
+\def\lim{{\rm lim}}
+\def\rel{{\rm rel}}
+\def\fun{{\rm fun}}
+
+Sia $A$ una classe definibile (in particolare, un insieme). Diremo che $A$ \`e una classe \emph{transitiva\/} se $\A x\in A\ [x\subseteq A]$ o, equivalentemente, se $\bigcup A\subseteq A$.
+
+Diremo che un insieme $\alpha$ \`e un \emph{ordinale\/} se 
+\begin{itemize}
+\item[o1.] $\alpha$ \`e un insieme transitivo;
+\item[o2.] la relazione $\in$ ristretta ad $\alpha$ \`e antisimmetrica: $\A x,y\in\alpha \big[x=y\ \vee\ y\in x\ \vee\ x\in y\big]$.
+\end{itemize}
+Scriveremo \emph{Ord\/} per la classe di tutti gli ordinali. Mostreremo che $\Ord$ \`e una classe propria. Di solito gli ordinali vengono indicati con le lettere greche, e scriveremo $\A\alpha$ e $\E\alpha$ per $\A x\in\Ord$ ed $\E x\in\Ord$. 
+
+Se $u$ \`e un  insieme scriveremo \emph{$u+1$\/} per l'insieme $u\cup\{u\}$. Se $A$ \`e una classe definibile, diremo che $u\in A$ \`e un \emph{elemento $\in$-minimale} se $A\cap u=\0$. L'assioma di regolarit\`a dice esattamente che ogni insieme non vuoto ha elementi minimali. %\`E immediato verificare che questo vale anche per le classi definibili: un elemento $\in$-minimale di $A$ si trova prendendo un qualsiasi $u\in A$ e, se $A\cap u\neq\0$, fissare un elemento $\in$-minimale $v\in A\cap u$. Poich\'e $v\cap A\cap u=\0$, a maggior ragione $v\cap A$
+
+\begin{proposition}\label{prop_3}
+Se $\alpha$ e $\beta$ sono ordinali allora
+\begin{itemize}
+\item[1.] $0\ \deq\ \0$ \`e un ordinale;
+\item[2.] $\alpha+1$ \`e un ordinale (in particolare, gli insiemi $n$ definiti sopra sono ordinali);
+\item[3.] se $b\in\alpha$ allora $b$ \`e un ordinale;
+\item[4.] se $\gamma$ \`e un elemento $\in$-minimale di $\alpha\sm\beta$ allora $\gamma=\beta$.
+%\item[5.] se $\beta\subseteq\alpha$ allora $\beta\in\alpha$ oppure $\beta=\alpha$.
+\end{itemize}
+\end{proposition}
+\begin{proof} La prima affermazione \`e banale. Per le altre, si fissi un ordinale $\alpha$ arbitrario.\nobreak
+\begin{itemize}
+\item[2.] Verifichiamo la transitivit\`a. Sia $b\in\alpha+1$. Consideriamo due casi $b=\alpha$ oppure $b\in\alpha$. Nel primo caso $b\subseteq\alpha+1$ \`e ovvio nel secondo caso $b\subseteq\alpha\subseteq\alpha+1$ per la trasitivit\`a di $\alpha$. La verifica di \ssf{o2} \`e analoga: si considerino quattro casi e si usi che \ssf{o2} vale per $\alpha$. 
+\item[3.] \`E sufficiente verificare la transitivit\`a, poi da questa segue immediatamente \ssf{o2}. Fissiamo $d\in c\in b$ e dimostriamo che $d\in b$. Sappiamo che $d\in \alpha$, per trasitivit\`a di quest'ultimo. Quindi se per assurdo $d\notin b$ per \ssf{o2} avremmo che $d=b$ oppure $b\in d$. Entrambe queste possibilit\`a sono escluse dall'assioma di regolarit\`a.
+\item[4.] L'inclusione $\gamma\subseteq\beta$ segue immediatamente dalla transitivit\`a di $\beta$. Per l'inclusione opposta, fissiamo $\delta\in\beta$ e mostriamo che $\delta\in\gamma$. Se cos\`i non fosse, per \ssf{o2} avremmo che  $\delta=\gamma$ oppure $\gamma\in\delta$. Dalla prima otteniamo $\gamma\in\gamma$ che contraddice la regolarit\`a. Dalla seconda otteniamo per traansitivit\`a $\gamma\in\beta$ che contraddice la scelta di $\gamma$.%
+%\item[5.] Supponiamo $\alpha\neq\beta$. Per l'assioma di regolarit\`a esiste $\gamma\in\alpha\sm\beta$ tale che $\gamma\cap(\alpha\sm\beta)=\0$. Quindi $\gamma$ \`e il minimo elemento di $\alpha\sm\beta$ allora $\gamma=\beta$ per il punto \ssf{4}.
+\end{itemize}\vskip-\baselineskip\vskip-\parskip
+\end{proof}
+
+Notiamo il seguente corollario (segue immediatmente dal punto \ssf{3} della proposizione~\ref{prop_3}).
+
+\begin{corollary}
+La classe $\Ord$ \`e transitiva.\hfill\qed
+\end{corollary}
+
+
+Ricordiamo che un \emph{ordine lineare (stretto)\/} \`e  una relazione irriflessiva, transitiva, e antisimmetrica (si dice anche \emph{ordine totale\/}). Un ordine lineare si dice un \emph{buon ordinamento\/} se ogni suo sottoinsieme non vuoto ha un elemento minimale. La nozione di buon ordinamento si applica naturalmente anche a classi ma \`e bene insistere che l'esistenza dell'elemento minimale \`e richiesta solo per i sotto-\textit{insiemi\/} della classe. Nulla \`e specificato per le sotto-\textit{classi}.   
+
+\begin{proposition}\label{prop_Ord_wo}
+La relazione $\in$ ristretta alla classe $\Ord$ \`e un buon ordinamento. (Quindi anche se ristretta ad un qualsiasi ordinale.)
+\end{proposition}
+
+\begin{proof}
+L'affermazione tra parentesi segue dalla prima perch\`e se $\alpha\in\Ord$ dal punto \ssf{3} della proposizione~\ref{prop_3} segue $\alpha\subseteq\Ord$. \`E immediato verificare che la relazione di appartenenza ristretta ad $\Ord$ \`e irriflessiva e transitiva. Mostriamo prima che \`e un buon ordinamento e poi che \`e antisimmetrica. Sia $u\subseteq\Ord$ non vuoto e fissiamo un arbitrario $\alpha\in u$. Se $\alpha\cap u$ allora $\alpha$ \`e proprio il minimo elemento di $u$ cercato. Altrimenti sia $\beta\in\alpha\cap u$ tale che  $\beta\cap\alpha\cap u=\0$. Un tale $\beta$ esiste per regolarit\`a. Ora da $\beta\in\alpha$ otteniamo $\beta\subseteq\alpha$ e quindi $\beta\cap u=\beta\cap\alpha\cap u=\0$. Quindi $\beta$ \`e il minimo elemento di $u$ cercato.  
+
+Ora dimostriamo l'assimetria. Supponiamo $\alpha\neq\beta$. Per simmetria possiamo anche supporre $\alpha\not\subseteq\beta$. Sia $\gamma\in\alpha\sm\beta$ il minimo. Dal punto \ssf{4}  della proposizione~\ref{prop_3} otteniamo $\gamma=\beta$ quindi $\beta\in\alpha$. 
+\end{proof}
+
+Se $\alpha,\beta\in\Ord$ scriveremo anche \emph{$\alpha<\beta$\/} per $\alpha\in\beta$.
+
+La seguente \`e una formulazione equivalente della proposizione~\ref{prop_Ord_wo} che \`e nota come \emph{principio di induzione transfinita}:
+
+\begin{proposition}
+Per ogni formula $\phi(x)$ valono le seguenti formule
+\begin{itemize}
+\item[1.]$\A\beta\; \big[\A x<\beta\ \phi(x)\,\imp\,\phi(\beta)\big]\ \imp\ \A\alpha\,\phi(\alpha)$;
+\item[2.]$\E\alpha\;\phi(\alpha)\imp \E\alpha\,\big[\phi(\alpha)\,\wedge\,\A\beta<\alpha\neg\phi(\beta)\big]$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+Si noti che sostituendo $\neg\phi(x)$ per $\phi(x)$ in \ssf{2} ottteniamo una formula equivalente ad \ssf{1}. Quindi \`e sufficente dimostrare \ssf{2}. Assumiamo l'antecedente in \ssf{2}. Sia $\gamma$ tale che $\phi(\gamma)$ e sia $\alpha$ il minimo elemento di  $\{\beta\in\gamma : \phi(\beta)\}$. Questo $\alpha$ testimonia la verit\`a della coseguenza di \ssf{2}.
+\end{proof}
+
+Il seguente \`e un utile corollario. La dimostrazione \`e immediata.
+
+\begin{corollary}\label{prop_transitive_subset_Ord}
+Se $b\subseteq\Ord$ \`e un insieme transitivo allora $b$ \`e un ordinale.\QED
+\end{corollary}
+
+\section{La chiusura transitiva}
+
+\def\ceq#1#2{\parbox{15ex}{\hfill#1}\parbox{8ex}{\hfil#2}}
+
+
+Vediamo un'importante conseguenza dell'assioma dell'infinito e del rimpiazzamento.
+
+Scriveremo \emph{lim($x)$\/} per $\A y\in x\ [y+1\in x]$. A parole, diremo che $x$ \`e \emph{limite}. La notazione si usa tipicamente per ordinali, noi la generalizziamo per convenienza.). Osserviamo che l'assioma dell'infinito dice esattamente $\E x\,\lim(x)$. Definiamo
+
+\hfil \emph{$\omega$}$\ \ \deq\ \ \{x\in\Ord: \neg\lim(x)\wedge\A y\in x\neg\lim(y)\}$. 
+
+A prima vista possiamo solo dire che si tratta di una classe definibile, la seguente proposizione dimostra in particolare che si tratta di un insieme.
+
+\begin{proposition}
+$\omega$ \`e un un ordinale.
+\end{proposition}
+
+\begin{proof}
+\`E immediato verificare che $\omega$ \`e una classe transitiva, quindi se dimostriamo che \`e un insieme per la proposizione~\ref{prop_transitive_subset_Ord} possiamo concludere che \`e un ordinale. 
+
+Dimostraimo che $\omega$ \`e un insieme. Per l'assioma dell'infinito esiste un insieme $a$ tale che $\lim(a)$. \`E sufficiente verificare che $\omega\subseteq a$. Supponiamo per assurdo che esista $x\in\omega\sm a$ e sia $\alpha$ il minimo di questi. Poich\'e $\alpha\in\omega$ esiste un $\beta$ tale che $\beta+1=\alpha$. Per la transitivit\`a di $\omega$ abbiamo $\beta\in\omega$. Quindi per la minimalit\`a di $\alpha$ concludiamo che $\beta\in \omega\cap\alpha$. Ma allora anche $\beta+1$ appartiene ad $a$, contraddizione.
+\end{proof}
+
+Una \emph{coppia ordinata\/} \`e un insieme della forma $\big\{a,\{a,b\}\big\}$ che abbrevieremo come di consueto con $(a,b)$. Una \emph{relazione binaria\/} \`e un insieme di coppie. Una \emph{funzione\/} \`e una relazione binaria univoca. \`E immediato verificare che esistono formule che definiscono queste classi di insiemi:
+
+\ceq{$w=\{x,y\}$}{$\dIFF$}$\A z\in w\ \big[z=x\;\vee\; z=y\big]$
+
+\ceq{$a=(x,y)$}{$\dIFF$} $\E w\ \big[\,w=\{x,y\}\;\wedge\; a=\{x,w\}\,\big]$
+
+\ceq{$\rel(r)$}{$\dIFF$}$\A w\in r\ \E x,y\ w=(x,y)$\hfill $r$ \`e una relazione
+
+\ceq{$(x,y)\in r$}{$\dIFF$} $\E w\ \big[\,w=(x,y)\;\wedge\; w\in r\,\big]$
+
+\ceq{$x\in\dom(r)$}{$\dIFF$}$\rel(r) \wedge \E y\ (x,y)\in r$\hfill $x$ appartiene al dominio (di definizione) di $r$
+
+\ceq{$\fun(f)$}{$\IFF$}$\rel(r) \wedge \A x\ \E^{\le 1} y\ (x,y)\in f$\hfill $f$ \`e una funzione
+
+
+Finalmente arriviamo alla definizione che \`e a titolo di questo paragrafo: se $A$ \`e una classe definibile, la \emph{chiusura transitiva\/} di $A$ \`e la classe
+\def\TC{{\rm TC}}
+
+\ceq{$x\in\TC(A)$}{$\dIFF$} $\E n\in\omega\ \E f\ \Big[\dom(f)=n+1\;\wedge\; f(0)\in A\;\wedge\;f(n)=x\;\wedge\;\A i\in n\ f(i+1)\in f(i)\Big]$.
+
+
+\ceq{$\phi(f,n,a)$}{$\dIFF$} $n\in\omega\;\wedge\;\dom(f)=n+1\;\wedge\; f(0)= a\;\wedge\;\A i\in n\ f(i+1)=\bigcup f(i)$.
+
+
+ 
+

@@ -1,0 +1,751 @@
+\chapter{Ultraprodotti e compattezza}\label{ultraprodotti}
+
+\section{Filtri e ultrafiltri}\label{ultrafiltri}
+
+Sia $I$ un insieme arbitrario. Un \emph{filtro in $\P(I)$\/} (o \emph{filtro su $I$}), l'insieme dei sottoinsiemi di $I$, \`e un insieme $F\subseteq \P(I)$ non vuoto che soddisfa le seguenti propriet\`a per ogni  $a, b\in \P(I)$:
+\begin{itemize}
+\item[f1.] $a\in F\ \ \textrm{e}\ \ a\subseteq b\ \ \IMP\ \ b\in F$
+\item[f2.] $a\in F\ \ \textrm{e}\ \ b\in F\ \ \IMP\ \ a\cap b\in F$
+\end{itemize}
+Diremo che $F$ \`e un \emph{filtro proprio\/} se $F\neq\P(I)$ o, equivalentemente, se $\0\notin F$. Diremo che \`e \emph{principale\/} se $F=\{a\subseteq I\ :\ b\subseteq a\}$ per un qualche $b\subseteq I$. I filtri cui siamo interessati sono quelli \emph{non\/} principali.  Se $I$ \`e infinito esistono filtri non principali, per esempio \emph{filtro di Fr\'echet}: l'insieme di tutti i sottoinsiemi cofiniti (il cui complemento \`e finito) di $I$. 
+
+Un filtro proprio $F$ si dice \emph{massimale\/} se non esiste alcun filtro proprio $H$ tale che $F\subset H$. Un filtro proprio $F$ si dice un \emph{ultrafiltro\/} se per ogni $a\subseteq I$:
+
+\def\ceq#1#2#3{\hspace*{10ex}\llap{#1}\parbox{6ex}{\hfil#2}{#3}}
+
+\begin{itemize}
+\item[uf.] $a\notin F\ \ \IMP\ \ \neg a\in F$\hfill dove $\neg a\ \ \deq\ \ I\sm a$
+\end{itemize}
+
+Dimostreremo tra poco che gli ultrafiltri coincidono con i filtri massimali.
+
+\`E immediato verificare che l'intersezione di una famiglia arbitraria di filtri \`e un filtro, quindi dato un sottoinsieme arbitrario $B\subseteq\P(I)$ possiamo definire il \emph{filtro generato da $B$\/} come l'intersezione di tutti i filtri che contengono $B$. Ora vogliamo caratterizzare gli insiemi $B$ che generano un filtro proprio. Serve la seguente nozione: diremo che $B$ ha la \emph{propriet\`a dell'intersezione finita\/} se $\bigcap C\neq\emptyset$ per ogni insieme finito $C\subseteq B$. Il seguente lemma \`e immediato.
+
+\def\ceq#1#2#3{\hspace*{10ex}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+
+\begin{lemma} \label{proppif}
+Sia $B\subseteq\P(I)$ un insieme non vuoto. Il filtro generato da $B$ \`e l'insieme
+
+\hfil {$\Big\{a\subseteq I\ :\ \bigcap C\subseteq a\ \textrm{per qualche }\ C\subseteq B \textrm{ finito}\Big\}$,}
+
+quindi \`e un filtro proprio esattamente quando $B$ ha la propriet\`a dell'intersezione finita.\QED
+\end{lemma}
+
+\def\ceq#1#2#3{\hspace*{25ex}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+
+Il seguente lemma fornisce condizioni equivalenti alla massimalit\`a che spesso sono pi\`u comode da verificare.
+
+\begin{lemma}\label{lemmamassimale}
+Sia $B\subseteq\P(I)$ un insieme con la propriet\`a dell'intersezione finita. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $B$ \`e un filtro massimale;
+\item[2.] $a\notin B$\parbox{9ex}{\hfil $\IMP$}$a\cap  c = \0 \ \ \textrm{ per qualche }\ \ c\in B$;
+\item[3.] $a\notin B$\parbox{9ex}{\hfil $\IMP$}$B\cup\{a\}$\ \  non ha propriet\`a dell'intersezione finita, ovvero:\\
+\phantom{$a\notin B$}\parbox{9ex}{\ }esiste $C\subseteq B$ finito tale che $a\cap\bigcap C=\0$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+%Dimostriamo \ssf{1}\,$\IMP$\,\ssf{2}. Supponiamo che $B$ sia un filtro massimale e che $a\notin B$. Quindi il filtro generato da $B\cup\{a\}$ \`e improprio. Per il lemma~\ref{lemmamassimale}, esiste un $c$ intersezione di finiti elementi di $B$ tale che $c\cap a=\0$. Poich\'e $B$ \`e un filtro $c\in B$. Dimostriamo \ssf{2}\,$\IMP$\,\ssf{3} \`e ovvia. Per dimostrare \ssf{3}\,$\IMP$\,\ssf{1}, osserviamo per prima cosa che \ssf{3} implica che  $B$ \`e un filtro. Verifichiamo \ssf{f1}: supponiamo per assurdo che $a\in B$ e $a\subseteq b\notin B$. Allora $b\cap c=\0$ per qualche $c$ intersezione di elementi di $B$. Ma allora $a\cap c=\0$ che non pu\`o essere perch\'e $B$ ha la propriet\`a dell'intesezione finita. Verifichiamo \ssf{f2}: supponiamo per assurdo che $a,b\in B$ e che $a\cap  b\notin B$. Allora $a\cap  b\cap  c=\0$ per qualche $c$ intersezione di elementi di $B$. Che non pu\`o essere perch\'e $B$ ha la propriet\`a dell'intersezione finita e $a\cap  b\cap  c$ \`e intersezione di finiti elementi di $B$. Sempre dalla propriet\`a dell'intersezione finita di $B$, segue che $B\neq \P(I)$.  Inoltre se $B\subset H$, dove $H$ \`e un filtro proprio, allora un qualunque $a\in H\sm B$ contraddice \ssf{3}. Quindi $B$ \`e massimale.
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Supponiamo che $B$ sia un filtro massimale e che $a\notin B$. Quindi il filtro generato da $B\cup\{a\}$ \`e improprio. Per il lemma~\ref{lemmamassimale}, esiste un $C\subseteq B$ finito tale che tale che $a\cap\bigcap C=\0$. Posto $c=\bigcap C$, poich\'e $B$ \`e un filtro $c\in B$. Dimostriamo \ssf{2}$\IMP$\ssf{3} \`e ovvia. Per dimostrare \ssf{3}$\IMP$\ssf{1}, osserviamo per prima cosa che \ssf{3} implica che  $B$ \`e un filtro. Verifichiamo \ssf{f1}: supponiamo $a\subseteq b\notin B$. Allora $b\cap \bigcap C=\0$ per qualche $C\subseteq B$ finito. A fortiori $a\cap \bigcap C =\0$ e, poich\'e $B$ ha la propriet\`a dell'intersezione finita $a\notin B$. Verifichiamo \ssf{f2}: supponiamo $a\cap  b\notin B$. Allora $a\cap  b\cap   \bigcap C=\0$ per qualche $C\subseteq B$ finito. Poich\'e $B$ ha la propriet\`a dell'intersezione finita $a,b\notin B$. Sempre dalla propriet\`a dell'intersezione finita di $B$, segue che $B\neq \P(I)$.  Inoltre se $B\subset H$, dove $H$ \`e un filtro proprio, allora un qualunque $a\in H\sm B$ contraddice \ssf{3}. Quindi $B$ \`e massimale.
+\end{proof}
+
+Un filtro proprio $F$ di $\P(I)$ si dice \emph{primo\/} se per ogni $a,b\subseteq I$.
+
+\begin{itemize}
+\item[fp.] $a\cup b\in F\ \ \IMP\ \ a\in F\ \ \textrm{ o }\ \ b\in F$
+\end{itemize}
+
+Le nozioni di filtro massimale e filtro primo coincidono con quella di ultrafiltro. (In contesti pi\`u generali, si tratta di nozioni indipendenti.)
+
+\begin{proposition}
+Per ogni filtro $F$ di $\P(I)$ seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $F$ \`e un filtro massimale;
+\item[2.] $F$ \`e un filtro primo;
+\item[3.] $F$ \`e un ultrafiltro.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Per dimostrare \ssf{1}$\IMP$\ssf{2} assumiamo $a,b\notin F$, con $F$ massimale, e mostriamo che $a\cup b\notin F$. Per massimalit\`a, esiste $c\in F$ tale che $a\cap c= b\cap c= \0$. Quindi $(a\cup b)\cap c= \0$. Quindi  $a\cup b\notin F$. Per dimostrare \ssf{2}$\IMP$\ssf{3} \`e sufficiente osservare che $a\cup \neg a\in F$. Infine, per dimostrare \ssf{3}$\IMP$\ssf{1} osserviamo se $a\notin F$, un ultrafiltro, allora la condizione \ssf{2} del lemma~\ref{lemmamassimale} \`e verificata con $c=\neg a$. 
+\end{proof}
+
+\begin{proposition}\label{esistenzamassimale1}
+Sia $B\subseteq\P(I)$ un insieme con la propriet\`a dell'intersezione finita. Allora $B$ \`e contenuto in un filtro massimale.
+\end{proposition}
+
+\begin{proof}
+Mostriamo che l'unione di una catena di sottoinsiemi di $\P(I)$ con la propriet\`a dell'intersezione finita gode anche della stessa propriet\`a. Quindi dal lemma di Zorn otteniamo un $B\subseteq\P(I)$ che \`e massimale tra quelli con la propriet\`a dell'intersezione finita e quindi soddisfa \ssf{3} del lemma~\ref{lemmamassimale}. Sia $\<B_i:i<\lambda\>$ detta catena e sia
+
+\ceq{$B$}{$=$}{$\displaystyle\bigcup_{i<\lambda} B_i$.}
+
+Se $B$ non avesse la propriet\`a dell'intersezione finita, allora esisterebbe un $C\subseteq B$ finito tale che $\bigcap  C=\0$. Ma ogni $C\subseteq B$ finito \`e sottoinsieme di qualche $B_i$, quindi $B_i$ non avrebbe la propriet\`a dell'intersezione finita. Condraddizione.
+\end{proof}
+
+\begin{exercise}
+Si dimostri che le seguenti affermazioni sono equivalenti per ogni ultrafiltro $F$ di $\P(I)$.\nobreak
+\begin{itemize}
+\item[1.] $F$ \`e principale;
+\item[2.] $F$ non contiene il filtro di Fr\'echet;
+\item[3.] $F=\{a\ :\ i\in a\}$ per un fissato $i\in I$.\QED
+\end{itemize}
+\end{exercise}
+
+
+\begin{exercise}\label{exlimiteultrafiltro}
+Sia $F$ un filtro proprio in $\P(\omega)$. Data una funzione $f:\omega\imp\RR$ ed un numero reale $l$, scriveremo $\lim_{F} f= l$ se per ogni $U\subseteq\RR$ intorno aperto di $l$ esiste un $a\in F$ tale che $fi\in U$ per ogni $i\in a$. Si dimostri che
+\begin{itemize}
+\item[1.] Se $F$ \`e il filtro di Fr\'echet allora $\lim_{F} f= l$ se e solo se  \smash{$\displaystyle\lim_{i\to\infty} f= l$}.
+\item[2.] Esiste al pi\`u un $l$ tale che $\lim_{F} f= l$.
+\item[3.] Se $F$ \`e un ultrafiltro ed $f$ \`e limitata, allora esiste un $l$ tale che  $\lim_{F} f= l$.\QED
+\end{itemize}
+\end{exercise}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Prodotti diretti}
+\label{prodottidiretti}
+
+\def\ceq#1#2#3{\parbox{20ex}{$\displaystyle #1$}\parbox{6ex}{\hfil$\displaystyle #2$}\rlap{$\displaystyle  #3$}\hspace{20ex}}
+
+Sia $\<M_i:i\in I\>$ una sequenza di strutture non vuote della stessa segnatura. Si perdoni l'uso improprio del termine sequenza: l'insieme $I$ \`e arbitrario, non un ordinale. Il \emph{prodotto diretto\/} di questa sequenza \`e la struttura
+
+\ceq{\ssf{p.}\hfill N}{=}{\prod_{i\in I}M_i}
+
+definita dalle condizioni \ssf{1}-\ssf{3} che seguono. Se la sequenza di strutture \`e costante, cio\`e se tutti gli $M_i$ sono la stessa struttura $M$, chiameremo il prodotto \emph{potenza diretta\/} di $M$ e lo indicheremo con $M^I$.
+
+Il dominio di $N$ \`e l'insieme delle tuple $\hat a$ che hanno $i$-esima coordinata in $M_i$. Precisamente, l'insieme  delle funzioni
+
+
+{\def\ceq#1#2#3{\parbox{20ex}{$\displaystyle #1$}\parbox{3ex}{\hfil$\displaystyle #2$}\rlap{$\displaystyle  #3$}\hspace{20ex}}
+
+
+\ceq{\ssf{1.}\hfill \hat a}{:}{I\ \to\ \bigcup_{i\in I}M_i} \ \ \ \  tali che \smallskip
+
+\ceq{\hfill \hat a}{:}{i\ \ \mapsto\ \ \hat ai\ \in\ M_i}
+
+}
+
+Confonderemo le tuple di elementi di $N$ con funzioni a valori in tuple di $M_i$, ovvero la tupla $\hat a=\<\hat a_1\dots\hat a_n\>$ verr\`a identificata con la funzione $\hat a\ :\ i\mapsto\hat ai=\<\hat a_1i,\dots,\hat a_ni\>$.\smallskip
+
+N.B. La notazione in questo capitolo \`e inevitabilmente pesante. Per aiutarci a sopportarla, stabiliamo alcune convenzioni. Gli elementi del prodotto verranno evidenziati con un accento circonflesso come in $\hat a$. Gli indici saranno usati per denotare diversi elementi del prodotto, come in $\hat a_1,\dots,\hat a_n$. La coordinata $i$-esima di un elemento del prodotto verr\`a denotata postfissando con $i$, come in $\hat ai$ o  $\hat a_{1}i$.  
+
+Le funzioni $f^N$ agiscono sulla $i$-esima coordinata di $\hat a$ come la funzione $f^{M_i}$, ovvero
+
+
+\ceq{\ssf{2.}\hfill\big(f^N\hat a\big)i}{=}{f^{M_i}(\hat ai)} per ogni $i\in I$.
+
+Le relazioni $r^M$ sono il prodotto delle relazioni $r^{M_i}$, ovvero 
+
+
+
+\ceq{\ssf{3.}\hfill\hat a\in r^N}{\IFF}{\hat ai\in r^{M_i}} per ogni $i\in I$.
+
+Osserviamo che per induzione sulla sintassi da \ssf{2} segue che l'interpretazione del termine $t(x)$ in $N$ agisce sull'$i$-esima coordinata di $\hat a$ come $t^{M_i}(x)$. Ovvero
+
+
+
+\ceq{\ssf{2'.}\hfill\big(t^N\hat a\big)i}{=}{t^{M_i}(\hat ai)}  per ogni $i\in I$.
+
+Inoltre, \ssf{3} \`e equivalente a 
+
+\ceq{\ssf{3'.}\hfill N\models r\,\hat a}{\IFF}{M_i\models r\, \hat a i}  per ogni $i\in I$.
+
+
+\begin{example}
+Consideriamo un caso molto semplice (banale, per i nostri scopi): il prodotto diretto di un campo ordinato $M$ con se stesso. Il linguaggio \`e quello degli anelli ordinati. La somma e il prodotto in $M^2$ di $\hat a=\<\hat a0,\,\hat a1\>$ e $\hat c=\<\hat c0,\,\hat c1\>$
+
+
+\ceq{\hfill\<\hat a0,\,\hat a1\>+\<\hat c0,\,\hat c1\>}{=}{\<\hat a0+\hat c0,\ \hat a1+\hat c1\>}
+
+\ceq{\hfill\<\hat a0,\,\hat a1\>\;\cdot\;\<\hat c0,\,\hat c1\>}{=}{\<\hat a0\cdot\hat c0,\ \hat a1\cdot\hat c1\>}
+
+Lo zero e l'unit\`a di $M^2$ sono $\hat 0=\<0,\,0\>$ e  $\hat 1=\<1,\,1\>$. \`E facile verificare che $M^2$ \`e ancora un anello unitario ma non \`e mai un campo: manca l'inverso dell'elemento $\<1,0\>$. L'ordine in $M^2$ diventa
+
+\ceq{\hfill\<\hat a0,\,\hat a1\>\;<\;\<\hat c0,\,\hat c1\>}{\IFF}{\hat a0< \hat c0\ \textrm{ e } \hat a1<\hat c1}
+
+Questo non \`e un ordine totale, quindi $M^2$ non \`e un anello ordinato.\QED
+\end{example}
+
+La dimostrazione del seguente lemma \`e immediata (pi\`u utile \`e riflettere sul perch\'e non pu\`o essere estesa a tutte le formule).
+
+\begin{proposition}\label{proposizioneprodottidiretti}
+Sia $\<M_i : i\in I\>$ una sequenza di strutture non vuote. Sia $\phi(x)$ una formula costruita dalle formule atomiche usando solo i connetivi $\wedge$, $\A$ ed $\E$. Allora 
+
+\ceq{\hfill N\models \phi(\hat a)}
+{\IFF}
+{M_i\models\phi(\hat a i)} per ogni $i\in I$.
+
+per ogni $\hat a\in N^{|x|}$, dove $N\ =\ \displaystyle\prod_{i\in I}M_i$.
+\end{proposition}
+
+\begin{proof}
+Supponiamo per cominciare che $\phi$ sia la formula $rt(x)$ per qualche tupla di termini $t(x)$. Allora per ogni $\hat a\in N$ abbiamo
+
+\ceq{\hfill N\;\models\; r t(\hat a)}%
+{\IFF}%
+{N\phantom{_i}\models\; r\big(t^N(\hat a)\big)}
+
+\ceq{}{\IFF}%
+{M_i\models\; r\big(t^N(\hat a)i\big)}
+per ogni $i\in I$\hfill per \ssf{3'}
+
+\ceq{}{\IFF}%
+{M_i\models\; r\big(t^{M_i}(\hat ai)\big)}
+per ogni $i\in I$\hfill per \ssf{3\phantom{'}}
+
+\ceq{}{\IFF}%
+{M_i\models\;  r t(\hat ai)}
+per ogni $i\in I$.
+
+% 
+% \ceq{}{\IFF}%
+% $t^{N}(\hat a)i\ \in\ r^{M_i}$ per ogni $i$\hfill per \ssf{3}
+% 
+% \ceq{}{\IFF}%
+% $t^{M_i}(\hat ai)\ \in\ r^{M_i}$ per ogni $i$\hfill per \ssf{2'}
+% 
+% \ceq{}{\IFF}%
+% $M_i\models r \big(t^{M_i}(\hat ai)\big)$
+% %
+% {\IFF}%
+% $M_i\models  (r t)(\hat ai)$
+
+Lo stesso argomento si applica nel caso $\phi$ sia la formula atomica $t_1=t_2$. Quindi il caso atomico del lemma \`e verificato. L'induzione sui connetivi $\wedge$, $\A$ ed $\E$ \`e lasciata al lettore.
+\end{proof}
+
+Come corollario otteniamo immediatamente che il prodotto diretto di gruppi, anelli e spazi vettoriali sono ancora strutture dello stesso tipo. Questa \`e una semplice conseguenza della forma sintattica dei loro assiomi.
+
+\`E doveroso notare che l'equivalenza affermata dalla proposizione~\ref{proposizioneprodottidiretti} vale per una classe di formule pi\`u ampia: le formule di Horn, che qui non tratteremo (una classe pi\`u nota in informatica teorica che in logica matematica).
+
+% \section{Strutture quoziente}
+% 
+% \def\ceq#1#2#3{\parbox{30ex}{$\displaystyle #1$}\parbox{6ex}{\hfil$\displaystyle #2$}$\displaystyle  #3$}
+% 
+% \def\Erel{\mathrel{\textsf{\footnotesize w}}}
+% 
+% \def\Erel{\mathrel{\sim}}
+% 
+% Fissiamo una struttura $M$ ed una relazione di equivalenza $\Erel$ su $M$. Estendiamo $\Erel$ ad un'equivalenza tra arbitrarie tuple di elementi di $M$ nel modo ovvio: se $a=\<a_i:i<\alpha\>$ e $b=\<b_i:i<\alpha\>$ allora
+% 
+% \ceq{\hfill a\Erel b}{\dIFF}{a_i\Erel b_i} per ogni $i<\alpha$.
+% 
+% Nel seguito, la classe di equivalenza $[a]_{\Erel}$ verr\`a confusa con la tupla di classi $\<[a_i]_{\Erel}:i<\alpha\>$.
+% 
+% Diremo che $\Erel$ \`e una \emph{congruenza\/} se per ogni coppia di tuple $a,b$ 
+% 
+% \begin{itemize}
+% \item[1.] $a\Erel b}{\IMP}{f^M a\Erel f^M b$
+% \item[2.] $a\Erel b}{\IMP}{M\models ra\iff rb$
+% \end{itemize}
+% 
+% Se $\Erel$ \`e una congruenza allora possiamo definire la struttura quoziente come segue:
+% 
+% \begin{itemize}
+% \item[1.] l'universo della struttura $M/{\Erel}$ \`e l'insieme quoziente;
+% \item[2.] $f^{M/\Erel}[a]=[f^Ma]$;
+% \item[2.] $a\in r^{M/\Erel}\ \ \IFF\ \ [a]_{\Erel}\cap r^M\neq \0$.
+% \end{itemize}
+% 
+% \begin{proposition}
+% Sia $M$ una struttura di segnatura $L$ e sia $\Erel$ una congruenza su $M$. Indichiamo con $L(\dot{\Erel})$ il linguaggio ottenuto aggiungendo il simbolo di relazione binaria $\dot{\Erel}$ ed indichiamo con $(M,\Erel)$ l'espansione di $M$ che interpreta $\dot{\Erel}$ con $\Erel$.
+% 
+% Per ogni $\phi\in L$ indicheremo con $\phi_{\dot{\Erel}}$ la formula ottenuta sostituendo in $\phi$ il simbolo di uguaglianza $\dot{=}$ con la relazione $\dot{\Erel}$. Allora per ogni tupla di elementi di $M$ 
+% 
+% \ceq{\hfill M/{\Erel}\models\phi([a]_{\Erel})}{\IFF}{(M,\Erel)\models\phi_{\dot{\Erel}}(b)} per qualche $b\sim a$.
+% 
+% \end{proposition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ultraprodotti}
+
+\def\ceq#1#2#3{\parbox{25ex}{$\displaystyle #1$}\parbox{6ex}{\hfil$\displaystyle #2$}\rlap{$\displaystyle  #3$}\hspace{20ex}}
+
+
+Sia $\<M_i : i\in I\>$ una sequenza di strutture non vuote e sia $N$ il prodotto diretto di questa sequenza e fissiamo $F$, un filtro in $\P(I)$.  Definiamo la seguente relazione di equivalenza su $N$:
+
+\ceq{\ssf{eq.}\hfill \hat a\,\sim_F \hat c}{\IFF}{\Big\{\, i\in I\ :\ \hat ai=\hat ci\,\Big\}\in F\,.}
+
+
+Lasciamo al lettore verificare che $\sim_F$ \`e effettivamente una relazione di equivalenza: riflessivit\`a e simmetria sono ovvie, la transitivit\`a segue da \ssf{f2} del paragrafo~\ref{ultrafiltri}. Scriveremo $N/F$ per l'insieme quoziente $N/\mathord\sim_F$ e denoteremo con $[\hat a]_F$ la classe di equivalenza di $\hat a$. 
+
+Osserviamo che se $F$ \`e un filtro principale, diciamo $F=\{a:c\subseteq a\}$, allora lavorare modulo $F$ vuol dire ignorare tutti gli indici $i\notin c$. Questo \`e il caso banale. La relazione di equivalenza definita sopra \`e interessante nel caso di filtri non principali. Per esempio, se $F$ \`e il filtro di Fr\'echet in $\P(\omega)$ allora $\hat a\,\sim_F \hat c$ se le due sequenze quasi ovunque uguali. Filtri pi\`u grandi (che quindi conterranno sottoinsiemi pi\`u sparsi) richiederanno solo che $\hat a$ e $\hat c$ abbiano certe sottosequenze quasi ovunque uguali.  
+
+\`E necessario considerare tuple di elementi di $N$, ma in prima lettura suggeriamo di considerare tutto abbia ariet\`a semplicemente 1. La relazione $\sim_F$ induce un'equivalenza tra arbitrarie tuple di elementi di $N$ nel modo ovvio: se $\hat a=\<\hat a_n:n<\alpha\>$ e $\hat b=\<\hat b_n:n<\alpha\>$ sono tuple di elementi di $N$ allora
+
+\ceq{\hfill \hat a\sim_F \hat b}{\dIFF}{\hat a_n\sim_F\hat b_n} per ogni $n<\alpha$.
+
+Confonderemo $[\hat a]_F$ con $\<[\hat a_n]_F:n<\alpha\>$. Con $\hat ai$ indicheremo la tupla $\<\hat a_ni:n<\alpha\>$. Si osservi anche che quando $\alpha<\omega$, da \ssf{f2} otteniamo
+
+\ceq{\hfill \hat a\sim_F \hat b}{\dIFF}{\Big\{\, i\in I\ :\ \hat ai=\hat ci\,\Big\}\in F\,.}
+
+
+Osserviamo che $\sim_F$ \`e una congruenza rispetto alle funzioni di $N$ ovvero
+
+\ceq{\ssf{1.}\hfill \hat a\ \sim_F \hat b}{\IMP}{f^N\hat a\ \ \sim_F\ f^N\hat b\,;}
+
+Questo permette di considerare $N/F$ come una struttura di segnatura $L$ definendo l'interpretazione come segue
+
+\ceq{\ssf{2.}\hfill f^{N/F}[\hat a]_F}{=}{\big[f^N\hat a\big]_F\,;}
+
+\ceq{\ssf{3.}\hfill [\hat a]_F\ \in\ r^{N/F}}{\IFF}{\big\{\,i\ :\ \ \hat ai\in r^{M_i}\ \big\}\ \in\ F\,.}
+
+Poich\'e $\sim_F$ \`e una congruenza la definizione \ssf{2} \`e ben data.
+La struttura $N/F$ si chiama \emph{prodotto ridotto\/} delle strutture  $\<M_i:i\in I\>$. Se $M_i=M$ per tutti gli $i\in I$, dieremo che $N/F$ \`e una \emph{potenza ridotta\/} di $M$. Noi siamo soprattutto intertessati al caso in cui $F$ \`e un ultrafiltro allora diremo che $N/F$ \`e un \emph{ultraprodotto}, eventualmente una \emph{ultrapotenza}.
+
+
+Con l'usuale dimostrazione per induzione da \ssf{3} otteniamo che per ogni termine $t(x)$ ed ogni tupla $\hat a\in N^{|x|}$
+
+
+\ceq{\ssf{2'.}\hfill t^{N/F}[\hat a]_F}{=}{\big[t^N\hat a\big]_F\,.}
+
+Infine si osservi che la \ssf{4} pu\`o essere riformulata come
+
+\ceq{\ssf{3'.}\hfill N/F\models r[\hat a]_F}{\IFF}{\big\{\,i\ :\ \ \hat ai\in r^{M_i}\ \big\}\ \in\ F\,.}
+
+
+
+Il seguente \`e il teorema fondamentale sugli ultraprodotti: estende l'equivalenza in \ssf{3'} a tutte le formule.
+
+\begin{theorem}[di \L o\v{s}]
+Sia $\<M_i : i\in I\>$ una sequenza di strutture non vuote. Fissiamo un qualsiasi ultrafiltro $F$ in $\P(I)$. Allora per ogni formula $\phi(x)$
+
+\ceq{\hfill N/F\models \phi([\hat a]_F)}%
+{\IFF}%
+{\Big\{i\ :\ M_i\models \phi(\hat a i)\Big\}\ \in\ F\,.}
+
+per ogni $\hat a\in N^{|x|}$, dove $N\ =\ \displaystyle\prod_{i\in I}M_i$.
+\end{theorem}
+
+\begin{proof}
+Dimostriamo il teorema per induzione sulla sintassi di $\phi(x)$. Supponiamo per prima cosa che $\phi(x)$ sia la formula $rt(x)$ per qualche tupla di termini $t(x)$.
+
+\ceq{\hfill N/F\models rt\big([\hat a]_F\big)}%
+{\IFF}%
+{N/F\ \models\  r\big(t^{N/F}[\hat a]_F\big)}
+
+\ceq{}{\IFF}%
+{N/F\ \models\  r\big([t^N\hat a]_F\big)}\phantom{$\ \in\ F$} \ \ \  per \ssf{2'}
+
+\ceq{}{\IFF}%
+{\big\{i\ :\ M_i\models\; r \big((t^N\hat a)i\big)\;\big\}}$\ \in\ F$ \ \ \  per \ssf{3'}
+
+\ceq{}{\IFF}%
+{\big\{i\ :\ M_i\models\; r \big(t^{M_i}\!(\hat ai)\big)\big\}}$\ \in\ F$ \ \ \ per \ssf{2'} del paragrafo~\ref{prodottidiretti}
+
+\ceq{}{\IFF}%
+{\big\{i\ :\ M_i\models\  r t(\hat a i)\ \big\}}$\ \in\ F$
+
+Nel caso $\phi(x)$ sia la formula atomica $t=s$ applichiamo un argomento molto simile: 
+
+
+\ceq{\hfill N/F\models t\big([\hat a]_F\big)=t\big([\hat a]_F\big)}%
+{\IFF}%
+{t^{N/F}[\hat a]_F=s^{N/F}[\hat a]_F}
+
+\ceq{}{\IFF}%
+{[t^N\hat a]_F=[s^N\hat a]_F}\phantom{$\ \ \ \ \in\ F$} \ \ \  per \ssf{2'}
+
+
+\ceq{}{\IFF}%
+{t^N\hat a\ \ \sim_F\  s^N\hat a}
+
+
+\ceq{}{\IFF}%
+{\big\{i\; :\ \big(t^N\hat a)i=\big(s^N\hat a\big)i\;\big\}}$\ \ \ \ \in\ F$
+
+\ceq{}{\IFF}%
+{\big\{i\; :\  t^{M_i}(\hat ai)=s^{M_i}(\hat ai)\big\}}$\ \ \ \ \in\ F$ \ \ \ per \ssf{2'} del paragrafo~\ref{prodottidiretti}
+
+\ceq{}{\IFF}%
+{\big\{i\; :\; M_i\models\ t(\hat ai)=s(\hat ai)\big\}}$\ \ \ \ \in\ F$
+
+Quindi il caso atomico del lemma \`e verificato. Per dimostrare il passo induttivo conviene usare i commettivi $\neg$, $\wedge$, e $\E$. Cominciamo col connettivo $\neg$, che \`e il punto in cui usiamo l'ipotesi che $F$ sia un \textit{ultra\/}{\hskip.2ex}filtro. Assumiamo il teorema vero per $\phi(x)$ e dimostriamolo per $\neg\phi(x)$.
+
+\ceq{\hfill N/F\models \neg\phi\big([\hat a]_F\big)}%
+{\IFF}%
+{N/F\ \notmodels\ \phi\big([\hat a]_F\big)}
+
+\ceq{}{\IFF}%
+{\big\{i\ :\ M_i\; \models\; \phi(\hat a i)\;\big\}\ \notin\ F}
+
+per ipotesi induttiva. Ora poich\'e $F$ \`e un ultrafiltro se un insieme non gli appartiene, il complemento gli appartiene e quindi
+
+\ceq{}{\IFF}%
+{\big\{i\ :\ M_i\; \models\; \neg\phi(\hat a i)\;\big\}\ \in\ F\,.}
+
+
+Veniamo ora al passo induttivo per il connettivo $\wedge$. Assumiamo il teorema vero per $\phi(x)$ e $\psi(x)$ e dimostriamolo per $\phi(x)\wedge\psi(x)$.
+
+\ceq{\hfill N/F\models \phi\big([\hat a]_F\big)\ \wedge\ \psi\big([\hat a]_F\big)}%
+{\IFF}%
+{N/F\ \models\ \phi\big([\hat a]_F\big)\ \ \ \ {\rm e}\ \ \ \ N/F\ \models\ \psi\big([\hat a]_F\big)}
+
+\ceq{}{\IFF}%
+{\big\{i\ :\ M_i\; \models\; \phi(\hat a i)\;\big\}\ \in\ F\ \ \ {\rm e}\ \ \ \big\{i\ :\ M_i\; \models\; \psi(\hat a i)\;\big\}\ \in\ F}
+
+per ipotesi induttiva. Poich\'e $F$ \`e un filtro, contenere l'intersezione di due insiemi \`e equivalente a contenere entrambi gli insiemi. Cos\`{\i} otteniamo come richiesto: 
+
+\ceq{}{\IFF}{\big\{i\ :\ M_i\; \models\; \phi(\hat a i)\wedge\psi(\hat a i)\;\big\}\ \in\ F\,.}
+
+ 
+Infine dimostriamo il passo induttivo per il quantificatore esistenziale.  Assumiamo il teorema vero per $\phi(x,y)$ e dimostriamolo per $\E y\,\phi(x,y)$.
+
+\ceq{\hfill N/F\models \E y\,\phi\big([\hat a]_F,y\big)}%
+{\IFF}%
+{N/F\ \models\  \phi\big([\hat a]_F,[\hat b]_F\big)}\hspace{5ex} per un qualche $[\hat b]_F\in N/F$
+
+\ceq{}{\IFF}%
+{\big\{i\ :\ M_i\; \models\; \phi(\hat a i,\hat b i)\;\big\}\ \in\ F}\hspace{5ex} per un qualche $\hat b\in N$
+
+per ipotesi induttiva. Ora rimane da verificare che questo sia equivalente a 
+
+\ceq{}{\IFF}%
+{\big\{i\ :\ M_i\; \models\; \E y\,\phi(\hat a i,y)\;\big\}\ \in\ F.}
+
+La direzione $\IMP$ \`e ovvia. La direzione $\PMI$ vale se come $\hat b$ prendiamo una qualunque sequenza tale che $\hat bi$ \`e (per tutti gli $i$ per cui esiste) un testimone in $M_i$ della verit\`a di $\E y\,\phi(\hat a i,y)$.
+\end{proof}
+
+Sia $F$ un ultrafiltro in $\P(I)$ e sia $M^I/F$ l'ultrapotenza di una struttura $M$. Esiste un'\emph{im\-mer\-sione canonica\/} $h:M\to M^I/F$ definita come segue. Per ogni $a\in M$ denotiamo con \emph{$a^I$\/} l'elemento di $M^I$ che ha valore costante $a$, allora definiamo $h:a\mapsto [a^I]_F$. \`E immediato verificare che questa \`e effettivamente un'immersione, quindi $h[M]$ \`e un sottostruttura di $M^I/F$ isomorfa ad $M$. Dal teorema~\ref{isomorfoeleq} segue che
+
+\ceq{\hfill h[M]\models \phi([a^I]_F)}%
+{\IFF}%
+{M\models \phi(a)}
+
+per ogni $a\in M$. Spesso identificheremo $M$ con $h[M]$. Il seguente corollario \`e immediato.
+
+\begin{corollary}\label{ultrapotenzeelementari}
+Sia $I$ un insieme ed $F$ un ultrafiltro in $\P(I)$. Sia $M^I/F$ l'ultrapotenza di una struttura $M$ non vuota. Allora
+
+\ceq{\hfill M^I/F\models \phi([a^I]_F)}%
+{\IFF}%
+{M\models \phi(a)\,.} 
+
+e quindi $h[M]\preceq M^I/F$.\QED
+\end{corollary}
+
+Il seguente corollario mostra che c'\`e abbondanza di sovrastrutture elementari.
+
+\begin{corollary}
+Ogni struttura infinita ha un'estensione elementare propria.
+\end{corollary}
+
+\begin{proof}
+Sia $M$ una struttura infinita e sia $F$ un ultrafiltro \textit{non principale\/} in $\P(\omega)$. Consideriamo l'ultraprodotto $M^\omega/F$ e sia $h:M\imp M^\omega/F$ l'immersione canonica definita qui sopra. Poich\'e $M$ \`e isomorfo ad $h[M]$ ed $h[M]\preceq M^\omega/F$, rimane solo da dimostrare che tale estensione \`e propria, ovvero che esiste un $\hat d$ in $M^\omega$ che non \`e immagine di nessun $a\in M$. Poich\'e $M$ \`e infinito, esiste $\hat d\in M^\omega$ tale che $\hat di\neq\hat dj$ per ogni $i<j<\omega$. Mostramo ora che $[\hat d]_F\neq[a^\omega]_F$ per ogni $a\in M$. Dobbiamo mostrare che $\{i:\hat di=a\}\notin F$. Per la scelta di $\hat d$ l'insieme $\{i:\hat di=a\}$ contiene al pi\`u un elemento, quindi se appartenesse ad $F$ questo sarebbe un filtro principale. 
+\end{proof}
+
+
+
+
+
+\begin{exercise}
+Sia $F$ un filtro proprio in $\P(\omega)$. Ricordiamo che data una funzione $\hat a:\omega\imp\RR$ ed un numero reale $l$, scriveremo $\lim_{F} \hat a= l$ se per ogni $U\subseteq\RR$ intorno aperto di $l$ esiste un $u\in F$ tale che $\hat a i\in U$ per ogni $i\in u$. (Vedi esercizio~ \ref{exlimiteultrafiltro}.)
+
+Consideriamo $\RR$ come struttura nel linguaggio presentato nel paragrafo sull'analisi non standard. Sia $F$ un ultrafiltro in $\P(\omega)$ e sia $\nsR=\RR^\omega/F$. Si dimostri che $[\hat a]_F$ sta nella monade di $[l^\omega]_F$ se e solo se $\lim_{F} \hat a= l$.\QED
+\end{exercise}
+
+
+
+
+
+
+
+
+\begin{exercise}\label{ldjferif}
+Consideriamo $\RR$ come struttura nel linguaggio presentato nel paragrafo~\ref{nonstandard}. Sia $F$ un ultrafiltro non principale in $\P(\omega)$ e consideriamo l'ultrapotenza $R^\omega/F$. Per i seguenti valori di $\hat a: \omega\to\RR$, si dica se $[\hat a]_F$ \`e un elemento standard, non standard, infinito o infinitesimo.
+
+\begin{minipage}{.49\textwidth}
+\begin{itemize}
+\item[1.] $\displaystyle\hat a : i\mapsto \log (i+1)$;
+
+\item[2.] $\displaystyle\hat a : i \mapsto 2^{-i}$;
+
+\item[3.] $\displaystyle\hat a : i \mapsto (-2)^i$;
+\end{itemize}
+\end{minipage}
+%
+\begin{minipage}{.49\textwidth}
+\begin{itemize}
+\item[4.] $\displaystyle\hat a : i\mapsto \arctan i$;
+
+\item[5.] $\displaystyle\hat a : i\mapsto i\big(1+(-1)^i\big)$;
+
+\item[6.] $\displaystyle\hat a : i\mapsto \sin i$.
+\end{itemize}
+\end{minipage}
+
+Se la risposta dipende da $F$ si discutano le possibilit\`a.\QED
+\end{exercise}
+
+
+
+\begin{exercise}
+Con la stesse premesse dell'esercizio~\ref{ldjferif}. Siano $a=[\hat a]_F$ e $b=[\hat b]_F$ dove  
+
+\hfil $\displaystyle\hat a : i\mapsto  i$\hskip5ex e\hskip5ex  $\displaystyle\hat b : i\mapsto  e^{i}$
+
+Si dimostri che $\nsR\models a^2<b$. Si dimostri che $\nsR\models a^c<b$ per qualche ipereale infinito $c$.\QED
+\end{exercise}
+
+
+\begin{exercise}
+Sia $I$ l'insieme degli interi $i>1$. Per $i\in I$, sia $\ZZ_i=\ZZ/i\ZZ$, la struttura nel linguaggio dei gruppi additivi che ha come supporto gli interi non negativi $<i$ e che interpreta l'addizione nell'addizione modulo $i$.  Denotiamo con $N$ il prodotto \smash{$\displaystyle\prod_{i\in I}\ZZ_i$}. Si dimostrino le seguenti affermazioni:
+%\ceq{\hfill N$}%
+% \parbox{6ex}{\hfil$=$}%
+% $\displaystyle\prod_{i\in I}\ZZ_i$
+
+\begin{itemize}
+\item[1.] esiste un ultrafiltro $F$ tale che $N/F$ non contiene elementi di ordine finito;
+\item[2.] esite un ultrafiltro $F$ non principale tale che $N/F$ ha elementi di ordine $2$;
+\item[3.] per ogni ultrafiltro $F$ non principale $N/F$ contiene un elemento di ordine infinito;
+\item[4.] esiste un ultrafiltro $F$ tale che  $N/F\models \A x\E y\ my=x$ per ogni intero $m>0$;
+\item[5.] esiste un ultrafiltro $F$ ed $a\in N/F$ tale che $N/F\models \A x\ mx\neq a$ per ogni intero $m>0$.
+\end{itemize}
+
+\textbf{Soluzione.} Dimostriamo \ssf{1} osservando che $\ZZ_i\models\neg\E x\,[x\neq 0 \wedge mx=0]$  per ogni intero $m$ ed ogni primo $i\nmid m$. Quindi, se $F$ \`e un un ultrafiltro non principale che contiene l'insieme dei numeri primi, $N/F\models\neg\E x\,[x\neq 0 \wedge mx=0]$ per ogni $m$. Per dimostrare \ssf{2} osserviamo che $\ZZ_{2i}\models\E x\,[x\neq 0 \wedge 2x=0]$ per ogni $i$. Quindi se $F$ contiene l'insieme dei numeri pari, $N/F$ contiene un elemento di ordine 2. Per dimostrare \ssf{3} sia $\hat a\in N$ la sequenza che ha valore costante $1$. Chiaramente $\ZZ_i\models m\neq0$ per ogni intero positivo $m$ ed ogni $i>m$. Quindi, se $F$ contiene il filtro di Fr\'echet, $N/F\models m [\hat a]_F\neq 0$ per ogni intero positivo $m$. Dimostriamo \ssf{4} osservando che  $\ZZ_i\models\A x\,\E y\ my=x$ per ogni intero $m$ ed ogni primo $i\nmid m$. Quindi se $F$ \`e un ultrafiltro non principale che contiene l'insieme dei numeri primi,  $N/F\models\A x\,\E y\ my=x$ per ogni $m$. Dimostriamo \ssf{5}. Sia $F$ un ultrafiltro non principale che contiene l'insieme $\{i\,!:i\in I\}$ e sia $\hat a$ la sequenza che ha valore costante $1$. Poich\'e $\ZZ_{i\,!}\models\neg\E x\ mx=1$ per ogni $i>m$, otteniamo $N/F\models\neg\E x\ mx=[\hat a]_F$ per ogni $m>1$.\QED
+\end{exercise}
+
+\begin{exercise}
+Sia $\NN$ l'insieme dei numeri naturali che qui considereremo come una struttura nel linguaggio degli ordini stretti.  Sia $F$ un ultrafiltro in $\P(\omega)$ non principale. Si dimostri che in $\NN^\omega/F$ esiste una sequenza $\<b_i: i\in\omega\>$ tale che $b_{i+1}<b_i$.\QED 
+\end{exercise}
+
+
+% 
+% 
+% \begin{exercise}
+% Sia $\phi(x,y)$ una formula pura, $M$ un modello, $\<a_i:i\in\omega\>$ una sequenza di elementi di $M$ tali che $\phi(a_i,M)\subset\phi(a_{i+1},M)$ per tutti gli $i\in\omega$. Si dimostri, se $F$ \`e un ultrafiltro non principale su $\P(\omega)$, allora in $M^\omega/F$ esiste una sequenza $\<\hat b_i:i\in\omega\>$ tale che $\phi(\hat b_{i+1},M)\subset\phi(\hat b_i,M)$.
+% \end{exercise}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Teorema di compattezza}\label{thmcompattezza}
+Una teoria si dice \emph{finitamente consistente\/} se ogni suo sottoinsieme finito \`e consistente. Il seguente teorema \`e il \textit{fiat lux\/} della logica matematica. 
+
+\begin{theorem}[di compattezza]\label{thmcompattezza}
+Ogni teoria finitamente consistente \`e consistente. 
+\end{theorem}
+
+\begin{proof}
+Sia  $T$ una teoria finitamente consistente. La struttura $N/F$ definita qui sotto \`e il modello di $T$ che ne prover\`a la consistenza. Sia $I$ l'insieme degli enunciati consistenti. Per ogni $\xi\in I$ fissiamo un arbitrario $M_\xi\models\xi$. Per ogni enunciato $\phi$ scriveremo $X_\phi$ per il seguente sottoinsieme di $I$
+
+\ceq{\hfill X_\phi}{=}{\Big\{\xi\in I\ :\ \xi\proves \phi\Big\}}
+
+Si osservi che $\phi$ \`e consistente se e solo se $X_\phi$ non \`e vuoto. Inoltre $X_{\phi\wedge\psi}\ =\ X_\phi\cap X_\psi$. Da questo e dalla consistenza finita di $T$ segue che l'insieme $B=\big\{X_\phi\,:\,\phi\in T\big\}$ gode della propriet\`a dell'intersezione finita. Esiste quindi un ultrafiltro $F$ sull'algebra dei sottoinsiemi di $I$ che contiene $B$. Definiamo
+
+\ceq{\hfill N}{=}{\prod_{\xi\in I}M_\xi}
+
+Per verificare che $N/F\models T$ applichiamo il teorema di \L o\v{s} ad un generico enunciato $\phi$:
+
+\ceq{\hfill N/F\models \phi}%
+{\IFF}%
+{\Big\{\xi\ :\ M_\xi\models\phi\Big\}\ \in\ F\,.}
+
+Si osservi che $X_\phi\subseteq \big\{\xi\ :\ M_\xi\models \phi\big\}$ e si ricordi $F$ \`e stato definito richiedendo che $X_\phi\in F$ per ogni $\phi\in T$. Quindi $N/F\models T$, \textit{et lux fuit}.
+\end{proof}
+
+A volte il teorema di compattezza viene formulato nella seguente forma equivalente.
+
+\begin{corollary}\label{compattezza2}
+Se $T\proves\phi$ allora esiste $S\subseteq T$ finito tale che $S\proves\phi$.
+\end{corollary}
+
+\begin{proof}
+Supponiamo che per ogni  $S\subseteq T$ finito $S\notmodels\phi$. Equivalentemente per ogni $S\subseteq T$ finito esiste un modello $M\models S\cup\{\neg\phi\}$. Questo vuol dire che $T\cup\{\neg\phi\}$ \`e finitamente consistente. Quindi esiste un modello di $T\cup\{\neg\phi\}$ e quindi $T\notmodels \phi$.
+\end{proof}
+
+Concludiamo il paragrafo con alcuni esempi di applicazione del teorema di compattezza. I pi\`u semplici riguardano l'assiomatizzabilit\`a finita. Una teoria $T$ si dice \emph{finitamente assiomatizzabile\/} se esiste una teoria finita $S$ tale che $\ccl(S)=\ccl(T)$.
+
+\begin{proposition}\label{finaxsub} Per ogni teoria $T$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $T$ \`e finitamente assiomatizzabile;
+\item[2.] Esiste $S\subseteq T$ finito tale che $S\proves T$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+Dimostriamo la direzione non banale \ssf{1}\,$\IMP$\,\ssf{2}. Se $T$ \`e finitamente assiomatizzabile, prendendo la congiunzione dei suoi assiomi otteniamo un enunciato $\phi$ tale che $\ccl(\phi)=\ccl(T)$. Quindi $T\proves\phi\proves T$. Per la proposizione~\ref{compattezza2} esiste $S\subseteq T$ finita tale che $S\proves \phi$. Quindi anche $S\proves T$.
+\end{proof}
+
+Quando il linguaggio \`e vuoto ogni insieme \`e una struttura. Chiameremo \emph{teoria degli insiemi infiniti\/} l'insieme degli enunciati del linguaggio vuoto che vaglono in tutti gli insiemi infiniti.
+
+\begin{corollary} 
+Il linguaggio \`e vuoto. La teoria degli insiemi infiniti non \`e finitamente assiomatizzabile. 
+\end{corollary}
+
+\begin{proof}
+Denotiamo con $T_{\infty}$ la teoria contiene gli enunciati $\E^{\ge n}x\;(x=x)$ per ogni intero positivo $n$. Chiaramente i modelli di $T_{\infty}$ sono tutti e soli gli insiemi infiniti. Segue che $\ccl(T_{\infty})$ \`e la teoria degli insiemi infiniti. Se questa fosse finitamente assiomatizzabile, per la proposizione~\ref{finaxsub}, avremmo che $\E^{\ge n}x (x=x)\proves T_{\infty}$ per un qualche $n$. Ma questo \`e contraddetto da un qualsiasi insieme di cardinalit\`a $n+1$.
+\end{proof}
+
+
+\def\ceq#1#2#3{\parbox{8ex}{$\displaystyle #1$}\parbox{5ex}{\hfil$#2$}$\displaystyle #3$}
+
+Il teorema di compattezza \`e lo strumento ideale per mostrare che una data propriet\`a non \`e esprimibile con una formula del prim'ordine. Il seguente esempio dimostra quanto affermato senza prova nel commento all'esercizio~\ref{ex_grafo_bipartito}.
+
+\begin{example}
+Il linguaggio contiene solo un predicato binario $r$. Sia $\K$ la seguente classe di strutture
+
+
+\ceq{\hfill \K}{=}{\Big\{M\ :\ \textrm{esiste }A\subseteq M\textrm{ tale che }r^M\ \subseteq\ (A\times \neg A)\;\cup\;(\neg A\times A)\Big\}}
+
+
+Mostriamo che $\K$ non \`e finitamente assiomatizzabile.
+
+Servono alcune definizioni. Scriviamo $\dot r(x,y)$ per la formula $r(x,y)\vee r(y,x)$. Un \textit{percorso di lunghezza $n$} nella struttura $M$ \`e una sequenza $c_1,\dots,c_n\in M$ tale che $\dot r(c_i,c_{i+1})$ per ogni $1\le i<n$. Diremo che questo percorso \textit{collega $c_1$ con $c_n$}. Un percorso \`e \textit{chiuso\/} se $c_1=c_n$. Una \textit{componente connessa\/} di $M$ \`e un sottoinsieme massimale di punti tra loro collegati da un percorso.
+
+Mostriamo ora che la seguente teoria $T$ assiomatizza $\K$:
+
+\ceq{\hfill T}{=}{\Bigg\{\neg\E x_1,\dots x_n \Bigg[\bigwedge^{n-1}_{i=1} \dot r(x_i,x_{i+1}) \wedge x_1=x_n \Bigg]\ \ :\ \ n \textrm{ pari}\Bigg\}}
+
+Questa teoria dice, con un numero infinito di enunciati, che non esistono percorsi chiusi di lunghezza dispari. 
+
+Una volta dimostrato che $T$ assiomatizza la classe $\K$ il nostro compito si riduce a dimostrare che $T$ non \`e finitamente assiomatizzabile. Questo \`e semplice: se lo fosse, per la proposizione~\ref{finaxsub} esisterebbe una teoria finita $S\subseteq T$ che assiomatizza $\K$. Un qualsiasi grafo costituito da un unico ciclo chiuso di lunghezza sufficientemente grande modella $S$. Quindi prendendo un ciclo di lunghezza dispari otteniamo una contraddizione.
+
+L'inclusione $\K\subseteq\Mod(T)$ \`e immediata. Mostriamo l'inclusione $\Mod(T)\subseteq\K$. Dato $M\models T$ fissiamo un insieme $A_o\subseteq M$ scegliendo esattamente un elemento per ogni componente connessa di $M$. %contenente elementi non collegati da alcun percorso e che \`e massimale con questa propriet\`a. Quindi ogni elemento di $M$ \`e collegato ad un (unico) elemento di $A_o$. 
+Sia $A$ l'insieme 
+
+\ceq{\hfill A}{=}{\Bigg\{b\ :\ M\models\E x_1,\dots x_n \Bigg[\bigwedge^{n-1}_{i=1} \dot r(x_i,x_{i+1}) \wedge a=x_1\wedge x_n=b\Bigg] \textrm{ per }a\in A_o\textrm{ ed }n\textrm{ dispari}\Bigg\}}
+
+Mostriamo ora che $\dot r^M\ \subseteq\ (A\times \neg A)\;\cup\;(\neg A\times A)$ e quindi che $M\in\K$. Dobbiamo verificare che se $r(b,c)$ allora non pu\`o essere n\'e $b,c\in A$ n\'e $b,c\notin A$. 
+
+Assumiamo $r(b,c)$ e supponiamo per assurdo che $b,c\in A$ (il caso $b,c\notin A$ \`e simile). Poich\'e $b$ e $c$ appartengono alla stessa componente connessa esiste un $a\in A_o$ e due percorsi $b_1,\dots,b_n$ e $c_1,\dots,c_m$, con $n$ ed $m$ entrambi dispari, che collegano $a=b_1=c_1$ ai punti $b=b_n$ e $c=c_m$. Ricordando che $r(b_n,c_m)$ possiamo costruire un percorso chiuso $a,b_1,\dots,b_n,c_m,\dots,c_1,a$. Questo \`e un percorso chiuso di lunghezza dispari che contraddice $M\models T$.\QED
+\end{example}
+
+
+
+\section{Realizzazioni di tipi e L\"owenheim-Skolem all'ins\`u}
+ 
+Diremo \emph{tipo\/} per un insieme di formule. Generalmente indicheremo esplicitamente nella notazione le variabili che possono occorrere nelle formule che il tipo contiene: scriveremo \emph{$p(x)$}, \emph{$q(x)$}, ecc.\@ dove $x$ \`e una tupla di variabili. La nozione di tipo generalizza sia quella di formula quella di teoria. Se $p(x)$ \`e finito, lo identificheremo con la congiunzione delle formule che contiene; se $x$ \`e la tupla vuota, il tipo $p(x)$ \`e una teoria. Si noti che la tupla $x$ pu\`o essere infinita. Tipicamente $p(x)\subseteq L(A)$ per qualche insieme di parametri $A$. Se $A=\0$ diremo che il tipo \`e \emph{puro}. 
+
+Scriveremo \emph{$M\models p(a)$} se $M\models\phi(a)$ per ogni formula in $p(x)$ e diremo che $a$ \`e una \emph{soluzione\/} o una \emph{realizzazione\/} di $p(x)$. Un'altra notazione spesso usata \`e \emph{$M,a\models p(x)$} o, quando $M$ \`e chiaro dal contesto, anche \emph{$a\models p(x)$}. Diremo che $p(x)$ \`e \emph{consistente\/} (o \emph{coerente}) \emph{in $M$\/} se ha soluzione in $M$ e in questo caso scriveremo \emph{$M\models\E x\,p(x)$}.  Diremo che $p(x)$ \`e \emph{consistente\/} tout court se \`e consistente in qualche modello. \`E sottinteso che, se si tratta di un tipo con parametri, il modello deve contenere i parametri.
+
+Un tipo $p(x)$ si dice \emph{finitamente consistente\/} se ogni suo sottoinsieme finito \`e consistente, si dice finitamente consistente \emph{in $M$\/} se ogni suo sottoinsieme finito \`e consistente in $M$.% Adattiamo la dimostrazione del teorema di compattezza per ricavare il seguente risultato pi\`u generale.
+
+\begin{theorem}\label{compattezzatipi}
+Un tipo puro $p(x)$ finitamente consistente \`e consistente. Inoltre, per ogni modello $M$, ogni tipo a parametri in $M$ e finitamente consistente in $M$, \`e realizzato in un'estensione elementare di $M$. 
+\end{theorem}
+
+\begin{proof}
+ 
+Espandiamo il linguaggio $L$ con un nuovo simbolo di costante $c$. Sia $L'$ il nuovo linguaggio. Sostituendo $x$ con $c$ nelle formule in $p(x)$ otteniamo una teoria $p(c)$ nel linguaggio $L'$. \`E immediato osservare che $p(c)$ \`e finitamente consistente. Per il teorema di compattezza $p(c)$ ha un modello $N'$. Sia $N$ il ridotto di $N'$ ad $L$, cio\`e il modello che si ottiene da $N'$ dimenticando l'interpretazione di $c$.  Chiaramente $N$ realizza $p(x)$. 
+
+Per dimostrare la seconda affermazione, fissiamo una tupla $a$ che enumera $M$. Un tipo su $M$ \`e della forma $p(x,a)$ dove $p(x,z)$ \`e puro. Definiamo il tipo
+
+\ceq{\hfill q(z)}{=}{\big\{\phi(z)\ :\ M\models \phi(a)\big\}}
+
+Ora osserviamo che, ovviamente, $q(z)\cup p(x)$ \`e finitamente consistente. Infatti, \`e finitamente consistente in $M$. Per quanto dimostrato sopra esiste un modello $N$ e delle tuple $c,d$ di elementi di $N$ tali che $N\models q(c)\cup p(d)$. Ora \`e immediato verificare che se $h=\{\<a_i,c_i\>\ :\ i<|a|\}$, allora $h:M\imp N$ \`e un immersione e quindi $h[M]$ \`e una sottostruttura di $N$ isomorfa ad $M$.
+
+\hfil $h[M]\models\phi(ha)\ \ \IMP\ \  M\models \phi(a)\ \  \IMP\ \  \phi(z)\in q(z)\ \   \IMP\ \  N\models \phi(a)$
+
+Quindi $h[M]\preceq N$. Il teorema segue identificando le strutture $h[M]$ e $M$ in quanto isomorfe.
+\end{proof}
+
+Come immediato corollario otteniamo il seguente:
+
+\begin{theorem}[di L\"owenheim-Skolem all'ins\`u]
+Ogni struttura infinita ha estensioni elementari di cardinalit\`a arbitrariamente grande.
+\end{theorem}
+
+\begin{proof}
+Sia $x=\<x_i:i<\lambda\>$ una tupla di variabili di lunghezza $\lambda$, un qualsiasi cardinale infinito. Definiamo $p=\big\{x_i\neq x_j: i<j<\lambda\big\}$. Una struttura che realizza il tipo $p$ deve avere cardinalit\`a $\ge\lambda$. Se $M$ \`e una struttura infinita, $p$ \`e finitamente consistente in $M$. Quindi esiste $N\succeq M$ che realizza $p$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Catene elementari}
+
+Una \emph{catena elementare\/} \`e una catena $\<M_i:i<\lambda\>$ di strutture tali che $M_i\preceq M_j$ per ogni $i<j<\lambda$. L'\emph{unione\/} o il \emph{limite\/} della catena \`e la struttura che ha come dominio
+
+\hfil$\displaystyle M\ \ =\ \ \bigcup_{i<\lambda}M_i$
+
+e come e relazioni e funzioni l'unione delle relazioni e delle funzioni delle strutture $M_i$. 
+
+
+\begin{lemma}[delle catene elementari di strutture]\label{cateneelementarim}
+Sia $\<M_i:i\in\lambda\>$, una catena elementare di strutture. Sia $M$ l'unione della catena. Allora $M_i\preceq M$ per ogni $i<\lambda$.
+\end{lemma}
+
+\def\ceq#1#2#3{%
+\parbox{20ex}{\hfill$\displaystyle #1$}%
+\parbox{5ex}{\hfil$#2$}%
+\parbox{15ex}{$\displaystyle #3$}}
+
+\begin{proof}
+Mostriamo per induzione sulla sintassi della formula pura $\phi(x)$ che l'equivalenza
+
+\ceq{M_i\models\phi(a)}{\IFF}{M\models\phi(a)}
+
+vale per ogni $a$ in $M_i$ e per ogni $i<\lambda$. Poich\'e $M_i\subseteq M$, l'affermazione vale per le formule senza quantificatori per il lemma~\ref{immersioniqfeq}. Il passo induttivo per i connettivi booleani \`e immediato. Mostriamo il passo induttivo per il quantificatore esistenziale.
+
+\ceq{M_i\models\E y\,\phi(a,y)}{\IMP}{M_i\models\phi(a,b)} per un qualche $b\in M_i$.
+
+\ceq{}{\IMP}{M\models\phi(a,b)} per un qualche $b\in M_i\subseteq M$
+
+Nel secondo passaggio abbiamo applicato l'ipotesi induttiva alla formula $\phi(a,b)$ ed all'indice $i$. Ora dimostriamo l'altra implicazione.
+
+\ceq{M\models\E y\,\phi(a,y)}{\IMP}{M\models\phi(a,b)} per un qualche $b\in M$
+
+Fissiamo un $j<\lambda$ tale che $b\in M_j$ e applichiamo l'ipotesi induttiva alla formula $\phi(a,b)$ e all'indice $j$ (abbiamo assunto l'ipotesi induttiva per tutti gli indici $<\lambda$).
+
+\ceq{}{\IMP}{M_j\models\phi(a,b)} per un qualche $b\in M_j$
+
+\ceq{}{\IMP}{M_j\models\E y\,\phi(a,y)}
+
+\ceq{}{\IMP}{M_i\models\E y\,\phi(a,y)}
+
+Quest'ultimo passaggio vale perch\'e $M_i\preceq M_j$ oppure, nel caso $j<i$, perch\'e $M_j\preceq M_i$.
+\end{proof}
+
+\begin{exercise}
+Sia  $\<M_i:i<\lambda\>$ una catena di strutture (non necessariamente elementare). Ovvero $M_i\subseteq M_j$ per ogni $i<j<\lambda$. Sia $M_\lambda$ l'unione della catena. Si dimostri se $\phi(x,y)\in L$ \`e una formula senza quantificatori tale che $M_i\models\A x\E y\,\phi(x,y)$ per ogni $i<\lambda$, allora anche $M_\lambda\models\A x\E y\,\phi(x,y)$.\QED
+\end{exercise}
+
+
+
+
+
+%\end{document}
+
+\begin{comment}
+Quindi assumiamo l'antecendete e definiamo per induzione transfinita una catena di insiemi $B_i$ con le seguenti propriet\`a:
+\begin{itemize}
+\item[1.]\noindent\smash{$\displaystyle B_i\subseteq \bigcup_{j<i} A_j$}\ \ \ e\ \ \  $B_i\cap A_j\neq \0$ per ogni $j<i$
+\item[2.]per ogni $J\subseteq\lambda$ finito, esiste un filtro $F$ tale che \smash{$B_i\ \subseteq\ F\ \in\ \displaystyle\bigcap_{i\in J}\big[A_i\big]_\PP$}.
+\end{itemize}
+\`E immediato che un qualsiasi filtro primo che contiene $B_\lambda$ dimostra il lemma. Cominciamo con fissare $B_0=\0$, l'unica scelta che soddisfa \ssf{1}. Per ipotesi questa scelta soddisfa \ssf{2}. Supponiamo di avere gi\`a costruito $B_i$ con le propriet\`a richieste per ogni $i<\alpha$ e definiamo $B_\alpha$. Se $\alpha$ \`e un ordinale limite, \`e sufficente porre
+
+\ceq{$B_\alpha$}{$\deq$}{$\displaystyle\bigcup_{i<\alpha} B_i$.}
+
+\`E immediato verificare che questa definizione preserva due propriet\`a richieste. Se $\alpha$ \`e successore, diciamo $\alpha=i+1$ allora dobbiamo mostrare che per qualche $a\in A_i$ l'insieme $B_{i+1}=B_i\cup\{a\}$ verifica \ssf{2}. Argomentiamo per assurdo. Assumniamo che per ogni $a\in A_i$ esiste un $J_a\subseteq\lambda$ finito tale che $B_i\cup\{a\}\ \nsubseteq\ F$ per ogni \smash{$F\ \in\ \displaystyle\bigcap_{j\in J_a}\big[A_j\big]_\PP$}. Quindi, con $J=\displaystyle\{i\}\cup\bigcap_{a\in A_i}J_a$, contradiciamo l'ipotesi induttiva.
+\end{proof}
+
+
+
+
+\end{comment}

@@ -1,0 +1,57 @@
+\chapter*{Prefazione}
+\addcontentsline{toc}{chapter}{Prefazione}
+\vskip-9ex\hfill  Versione $\epsilon$
+\vskip9ex
+
+Questa \`e un'introduzione alla logica matematica (dove per \textit{logica matematica\/} si intende per il momento principalmente \textit{teoria dei modelli}). Manca materiale che aggiunger\`o nelle prossime versioni. Gli ultimi capitoli sono lacunosi e confusionari, anche a questo spero di poter porre rimedio il prima possibile.
+
+I primi 7 capitoli coprono un programma da 6 cfu al terz'anno della Laurea Triennale. Gli ultimi capitoli coprono un programma da 6 cfu al prim'anno della Laurea Magistrale. 
+
+Ci sono molti \textit{esercizi\/} di diversa difficolt\`a. Tranne i pi\`u ovvi e i pi\`u noiosi tutti o quasi sono stati assegnati e risolti da autentici studenti e sono dunque \textit{fattibili\/} (si tenga presente che gli studenti di Torino sono generalmente abbastanza bravi).
+
+\`E mia intenzione aggiornare periodicamente questi appunti e \textit{mai\/} dichiarare una versione \textit{definitiva}. (Perch\'e \textit{definitivo\/} \`e sinonimo di \textit{dismesso}.) Non esitate a contattarmi per suggerimenti, dubbi, o segnalazione di errori.
+
+\bigskip
+\hfill Torino, \today
+
+
+\section*{Alcune scelte espositive che sento il bisogno di commentare.}
+%\addcontentsline{toc}{section}{Elenco delle principali eccentricit\`a}
+
+
+\begin{itemize}
+\item[1.] Amalgami di strutture pervadono i capitoli centrali. Nei capitoli~\ref{relazionali} e~\ref{algebra} ho introdotto la maggior parte delle strutture notevoli (ordini lineari densi, grafi aleatori, campi algebricamente chiusi, ecc.) come \emph{modelli ricchi\/} (cio\`e omogenei-universali). Anche la saturazione \`e discussa in questo modo, vedi capitolo~\ref{saturazione}.\medskip
+
+Ho per\`o intenzionalmente evitato di usare il termine \emph{amalgami di Fra\"\i ss\'e}. La teoria degli amalgami Fra\"\i ss\'e \`e da un lato troppo astratta, dall'altro non sufficientemente generale. Per esempio, la terminologia non \`e adatta per trattare linguaggi funzionali, strutture di cardinalit\`a arbitraria, morfismi diversi dalle immersioni parziali.
+
+\item[2.] L'eliminazione dei quantificatori nei \emph{campi algebraicamente chiusi\/} e relativa dimostrazione del Nullstellensatz (capitolo~\ref{algebra}) \`e discussa in modo forse un po' troppo pedante, ma le dimostrazioni che si leggono comunemente nei testi lasciano troppo all'immaginazione del lettore.
+
+\item[3.] La dimostrazione del teorema di \emph{omissione dei tipi} si discosta parecchio da quella usuale. Le motivazioni le ho riportate nell'introduzione del capitolo~\ref{numerabili}. Se un giorno aggiunger\`o un capitolo sulla logica continua, questo approccio torner\`a utile.
+
+\item[4.]   Lo spazio dei tipi \emph{$S_x(A)$}, nella mia percezione,  \`e un oggetto troppo sintattico. Quando possibile, preferisco parlare di $\U^{|x|}$ che tratto come uno spazio topologico compatto con la topologia indotta da $L_x(A)$ e identifico con $\U^{|x|}/{\equiv}_A$.
+
+\item[5.]
+Per me gli \emph{immaginari\/} sono semplicemente insiemi definibili (capitoli~\ref{immaginariA} e~\ref{immaginariB}). Che ragione c'\`e per pensarli come classi di equivalenza? Lo scopo \`e avere un nome canonico per ogni insieme definibile, e cosa c'\`e di pi\`u canonico dell'insieme stesso? Quindi $\U^\eq$ pu\`o essere pi\`u semplicemente immaginato come una particolare espansione al secondo ordine.
+
+\item[6.] Quando possibile, sostituisco \emph{tipi globali\/} con sottoinsiemi di $\U$ esternamente definibili. Quindi invece che parlare della \emph{definibilit\`a dei tipi\/} preferisco parlare della \emph{definibilit\`a\/} (interna) degli \emph{insiemi esternamente definibili}. (N.B.\@ Gli insiemi esternamente definibili sono chiamati anche insiemi approssimabili.)
+
+\item[7.] Per dimostrare l'eliminazione dei quantificatori dell'\emph{espansione di Shelah\/} invece usare tipi con definizioni \textit{oneste\/}, uso insiemi con approssimazioni dall'interno (definiti nel paragrafo~\ref{approxmonotone}). La dimostrazione \`e comunque la stessa di Chernikov-Simon.
+\end{itemize}
+
+% 
+% 
+ \section*{Alcune notazioni e termini non comuni.}
+% %\addcontentsline{toc}{section}{Alcune notazioni e termini non comuni}
+
+Ho cercato di usare la notazione e la terminologia pi\`u comune, quando non mi \`e stato possibile l'ho fatto notare. Per chi salta le prime 50 pagine un breve sommario della notazione meno ovvia:
+
+
+\begin{itemize}
+
+\item[1.] \emph{$L(A)$\/} \`e l'insieme delle formule del linguaggio $L$ con parametri in $A$. Il simbolo \emph{$L$\/} \`e usato anche per denotare l'insieme delle formule pure. Scrivo \emph{$L_z(A)$} se voglio limitare le variabili a quelle della tupla $z$. Quindi \emph{$\Lo(A)$} \`e l'insieme degli enunciati a parametri in $A$.
+
+\item[2.] \emph{$\aL$\/} \`e l'insieme delle formule atomiche, \emph{$\pmaL$\/} \`e l'insieme delle formule atomiche e negate atomiche, \emph{$\qfL$\/} \`e l'insieme delle formule senza quantificatori.
+
+\item[3.] \emph{$\Diag(M/A)$\/} \`e l'insieme degli enunciati in $\pmaL(A)$ veri in $M$. Questo si chiama anche \emph{diagramma\/} di \emph{$\<A\>_M$}, ovvero della sottostruttura di $M$ generata da $A$. Anche, $\Diag(M)$ \`e chiamato la \emph{caratteristica\/} di $M$. 
+
+\end{itemize}

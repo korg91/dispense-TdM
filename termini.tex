@@ -1,0 +1,333 @@
+\chapter{Strutture, termini, sottostrutture}\label{termini}
+%\setcounter{page}{1}
+
+Questo capitolo comincia con la definizione di struttura e termina con quella di sottostruttura. Prima introdurremo la nozione di linguaggio poi discuteremo la sintassi e la semantica dei termini (un concetto che generalizza a strutture arbitrarie quello dei polinomi negli anelli commutativi).
+
+
+\section{I linguaggi del prim'ordine}
+
+Un \emph{linguaggio (del prim'ordine)\/}\index{linguaggio!(del prim'ordine)} consiste di:
+
+\begin{itemize}
+\item Un insieme $L$ che \`e unione di due insiemi disgiunti \emph{$L_{\rm\bf rel}$\/}\index{0Lrel@$L_{\rm rel}$} e \emph{$L_{\rm\bf fun}$}\index{0Lfun@$L_{\rm fun}$}. Gli elementi di $L_{\rm rel}$ sono chiamati \emph{simboli di relazione}\index{simbolo!di relazione}\index{relazione!simbolo di}, gli elementi di $L_{\rm fun}$ si chiamano \emph{simboli di funzione}\index{simbolo!di funzione}\index{funzione!simbolo di}.
+\item Una funzione \emph{Ar} $:L\to\omega$\index{Ar} detta \emph{ariet\`a\/}\index{ariet\`a} che assegna ad ogni elemento del linguaggio un numero naturale non negativo.
+\end{itemize}
+
+Spesso ci riferiremo al linguaggio nominando semplicemente l'insieme $L$. (Ma avvertiamo fin da subito il lettore che pi\`u avanti lo stesso simbolo indicher\`a anche l'insieme delle formule del linguaggio.)
+
+Tipicamente useremo il simbolo $r$ per denotare un generico predicato ed il simbolo $f$ per denotare un generico simbolo di funzione. Useremo dire che $f$ \`e un simbolo di \emph{funzione unaria}, o \emph{binaria}, \emph{ternaria},\dots,\emph{$n$-aria}, ecc., per dire che il valore di $\Ar(f)$ \`e $1, 2, 3,\dots,n$, ecc. Similmente per le relazioni. I simboli di funzione $0$-arie si chiamano anche \emph{costanti\/}\index{costante}. Qualche autore usa una categoria apposita per le costanti, ma considerarle come simboli di funzione $0$-arie compatta la notazione.
+
+Spesso per comodit\`a denoteremo gli elementi del linguaggio con simboli che suggeriscono un significato. Ribadiamo per\`o che gli elementi di $L$ sono oggetti qualsiasi, conta solo la loro ariet\`a. Sarebbe legittimo prendere come $L$ un sottoinsieme dei numeri naturali, o addirittura dei numeri reali. Non serve che $L$ sia finito e neppure numerabile.
+
+Useremo il termine \emph{segnatura\/}\index{segnatura} come sinonimo di {\it linguaggio}. In letteratura occorre anche il termine \emph{tipo di similarit\`a}. La specificazione del \textit{prim'ordine\/} verr\`a spesso omessa.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Le strutture del prim'ordine}
+\label{strutture}
+
+Una \emph{struttura (del prim'ordine)\/}\index{struttura} $M$ di segnatura $L$ consiste di:
+
+\begin{itemize}
+\item Un insieme, detto \emph{dominio}\index{dominio (di struttura)}, o \emph{supporto}\index{supporto}, o anche \emph{universo\/}\index{universo (di struttura)} della struttura, che denoteremo con lo stesso simbolo $M$.
+\item Una funzione che assegna ad ogni simbolo per relazione $r$ una relazione \emph{$r^M$} $\subseteq M^{\Ar(r)}$\index{0rM@$r^M$}. Questa relazione si chiama l'\emph{interpretazione di $r$ in $M$}\index{interpretazione!del linguaggio}.  E assegna ad ogni simbolo per funzione $f$ una funzione \emph{$f^M$} $: M^{\Ar(f)}\to M$\index{0fM@$f^M$}. La funzione $f^M$ si chiama \emph{interpretazione di $f$ in $M$}.
+\end{itemize}
+
+Serve chiarire il significato che daremo alle funzioni e alle relazioni $0$-arie. Questo \`e puramente convenzionale\index{funzione!0-aria}. Per definizione poniamo $M^0=\{\0\}$. Una funzione $0$-aria \`e dunque una funzione che mappa l'unico elemento di $M^0$ in un qualche elemento di $M$. Interpretare un simbolo di funzione zero-aria corrisponde quindi a scegliere un elemento del dominio. Se $c$ \`e un simbolo di funzione $0$-aria scriveremo $c^M$ invece di $c^M(\0)$. I simboli di funzioni $0$-arie vengono detti \emph{costanti}. %In alcuni testi il linguaggio viene definito contenere, oltre che predicati e funzioni, anche una terza categoria sintattica: le costanti. Qui noi abbiamo preferito usare il noto `trucco'' delle funzioni $0$-arie che fa risparmiare un po' sulla notazione.
+
+Un predicato $0$-ario invece ha ben poco significato: ha solo due possibili interpretazioni, $\0$ e $\{\0\}$, e non ne faremo mai uso.
+
+A volte il termine \emph{modello\/} viene usato al posto di struttura (altre volte, ma ben pi\`u avanti, al termine modello attribuiremo un significato pi\`u ristretto).
+
+\begin{example}\label{LgaLgmLau}
+Il \emph{linguaggio dei gruppi additivi\/}\index{linguaggio!dei gruppi additivi} contiene i seguenti tre simboli di funzione:
+\begin{itemize}
+\item una costante (ovvero funzione di ariet\`a $0$):\ \ \ \  $0$
+\item un simbolo di funzione unaria (ovvero ariet\`a $1$):\ \ \ \   $-$
+\item un simbolo di funzione binaria (ovvero ariet\`a $2$):\ \ \ \  $+$
+\end{itemize}
+Il \emph{linguaggio dei gruppi moltiplicativi\/}\index{linguaggio!dei gruppi moltiplicativi}  contiene invece i simboli:
+\begin{itemize}
+\item una costante (ovvero funzione di ariet\`a $0$):\ \ \ \  $1$
+\item un simbolo di funzione unaria (ovvero ariet\`a $1$):\ \ \ \   ${}^{-1}$
+\item un simbolo di funzione binaria (ovvero ariet\`a $2$):\ \ \ \  $\cdot$
+\end{itemize}
+Una struttura nel linguaggio dei gruppi additivi consiste di un insieme $M$, un elemento $0^M$ di $M$, una funzione unaria $-^M$, e una funzione binaria $+^M$. Analogamente per strutture con la segnatura dei gruppi moltiplicativi. Infine il \emph{linguaggio degli anelli (unitari)\/}\index{linguaggio!degli anelli} estende quello dei gruppi additivi con i seguenti simboli di funzione:
+\begin{itemize}
+\item la costante:\ \ \ \  $1$
+\item il simbolo di funzione binaria:\ \ \ \  $\cdot$
+\end{itemize}
+Il \emph{linguaggio degli anelli ordinati\/}\index{linguaggio!deglianelli ordinati} estende quello degli anelli con\nobreak 
+\begin{itemize}
+\item un predicato binario:\ \ \ \  $<$
+\end{itemize}
+Sottolineiamo che per il momento ci stiamo limitando a descrivere la sintassi quindi gli unici vincoli che abbiamo sull'interpretazione dei simboli \`e dato dall'ariet\`a e dal fatto che siano funzioni totali.
+\end{example}
+
+\begin{example}\label{linguaggio_spazi_vettoriali}
+La scelta del linguaggio degli spazi vettoriali \`e meno ovvia delle precedenti. Potremo giustificare la scelta solo nel paragrafo~\ref{sottostrutture} osservando che questo \`e il linguaggio che fa coincidere le sottostrutture con i sottospazi vettoriali. 
+
+Sia $K$ un campo. Il \emph{linguaggio degli spazi vettoriali su $K$\/}\index{linguaggio!degli spazi vettoriali su $K$}, $L_K$, estende quello dei gruppi additivi con un simbolo di funzione unaria per ogni $k\in K$. Ricordiamo che spazio vettoriale su $K$ \`e un gruppo abeliano $M$ su cui $K$ agisce. L'azione di $K$ su $M$ \`e una funzione $\mu:K\times M\imp M$ che soddisfa alcune propriet\`a che diamo per note (non rilevanti per il momento). Noi qui penseremo uno spazio vettoriale come una struttura di segnatura $L_K$, l'interpretazione dei simboli del linguaggio dei gruppi additivi \`e quella naturale dato che $M$ \`e un gruppo abeliano, l'interpretazione del simbolo $k\in K$ \`e la funzione $k^M: a\mapsto \mu(k, a)$, il prodotto del vettore $a$ per lo scalate $k$. Si noti che $L_K$ contiene due zeri diversi: una costante ed una funzione unaria.
+\end{example}
+
+\begin{example}
+Il \emph{linguaggio degli ordini stretti}\index{linguaggio!degli ordini stretti} contenete un solo simbolo di relazione binaria $<$ che useremo con notazione infissa.
+\end{example}
+
+\begin{example}
+Il \emph{linguaggio dei grafi}\index{linguaggio!dei grafi} contiene un'unica relazione binaria $r$. In combinatoria, per grafo si intende un insieme di \textit{vertici\/} e un insieme di coppie non ordinate dette \textit{archi}. In teoria dei modelli si preferisce trattare con coppie ordinate, quindi normalmente per \emph{grafo\/} si intende una struttura $M$ del linguaggio dei grafi in cui $r^M$ \`e una relazione irriflessiva e simmetrica.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Le tuple}
+
+Per chi non ha familiarit\`a con gli ordinali ricordiamo che un ordinale finito \`e un insieme della forma $\{i\,:\,0\le i<n\}$, dove $n$ \`e un numero naturale. \`E comune usare \emph{$n$\/} per denotare questo insieme: quindi $i<n$ e $i\in n$ sono espressioni sinonime. Pi\`u avanti avremo bisogno anche di ordinali infiniti, ma per i primi capitoli l'unico ordinale infinito di cui avremo bisogno \`e \emph{$\omega$}, l'insieme di tutti gli ordinali finiti, che pu\`o essere identificato con $\NN$, l'insieme dei numeri naturali.
+
+Sia $A$ un insieme arbitrario ed $\alpha$ un ordinale. Una \emph{tupla\/} di elementi $A$ di \emph{lunghezza\/} $\alpha$ \`e una mappa $a:\alpha\to A$. Per $i<\alpha$, diremo che $a(i)$ \`e l'$i$-esimo elemento della tupla e lo denoteremo con \emph{$a_i$}.  Spesso scriveremo  \emph{$a=\<a_i: i<\alpha\>$}\index{0a0al@$\<a_i: i<\alpha\>$} per presentare la tupla $a$.  Oppure, quando $\alpha$ \`e un ordinale finito, possiamo anche usare la notazione \emph{$a=\<a_0,\dots,a_{\alpha-1}\>$}\index{0a1an@$\<a_1,\dots,a_n\>$}. 
+
+Quando la tupla $a$ \`e suriettiva su $A$, diremo che \`e una \emph{enumerazione\/}\index{enumerazione} di $A$.
+
+
+La lunghezza della tupla $a$ viene denotata con \emph{$|a|$}. L'insieme delle tuple di lunghezza $\alpha$ viene denotato con $A^\alpha$. Quando $\alpha$ \`e finito confonderemo le tuple di lunghezza $\alpha$ con gli elementi della potenza cartesiana $A^\alpha$. Confonderemo le sequenze di lunghezza $1$ con gli elementi di $A$. 
+
+Si osservi che esiste un'unica tupla di lunghezza $0$, la \emph{tupla vuota} che \`e la funzione vuota $\0$. Come gi\`a spiegato nel paragrafo~\ref{strutture} si conviene che $A^0$ sia l'insieme $\{\0\}$, anche quando $A$ \`e vuoto, in questo modo $a\in A^{|a|}$ continua a valere anche nel caso degenere della tupla vuota anche quando $A$ \`e vuoto.
+
+Spesso useremo concatenare due o pi\`u tuple. Siano $a$ e $b$ due tuple. Scriveremo \emph{$a\,b$\/} oppure anche \emph{$a,b$\/} per denotare la \emph{concatenazione\/}\index{concatenazione} di $a$ e $b$. Precisamente, nel caso di tuple finite, se $a=\<a_0,\dots,a_{n-1}\>$ e  $b=\<b_0,\dots,b_{m-1}\>$ allora $a\,b=\<a_0,\dots,a_{n-1},b_0,\dots,b_{m-1}\>$.% L'operazione di concatenazione \`e associativa. La tupla vuota \`e l'elemento neutro di questa operazione. Le tuple finite formano quindi un monoide, cio\`e un semigruppo con elemento neutro.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{La sintassi dei termini}\label{terminidef}
+Chiameremo, per intenderci, \textit{funzioni primitive\/}\index{funzione!primitiva} della struttura le funzioni che interpretano i simboli in $L_{\rm fun}$. Vogliamo ora introdurre dei nomi per le funzioni che si ottengono componendo in modo arbitrario le funzioni primitive. L'esempio paradigmatico \`e quello del linguaggio degli anelli: qui componendo la somma e la moltiplicazione otteniamo le funzioni polinomiali. I polinomi sono le espressioni sintattiche che fungono da nomi per le funzioni polinomiali.
+
+Fissiamo un insieme infinito $V$ i cui elementi chiameremo \emph{variabili}\index{variabile}. Useremo le lettere minuscole $x$, $y$, $z$, ecc.\@ per denotare variabili o arbitrarie tuple di variabili. Di nuovo questa \`e solo una comodit\`a che aiuta la lettura: come insieme $V$ potremmo prendere qualsiasi cosa, importante \`e che sia disgiunto da $L$ e sufficientemente grande (per i primi capitoli basta numerabile). L'insieme $V$ non verr\`a mai esplicitato nella notazione.
+
+\begin{definition}\label{deftermine} 
+I \emph{termini\/}\index{termine} sono sequenze finite di variabili e simboli di funzione. Precisamente, i termini sono le sequenze che si ottengono seguendo il seguente processo induttivo:
+
+\begin{itemize}
+\item[b.] ogni variabile (intesa come una sequenza di lunghezza $1$) \`e un termine;
+\item[i.] se $f$ \`e un simbolo di funzione $n$-aria e $\bar t$ una sequenza ottenuta concatenando $n$ termini (quindi la sequenza vuota se $n=0$), allora anche $f\,\bar t$ \`e un termine. Con $f\,\bar t$ intendiamo la sequenza ottenuta prefissando $\bar t$ con $f$.\QED
+\end{itemize}
+\end{definition}
+
+I termini che vengono costruiti senza l'uso di variabili, cio\`e senza mai applicare \ssf{b}, si chiamano \emph{termini chiusi}\index{termine!chiuso}.  I termini costruiti senza l'uso di simboli per funzioni, si chiamano \emph{termini atomici}\index{termine!atomico}. Si osservi che le costanti sono dei termini che si ottengono applicando la clausola induttiva \ssf{i} alla tupla vuota. Quindi per noi non sono termini atomici.% In questo capitolo quando diremo semplicemente \emph{termine}, indendiamo un termine puro.
+
+\begin{example} 
+Siano $f$ e $g$ simboli di funzione binaria, $h$ un simbolo si funzione unaria, $c$, $a$, e $b$ costanti. Siano $x$ e $y$ due variabili . Le sequenze di lunghezza 1: $\<x\>$, $\<y\>$ sono termini atomici. I termini $\<a\>$, $\<b\>$, e $\<c\>$ si ottengono applicando la clausula induttiva \ssf{i} alla tupla vuota. Applicando la clausola \ssf{i} otteniamo anche $\<f, x,y\>$, $\<g,a,a\>$, e $\<h,b\>$.  E con una ulteriore uso di \ssf{i} otteniamo: 
+
+\hfil$\<f,g,a,a,h,b\>$, \hfil$\<g,f,g,a,a,h,b,y\>$, \hfil$\<g,g,f,g,a,a,h,b,y,c\>$.
+
+Questi termini risultano decisamente difficili da leggere. La leggibilit\`a migliora se aggiungiamo delle parentesi (che per\`o non fanno parte della nostra sintassi):
+
+\hfil$f(g(a,a),h(b))$, \hfil$g(f(g(a,a),h(b)),y)$, \hfil$g(g(f(g(a,a),h(b)),y),c)$.
+
+\`E giusto chiedersi se esiste un unico modo di aggiungere parentesi, ovvero, un'unica lettura dei termini~--~questo \`e ci\`o di cui tratta in modo implicito il lemma~\ref{lemmaterminileggibilita}.
+\end{example}
+
+\begin{example}
+Sia $L$ il linguaggio dei gruppi additivi. Quando avremo a che fare con simboli di funzione che ricordano operazioni algebriche preferiremo usare la \emph{notazione infissa}\index{notazione infissa}. Per esempio, scriveremo $x+y$ invece di $+\,x\,y$. La notazione infissa rende per\`o essenziale l'uso di parentesi per evitare ambiguit\`a; per esempio:
+
+\hspace*{10ex} $\<\mathord+,\mathord+,0,0,x\>$ corrisponde a $(0+0)+x$
+
+\hspace*{10ex} $\<\mathord+,1,\mathord+,0,x\>$ corrisponde a $1+(0+x)$
+
+La notazione prefissa invece non richiede parentesi, dimostreremo che non produce espressioni ambigue.
+\end{example}
+
+
+\begin{example} 
+Sia $L$ il linguaggio degli anelli unitari. I seguenti sono esempi di termini:
+
+\hspace*{10ex}$\<\mathord+,\mathord+,0,1,x\>$ corrisponde a $(0+1)+x$
+
+\hspace*{10ex}$\<\,\cdot\,,1,\mathord+,x,y\>$ corrisponde a $1\cdot (x+y)$
+
+Pi\`u avanti useremo le consuete abbreviazioni per scrivere termini di $L$. Per esempio scriveremo $2$ per la sequenza di simboli $\<\mathord+,1,1\>$, oppure $x^2 +1$ per la sequenza $\<\mathord+,\,\cdot\,, x,x,1\>$.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+\section{Operazioni sintattiche sui termini}
+
+Il seguente lemma \`e di fondamentale importanza: dice che data una sequenza di simboli ottenuta concatenando vari termini \`e sempre possibile risalire ai termini con cui \`e stata composta -- sorprendente: perch\'e non abbiamo introdotto nessun simbolo separatore che marchi la fine del termine $i$-esimo e l'inizio del termine $(i+1)$-esimo.
+
+\begin{lemma}[(leggibilit\`a univoca dei termini)]\label{lemmaterminileggibilita}
+Sia $a$ una sequenza che pu\`o essere ottenuta sia concatenando i termini $t_1,\dots,t_n$ che concatenando i termini $s_1,\dots,s_m$. Allora $n=m$ e $s_i=t_i$.
+\end{lemma}
+\begin{proof}
+Dimostreremo il lemma per induzione sulla lunghezza delle sequenza $a$. Se la lunghezza \`e $0$ allora $n=m=0$ e non c'\`e altro da dimostrare. Non \`e necessario, ma per chiarezza vediamo anche il caso in cui $a$ ha lunghezza $1$.  In questo caso $n=m=1$ ed $a$ deve contenere un termine di lunghezza $1$, una variabile o una costante che quindi deve coincidere sia con $t_1$ che con $s_1$. Supponiamo ora che il lemma valga per sequenze di lunghezza $k$ e sia $a=\<a_1,\dots,a_{k+1}\>$. Il primo elemento della sequenza $t_1$  dev'essere $a_1$ cos\`i come il primo elemento della sequenza $s_1$. Se $a_1$ \`e una variabile, diciamo $x$, allora sia $t_1$ che $s_1$ sono il termine $x$ e possiamo applicare l'ipotesi induttiva alla sequenza $\<a_2,\dots,a_{k+1}\>$ che \`e ottenuta concatenando sia termini $t_2,\dots,t_n$ che i termini $s_2,\dots,s_m$. Se invece $a_1$ \`e un simbolo di funzione, diciamo $f$, allora $t_1=f\,\bar t$ ed $s_1=f\,\bar s$ dove $\bar t$ ed $\bar s$ sono la concatenazione dei termini $t'_1 \dots t'_p$ ed $s'_1 \dots s'_p$.  Quindi possiamo applicare l'ipotesi induttiva alla sequenza $\<a_2,\dots,a_{k+1}\>$ che \`e ottenuta concatenando sia termini $t'_1 \dots t'_p,t_2,\dots,t_n$ che i termini $s'_1 \dots s'_p,s_2,\dots,s_m$.
+\end{proof}
+
+La dimostrazione del lemma~\ref{lemmaterminileggibilita} \`e compatta ma leggermente criptica. In realt\`a il problema \`e pi\`u semplice di quel che sembra. Esiste infatti un algoritmo che ricava i termini $t_1, \dots, t_n$ dalla sequenza $t_1 \dots t_n$. Leggiamo la sequenza da sinistra a destra aggiornando un contatore come segue: all'inizio il contatore segna $1$; quando incontriamo una variabile, sottraiamo $1$ al contatore; quando incontriamo un simbolo di funzione $n$-aria, sommiamo $n-1$ al contatore. Quando il contatore segna $0$ ci fermiamo: la sequenza letta al quel punto \`e $t_1$. Possiamo quindi iterare la procedura per ottenere $t_2$, $t_3$, ecc. Formalizzare questa procedura per ottenere una dimostrazione del lemma~\ref{lemmaterminileggibilita} \`e piuttosto laborioso.
+
+Se $x=\<x_1,\dots,x_n\>$ \`e una tupla di variabili distinte ed $s=\<s_1,\dots,s_n\>$ \`e una tupla di termini, scriveremo \emph{$t[x/s]$\/}\index{0txs@$t[x/s]$} per denotare la sequenza che si ottiene sostituendo $x$ con $s$ coordinata per coordinata, ovvero sostituendo $x_i$ con $s_i$. L'espressione \`e ben definita solo se $x$ \`e una tupla di variabili distinte oppure se ad eventuali ripetizioni nella tupla $x$ corrispondono identiche ripetizioni nella tupla $s$. Non saremo troppo pignoli su questo punto, assumeremo sempre che le tuple siano ben date.
+
+\begin{example} Sia $L$ il linguaggio degli anelli unitari, siano $x,y,z$ variabili singole. Un esempio di sostituzione:
+\begin{itemize}
+\item sia $t$ il termine $\<\mathord+,\,\cdot\,, x,x,y\>$ \hfill\hfill ovvero:\hfill $x^2 +y$
+\item sia $s$ il termine $\<\mathord+,x,y\>$\hfill $x+y$
+\item allora $t[x/s]$ \`e il termine $\<\mathord+,\,\cdot\,,\mathord+,x,y,\mathord+,x,y,y\>$  \hfill $(x+y)^2+y$
+\end{itemize}
+Un altro esempio:
+\begin{itemize}
+\item sia $t$  il termine $\<\mathord+,\,\cdot\,, x,z,y\>$ \hfill\hfill ovvero:\hfill $x\,z+y$
+\item sia $s$  il termine $\<\mathord+,x,z\>$\hfill $x+z$
+\item sia $r$  il termine $\<\,\cdot\,, x,y\>$\hfill $x\,y$
+\item allora $t[x\,z/s\,r]$ \`e il termine  $\<\mathord+,\,\cdot\,,\mathord+,x,z,\,\cdot\,, x,y,y\>$  \hfill $(x+z)\,x\,y+y$
+\item allora $t[x/s][z/r]$ \`e il termine  $\<\mathord+,\,\cdot\,,\mathord+,x,\,\cdot\,, x,y,\,\cdot\,, x,y,y\>$  \hfill $(x+x\,y)\,x\,y+y$
+\end{itemize}
+Notiamo che $t[x\,z/s\,r]$ non \`e lo stesso che $t[x/s][z/r]$. Nel primo le sostituzioni sono simultanee nel secondo consecutive  (non coincidono perch\'e $s$ contiene la variabile $z$).
+\end{example}
+
+La definizione di $t[x/s]$ data qui sopra non \`e sempre agevole da usare. Riportiamo qui sotto una definizione per induzione, pi\`u lunga, ma pi\`u precisa e soprattutto che semplifica le dimostrazioni.
+
+\begin{definition}\label{defsostituzionetermini}
+Sia $t$ un termine, $x=\<x_1,\dots, x_n\>$ una tupla di variabili distinte, ed $s=\<s_1,\dots,s_n\>$ una tupla di termini. Definiamo $t[x/s]$ per induzione sulla sintassi di $t$. 
+\begin{itemize}
+\item[b.] se $t$ \`e una variabile che occorre in $x$, diciamo $x_i$, allora $t[x/s]=s_i$, altrimenti $t[x/s]=t$ (notiamo che $i$ \`e univocamente determinato se le variabili in $x$ sono distinte);
+\item[i.] se $t$ \`e il termine $f\,\bar t$ allora $t[x/s]=f\,\bar t[x/s]$.
+\end{itemize} 
+Se $\bar t$ \`e una sequenza ottenuta concatenando i termini $t_1,\dots,t_n$, con $\bar t[x/s]$ intendiamo la sequenza ottenuta concatenando $t_1[x/s],\dots,t_n[x/s]$. Questa \`e univocamente determinata da $t$ per il lemma sulla leggibilit\`a univoca~\ref{lemmaterminileggibilita}.\QED
+\end{definition}
+
+Dimostriamo \emph{per induzione sulla sintassi\/}\index{induzione!sulla sintassi} che il risultato di una sostituzione \`e ancora un termine.
+%
+\begin{lemma}\label{terminisostituzione}
+Sia $t$ un termine, $x$ una tupla di variabili, ed $s$ una tupla di termini. Allora anche $t[x/s]$ \`e un termine.
+\end{lemma}
+%
+\begin{proof}
+Per maggior chiarezza dimostriamo il lemma nel caso in cui $x$ sia una singola variabile. La generalizzazione a tuple arbitrarie \`e lasciata al lettore. Supponiamo che in $t$ non occorrano simboli di funzione, ovvero $t$ \`e un termine atomico. Se $t$ \`e proprio la variabile $x$ allora $t[x/s]=s$, altrimenti $t[x/s]=t$. In entrambi i casi $t[x/s]$ \`e un termine.
+
+Supponiamo ora che $t$ abbia la forma $f\,\bar t$ dove $f$ \`e un simbolo di funzione di ariet\`a $n$ e $\bar t$ \`e una sequenza ottenuta concatenando i termini $t_1,\dots,t_n$. Come ipotesi induttiva assumiamo che il lemma valga per i termini $t_1,\dots,t_n$, quindi $t_1[x/s],\dots,t_k[x/s]$ sono termini.  Per definizione $\bar t[x/s]$ \`e la tupla ottenuta concatenando questi ultimi, quindi $t[x/s]=f\,\bar t[x/s]$, \`e un termine perch\'e ottenuto applicando la clausola \ssf{i} della definizione~\ref{deftermine}. (Si osservi che questo argomento \`e corretto anche nel caso degenere in cui $f$ \`e una costante.)
+\end{proof}
+
+\`E necessario poter usare termini che si riferiscono a particolari elementi di una data struttura anche se il linguaggio non contiene costanti per denotarli. Introduciamo quindi i termini con parametri. I parametri giocano il ruolo che in algebra e geometria hanno i coefficienti (di polinomi, equazioni, curve, ecc.). Noi li useremo gi\`a nel prossimo paragrafo per definire la semantica. 
+
+Fissiamo una struttura di segnatura $L$ ed un sottoinsieme $A\subseteq M$. Indicheremo con \emph{$L(A)$\/}\index{0LA@$L(A)$, $L(M)$} il linguaggio ottenuto aggiungendo ad $L$ gli elementi di $A$ come costanti. Queste nuove costanti verranno chiamate \emph{parametri}\index{parametro}. Un \emph{termine con parametri in $A$\/}\index{termine!con parametri} \`e un termine nel linguaggio $L(A)$.  La struttura $M$ ha un espansione canonica ad una struttura di segnatura $L(A)$, l'interpretazione dei parametri \`e quella naturale $a^M=a$. I termini senza parametri li chiameremo \emph{termini puri}\index{termine!puro}.
+
+\begin{lemma}\label{rappresentazione termini con parametri}
+Sia $s$ un termine con parametri in $A$. Allora esiste una tupla  di variabili $x$, una tupla $a\in A^{|x|}$, ed un termine puro $t$ tali che $s=t[x/a]$.
+\end{lemma}
+
+\begin{proof}
+Se $s$ \`e un termine atomico non c'\`e nulla da dimostrare: prendiamo come $t$ il termine $s$ e come $x$ ed $a$ la tupla vuota.
+
+Sia ora $s=f\,\bar s$ dove $\bar s$ \`e una sequenza ottenuta concatenando i termini $s_1,\dots,s_n$ e assumiamo che per questi termini il lemma valga. Supponiamo per il momento che $f$ non sia un parametro: questo caso lo tratteremo a parte. Quindi $s_i=t_i[x_i/a_i]$ con $t_i$ termine puro, $x_i$ una tupla di variabili, $a_i$ una tupla di parametri. Supponiamo per il momento che le variabili in $x_i$ non occorrano in nessun altro termine tranne $t_i$; vedremo pi\`u sotto che non c'\`e perdita di generalit\`a. Posto $x=\<x_1,\dots,x_n\>$ ed $a=\<a_1,\dots,a_n\>$ otteniamo $s_i=t_i[x/a]$. Quindi, se scriviamo  $\bar t$ per la concatenazione dei termini $t_1,\dots,t_n$, otteniamo $\bar s=\bar t[x/a]$ ed il lemma vale con $t=f\bar t$.
+
+Nel caso in cui $f$ \`e un parametro allora tupla $\bar s$ \`e vuota e $t=f$. Come $s$ prendiamo $x$, una qualsiasi variabile e come $a$ prendiamo $f$.
+
+Mostriamo ora che possiamo sempre assumere che le variabili in $x_i$ non occorrano in nessun altro termine tranne $t_i$. Infatti, se questa condizione non fosse verificata, possiamo fissare delle tuple $x'_i$ che soddisfano alle condizioni richieste e applicare l'argomento esposto qui sopra ai termini $t_i$ con $t'=t_i[x_i/x'_i]$. Infatti \`e immediato verificare che $s_i=t'_i[x'_i/a_i]$ (vedi esercizio~\ref{ex_sost_inv}).
+\end{proof}
+
+Se $t$ \`e un termine e $x_1,\dots,x_n$ sono tuple di variabili scriveremo \emph{$t(x_1,\dots,x_n)$\/}\index{0tx@$t(x_1,\dots,x_n)$} per dichiarare che le variabili che occorrono in $t$ sono al pi\`u quelle che occorrono nelle tuple $x_1,\dots,x_n$. Molto spesso, quando un termine $t$ \`e stato presentato come $t(x,y)$ scriveremo \emph{$t(s,y)$\/} invece che $t[x/s]$.
+
+\begin{exercise}\label{ex_sost_inv}
+Siano $x$ e $z$ due tuple di variabili senza ripetizioni della stessa lunghezza. Sia $t$ un termine. Sotto quali ipotesi si ha $t[x/z][z/x]=t$~?
+\end{exercise}
+
+\begin{exercise}\label{lkoliuds}
+Siano $x_1\dots x_n$ variabili distinte che non occorrono nei termini $s_1\dots s_n$. Sotto quali ipotesi si ha $t[x_1/s_1]\dots[x_n/s_n]=t[x_1,\dots,x_n/s_1,\dots,s_n]$~?
+\end{exercise}
+
+\begin{exercise} 
+Sia $x$ una singola variabile. Si dimostri, per induzione sulla sintassi del termine $t$, che $\big|t[x/s]\big|\le |s|\cdot|t|$.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{La semantica dei termini}\label{interpretazionetermini}
+
+Ogni struttura $M$ interpreta i simboli di funzione in vere e proprie funzioni da $M^n$ in $M$. Vogliamo estendere questa interpretazione in modo naturale a tutti i termini. Cominciamo col definire l'interpretazione dei termini chiusi, questi verranno interpretati come funzioni $0$-arie, ovvero elementi della struttura.
+
+\begin{definition}\label{defterminiinterpretazione}
+Per ogni termine chiuso definiamo un elemento di $M$ che denoteremo con \emph{$t^M$}\index{0tM@$t^M$} e chiameremo \emph{interpretazione di $t$}\index{interpretazione!di un termine}. La definizione \`e data per induzione sulla sintassi:
+
+\begin{itemize}
+\item[i.] se $t=f\,\bar t$, dove $f$ \`e un simbolo di funzione $n$-aria e $\bar t$ \`e la concatenazione di $t_1,\dots,t_n$, allora $t^M=f^M(t^M_1, \dots, t^M_n)$.
+\end{itemize}
+Il lemma sulla leggibilit\`a univoca~\ref{lemmaterminileggibilita} \`e stato usato nell'ultima clausola: per garantire che $\bar t$ individui univocamente i termini $t_1, \dots, t_n$.\QED
+\end{definition}
+
+La definizione~\ref{defterminiinterpretazione} \`e induttiva e si fonda sul caso di ariet\`a $0$: quando il termine $t$ \`e una costante $c$ e quindi $\bar t$ \`e la tupla vuota, l'interpretazione $t^M$ \`e $c^M(\0)$ che abbiamo convenuto di abbreviare con $c^M$.
+
+Ora definiamo l'operatore \emph{${}^M\!(x)$\/} che ad ogni termine $t$ con variabili libere tra quelle della tupla $x$ assegna la funzione \emph{$t^M\!(x) :\,M^{|x|}\to\, M$}\index{0tMx@$t^M(x)$}. La funzione $t^M\!(x)$ mappa $a\mapsto (t(a))^M$, dove $t(a)$ \`e il termine $L(M)$ che si ottiene sostituendo $x$ con $a$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Le sottostrutture}
+\label{sottostrutture}
+
+Vogliamo dare una definizione di sottostruttura che generalizzi le nozioni di sottogruppo, sottoanello, ecc., se queste sono considerate come strutture di segnatura opportuna (come nell'esempio~\ref{LgaLgmLau}). Per comprendere la condizione \ssf{3} si pensi a strutture che contengono una relazione d'ordine per esempio gruppi o anelli ordinati.
+
+\begin{definition}\label{sottostrutturadef}
+Siano $M$ ed $N$ due strutture con la stessa segnatura $L$. Diremo che $M$ \`e una \emph{sottostruttura\/}\emph{sottostruttura} di $N$ se valgono le seguenti tre condizioni.
+\begin{itemize}
+\item[1.] Il dominio di $M$ \`e un sottoinsieme del dominio di $N$.
+\item[2.] L'interpretazione in $M$ dei simboli di funzione \`e la restrizione ad $M$ dell'interpretazione in $N$, ovvero $f^M=f^N\restriction M^{\Ar(f)}$.
+\item[3.] L'interpretazione in $M$ dei simboli di relazione \`e la restrizione ad $M$ dell'interpretazione in $N$, ovvero $r^M=r^N\cap M^{\Ar(r)}$.
+\end{itemize}
+\end{definition}
+
+Si osservi che quando $f$ \`e una costante la condizione \ssf{2} diventa $f^M=f^N$, quindi sottostrutture concordano con la struttura ambiente sull'interpretazione delle costanti. Quando scriveremo \emph{$M\subseteq N$}, intenderemo che $M$ \`e una sottostruttura di $N$. Per denotare comuni sottoinsiemi di $N$ useremo le lettere $A$, $B$, $C$, ecc.  
+
+Se $A\subseteq N$ \`e tale che $f^N[A^{\Ar(f)}]\subseteq A$ per tutte le funzioni del linguaggio allora possiamo associare ad $A$ una sottostruttura di $N$ in modo canonico:
+\begin{itemize}
+\item[1.] il supporto della struttura \`e l'insieme $A$;
+\item[2.] $f^A\ =\ f^N\restriction A^{\Ar(f)}$ (questa \`e una buona definizione perch\'e per ipotesi $f^N[A^n]\subseteq A$);
+\item[3.] $r^A\ =\ r^N\cap A^{\Ar(f)}$.
+\end{itemize}
+Questa \`e l'unica sottostruttura di $N$ con supporto $A$, quindi confonderemo l'insieme $A$ e con la struttura a questo associata. Nel seguito dato $A\subseteq N$, l'affermazione \emph{$A$ \`e una sottostruttura di $N$\/} dice semplicemente che $f^N[A^{\Ar(f)}]\subseteq A$ per ogni simbolo di funzione. Si noti che nel caso di costatnti $f^N[A^{\Ar(f)}]\subseteq A$ diventa $f^N\in A$.
+
+E immediato verificare che l'intersezione di una famiglia arbitraria di sottostrutture di $N$ \`e ancora una sottostruttura di $N$. Data quindi una struttura $N$ ed un insieme $A\subseteq N$ possiamo definire la \emph{sottostruttura di $N$ generata da $A$\/}\index{sottostruttura!generata da un insieme} come l'intersezione di tutte le sottostrutture di $N$ che contengono $A$. La denoteremo con \emph{$\<A\>_N$}\index{0AN@$\<A\>_N$}. Diamo ora una rappresentazione pi\`u concreta di $\<A\>_N$:
+%
+\begin{lemma}\label{strutturagenerata}
+Sia $N$ una struttura e sia $A\subseteq N$ un sottoinsieme arbitrario. Allora
+\begin{itemize}
+\item[1] $\<A\>_N\ \ =\ \ \Big\{ t^N \ :\  t\ \textrm{termine chiuso con parametri in }\  A\Big\}$
+\item[2] $\<A\>_N\ \ =\ \  \Big\{ t^N(a) \ :\  t(x)\textrm{ termine puro, }  a \textrm{ tupla di elementi di }A\Big\}$
+\item[3] $\<A\>_N\ \ =\ \ \vphantom{\Big\{}\displaystyle\bigcup_{n\in\omega} A_n$,\ \ \ dove \ \ $A_0\ =\ A$ \ \ e
+
+\hspace*{0mm}\phantom{$\<A\>_N\ \ =\ \ \displaystyle\bigcup_{n\in\omega} A_n$, dove}
+$A_{n+1}\ =\ A_n\ \cup\ \Big\{ f^N(a) \ :\  f\in L_{\rm fun},\  a \textrm{ tupla di elementi di }A_n\Big\}$
+
+%\hspace*{0mm}\phantom{$\<A\>_N$\ \ }\llap{$A_0\ \ $}$=\ \ A$,
+
+%\hspace{30mm}\llap{$A_{n+1}\ \ $}$:=\ \ \Big\{ f^N(a) \ :\  f\ \textrm{simbolo di funzione}\  \range(a)\subseteq A\Big\}$.
+
+\end{itemize}
+\end{lemma}
+%
+\begin{proof}  %Per dimostrare l'inclusione $\subseteq$ di \ssf{1}. Mostriamo per induzione sulla sintassi che $t^N\in\<A\>_N$ per ogni termine chiuso a parametri in $A$. Se $t$ \`e un termine atomico allora $t$ \`e un parametro, un elemento di $A\subseteq\<A\>_N$. Se $t$ \`e della forma $f\,s$, dove $s$ \`e una tupla di termini, allora per definizione $t^N=f^N(s^N)$. Per ipotesi induttiva $s^N_i=a$ per qualche $a$ tuple di elementi di $\<A\>_N$. Quindi dalla definizione di sottostruttura (si veda~\ref{sottostrutturadefinformale}) otteniamo $t^N=f^N(a)\in\<A\>_N$.
+
+Per dimostrare l'inclusione $\subseteq$ al punto \ssf{1}, \`e sufficiente mostrare che l'insieme alla destra, chiamiamolo $B$, \`e una sottostruttura che contiene $A$. Che $B$ contenga $A$ \`e ovvio: ogni elemento di $A$ \`e l'interpretazione di un termine a parametri in $A$. Mostriamo ora che $f^N\big[B^{\Ar(f)}\big]\subseteq B$ per ogni simbolo di funzione $f$. Se $b$ \`e una tupla di elementi di $B$ allora $b$ \`e della forma $s^N$ dove $s$ \`e una qualche tupla di termini a parametri in $A$. Quindi $f^N(s^N)=(fs)^N\in B$.
+
+Per dimostrare l'inclusione $\supseteq$ bisogna mostrare che tutte le strutture $M$ che contengono $A$ contengono anche l'insieme $B$ di destra. Ovvero che se $t$ \`e un termine chiuso a parametri in $A$ allora $t^N\in M$ per ogni struttura $M$ tale che $A\subseteq M\subseteq N$. Il lettore pu\`o verificare come esercizio (vedi esercizio~\ref{terminisottostrutture}) che $t^N=t^M$. Quindi $t^N\in M$ segue dall'ovvia inclusione $t^M\in M$.
+
+Ora \ssf{2} segue da \ssf{1} per il lemma~\ref{rappresentazione termini con parametri}. La dimostrazione di \ssf{3} \`e lasciata al lettore.
+\end{proof}
+
+% 
+% Spesso strutture complesse possono essere approssimate con sottostrutture arbitrariamente grandi. Viene comodo descrivere questa idea informale con il concetto di catena.  Diremo  che la sequenza $\<M_i\ :\ i\in\omega\>$ \`e una \emph{catena di strutture\/} se $M_i\subseteq M_{i+1}$ per ogni $i\in\omega$. Il seguente lemma\`e immediato.
+% %
+% \begin{lemma}\label{catenadistrutture}
+% Sia $\<M_i\ :\ i\in\omega\>$ una catena di strutture. Allora esiste una struttura $M_{\omega}$ con dominio l'unione dei domini delle strutture nella catena e tale che $M_i\subseteq M_\omega$ per ogni $i\in\omega$.\QED
+% \end{lemma}
+
+\begin{exercise}\label{terminisottostrutture}
+Sia $M$ una sottostruttura di $N$, e $t$ un termine chiuso a parametri in $M$. Si dimostri per induzione sulla sintassi che $t^M=t^N$.
+\end{exercise}

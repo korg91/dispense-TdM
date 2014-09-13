@@ -1,0 +1,271 @@
+\chapter{L'eliminazione degli immaginari.}
+\label{immaginariB}
+%\setcounter{page}{1}
+
+\def\ceq#1#2#3{\parbox{30ex}{$\displaystyle #1$}\parbox{4ex}{\hfil$#2$}$\displaystyle #3$}
+
+
+Per tutto questo capitolo fissiamo un linguaggio $L$ ed una teoria completa $T$ senza modelli finiti. Fissiamo anche un modello saturo $\U$ di cardinalit\`a $\kappa>|L|+\omega$. La notazione e le assunzioni implicite sono quelle presentate nel paragrafo~\ref{mostro}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{L'eliminazione degli immaginari}
+
+%In questo paragrafo useremo all'interno di formule l'espressione $x\in a$ dove $a$ \`e un elemento immaginario. Con questa intendiamo una qualsiasi formula $\sigma(x;c)$ che definisce $a$.
+
+Introduciamo due varianti di eliminazione degi immaginari: l'eliminazione debole \`e per alcune applicazioni pi\`u naturale dell'eliminazione forte. 
+
+\begin{definition}\label{defelimanazioneimmaginari}
+Diremo che $T$ \emph{ammette eliminazione degli immaginari\/} se per ogni insieme definibile $a$ esiste una formula pura $\sigma(x;z)$, dove $z$ \`e una tupla di lunghezza finita arbitraria, tale che\smallskip
+
+\noindent\rlap{\ssf{ei}}%
+\hspace*{30ex}\llap{$\E^{=1} z\;\A x\ \Big[x\in a$}$\ \  \iff\ \  \sigma(x;z)\Big]$
+
+Un testimone di $\E^{=1} z$ in \ssf{ei} \`e detto \emph{parametro canonico\/} dell'insieme $a$. Un insieme pu\`o avere diversi parametri canonici, ovviamente ognuno relativo ad una diversa formula $\sigma(x;z)$.
+
+Diremo che $T$ ammette eliminazione \emph{debole\/} degli immaginari se invece\smallskip
+
+\noindent\rlap{\ssf{edi}}%
+\hspace*{30ex}\llap{$\E^{=k} z\;\A x\ \Big[x\in a$}$\ \  \iff\ \  \sigma(x;z)\Big]$.
+
+per un qualche intero positivo $k$.
+
+\`E utile permettere a $z$ di essere la tupla vuota, in questo caso leggiamo \ssf{ei} e \ssf{edi} omettendo $\E^{=1}z$ ed $\E^{=k}z$. Quindi ogni insieme $\0$-definibile ha sempre almeno un parametro canonico: la tupla vuota.\QED
+\end{definition}
+
+La definizione di eliminazione degli immaginari fa riferimento a elementi di $\U^\eq$. Per poter parlare di una propriet\`a di $T$ bisogna verificare che se vale in $\U$ allora vale anche in un qualsiasi altro modello saturo di $T$. Questo segue facilmente dal teorema~\ref{thm_ei_unif}, ma una dimostrazione diretta \`e anche semplice.
+
+\begin{exercise}
+Si dimostri che se \ssf{ei} e \ssf{edi} valgono in $\U$ allora valgono anche in qualsiasi altro modello saturo $\V$.\QED
+\end{exercise}
+
+Cominciamo con un teorema che caratterizza l'eliminazione debole. 
+
+\begin{theorem}\label{elimimd} 
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $T$ ammette eliminazione debole degli immaginari;
+\item[2.] ogni immaginario $a$ \`e definibile su $\acl a$, la sua chiusura algebrica reale.
+\end{itemize}
+\end{theorem}
+
+
+\begin{proof}
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Assumiamo la notazione della definizione~\ref{defelimanazioneimmaginari}. Da \ssf{edi} segue che le soluzioni della formula $\A x\ \big[x\in a \iff \sigma(x;z)\big]$ appartengono ad $\acl a$ ed ovviamente $a$ \`e definibile su una qualsiasi di queste.
+
+Dimostriamo \ssf{2}$\IMP$\ssf{1}. Possiamo assumere che $a$ non sia $\0$-definibile (per questi \ssf{edi} vale banalmente). Fissiamo una formula $\sigma(x;b)$ che definisce l'insieme $a$ per una qualche tupla $b$ algebrica su $\acl a$. Fissiamo quindi una formula algebrica $\delta(w)$ soddisfatta da $b$ dove $a$ occorre come parametro immaginario. Sia  $\psi(w,z)$ la formula che si ottiene da $\delta(w)$ sostituendo le occorrenze di $x\in a$ con  $\sigma(x;z)$. Quindi $\delta(w)\iff\psi(w,c)$ per ogni $c$ tale che $\A x\,\big[ x\in a\iff \sigma(x;c)\big]$. La seguente formula \`e consistente
+
+\parbox{30ex}{\ssf{a}}\llap{$\A x\ \Big[x\in a$}$\ \ \iff\ \ \sigma(x;z)\;\wedge\; \psi(z,z)\Big]$
+
+perch\'e $b$ \`e una sua soluzione. Quindi il teorema \`e dimostrato se verifichiamo che la formula \ssf{a} \`e algebrica. Mostreremo che le soluzioni di \ssf{a} sono anche soluzioni di $\delta(w)$. Sia $c$ una qualsiasi soluzione di \ssf{a}. Quindi $\psi(c,c)$ deve essere vera, altrimenti $a$ sarebbe vuoto e quindi $\0$-definibile. Quindi otteniamo $\A x\,\big[x\in a \iff \sigma(x;c)\big]$, ma allora $\psi(w,c)$ \`e equivalente a $\delta(w)$ e da $\psi(c,c)$ segue che $c$ \`e soluzione di $\delta(w)$.
+\end{proof}
+
+Diremo che $a$ e $b$, due tuple di elementi di $\U^\eq$, sono \emph{interdefinibili\/} se $a\in\dcl^\eq(b)$ e $b\in\dcl^\eq(a)$, in breve, se $\dcl^\eq(a)=\dcl^\eq(b)$. Per dal teorema~\ref{thm_Galois_def=def} questo \`e equivalente ad affermare che $\Aut(\U/a)=\Aut(\U/b)$ ovvero ogni automorfismo che fissa $a$ fissa anche $b$ e viceversa.
+
+\begin{theorem}\label{elimimd2} 
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $T$ ammette eliminazione debole degli immaginari;
+\item[2.] ogni immaginario \`e interdefinibile con un immaginario finito (un insieme finito).
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Assumiamo \ssf{1} e sia $b$ l'insieme delle soluzioni della formula
+
+\hspace*{30ex}\llap{$\A x\ \Big[x\in a$}$\ \  \iff\ \  \sigma(x;z)\Big]$.
+
+Quindi $b$ \`e finito e $b\in\dcl^\eq(a)$. Inoltre, $a$ \`e definibile dalla formula $\E z\,\big[z\in b\wedge \sigma(x;z)\big]$ e quindi $a\in\dcl^\eq(b)$. Ora dimostriamo \ssf{2}$\IMP$\ssf{1}. Assumiamo $\dcl^\eq(a)=\dcl^\eq(b)$ per qualche $b$ immaginario finito e mostriamo che $a$ \`e definibile su $\acl(a)$. Questo \`e sufficiente per il teorema~\ref{elimimd}. Se $b_1,\dots,b_n$ sono gli elementi di $b$ allora ovviamente $b_1,\dots,b_n\in\acl(a)$. Rimane solo da verificare che $a\in\dcl^\eq(b_1,\dots,b_n)$. Fissiamo una formula $\sigma(x,b)$ che definisce $a$ e che usa $b$ come parametro immaginario, se in questa formula sostituiamo le occorrenze di $t\in b$ con $t=b_1\vee\dots\vee t=b_n$, otteniamo una formula $\phi(x,b_1,\dots,b_n)$ che definisce $a$.
+\end{proof}
+
+Il seguente lemma \`e funzionale alla dimostrazione del teorema~\ref{elimimsm}
+
+\begin{lemma}\label{tvtestimmaginari} 
+La seguente \`e una condizione sufficiente per l'eliminazione debole degli immaginari.
+\begin{itemize}
+\item[a.] per ogni $A\subseteq\U^\eq$, ogni formula $\phi(z)\in L(A)$ consistente ha una soluzione in $\acl A$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+Verifichiamo la condizione \ssf{2} del teorema~\ref{elimimd}. Sia $\sigma(x;c)$ una formula che definisce $a$. Usando \ssf{a} per la formula $\A x\,\big[ x\in a\iff\sigma(x;z)\big]$ ha una soluzione in $\acl a$. Quindi $a$ \`e definibile su $\acl a$.
+\end{proof}
+
+\begin{theorem}\label{elimimsm} 
+Assumiamo che $T$ sia fortemente minimale e che $\acl\0$ sia infinito. Allora $T$ ha eliminazione debole degli immaginari.
+\end{theorem}
+
+\begin{proof}
+Dimostriamo la condizione \ssf{a} del lemma~\ref{tvtestimmaginari}. Sia $\phi(z)$ una formula consistente a parametri in un qualche $A\subseteq\U^\eq$. Procediamo per induzione sull'ariet\`a della tupla $z$. Se $z$ \`e la tupla vuota \`e banalmente vero. Consideriamo la formula $\phi(z,x)$ dove $|x|=1$. Per ipotesi induttiva $\E x\,\phi(z,x)$ ha una soluzione $\acl A$. Sia $c$ questa soluzione. Ora \`e sufficiente mostrare che $\phi(c,x)$ ha soluzione in $\acl A$. Questa \`e una formula a parametri in $\acl A$ con una singola variabile libera. Quindi se \`e algebrica ha una soluzione in $\acl(\acl A)=\acl A$, altrimenti \`e co-algebrica ed ha comunque una soluzione in $\acl A\supseteq\acl\0$ che per ipotesi \`e un insieme infinito.
+\end{proof}
+
+Passiamo a considerare l'eliminazione (forte) degli immaginari.
+
+\begin{theorem}\label{elimimf} 
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $T$ ammette eliminazione degli immaginari;
+\item[2.] ogni immaginario $a$ \`e definibile su $\dcl a$, la sua chiusura definibile reale;
+\item[3.] ogni immaginario \`e interdefinibile con una tupla finita di elementi reali.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+La dimostrazione di \ssf{1}$\IFF$\ssf{2} \`e identica a quella del teorema~\ref{elimimd}, si sostituisca algebrico con definibile e di prenda $k=1$. L'equivalenza \ssf{2}$\IFF$\ssf{3} \`e ovvia.\end{proof}
+
+\begin{theorem}\label{elimimacf} 
+La teoria $T^p_{\rm acf}$ ammette eliminazione degli immaginari.
+\end{theorem}
+
+\begin{proof}
+Dal teorema~\ref{elimimsm} sappiamo che $T^p_{\rm acf}$ ha eliminazione debole degli immaginari. Quindi per il teorema~\ref{elimimd2} \`e sufficiente dimostrare che $T^p_{\rm acf}$ elimina gli immaginari finiti. Sia $b=\{b_1,\dots,b_n\}$ dove ogni $b_i$ \`e una tupla $b_{i,1},\dots,b_{i,m}$. Ad un tale $b$ associamo il termine
+
+\ceq{\hfill t(b_1,\dots,b_n,x,y)}{=}{\displaystyle\prod^n_{i=1}\bigg(x-\sum^m_{k=1}b_{i,k}\; y_k\bigg).}
+
+
+Abbiamo scritto $y$ per la tupla di variabili $\<y_1,\dots,y_m\>$. Si osservi che un automorfismo che fissa $b$, come insieme, mappa questo termine in uno equivalente. Ovvero se $fb=b$ allora $t(b_1,\dots,b_n,x,y)=t(fb_1,\dots,fb_n,x,y)$ per ogni $x,y$. Diciamo $f$ fissa l'interpretazione del termine $t$. Riscriviamo $t$ come somma di monomi e sia $c$ la tupla che elenca i coefficienti di questi monomi in un fissato ordine.  Allora $c$ determina univocamente l'interpretazione di $t$ e viceversa, la tupla $c$ \`e univocamente determinata dall'interpretazione di $t$. Quindi tutti gli automorfismi che fissano $b$ fissano $c$, ovvero $\dcl^\eq c\subseteq\dcl^\eq b$. Per dimostrare l'inclusione inversa sia $f$ un automorfismo che fissa $c$. Allora $t(b_1,\dots,b_n,x,y)=t(fb_1,\dots,fb_n,x,y)$ per ogni $x,y$. Dalla forma di $t$ \`e immediato che possiamo associare ad ogni $i$ un unico $i'$ tale che 
+
+\ceq{\hfill\sum^m_{k=1}fb_{i,k}\; y_k}{=}{\sum^m_{k=1}b_{i',k}\; y_k.}
+
+Questo implica che $fb_i=b_{i'}$, ovvero $f$ fissa l'insieme $b$. Per l'arbitrariet\`a di $f$, possiamo concludere che $\dcl^\eq b\subseteq\dcl^\eq c$.
+\end{proof}
+
+
+
+\begin{exercise}\label{eximmaginaristandard}
+In letteratura generalmente per immaginario si intende una classe di equivalenza di una relazione di equivalenza $\0$-definibile. Questo esercizio richiede di dimostrare che la nostra definizione e quella standard sostanzialmente coincidono. (\`E solo un cambiamento di punto focale: qui, per accorciare la filiera dei concetti, trattiamo con insieme stesso invece che con parametri che lo definiscono.)
+
+Assumiamo la condizione \ssf{ei} valga per ogni $a$ che \`e classe di di una equivalenza $\0$-definibile. Si dimostri che $T$ ha eliminazione degli immaginari. Suggerimento: si pensi alla relazione di equivalenza $\A x\;[\sigma(x;z)\iff\sigma(x;w)]$.\QED
+\end{exercise}
+
+% 
+% \begin{exercise}
+% Sia $a$ un insieme definibile e $A\subseteq\U$. Si dimostri che le seguenti affermazioni sono equivalenti:
+% \begin{itemize}
+% \item[1.]  $fa=a \IMP f[A]= A$ per ogni $f\in\Aut(\U)$;
+% \item[2.] tra le tuple finite di elementi di $A$ c'\`e un parametro canonico di $a$.\QED
+% \end{itemize}
+% \end{exercise}
+
+\begin{exercise}
+Si dimostri che le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $T$ ha eliminazione debole degli immaginari;
+\item[2.] per ogni immaginario $a$ esiste il minimo insieme algebricamente chiuso $A\subseteq\U$ su cui $a$ \`e definibile (ovvero per ogni $B\subseteq\U$, se $a$ \`e definibile su $B$, allora $A\subseteq\acl B$);
+%\item[3.] ogni immaginario $a$ definibile sia su $M$ che su $N$ \`e definibile su $M\cap N$.\QED 
+\end{itemize}
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{L'eliminazione uniforme}
+
+Riformuliamo in modo equivalente la condizione per l'eliminazione degli immaginari. Per ogni formula pura $\phi(x,w)$ e per ogni tupla reale $c$ esiste una formula pura $\sigma(x;z)$ tale che
+
+\hspace*{30ex}\llap{$\E^{=1} z\;\A x\ \Big[\phi(x,c)$}$\ \ \iff\ \ \sigma(x;z)\Big]$.
+
+A priori, la formula $\sigma(v,z)$ potrebbe dipendere in modo assolutamente selvaggio da $c$. Diremo che \emph{$T$ ammette eliminazione uniforme degli immaginari\/} se $\sigma(x;z)$ dipende solo da $\phi(x,w)$. Ovvero, se per ogni formula pura $\phi(x,w)$ esiste una formula pura $\sigma(x;z)$ tale che 
+
+\noindent\rlap{\ssf{eui}}%
+\hspace*{30ex}\llap{$\A w\;\E^{=1} z\;\A x\ \Big[\phi(x,w)$}$\ \  \iff\ \  \sigma(x;z)\Big]$.
+
+Il seguente teorema mostra che l'uniformit\`a si ottiene gratis dalla eliminazione semplice degli immaginari.
+
+%%%%%%%%%%%%%%
+\begin{theorem}\label{thm_ei_unif} Le seguenti affermazioni sono equivalenti.
+\begin{itemize}
+\item[1.] $T$ ha eliminazione uniforme degli immaginari;
+\item[2.] $\dcl\0$ contiene almeno due elementi e $T$ ha eliminazione degli immaginari.
+\end{itemize}
+\end{theorem}
+
+\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\parbox[t]{5ex}{$\displaystyle\hfil #2$}{$\displaystyle #3$}}
+
+\begin{proof} Per dimostrare \ssf{1}$\IMP$\ssf{2} assumiamo l'eliminazione uniforme ed esibiamo due elementi reali definibili. Prendendo come $w$ la coppia $w_1,w_2$ e come $\phi(x,w)$ la formula $w_1=w_2$ da \ssf{eui} otteniamo una formula pura $\sigma(x;z)$ tale che 
+
+\ceq{\hfill\A w_1,w_2\;\E^{=1} z\;\A x\ \Big[w_1=w_2}{\iff}{\sigma(x;z)\Big].}
+
+Questa implica sia $\E^{=1} z\,\A x\,\sigma(x;z)$ che $\E^{=1} z\,\A x\neg\sigma(x;z)$. I testimoni di queste due formule sono due distinte tuple in $\dcl\0$. Quindi $\dcl\0$ contiene almeno due elementi.
+
+Per dimostrare \ssf{2}$\IMP$\ssf{1}, assumiamo \ssf{2} e fissiamo una formula $\phi(x,w)$ e chiamiamo $0$ ed $1$ i due elementi $\0$-definibili che esistono per ipotesi. Vogliamo dimostrare l'esistenza di una formula pura $\sigma(x;z)$ tale che
+
+\ceq{\sharp\hfill\A w\,\E^{=1}z\,\A x\ \Big[\phi(x,w)}{\iff}{\sigma(x;z)\Big].}
+
+Possiamo assumere che $\phi(x,a)$ sia consistente per ogni $a$, infatti se necessario possiamo sostituire $\phi(x,w)$ con la formula\smallskip
+
+\hspace*{35ex}\llap{$\phi^*(x,y,w)\ \ =\ \ \Big[$}$\phi(x,w)\;\wedge\; y=0\Big]\ \vee\ \Big[\neg\E x\,\phi(x,w)\;\wedge\; y\neq0\Big]$.\smallskip
+
+(La tupla $x,y$ gioca il ruolo della $x$.) Chiaramente $\phi^*(x,y,a)$ \`e consistente per ogni $a$ e inoltre  $\phi^*(x,0,w)$ \`e equivalente a $\phi(x,w)$. Quindi se esiste $\sigma^*(x,y,z)$ tale che
+
+\ceq{\hfill\A w\,\E^{=1}z\,\A x,y\ \Big[\phi^*(x,y,w)}{\iff}{\sigma^*(x,y,z)\Big].}
+
+allora formula $\sigma^*(x,0,z)$ \`e come richiesto in $\,\sharp\,$. (Il lettore pu\`o  verificare l'unicit\`a della soluzione in $z$ tenendo presente che il valore di verit\`a di $\phi^*(x,y,w)$ \`e costante per $y\neq0$.)
+
+Quindi assumiamo che $\phi(x,a)$ sia consistente per ogni $a$ e proseguiamo nella dimostrazione. Sia $p(w)$ il tipo che contiene le formule 
+
+\hspace*{35ex}\llap{$\neg\,\E^{=1}z\,\A x\ \Big[\phi(x,w)$}$\ \ \iff\ \ \sigma(x;z)\Big]$.
+
+al variare di $\sigma(x;z)$ tra le formule pure. Poich\'e abbiamo assunto l'eliminazione degli immaginari, $p(w)$ non pu\`o essere coerente. Quindi esistono alcune formule  $\sigma_i(x,z)$ tali che
+
+\ceq{\natural\hfill\A w\;\bigvee^n_{i=0}\E^{=1}z\;\A x\;\Big[\phi(x,w)}{\iff}{\sigma_i(x,z)\Big].}
+
+Il teorema \`e dimostrato se riusciamo in qualche modo a spostare la disgiunzione immediatamente davanti alle formule $\sigma_i(x,z)$. 
+
+Possiamo assumere che se $\sigma_i(x,b)$ \`e consistente allora non esiste $c\neq b$ tale che $\sigma_i(x,b)\iff\sigma_i(x,c)$. Infatti se cos\`i non fosse \`e sufficiente sostituire $\sigma_i(x,z)$ con  
+
+%\ceq{\hfill\E z\;\A x\;\Big[\phi(x,w)\iff\sigma_i(x,z)\Big]}{\imp}{\E^{=1} z\;\A x\;\Big[\phi(x,w)\iff\sigma_i(x,z)\Big]}
+
+%infatti se cos\`i non fosse \`e sufficiente sostituire $\sigma_i(x,z)$ con 
+
+\hfil$\displaystyle\sigma_i(x,z) \;\wedge\; \neg\E y\ \Big[y\neq z\wedge \A x\,\big[\sigma_i(x,y)\iff\sigma_i(x,z)\big]\Big].$
+
+Poich\'e $\phi(x,a)$ \`e consistente per ogni $a$, la sostituzione non inficia la validit\`a di $\natural$. Possiamo anche assumere che se $\sigma_i(x,b)$ \`e consistente allora non esiste $(c,j)\neq (b,i)$ tale che $\sigma_i(x,b)\iff\sigma_j(x,c)$. Se cos\`i non fosse possiamo sostituire $\sigma_i(x,z)$ con
+
+\hfil$\displaystyle\sigma_i(x,z) \;\wedge\; \bigwedge_{j<i}\neg\E y\,\A x\,\Big[\sigma_j(x,y)\iff\sigma_i(x,z)\Big]$.
+
+Di nuovo la consistenza di $\phi(x,a)$ garantisce la validit\`a di $\natural$.
+
+Ora fissiamo delle tuple distinte $d_0,\dots, d_n$ tutte della stessa lunghezza e tutte $\0$-definibili (avendo a disposizione 2 tuple $\0$-definibili possiamo facilmente definire $d_0,\dots, d_n$). Verifichiamo che da $\,\natural\,$ segue
+
+\ceq{\hfill\A w\;\E^{=1}z,y\;\A x\;\Bigg[\vphantom{\bigvee^n_{i=0}}\phi(x,w)}{\iff}{\bigvee^n_{i=1}\Big[\sigma_i(x,z)\;\wedge\; y=d_i\Big]\Bigg].}
+
+(La tupla $z,y$ gioca il ruolo della $z$.)  Dato $a$, la consistenza di  
+
+\ceq{\flat\hfill\A x\;\Bigg[\vphantom{\bigvee^n_{i=0}}\phi(x,a)}{\iff}{\bigvee^n_{i=1}\Big[\sigma_i(x,z)\;\wedge\; y=d_i\Big]\Bigg]}
+
+segue immediatamente da $\natural$. Per mostrare che la soluzione \`e unica osserviamo che se anche $b,d_i\neq c,d_j$ fossero due soluzioni di $\flat$ allora $\sigma_i(x,b)\iff\sigma_j(x,c)$ per qualche $(b,i)\neq (c,j)$ contrariamente a quanto assunto sulla formula $\sigma(x;z)$.
+\end{proof}
+
+\begin{exercise}
+Si dimostri che $T$ ha eliminazione uniforme degli immaginari se e solo se per ogni relazione di equivalenza $0$-definibile esiste una funzione $0$-definibile che sceglie un rappresentante per ogni classe. Ricordiamo che una funzione \`e detta definibile se il suo grafo \`e definibile. Dire che $f$ sceglie un rappresentante per ogni classe significa che $a\sim fa= fb$ per ogni $a\sim b$.\QED
+\end{exercise}
+\begin{comment}
+
+\section{Eliminazione degli immaginari via sintassi.}
+
+Basandoci su un linguaggio del prim'ordine $L$ introdurremo ora un insieme di formule pi\`u ampio di quelle introdotte nel capitolo~\ref{formule}. Le chiameremo formule del secondo ordine. L'insieme delle formule del secondo ordine verr\`a indicato con $L''$.
+
+Riprendiamo la definizione di formula introdotta nel capitolo~\ref{formule}.
+
+\begin{definition}\label{defformule2} I termini di $L''$ sono gli stessi che per il corrispondente linguaggio prim'ordine. Ogni formula atomica del prim'ordine \`e una una formula atomica di $L''$, altre formule atomiche vengono definite come segue. 
+
+Per ogni formula del prim'odine $\sigma(x;y)$ fissiamo un insieme infinito di variabili che chiameremo variabili di sorta $\sigma(x;y)$. Queste variabili sono distinte da quelle del prim'ordine e verranno indicate conconosci i caratteri $\X,\Y,\Z$, ecc. Se $\Y$ \`e una variabile di sorta $\sigma(x;y)$ e $t$ \`e una tupla di termini della stessa lunghezza di $x$ allora $t\in\Y$ \`e una formula atomica. 
+
+Tutte le altre formule vengono costruite a partire da quelle atomiche tramite le clausule ricorsive della definizione~\ref{defformule}
+\end{definition}
+
+Si noti che non abbiamo introdotto quantificatori sulle variabili del secondo ordine. Una variabile $\Y$ di sorta $\sigma(x;y)$ penseremo correre tra gli insiemi definibili della forma $\sigma(\U,a)$, quindi quantificare su $\Y$ \`e equivalente a sistituire tutte le occorrenze della formula $t\in\Y$ con $\sigma(t,y)$ e a quantificare su $y$. 
+
+\begin{lemma}
+Sia $A\subseteq\U^\eq$ e siano $a,b$ tuple di $\U^\eq$ tali che $a\equiv_Ab$ allora esiste $f\in\Aut(\U/A)$ tale che $fa=b$.
+\end{lemma}
+\begin{proof}
+Costruiamo per induzione $f\in\Aut(\U/A)$ come unione di automorphismi parziali $f_i$. Al passo $i$-esimo garantiamo che $a,c\equiv_Ab,f_ic$ dove $c$ \`e una tupla (di elementi reali) che enumera $\dom f_i$. Chiaramente l'unione della catena \`e un $A$-automorfismo. Verifichiamo che $fa=b$, ovvero supponendo che $a=\<a_k:k<\lambda\>$ e $b=\<b_k:k<\lambda\>$ mostriamo che $fa_k=b_k$. Se $a_k$ \`e un elemento reale, l'affermazione \`e immediata. Supponiamo invece che $a_k=\sigma(\U,c)$ per una qualche formula $\sigma(x;c)$. Quindi il tipo $p(\Z,z)=\tp(a_k,c)$ contiene la formula $\A x\,[x\in\Y\iff\sigma(x;z)]$ che quindi dovr\`a essere soddisfatta da $b_k,fc$. Segue che $b_k=\sigma(\U,fc)$, ovvero $fa_k=b_k$. 
+
+ 
+Definiamo $f_i$ per induzione. Posto $f_0=\0$ diamo ora la definizione di $f_{i+1}$ a partire da $f_i$. Sia $c$ un enumerazione di $\dom f_i$ e sia $d$ l'$i$-esimo elemento in una fissata enumerazione di $\U$. Sia $p(\X,x,y)=\tp(a,c,d/A)$. Poich\'e $p(a,c,y)$ \`e finitamente consistente e $a,c\equiv_Ab,fc$, allora che $p(b,fc,y)$ \`e finitamente consistente. Definiamo $f_{i+1}=f_i\cup\{\<d,e\>\}$, dobe $e$ \`e una qualsiasi realizzazione di $p(b,fc,y)$.
+\end{proof}
+ 
+\end{comment}

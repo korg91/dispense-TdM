@@ -1,0 +1,1223 @@
+\chapter{Alcune strutture algebriche}
+%\setcounter{page}{1}
+\label{algebra}
+
+\def\ceq#1#2#3{\parbox{30ex}{$\displaystyle #1$}\parbox{6ex}{\hfil$\displaystyle #2$}$\displaystyle  #3$}
+
+\def\ceqb#1#2#3{\parbox{30ex}{\hfill\emph{$#1$}}\parbox{6ex}{\hfil\emph{\ $#2$}}\emph{$#3$}}
+
+
+Il risultato pi\`u significativo di questo capitolo \`e il corollario~\ref{corol_acfElQuan}, l'eliminazione dei quantificatori per la teoria dei campi algebricamente chiusi. Un risultato che in geometria algebrica si enuncia dicendo che la proiezione di un insieme costruibile \`e a sua volta costruibile. Poi come esercizio deriveremo da questo il Nullstellensatz.
+
+Qui non prenderemo la via pi\`u breve per arrivarci. Infatti quel che pi\`u ci preme \`e fornire una traduzione delle nozioni elementari di algebra in un linguaggio che facilita il confronto con quanto fatto nei capitoli precedenti. 
+
+Nei primi tre paragrafi, per riscaldamento, discutiamo l'eliminazione dei quantificatori nei moduli divisibili (su un dominio di integrit\`a). Queste strutture generalizzano leggermente i campi vettoriali che, pur essendo un esempio pi\`u canonico, per la loro semplicit\`a sono didatticamente meno utili. 
+
+A costo di qualche ripetizione, i restanti capitoli sono indipendenti dai primi tre. Chi volesse omettere la lettura dei primi capitoli, dovr\`a a suo tempo svolgere l'esercizio~\ref{EQ_stazi_vettoriali}.
+
+Assumiamo familiarit\`a con le nozioni di base di algebra ma le principali definizioni verranno riprese. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{I moduli (un ripasso)}
+\label{gruppi}
+La teoria dei gruppi abeliani (o commutativi) \`e generalmente espressa nel linguaggio dei gruppi additivi e contiene i seguenti assiomi (come sempre, scriviamo delle formule intendendo la loro chiusura universale):
+\begin{itemize}
+\item[a1] $(x+y) +z\ =\ y+(x+z)$;
+\item[a2] $x+(-x)\ =\ (-x)+x\ =\ 0$;
+\item[a3] $x+0\ = \ 0+x\ = \ x$;
+\item[a4] $x+y\ =\ y+x$.
+\end{itemize}
+
+Sia $R$ un anello (unitario). In algebra commutativa, gli anelli giocano il ruolo di linguaggio. Il \emph{linguaggio degli $R\jj$moduli}, qui denotato con \emph{$L_R$}, estende il linguaggio dei gruppi additivi con tutti gli elementi di $R$ quali simboli di funzione unaria. Un $R\jj$modulo \`e una struttura di segnatura $L_R$ che rende veri gli assiomi dei gruppi additivi \ssf{a1}-\ssf{a4} e i seguenti assiomi per $t,r,s\in R$
+
+\begin{itemize}
+\item[m1] $r\,(x+y)\ =\ r\,x+r\,y$
+\item[m2] $t\,x\ =\ r\,x+s\,x$\hfill se \ \parbox{50ex}{$t\;=\;r+_Rs$}
+\item[m3] $t x\ =\ -\,r\,x$\hfill se \    \parbox{50ex}{$t\;=\;-_R\,r$}
+\item[m4] $t\,x\ =\ r\,(s\,x)$\hfill se \ \parbox{50ex}{$t\;=\;r\cdot_Rs$}
+\item[m5] $0_R\,x\ =\ 0$
+\item[m6] $1_R\,x\ =\ x$
+\end{itemize}
+
+Lo zero di $R$ non va confuso con lo zero di $M$: il primo \`e una funzione unaria il secondo una costante. Quindi abbiamo lo abbiamo denotato con $0_R$. Analogamente, abbiamo scritto $1_R$ per l'unit\`a dell'anello: $0_R$ ed $1_R$ denotano elementi di $L_R$, come anche $r+_Rs$, $-_R\,r$, e $r\cdot_Rs$ (ovvero i simboli $+_R$, $-_R$ e $\cdot_R$, vivono nel metalinguaggio). Avendo chiarito questo, nel seguito il pedice verr\`a omesso. Indicheremo on \emph{$T_\Rmod$\/} la teoria degli $R\jj$moduli.
+
+I \emph{moduli destri\/} sono definiti analogamente sostituendo l'assioma \ssf{m4} con il seguente:
+
+\begin{itemize}
+\item[m4d] $(r\cdot_Rs)x\ =\ s(rx)$
+\end{itemize}
+
+Chiaramente se $R$ \`e un anello commutativo \ssf{m4} \`e equivalente ad \ssf{m4d}. L'aggettivo \textit{destro\/} deriva dall'osservazione che scrivendo lo scalare alla destra dell'elemento del modulo, l'assioma \ssf{m4d} diventa pi\`u naturale: $x\,(r\cdot_Rs)=(x\,r)\,s$.
+
+Ogni gruppo abeliano \`e uno $\ZZ\jj$modulo definendo per $n$ intero positivo
+
+\ceq{\hfill nx}{\deq}{\stackrel{n\ \rm volte}{\overbrace{x+\dots+x}},}
+
+e, se $n$ \`e negativo, si definisce $nx\ \deq\ -(-n)x$. Infine $0x\ \deq\ 0$.
+
+Diremo che $M$ \`e un \emph{modulo fedele\/} se per ogni $r\in R\sm\{0\}$ vale:
+\begin{itemize}
+\item[mf] $\E x \ rx\ \neq\ 0$
+\end{itemize}
+Per esempio un gruppo abeliano con esponente finito, se considerato come $\ZZ\jj$modulo, non \`e fedele. Quando $R$ \`e un campo, gli $R\jj$moduli si chiamano \emph{spazi vettoriali}. Si noti che se $r^{-1}$ esiste, allora $r\,x=0\ \iff\ r^{-1}r\,x=0\ \iff\ x=0$; quindi tutti i campi vettoriali sono in particolare moduli fedeli.
+% 
+% \begin{notation}[(non standard)]\label{notationConseguenzaConsistenzaModuli}
+% Dato un tipo $p(x)\subseteq L$ ed una formula $\phi(x)\in L$ scriveremo $p(x)\provesR\phi(x)$ per affermare che $p(x)\imp\phi(x)$ vale in tutti gli $R\jj$moduli, ovvero $p(x)\ \cup\ T_\Rmod\proves\phi(x)$.
+% 
+% Molto spesso per\`o servir\`a usare la stessa notazione anche per tipi e formule con parametri. In questo caso ci limiteremo ad usarla con tipi e formule senza quantificatori. Dato un modulo $M$, un insieme $A\subseteq M$, ed un tipo $p(x)\subseteq L(A)$ ed una formula $\phi(x)\in L(A)$, scriveremo 
+% 
+% \hspace*{15ex}\llap{\emph{$p(x)\ \provesR\ \phi(x)$}}%
+% \parbox{6ex}{\hfil$\dIFF$}
+% $p(x)\ \cup\ T_\Rmod\ \cup\ \ \Diag(M/A)\ \proves\ \phi(x)$. 
+% 
+% Se tutte le formule in gioco sono senza quantificatori, queste nozioni non dipendono da $A$ ed $M$ ma solo dalla sottostruttura generata dai parametri che effettivamente occorrono in $p(x)$ e $\phi(x)$. 
+% 
+% La nozione di consistenza \`e adattata in modo analogo: diremo che $p(x)$ \`e consistente se \`e consistente con $T_\Rmod\cup\Diag(M/A)$ ovvero se \`e realizzato in un $R\jj$modulo che contiene $\<A\>_M$. 
+% \end{notation}
+
+Dato un ordinale $\alpha$, con $R^{\oplus\!\alpha}$ denoteremo l'insieme delle sequenze di elementi di $R$ di lunghezza $\alpha$ che sono quasi ovunque nulle. Considereremo $R^{\oplus\!\alpha}$ come $R\jj$modulo nel modo naturale. 
+
+Se $x$ \`e una tupla di variabili di lunghezza $\alpha$, scriveremo $R[x]$ per l'insieme dei termini puri $t(x)$ quozientato per la relazione di equivalenza
+
+\ceqb{\hfill t(x)\sim_R s(x)}%
+{\deq}%
+{T_\Rmod\proves t(x)=s(x).}
+
+Anche $R[x]$ pu\`o essere considerato come un $R\jj$modulo nel modo naturale. Dalla seguente proposizione segue immediatamente che $R[x]$ \`e isomorfo a $R^{\oplus\!\alpha}$.
+
+% \begin{notation}[(non standard)] Data una tupla $r\in R^{\oplus\!\alpha}$ ed una tupla di variabili $x$ di lunghezza $\alpha$, definiamo
+% 
+% \hspace*{15ex}\llap{\emph{$r\mdot x$}}%
+% \parbox{6ex}{\hfil$\deq$}%
+% $\displaystyle\sum_{i<\alpha}r_ix_i$.
+% 
+% La notazione \emph{$r\mdot a$}, dove $a$ \`e una tupla di parametri, \`e definita analogamente.\QED
+% \end{notation}
+
+\begin{proposition}
+\label{prop_formacanonicaterminimoduli}
+Fissiamo $x$, una tupla di variabili di lunghezza $\alpha$. Per ogni termine puro $t(x)$, dove $|x|=\alpha$, esiste una tupla $r\in R^{\oplus\alpha}$, tale che 
+
+\ceq{\hfill T_\Rmod}{\proves}{\sum_{i<\alpha}r_ix_i\ =\ t(x)}.
+
+dove $x=\<x_i:i<\alpha\>$ ed $r=\<r_i:i<\alpha\>$.\QED
+\end{proposition}
+
+% \begin{proof}
+% L'esistenza si dimostra facilmente per induzione sulla sintassi di $t(x)$. Per dimostrare l'unicit\`a, supponiamo che \ssf{1} valga per entrambe le sequenze $r=\<r_i:i<\alpha\>$ ed $s=\<s_i:i<\alpha\>$. Segue immediatamente che per ogni $R\jj$modulo $M$
+% 
+% 
+% \ceq{\ssf{2.}\hfill M}{\models}{\sum_{i<\alpha}(r_i-s_i)x_i\ =\ 0}
+% 
+% in particolare \ssf{2} vale in $R^{\oplus\alpha}$. Scriviamo \emph{$e_i$\/} per l'elemento di $R^{\oplus\!\alpha}$ che \`e $1$ nella coordinata $i\jj$esima e $0$ in tutte le altre. Se sostituiamo ad $x$ l'elemento $e_i$ otteniamo $r_i=s_i$.
+% \end{proof}
+
+
+\begin{corollary}
+\label{corol_formacanonicaterminimoduli}
+Con la stessa notazione della proposizione~\ref{prop_formacanonicaterminimoduli} Sia $M$ un $R\jj$modulo, e fissiamo $A\subseteq M$. Per ogni $\phi(x)\in\aL(A)$ esiste una tupla $r\in R^{\oplus\alpha}$ ed un termine chiuso $t$ a parametri in $A$, tale che 
+
+\ceq{\hfill T_\Rmod\ \cup\ \Diag(M/A)}{\proves}{\phi(x)\ \iff\ \sum_{i<\alpha}r_ix_i\ =\ t}.\QED
+
+\end{corollary}
+
+Per la definizione $\Diag(M/A)$ e di $\atp_M(c/A)$ vedi paragrafo~\ref{frammenti}.
+
+\begin{definition} Sia $M$ un $R\jj$modulo, e fissiamo $A\subseteq M$. Un elemento $c\in M$ si dice \emph{indipendente da $A$\/} se il tipo $p(x)=\atp_M(c/A)$ \`e banale, ovvero
+
+\ceq{\hfill T_\Rmod\ \cup\ \Diag(M/A)}{\proves}{p(x).}  
+
+Equivalentemente, se $\<A\>_M\cap\<c\>_M=\{0\}$.\QED
+\end{definition}  
+
+Questa definizione trasporta ai moduli la nozione di indipendenza lineare nel caso $M$ sia uno spazio vettoriale. In questo caso $c$ \`e indipendente da $A$ se e solo se \`e linearmente indipendente da $A$.
+
+\begin{remark}\label{oss_liberi_qf}
+Sia $k:M\to N$ \`e un immersione parziale, $a$ una tupla di elementi di $\dom k$, e fissiamo due elementi $c\in M$ e $d\in N$ liberi rispettivamente su $a$ e $ka$. Allora $M,c,a\,\equiv_{\rm at}N,d,ka$. Infatti, se $c$ \`e libero su $a$ e $\phi(x,z)\in\aL$ \`e tale che $M\models\phi(c,a)$, allora 
+
+\ceq{\hfill T_\Rmod\ \cup\ \Diag(M/a)}{\proves}{\phi(x,a).}
+
+Poich\'e le strutture $\<a\>_M$ e  $\<ka\>_N$ sono tra loro isomorfe 
+
+\ceq{\hfill T_\Rmod\ \cup\ \Diag(N/ka)}{\proves}{\phi(x,ka).}
+
+e quindi $N\models\phi(d,ka)$. Lo stesso argomento si applica anche l'implicazione opposta e quindi $M,c,a\,\equiv_{\rm at}N,d,ka$.\QED 
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Moduli su un dominio ad ideali principali}
+
+Sia $M$ \`e un $R\jj$modulo, diremo che $M$ \`e \emph{senza torsione\/} se per ogni  $r\in R\sm \{0\}$ vale
+\begin{itemize}
+\item[st] $rx= 0\imp x=0$.
+\end{itemize}
+
+La seguente proposizione \`e essenziale per dimostrare l'equivalente dei lemmi~\ref{lem_ordinericco} e~\ref{lem_graforicco}. Nel capitolo~\ref{relazionali} non serviva esplicitare un simile risultato, l'assenza di funzioni lo rende quasi banale, cfr.\@  esercizio~\ref{ex_ol+grf_tipi_princ_comp}. Si osservi che in questi esercizi si ottiene che tutti i tipi senza quantificatori sono principali, nella seguente proposizione invece il tipo degli elementi liberi rimane escluso.
+
+\begin{proposition}\label{prop_mst_tipi princ_comp}
+Sia $R$ un dominio di integrit\`a e sia $T$ la teoria degli $R\jj$moduli senza torsione. Fissiamo $A\subseteq M\models T$ ed un elemento $c\in M$. Sia $p(x)=\pmatp_M(c/A)$ allora vale una delle seguenti due possibilit\`a:   
+\begin{itemize}
+\item[1.] $c$ \`e indipendente da $A$;
+\item[2.] $M\models\phi(c)$ per una qualche $\phi(x)\in\aL(A)$ tale che 
+$T\cup\Diag(M/A)\proves\phi(x)\imp p(x)$.
+\end{itemize}\end{proposition}
+
+L'insieme $A$ pu\`o essere preso infinito, questo permetter\`a di dimostrare il lemma~\ref{lemma_modulo_divisibile_ricco_nonnumer} senza restrizioni sulla cardinalit\`a e quindi di ottenere la categoricit\`a non numerabile, vedi corollario~\ref{thm_ModDivUltraOmog}. Non \`e cos\`i nell'esercizio~\ref{ex_ol+grf_tipi_princ_comp}. 
+
+\begin{proof}
+Se \ssf{1} non vale $p(x)$ contiene una formula atomica che non segue da $T_\Rmod\cup\Diag(M/A)$. Questa ha la forma $nx=t$ dove $t$ \`e un termine chiuso a parametri in $A$. Chiaramente $n\neq 0$. Vogliamo mostrare che $T\cup\Diag(M/A)\proves nx=t\imp p(x)$.
+
+Dobbiamo verificare che per ogni intero $m$, ed ogni termine $s$ a parametri in $A$, uno dei seguenti casi vale per ogni $N\models T$ che contiene $\<A\>_M$
+\begin{itemize}
+\item[a.] $N\models\A x\,[nx=t\imp mx=s]$
+\item[b.] $N\models\A x\,[nx=t\imp mx\neq s]$
+\end{itemize} 
+Supponiamo per assurdo che ci\`o non valga per certi $m$, $s$. Esistono quindi $N_i\models T$ sovrastrutture di $\<A\>_M$ tali che per qualche $a_i\in N_i$
+\begin{itemize}
+\item[a'.] $N_1\models na_1=t$ ed $N_1\models ma_1\neq s$
+\item[b'.] $N_2\models na_2=t$ ed $N_1\models ma_2 = s$
+\end{itemize} 
+Da \ssf{b'} segue $N_2\models mt=ns$ e, poich\'e $N_1$ non ha torsione, da \ssf{a'} segue $N_1\models mt\neq ns$. Ma $mt=ns$ \`e una formula a parametri in $A$ quindi la sua verit\`a dipende solo da $\<A\>_M$. Questo contraddice $\<A\>_M\subseteq N_i$.
+\end{proof}
+
+
+\begin{exercise}\label{ex_ol+grf_tipi_princ_comp}
+Scriviamo $T$ per una qualsiasi delle teorie $T_{\rm ol}$ e $T_{\rm gfr}$. Sia $A\subseteq M\models T$ finito, e sia $c\in M$. Dimostrare che $p(x)=\pmatp_M(c/A)$ \`e un tipo principale. Ovvero, esiste $\phi(x)$ congiunzione di formule in $p(x)$ tale che
+
+\ceq{\hfill T\cup\Diag(M/A)}{\proves}{\phi(x)\imp p(x)}.
+
+Si osservi che questo non vale se $A$ \`e infinito.\QED
+\end{exercise}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Moduli divisibili}
+
+In questo paragrafo $R$ \`e sempre un dominio di integrit\`a. Diremo che $M$ \`e \emph{divisibile\/} se \`e senza torsione e per ogni  $r\in R\sm \{0\}$ vale
+\begin{itemize}
+\item[div] $\E x\ rx=y$.
+\end{itemize} 
+
+La seguente proposizione traduce l'assioma di divisibilit\`a in una in propriet\`a delle formule atomiche.
+
+\begin{proposition}\label{prop_md_cons_sodd}
+Sia $R$ un dominio di integrit\`a, $T$ la teoria degli $R\jj$moduli senza torsione. e $N\models T$. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ \`e divisibile;
+\item[2.] $N\models\E x\,\phi(x)$ per ogni formula consistente $\phi(x)\in\aL(N)$.
+\end{itemize} 
+Sopra, $x$ denota una singola variabile e la consistenza va intesa modulo $T\cup\Diag(N/A)$, dove $A$ \`e l'insieme dei parametri che occorrono in $\phi(x)$. Quindi $\phi(x)$ \`e consistente se soddisfatta in un qualsiasi $R\jj$modulo senza torsione che contiene $\<A\>_N$.
+\end{proposition}
+
+Dal lemma~\ref{lemma_modulo_divisibile_ricco_nonnumer} che dimostreremo qui sotto segue che \ssf{2}$\IMP$\ssf{1} vale per ogni $\phi(x)\in L_{\rm qf}(A)$ anche quando $x$ \`e una tupla di variabili (vedi esercizio~\ref{lkhfq}), ma per arrivarci dobbiamo prima verificarla per le formule atomiche. 
+
+\begin{proof}
+Dimostriamo \ssf{2}$\IMP$\ssf{1}. Mostriamo che per ogni elemento $a\in N$ e per ogni $r\in R\sm \{0\}$ la formula $rx=a$ \`e consistente. Se consideriamo $R$ come $R\jj$modulo otteniamo un modulo senza torsione: l'assenza di torsione si riduce all'assenza di divisori dello zero.  Posto $k=\{\<s,sa\> : s\in R\}$, \`e immediato verificare che $k:R\imp\<a\>_N$ \`e un isomorfismo tra $R\jj$moduli (l'assenza di torsione serve per iniettivit\`a). L'equazione $rx=1$ ha soluzione in un estensione di $R$, precisamente, nel campo delle frazioni di $R$. Quindi, identificando strutture isomorfe, $rx=a$ ha soluzione in un estensione di $\<a\>_N$. Per \ssf{2} ha soluzione in $N$.
+
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Per il corollario~\ref{corol_formacanonicaterminimoduli} possiamo assumere che la formula $\phi(x)$ abbia la forma $r x= a$ per un qualche $a\in N$. Se $r=0$, poich\'e $\phi(x)$ \`e consistente, dev'essere $a=0$ e la consistenza \`e ovvia. Altrimenti una soluzione in $N$ esiste per l'assioma di divisibilit\`a.
+%Dimostriamo \ssf{1}$\IMP$\ssf{2}. Per la proposizione~\ref{formacanonicaterminimoduli} possiamo assumere che la formula $\phi(x)$ abbia la forma $r\cdot x= a$ per un qualche elemento $a\in M$. Se tutte le componenti della tupla $r$ sono nulle allora, poich\`e $\phi(x)$ \`e consistente, $a=0$. In questo caso la consistenza in $M$ \`e ovvia. Per facilit\`a supponiamo $r_0\neq 0$. Se $b$ \`e una soluzione dell'equazione $r_0x_0=a$, allora la tupla con prima componente $b$ e tutte le altre coordinate nulle, \`e una soluzione di $\phi(x)$. Per la divisibilit\`a, un tale $b$ esiste in $M$.
+\end{proof}
+
+Chiameremo \emph{rango\/} di $M$ \`e la minima cardinalit\`a di un insieme $A\subseteq M$ tale che $\<A\>_M=M$. (Quindi, se $A$ ha cardinalit\`a minore del rango, $M$ contiene qualche elemento indipendente da $A$.)
+
+Il seguente \`e teorema corrisponde ai lemmi~\ref{lem_ordinericco} e~\ref{lem_graforicco} con due differenze molto importanti. La prima \`e una limitazione: serve assumere che $N$ ha rango sufficientemente grande, un'ipotesi che non ha corrispondente per le teorie $T_{\rm oldse}$ e $T_{rg}$ e che ha profonde conseguenze perch\'e non \`e traducibile in un assioma del prim'ordine. (La situazione \`e simile a quella della proposizione~\ref{prop_ex_R_omega}.) Quindi dal teorema non segue nessun risultato di $\omega\jj$categoricit\`a. La seconda differenza \`e che qui il teorema \`e esteso ad ogni cardinalit\`a $\lambda$. Poich\'e l'ipotesi sul rango svanisce (viene automaticamente soddisfatta) per $\lambda$ sufficientemente grande, otterremo un risultato di $\lambda\jj$categoricit\`a.
+
+
+\begin{lemma}\label{lemma_modulo_divisibile_ricco_nonnumer}
+Sia $R$ un dominio di integrit\`a e sia $T$ la teoria degli $R\jj$moduli senza torsione.
+Allora ogni modulo divisibile e di rango $\lambda$ \`e un modello $\lambda\jj$ricco di $T$.
+\end{lemma}
+
+\begin{proof}
+Sia $\<a_i:i<\lambda\>$ un'enumerazione di $M$. Seguiamo la stessa costruzione della dimostrazione del lemma~\ref{lem_ordinericco}, con la stessa notazione. L'unica differenza \`e che nel caso  in cui $|M|$ non \`e numerabile dovremo considerare passi limite: se $i<\lambda$ \`e limite, allora definiamo
+
+\hfil$\displaystyle h_i\ \ :=\ \ \bigcup_{j<i} h_j$.
+
+Ora definiremo $h_{i+1}$ in modo che $a_i\in\dom h_{i+1}$. Sia $a$ una tupla che enumera $\dom h_i$ e sia $p(x,z)=\pmatp_M(a_i,a)$. (Si osservi che $a$ potrebbe essere una tupla infinita.) Se $a_i$ non \`e indipendente da $a$, dalla proposizione~\ref{prop_mst_tipi princ_comp} otteniamo che $M\models\phi(a_i,a)$ per una formula atomica tale che 
+
+\ceq{\ssf{i.}\hfill T\ \cup\ \Diag(M/a)}{\proves}{\phi(x,a)\imp p(x,a).} 
+
+Inoltre ovviamente:
+
+\ceq{\ssf{ii.}\hfill T\ \cup\ \Diag(M/a)}{\cup}{\big\{\phi(x,a)\big\}}\hspace{3ex}\`e consistente.
+
+Per l'ipotesi induttiva $\<a\>_M$ \`e isomorfo a $\<h_ia\>_N$ e quindi \ssf{i} e \ssf{ii} valgono anche sostituendo $M,a$ con $N,h_ia$. Per la proposizione~\ref{prop_md_cons_sodd} la formula $\phi(x,h_ia)$ \`e soddisfatta in $N$. Un qualsiasi $c$ che soddisfa $\phi(x,h_ia)$ realizza $p(x,h_ia)$. Quindi posto $h_{i+1}=h_i\cup\{\<a_i,c\>\}$ otteniamo l'estensione richiesta. Veniamo al caso in cui $a_i$ \`e indipendente da $a$. Poich\'e $|a|$ \`e minore del rango di $N$, esiste un $c\in N$ e indipendente da $h_ia$. Come visto nell'osservazione~\ref{oss_liberi_qf} segue che $M,a,a_i\equiv_{\rm at} N,h_ia,c$. Quindi l'estensione richiesta si ottiene definendo $h_{i+1}=h_i\cup\{\<a_i,c\>\}$.
+\end{proof}
+
+\begin{corollary}\label{thm_ModDivUltraOmog}
+Sotto le stesse ipotesi del lemma~\ref{lemma_modulo_divisibile_ricco_nonnumer}. Fissiamo $M,N\models T$ entrambi di cardinalit\`a $\lambda$ e di rango $\lambda$.  Allora ogni $k:M\imp N$, immersione parziale di cardinalit\`a $<\lambda$, si estende ad un isomorfismo.
+\end{corollary}
+
+\begin{proof}
+Segue dal lemma~\ref{lemma_modulo_divisibile_ricco_nonnumer} e dal teorema~\ref{riccozigzag}.
+\end{proof}
+
+Si osservi che la cardinalit\`a di $\<A\>_N$ \`e al pi\`u $|A|+|R|+\omega$, quindi un $R\jj$modulo $N$ di cardinalit\`a $>|R|+\omega$ ha necessariamente rango $|N|$. Quindi nel lemma~\ref{lemma_modulo_divisibile_ricco_nonnumer} possiamo omettere l'ipotesi sul rango se richiediamo che la cardinalit\`a di $N$ sia sufficientemente grande. Otteniamo quindi il seguente:
+
+\begin{corollary}\label{thm_ModDivUltraOmog}
+Sia $R$ un dominio di integrit\`a e sia $T$ la teoria degli $R\jj$moduli senza torsione. Allora $T$ \`e $\lambda\jj$categorica per ogni $\lambda>|R|+\omega$.\QED
+\end{corollary}
+
+
+
+Per i teoremi~\ref{imparzialemappeelementari} e~\ref{tutteleimmersionisonoelementari=eliminazioneqantificatori}, categoricit\`a e ultraomogeneit\`a hanno la seguente importante conseguenza:
+
+\begin{corollary}\label{corol_ModDivElQuan}
+Sia $R$ un dominio di integrit\`a. La teoria degli $R\jj$moduli divisibili ha eliminazione dei quantificatori.\QED
+\end{corollary}
+
+\begin{exercise}\label{lkhfq}
+Sia $R$ un dominio di integrit\`a e sia $N$ un $R\jj$modulo senza torsione. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ divisibile;
+\item[2.] ogni formula $\phi(x)\in L_{\rm qf}(A)$ consistente \`e soddisfatta in $N$.
+\end{itemize} 
+La consistenza \`e da intendersi modulo la teoria $T\cup\Diag(N/A)$ dove $A\subseteq N$ contiene i parametri della formula. (Suggerimento: l'affermazione sarebbe immediata se potessimo eliminare dal lemma~\ref{lemma_modulo_divisibile_ricco_nonnumer} la richiesta che $N$ ha rango infinito. Per ovviare, basta usare L\"owenheim-Skolem all'ins\`u.)
+\end{exercise}
+
+\begin{exercise}
+Sia $R$ un dominio di integrit\`a. Si dimostri che tutti gli $R\jj$moduli divisibili sono omogenei. N.B.\@ indipendentemente dalla cardinalit\`a e dal rango. Suggerimento: si proceda per induzione sulla cardinalit\`a dell'immersione parziale da estendere.\QED
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Anelli e domini d'integrit\`a (un ripasso)}
+\label{anelli}
+Riportiamo qui sotto gli assiomi degli anelli. Tutti gli anelli che considereremo saranno unitari. Il linguaggio \`e quello degli anelli unitari. 
+
+\begin{itemize}
+\item[a1-a4] come nei gruppi abeliani
+\item[a5] $(x\mdot y)\mdot z\  =\ y\mdot(x\mdot z)$,
+\item[a6] $1\mdot x\ =\ x\mdot 1\ =\ x$,
+\item[a7] $(x+y)\mdot z\ =\ x\mdot z + y\mdot z$,
+\item[a8] $z\mdot (x+y)\ =\ z\mdot x + z\mdot y$.
+\end{itemize}
+
+Un anello \`e detto \emph{commutativo\/} se vale
+
+\begin{itemize}
+\item[ac] $x\mdot y\ =\ y\mdot x$.
+\end{itemize}
+ 
+Indicheremo con \emph{$T_{\rm auc}$} la teoria degli anelli (unitari) commutativi.
+
+Se $M$ \`e un anello e $a\in M$, diremo che $a$ \`e nilpotente se $a^n=0$ per qualche intero positivo $a$, dove 
+
+\ceq{\hfill x^n}{\deq}{\smash{\stackrel{n\ \rm volte}{\overbrace{x\cdot x\cdot\dots\cdot x}}}}
+
+La teoria degli \emph{anelli senza elementi nilpotenti}, che qui denoteremo con \emph{$T_{\rm asn}$} contiene, oltre agli assiomi di $T_{\rm auc}$, i seguenti
+
+\begin{itemize}
+\item[sn] $x^n=0\imp x=0$.
+\end{itemize}
+
+per ogni intero positivo $n$.
+
+La \emph{caratteristica\/} di un anello $M$ \`e il minimo $n$, se esiste, per cui $n1=0$. Se questo $n$ non esiste, allora diremo che l'anello ha caratteristica $0$. Quindi \`e chiaro che due anelli $M$ ed $N$  hanno la stessa caratteristica se e solo se $M\equiv_{\rm at}N$ ovvero se $\0:M\imp N$ \`e un'immersione parziale.
+
+La seguente proposizione mostra che dato un anello $M$ ed un insieme $A\subseteq M$ possiamo identificare i termini a parametri in $A$ con polinomi a coefficienti in $\<A\>_M$.
+
+\begin{proposition}
+\label{formacanonicaterminiau}
+Sia $x=\<x_i: i<\alpha\>$. Dato $n\in\omega^{\oplus\alpha}$, diciamo $n=\<n_i: i<\alpha\>$, useremo la seguente abbreviazione:
+
+\ceq{\hfill x^n}{=}{\prod_{i<\alpha} x^{n_i}_i.}
+
+Fissati $A\subseteq M$ come sopra, per ogni $t(x)$, termine a parametri in $A$, esiste una funzione $c:\omega^{\oplus\alpha}\to\<A\>_M$, quasi ovunque nulla, tale che
+
+\ceq{\ssf{p}\hfill T_{\rm auc}+\Diag(M/A)}{\proves}{\displaystyle t(x)\ \ =\ \ \sum_{n\in \omega^{\oplus\alpha}}c(n)\,x^n}
+
+Inoltre, tale funzione $c$ \`e unica.% La proposizione vale anche nel caso degenere dei termini chiusi: per ogni termine chiuso $t$, esiste un $n$ tale che in tutti gli anelli commutativi vale $t=n$.   
+\end{proposition}
+
+\begin{proof}
+L'esistenza si dimostra per induzione sulla sintassi di $t(x)$. L'unicit\`a \`e immediata. %Per dimostrare l'unicit\`a, supponiamo che $c$ e $d$ rendano valida l'identit\`a \ssf{p} e quindi che il termine
+% 
+% \hfil$\displaystyle \sum_{ n\in \omega^{\oplus\alpha}}\big(c(n)-d(n)\big)\,x^n$
+% 
+% \`e identicamente nullo in tutti gli anelli commutativi che contengono $\<A\>_M$.
+\end{proof}
+
+% \begin{proof}
+% L'esistenza si dimostra facilmente per induzione sulla sintassi dei termini. Per dimostrare l'unicit\`a, supponiamo che $c$ e $d$ rendano valida l'identit\`a \ssf{p}. Segue immediatamente che il termine
+% 
+% \hfil$\displaystyle \sum_{ n\in \omega^k}\big(c(n)-d(n)\big)\,x^n$
+% 
+% \`e identicamente nullo in tutti gli anelli commutativi, quindi anche in $\ZZ$, e quindi $c(n)=d(n)$ per ogni $n$.
+% \end{proof}
+Modulo $T_{\rm auc}+\Diag(M/A)$, ogni formula atomica a parametri in $A$ \`e equivalente ad una formula della forma $t(x)=0$ dove $t(x)$ \`e un termine. Se $\phi(x)$ \`e una formula di questa forma chiameremo \emph{grado\/} di $\phi(x)$, il grado del polinomio associato a $t(x)$, ovvero
+
+\hfil$\displaystyle\max\Bigg\{\smash{\sum_{i<\alpha}n_i}\ :\ n\in\omega^{\oplus\alpha},\ \ c(n)\neq0\Bigg\}$.
+
+Dove $c:\omega^{\oplus\alpha}\to\<A\>_M$ \`e la funzione data dalla proposizione~\ref{formacanonicaterminiau}. 
+
+Infine, se $A\subseteq M\models T_{\rm auc}$ e $c\in M$, diremo che $c$ \`e \emph{trascendente\/} su $A$ se $p(x)=\atp(c/A)$ \`e un tipo banale, ovvero se $T_{\rm auc}\cup\Diag(M/A)\proves p(x)$. Altrimenti diremo che $c$ \`e \emph{algebrico\/} su $A$. 
+
+
+
+\begin{remark}\label{oss_trascendenti_qf}
+L'osservazione~\ref{oss_liberi_qf} pu\`o essere ripetuta letteralmente qui, sostituendo $T_{\rm di}$ a $T_\Rmod$ e trascendente a libero.\QED 
+\end{remark}
+% 
+% \begin{proposition}
+% \label{formacanonicaterminiau}
+% Sia $x$ una variabile. Per ogni termine puro $t(x)$ esiste una funzione $c:\omega\to\ZZ$, quasi ovunque nulla, tale che
+% 
+% \ssf{p}\hfil$T_{\rm auc}\ \proves\ \displaystyle t(x)\ \ =\ \ \sum_{n\in \omega^k}c(n)\,x^n$
+% 
+% Inoltre, tale funzione $c$ \`e unica. 
+% \end{proposition}
+% 
+% La proposizione pu\`o essere estesa facilmente al caso in cui $x$ \`e una tupla (nel seguito useremo solo il caso particolare enunciato). 
+% 
+% \begin{proof}
+% L'esistenza si dimostra facilmente per induzione sulla sintassi dei termini. Per dimostrare l'unicit\`a, supponiamo che $c$ e $d$ rendano valida l'identit\`a \ssf{p}. Segue immediatamente che il termine
+% 
+% \hfil$\displaystyle \sum_{ n\in \omega}\big(c(n)-d(n)\big)\,x^n$
+% 
+% \`e identicamente nullo in tutti gli anelli commutativi, quindi anche in $\ZZ$, e quindi $c(n)=d(n)$ per ogni $n$.
+% \end{proof}
+
+\section{Domini di integrit\`a}
+
+Due elementi diversi da $0$ tali che $a\,b=0$ si chiamano \emph{divisori dello zero}. Un anello commutativo \`e detto un \emph{dominio di integrit\`a} se  
+\begin{itemize}
+\item[nb] $0\neq 1$
+\item[di] $x\mdot y =0\ \imp\ x=0\ \vee\ y=0$.
+\end{itemize}
+La teoria dei domini di integrit\`a qui verr\`a denotata con \emph{$T_{\rm di}$}. 
+
+% 
+% La seguente proposizione \`e immediata.
+% 
+% \begin{proposition}[(identit\`a di B\'ezout)]
+% Sia $R$ un dominio ad ideali principali, consideriamo $R$ come $R\jj$modulo. Allora per ogni $A\subseteq R$ esiste un termine $t$ a parametri in $A$ tale che $\<A\>_R=\<t\>_R$.\QED
+% \end{proposition}
+% 
+% Vediamo in che senso la proposizione generalizza l'\emph{identit\`a di B\'ezout}. Poich\'e $\<a\>_R\subseteq\<c\>_R$ se e solo se $a$ divide $b$, il generatore di $\<a,b\>_R$ diventa $\gcd(a,b)$. Quindi la proposizione afferma che $\gcd(a,b)=t(a,b)$ per un qualche termine $t(x,y)$ ovvero, per il lemma~\ref{formacanonicaterminimoduli}, una combinazione lineare di $a$ e $b$.
+
+\begin{proposition}\label{prop_di_tipi princ_comp}
+Fissiamo $A\subseteq M\models T_{\rm di}$ e  $c\in M$. Sia $p(x)=\pmatp_M(c/A)$ allora vale una delle seguenti due possibilit\`a:   
+\begin{itemize}
+\item[1.] $c$ \`e trascendente su $A$;
+\item[2.] $M\models\phi(c)$ per una qualche $\phi(x)\in\aL(A)$ tale che 
+$T\cup\Diag(M/A)\proves\phi(x)\imp p(x)$.
+\end{itemize}
+\end{proposition}
+
+L'insieme $A$ pu\`o essere preso infinito. Questo permetter\`a di dimostrare il teorema~\ref{thm_acf_ricco_nonnumer} senza restrizioni sulla cardinalit\`a e quindi di ottenere la categoricit\`a non numerabile, vedi corollario~\ref{thm_acfUltraOmog}.
+
+\begin{proof}
+Se \ssf{1} non vale esiste $\psi(x)\in\aL(A)$ non banale tale che $\psi(c)$. Scegliamo la formula di grado minimo. Sia $\xi(x)\in\aL(A)$ arbitraria. \`E sufficiente mostrare che vale una delle seguenti possibilit\`a:
+\begin{itemize}
+\item[1.] $\proves\ \psi(x)\imp\phantom{\neg}\xi(x)$;
+\item[2.] $\proves\ \psi(x)\imp\neg\xi(x)$,
+\end{itemize} 
+dove abbiamo scritto $\proves$ per conseguenza logica modulo $T_{\rm di}\cup\Diag(M/A)$. Supponiamo che la formula $\psi(x)$ abbia la forma $a(x)=0$ per un polinomio $a(x)$ di grado $n$. Scriviamo $a'(x)=0$ per la formula $\xi(x)$.  Assumiamo temporaneamente che $\<A\>_M$ sia un un campo; allora esiste un polinomio $d(x)$ tale che per opportuni polinomi $b(x)$ e $b'(x)$
+\begin{itemize}
+\item[a.] $d(x)b(x)=a(x)$;
+\item[a'.] $d(x)b'(x)=a'(x)$.
+\end{itemize}   
+Inoltre assumiamo che $d(x)$ abbia grado massimo tra i polinomi con questa propriet\`a. Se invece $\<A\>_M$ non \`e un campo, quanto detto resta comunque valido nel campo delle frazioni di $\<A\>_M$, e quindi le equazioni \ssf{a} e \ssf{a'} valgono a meno di un fattore in $\<A\>_M$ che possiamo, senza perdita di generalit\`a, assorbire in $a(x)$ e $a'(x)$. 
+
+Da \ssf{a} otteniamo che $d(c)=0$ o $b(c)=0$. Nel primo caso, poich\'e $d(x)$ non pu\`o avere grado inferiore ad $a(x)$, otteniamo che $b(x)$ \`e un polinomio costante non nullo.  Questo implica immediatamente \ssf{1}. Quindi supponiamo $b(c)=0$, e questo implica che $d(x)=d$, una costante non nulla. Ancora una volta, assumiamo temporaneamente che $\<A\>_M$ sia un un campo in modo da poter applicare l'identit\`a di B\'ezout e ottenere opportuni polinomi $c(x)$ e $c'(x)$ tali che $d=a(x)c(x)+a'(x)c'(x)$. Ora \ssf{2} \`e immediata conseguenza di questa identit\`a. 
+
+Se invece $\<A\>_M$ non \`e un campo, ragioniamo come sopra: dall'identit\`a di B\'ezout nel campo delle frazioni di $\<A\>_M$ otteniamo $d'd=a(x)c(x)+a'(x)c'(x)$ dove $d'\in\<A\>_M$ \`e non nullo. Quindi arriviamo  alla stessa conclusione.
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Campi algebricamente chiusi}
+
+Sia $a$ un elemento di un anello commutativo. Un elemento $b$ tale che $a\mdot b=b\mdot a=1$ \`e detto \emph{inverso\/} di $a$.  Un anello commutativo \`e detto un \emph{campo\/} se ogni elemento non nullo ha un inverso. In altre parole se vale il seguente assioma:
+%
+\begin{itemize}
+\item[c]$\E  y\; \big[x\neq0\ \imp\ x\mdot y =1\big]$.
+\end{itemize}
+%
+Ricordiamo che, per convenzione, i campi sono strutture con la segnatura degli anelli unitari, il linguaggio non contiene nessun simbolo di funzione per $x^{-1}$ e quindi le sottostrutture di un campo sono semplicemente degli anelli, o meglio, dei domini di integrit\`a.
+
+
+% \begin{exercise}
+% Si osservi che in un campo la formula $x\neq 0$ \`e equivalente ad una formula positiva e si deduca che tutti gli omomorfismi (totali) da un campo ad un anello commutativo sono immersioni. (Nei testi di algebra il risultato si dimostra verificando che i campi hanno solo ideali banali.)\QED
+% \end{exercise}
+
+Un \emph{campo algebricamente chiuso\/}  (in inglese, \emph{algebraically closed field}) \`e un campo che soddisfa il seguente schema di assiomi, per ogni intero $n$ positivo:
+
+\begin{itemize}
+\item[ac] $\E x\ \big(x^{n} + z_{n-1}x^{n-1} + \dots + z_1 x + z_0\ \ =\ \ 0\big)$
+\end{itemize}
+
+dove $x$ e $z_0,\dots,z_n$ denotano singole variabili. La teoria dei campi algebricamente chiusi verr\`a denotata con \emph{$T_{\rm acf}$}.
+
+
+\begin{proposition}\label{prop_acf_cons_sodd}
+Fissiamo $N\models T_{\rm di}$ ed una variabile $x$. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ \`e un campo algebricamente chiuso;
+\item[2.] $N\models\E x\,\phi(x)$ per ogni formula consistente $\phi(x)\in\aL(N)$.
+\end{itemize} 
+Sopra, $x$ denota una singola variabile e la consistenza va intesa modulo $T_{\rm di}\cup\Diag(N/A)$, dove $A$ \`e l'insieme dei parametri che occorrono in $\phi(x)$. Quindi $\phi(x)$ \`e consistente se soddisfatta in un qualsiasi dominio di integrit\`a che contiene $\<A\>_N$.
+\end{proposition}
+
+\begin{proof}
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. A meno di equivalenza la formula $\phi(x)$ ha la forma $a_nx^n + \dots + a_1 x + a_0=0$ per $a_i\in\<A\>_N$. Sia $n$ il minimo per cui questo \`e possibile. Se $n=0$ allora, la consistenza di $\phi(x)$ impone $a_0=0$ e l'affermazione \`e ovvia. Altrimenti possiamo assumere $a_n\neq0$ e l'affermazione deriva immediatamente da l'assioma \ssf{ac}. 
+
+Per l'implicazione \ssf{2}$\IMP$\ssf{1} rimandiamo ad un qualsiasi testo di base di algebra per la dimostrazione che ogni equazione della forma $x^n + a_{n-1}x^{n-1} \dots + a_1 x + a_0=0$ per $a_i\in N$ e $n>0$ ha soluzioni in un campo che estende $\<a_0,\dots,a_n\>_N$.
+\end{proof}
+
+Il \emph{grado di trascendenza\/} di un dominio di integrit\`a $M$ \`e la minima cardinalit\`a di un insieme $A\subseteq M$ tale che tutti gli elementi di $M$ sono algebrici su $A$. Poich\'e ogni formula algebrica ha un numero finito di soluzioni, se $\omega<|M|$ il grado di trascendenza di $M$ \`e $|M|$. 
+
+
+\begin{theorem}\label{thm_acf_ricco_nonnumer}
+Ogni campo algebricamente chiuso di grado di trascendenza  $\lambda$ \`e un modello $\lambda\jj$ricco di $T_{\rm di}$. Di conseguenza tutti i campi  algebricamente chiusi non numerabili sono ricchi.
+\end{theorem}
+
+
+\begin{proof}
+Letteralmente la stessa dimostrazione del teorema~\ref{lemma_modulo_divisibile_ricco_nonnumer} sostituendo $T$ con $T_{\rm di}$ e \textit{libero\/} con \textit{trascendente\/}. I riferimenti alle proposizioni~\ref{prop_mst_tipi princ_comp} e~\ref{prop_md_cons_sodd} vanno sostituiti con riferimenti alle corrispondenti proposizioni ~\ref{prop_di_tipi princ_comp} e~\ref{prop_acf_cons_sodd}
+\end{proof}
+
+Scriviamo $T^p_{\rm acf}$ per la teoria dei campi algebricamente chiusi di caratteristica $p$. 
+
+
+\begin{corollary}\label{thm_acfUltraOmog}
+Siano $M,N\models T_{\rm acf}$ modelli della stessa di cardinalit\`a $\lambda>\omega$. Allora ogni $k:M\imp N$ immersione parziale di cardinalit\`a $<\lambda$ si estende ad un isomorfismo. Di conseguenza $T^p_{\rm acf}$ \`e $\lambda\jj$categorica per ogni $\lambda>\omega$ e per ogni caratteristica $p$.
+\end{corollary}
+
+Pi\`u avanti estenderemo \ssf{2} anche ai modelli numerabili.
+
+\begin{proof}
+Un campo algebricamente chiuso non numerabile ha necessariamente grado di trascendenza infinito. Si osservi solo che per ottenere la $\lambda\jj$categoricit\`a \`e necessario fissare la caratteristica (la mappa vuota tra campi di diversa caratteristica non \`e un'immersione parziale).\end{proof}
+
+Quindi dai teoremi~\ref{imparzialemappeelementari} e~\ref{tutteleimmersionisonoelementari=eliminazioneqantificatori} otteniamo:
+
+\begin{corollary}\label{corol_acfElQuan}
+Per ogni caratteristica $p$, la teoria $T^p_{\rm acf}$ \`e completa ed ha eliminazione dei quantificatori.\QED
+\end{corollary}
+
+
+\begin{exercise}
+Si dimostri che tutti campi algebricamente chiusi sono omogenei. N.B.\@ indipendentemente dalla cardinalit\`a e dal rango. Suggerimento: si proceda per induzione sulla cardinalit\`a dell'immersione parziale da estendere.\QED
+\end{exercise}
+
+\section{Il Nullstellensatz}
+
+\def\ceq#1#2#3{\parbox{20ex}{$\displaystyle #1$}\parbox{6ex}{\hfil$\displaystyle #2$}$\displaystyle  #3$}
+
+Nel seguito $x$ \`e una tupla di variabili fissata ed $A$ un sottoinsieme di un anello $N$. Indicheremo con $\Delta$ l'insieme delle formule della forma $t(x)=0$ dove $t(x)$ \`e un termine a parametri in $A$. Converr\`a identificare le formule della forma $t(x)=0$ con il polinomio a coefficienti in $\<A\>_M$ che corrisponde al termine $t(x)$ dato dalla proposizione~\ref{formacanonicaterminiau}. Quindi all'occasione tratteremo $\Delta$ come un anello di polinomi. Quindi $t(x)\in\Delta$ e $t(x)=0\in\Delta$ saranno espressioni sinonime. 
+
+A queste due interpretazioni di $\Delta$ corrispondono due operazioni di chiusura sugli insiemi $p\subseteq\Delta$. Da un lato esiste la  chiusura di $p$ per conseguenze logiche dall'altro l'ideale dell'anello generato da $p$. Queste non sono esattamente la stessa operazione e la seguente proposizione le confronta. 
+
+\begin{proposition}\label{prop_chiusura-radicale}
+Fissiamo un dominio di integrit\`a $N$, un sottoinsieme $A\subseteq N$ e sia $\Delta$ come sopra. Per ogni $p\subseteq\Delta$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $p$ \`e un ideale radicale, ovvero, per ogni $n$ intero positivo $t^n(x)\in p\IMP t(x)\in p$;
+\item[2.] $p$ \`e un $\Delta\jj$tipo chiuso per conseguenze modulo $T_{\rm di}\cup\Diag(N/A)$.
+%\item[3.] $p$ \`e chiuso per conseguenze modulo $T_{\rm asn}\cup\Diag(N/A)$.
+\end{itemize}
+\end{proposition}
+Si osservi che avremmo potuto usare $T_{\rm asn}$ al posto di $T_{\rm di}$ con la stessa dimostrazione.
+\begin{proof}
+Nel simbolo $\proves$ sottointendiamo $T_{\rm di}\cup\Diag(N/A)$.  Per dimostrare \ssf{1}$\IMP$\ssf{2} fissiamo un polinomio $t(x)\notin p$ e mostriamo che $p\not\proves t(x)=0$. Da \ssf{1} sappiamo che $p$ \`e intersezione di tutti gli ideali primi che lo contengono. Quindi $t(x)\notin q$ per qualche ideale primo $q$ che contiene $p$.  Per la primalit\`a dell'ideale $q$, l'anello $\Delta/q$ \`e un dominio di integrit\`a.  Denotiamo con $x+q$ la classe in $\Delta/q$ di cui $x$ \`e rappresentante. Come \`e noto $x+q$ \`e una soluzione di tutte e sole le equazioni in $q$. Questo mostra che $q\not\proves t(x)=0$. A fortiori $p\not\proves t(x)=0$. Per l'implicazione \ssf{2}$\IMP$\ssf{1} osserviamo che $p$ \`e sicuramente un ideale e che da $p\proves t^n(x)=0$ segue ovviamente $p\proves t(x)=0$. 
+\end{proof}
+
+
+Dato $p\subseteq\Delta$ scriviamo \emph{${\rm\bf rad}\,p$} per l'ideale radicale generato da $p$, ovvero l'intersezione di tutti gli ideali radicali che contengono $p$. 
+
+\begin{corollary}\label{corol_caratterizzazione_rad}
+Sotto le stesse ipotesi della proposizione~\ref{prop_chiusura-radicale}, se $p\subseteq\Delta$ allora
+
+\ceq{\hfill\rad p}{=}{\Big\{t(x)\ :\ p\proves t(x)=0\Big\}}
+
+dove $\proves$ sta per la conseguenza logica modulo $T_{\rm di}\cup\Diag(N/A)$.\QED
+\end{corollary}
+
+
+\begin{proposition}\label{prop_tipi_e_ideali_primi}
+Sotto le stesse ipotesi della proposizione~\ref{prop_chiusura-radicale}, se $p\subseteq\Delta$ \`e un ideale radicale allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $p$ \`e un $\Delta\jj$tipo primo;
+\item[2.] $p$ \`e un ideale primo.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+Nel simbolo $\proves$ sottointendiamo $T_{\rm di}\cup\Diag(N/A)$.  Dimostriamo \ssf{1}$\IMP$\ssf{2}. Assumiamo \ssf{1} e supponiamo che $t(x)\cdot s(x)$ appartenga $p$. Quindi $p\proves t(x)=0\vee s(x)=0$. Per primalit\`a di $p$ come $\Delta\jj$tipo,  $p\proves t(x)=0$ oppure $p\proves s(x)=0$. Per la proposizione~\ref{prop_chiusura-radicale}, $p$ \`e chiuso per conseguenze, quindi $t(x)\in p$ o $s(x)\in p$.
+
+Dimostriamo \ssf{2}$\IMP$\ssf{1}. Assumiamo \ssf{2} e supponiamo che
+
+\ceq{\hfill p}{\proves}{\bigvee^n_{i=1} t_i(x)=0.}
+
+Quindi 
+
+\ceq{\hfill p}{\proves}{\prod^n_{i=1} t_i(x)\ =\ 0}
+
+Per la chiusura di $p$ e la primalit\`a di $p$ come ideale, otteniamo che $p\proves t_i(x)=0$ per qualche $i$. Per il corollario~\ref{coroll_test_primalita} questo \`e sufficiente per stabilire che $p$ \`e un tipo primo.
+\end{proof}
+
+
+
+\begin{proposition}
+Sotto le stesse ipotesi della proposizione~\ref{prop_chiusura-radicale} assumiamo che $N$ sia un campo algebricamente chiuso, $|A|<|N|$ e $|x|\le |N|$. Allora per ogni $p\subseteq\Delta$:
+
+\ceq{\hfill\rad p}{=}{\Big\{t(x)\ :\ N\models\A x\,[ p(x)\imp t(x)=0]\Big\}}
+
+
+\end{proposition}
+
+\begin{proof}
+L'inclusione $\subseteq$ segue immediatamente dalla definizione di $\rad p$. Per dimostrare l'inclusione $\supseteq$ fissiamo $t(x)\notin\rad p$ e mostriamo che $N\models\E x\,[ p(x)\wedge t(x)\neq0]$. Poich\'e  $p\notproves t(x)=0$, in un qualche dominio di integrit\`a $M$ che contiene $\<A\>_N$ esiste una soluzione di $p(x)\wedge t(x)\neq0$. Senza perdere generalit\`a possiamo assumere che $|M|\le|N|$. Quindi esiste un'immersione $h:M\to N$ che estende $\id_A$. Questa immersione mappa detta soluzione in una soluzione in $N$.
+\end{proof}
+
+Quando la tupla $x$ \`e finita possiamo omettere dalle ipotesi $|A|<|N|$ utilizzando il teorema della base di Hilbert (per il quale rimandiamo alla letteratura) che dice che $p$ \`e un $\Delta\jj$tipo principale. Otteniamo quindi il seguente corollario che (a parte la notazione che qui abbiamo adattato al contesto) \`e una delle forme in cui solitamente viene enunciato il \emph{Nullstellensatz di Hilbert}.
+
+\begin{corollary}
+Sotto le stesse ipotesi della proposizione~\ref{prop_chiusura-radicale} assumiamo che $N$ sia un campo algebricamente chiuso ed $x$ una tupla finita. Allora per ogni $p\subseteq\Delta$:
+
+\ceq{\hfill\rad p}{=}{\Big\{t(x)\ :\ N\models\A x\,[ p(x)\imp t(x)=0]\Big\}}\QED
+
+\end{corollary}
+
+\begin{exercise}
+Sotto le stesse ipotesi della proposizione~\ref{prop_chiusura-radicale} sia $p\subseteq\Delta$ si dimostri che le seguenti affermazioni sono equivalenti.
+\begin{itemize}
+\item[1.] $p$ \`e un $\Delta\jj$tipo principale;
+\item[2.] $p$ \`e un ideale finitamente generato.
+\end{itemize}
+\end{exercise}
+
+\section{I campi reali chiusi}
+
+%\def\ceq#1#2#3{\parbox{30ex}{$\displaystyle #1$}\parbox{6ex}{\hfil$\displaystyle #2$}$\displaystyle  #3$}
+
+\lavori
+
+In tutto questo paragrafo il linguaggio \`e quello degli anelli ordinati. La teoria dei \emph{domini di integrit\`a ordinati}, che qui indicheremo con \emph{$T_{\rm dio}$}, contiene oltre agli assiomi di $T_{\rm di}\cup T_{\rm ol}$ i seguenti
+\begin{itemize}
+\item[t] $x<y\ \imp\ x+z<y+z$\hfill (l'ordine \`e invariante per translazione);
+
+\item[p] $0<x\wedge 0<y\ \imp\ 0<xy$\hfill(i positivi sono sottogruppo moltiplicativo).
+
+\end{itemize}
+\`E facile verificare che $0<1$. Altrimenti, $T_{\rm ol}$ implicherebbe $1<0$, quindi per traslazione $0<-1$, e infine da \ssf{p} otterremmo $0<1$. Da questo e da \ssf{t} segue che i domini di integrit\`a ordinati hanno caratteristica $0$. 
+
+Per assiomatizzare i domini di integrit\`a ordinati avremmo potuto usare al posto della relazione d'ordine un predicato unario di positivit\`a e richiedere (per comodit\`a scriviamo $0<x$ per il predicato di positivit\`a):
+\begin{itemize}
+\item[p1.] $0\not<0$;
+
+\item[p2.] $x=0\ \vee\ 0<x\ \vee\ 0<-x$;
+
+\item[p3.] $0<x\ \wedge\  0<y\ \ \imp\ \ 0<xy\ \wedge\  0<x+y$.
+\end{itemize}
+\`E immediato verificare che definendo $x<y$ come $0<y-x$ otteniamo una relazione d'ordine lineare che soddisfa \ssf{t} e \ssf{p}. 
+
+Diremo che gli elementi positivi hanno una radice quadrata se vale
+
+\begin{itemize}
+\item[rq]   $0<y\ \imp\ \E x\ x^2=y$.
+\end{itemize}
+
+
+\begin{proposition}\label{prop_radicidipositivi}
+Sia $M\models T_{\rm dio}$. Allora esiste $M\subseteq N\models T_{\rm dio}$ in cui tutti gli elementi positivi hanno una radice quadrata
+\end{proposition}
+
+\begin{proof}
+\`E sufficiente mostrare che se $c$ un elemento positivo di $M$ allora esiste $M\subseteq N\models T_{\rm dio}$ in cui vale $\E x\ x^2=c$. Il modello $N$ richiesto dalla proposizione si ottiene iterando questa estensione. Come dominio di $N$ prendiamo $M^2$ e identifichiamo $M$ con $M\times\{0\}\subseteq N$. Le operazioni in $N$ sono definite immaginando la coppia $\<a,b\>$ come la somma formale $a+b\sqrt{c}$. Analogamente si definisce l'ordine in $N$. Precisamente, $\<a,b\>\in N$ \`e positivo in uno dei seguenti tre casi
+\begin{itemize}
+\item[1.] $0<a\ \wedge\ 0<b$;
+\item[2.] $a\le0\ \wedge\ 0<b\ \wedge\  a^2\le b^2 c$;
+\item[3.] $0<a\ \wedge\ b\le0\ \wedge\  b^2c\le a^2$.
+\end{itemize}
+
+Si verifica facilmente che valgono gli assiomi \ssf{p1}-\ssf{p3}.
+\end{proof}
+
+
+Inoltre, sono \emph{formalmente reali\/} ovvero vale 
+
+\begin{itemize}
+\item[fr]  $x^2\neq -1$
+\end{itemize}
+
+Pi\`u avanti dimostreremo come esercizio che in tutti i domini di integrit\`a formalmente reali \`e possibile definire un ordine lineare. Si osservi che 
+
+\ceq{\hfill T_{\rm dio}}{\proves}{x<y\ \iff\ \E z\ x+z^2=y}.
+
+\begin{proposition}
+Sia $\Delta$ l'insieme delle formule senza quantificatori del linguaggio degli anelli (ovvero non contengono $<$).  Allora per ogni $M,N$ modelli di $T_{\rm dio}$ le seguenti affermazioni sono equivalenti
+\begin{itemize}
+ \item[1.] $k:M\to N$ \`e un $\Delta\jj$morfismo;
+ \item[2.] $k:M\to N$ \`e un'immersione parziale.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+L'implicazione \ssf{2}$\IMP$\ssf{1} \`e banale. Dimostriamo \ssf{1}$\IMP$\ssf{2}. Per la proposizione~\ref{prop_radicidipositivi} possiamo assumere che \ssf{rq} valga sia in $M$ che in $N$. 
+
+Sia $c\in\dom k$ e siano $a\in M$ e $b\in N$ tali che $M\models a^2=c$ ed  $N\models b^2=kc$. \`E facile verificare che $k\cup\{\<a,b\>\}\ :\ M\to N$ \`e ancora un $\Delta\jj$morfismo. Iterando a sufficienza questa estensione, possiamo anche assumere che \ssf{rq} valga sia in $\<\dom k\>_M$ che in $\<\range k\>_N$
+
+
+Fatte queste premesse, fissiamo due termini $t(x)$ e $s(x)$ ed una tupla $c\in(\dom k)^{|x|}$ dobbiamo mostrare che 
+
+\ceq{\hfill M\models t(c)<s(c)}{\IMP}{N\models t(kc)<s(kc)}.
+
+Esiste un $a\in\dom k$ tale che $M\models t(c) + a^2= s(c)$ e quindi $N\models t(kc) + (ka)^2= s(kc)$ che implica $N\models t(kc)<s(kc)$ come richiesto.
+\end{proof}
+
+
+\begin{comment}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sistemi di equazioni lineari}
+
+
+Il prodotto diretto di due $R\jj$moduli \`e un $R\jj$modulo, verr\`a chiamato anche \emph{somma diretta\/} e denotato con $M\oplus N$. Dato un omomorfismo parziale $h:M\to N$ definito in un sottomodulo di $M$ definiamo su $M\oplus N$ la seguente relazione di equivalenza: 
+
+\hspace*{35ex}\llap{$(a_1,b_1)\sim_h (a_2,b_2)$}%
+\parbox{6ex}{\hfil$\dIFF$}%
+$a_1-a_2\in\dom h$\ \ e\ \ $h(a_1-a_2) = b_2-b_1$.
+
+Si osservi che $(a,0)\sim_h(0,ha)$ per ogni $a\in\dom h$. Ovvero, identificando $M$ ed $N$ con le sottostrutture $M\oplus 0$ e $0\oplus N$, questa \`e la relazione di equivalenza che identifica $a$ con $ha$. Denoteremo con $M\oplus_h N$ il modulo che si ottiene quozientando $M\oplus N$ con $\sim_h$. La classe di equivalenza dell'elemento $(a,b)$ verr\`a denotata con $[a,b]_h$. Se $I\subseteq M$ \`e un sottomodulo ed $h:M\to 0$ \`e l'omomorfismo parziale definito su $I$, allora $M\oplus_h 0$ viene denotato pi\`u semplicemente con $M/I$ e la classe di equivalenza dell'elemento $a$ con $[a]_I$.
+
+
+
+Fissiamo una tupla di variabili $x$ di lunghezza $\alpha$. Le formule atomiche $\phi(x)$ a parametri in $A\subseteq M$ hanno, a meno di equivalenza, la forma $r\mdot x=t$, dove $r$ \`e una tupla in $R^{\oplus\alpha}$ ed $t$ un termine chiuso a parametri in $A$. Queste verranno chiamate \emph{equazioni (in $x$ su $A$)\/}. Se $t=0$ diremo che l'equazione \`e \emph{omegenea}. Tipicamente $x$ ed $A$ sono fissati e dovranno essere dedotti dal contesto. Diremo \emph{sistema di equazioni\/} per tipo atomico (cfr.\@ paragrafo~\ref{frammenti}). Quindi i tipi puri corrispondono quindi a sistemi di equazioni omogenee. %Fino al lemma~\ref{eliminazionequantificatoritipi} considereremo solo sistemi di equazioni in una variabile. La generalizzzione \`e semplice, ma distrarrebbe dai contenuti. 
+
+Sia $h\;\subseteq\; R^{\oplus\alpha}\oplus N$ e sia $p(x)$ un tipo a parametri in $N$, definiamo:
+
+\parbox{13ex}{\hfill\emph{$p_h(x)$}}%
+\parbox{6ex}{\hfil$\deq$}%
+\parbox{19ex}{$\displaystyle\Big\{r\mdot x=a\ :\ (r,a)\in h\Big\}$}%
+\parbox{8ex}{\hfil ed}%
+\parbox{3ex}{\hfill\emph{$h_p$}}
+\parbox{6ex}{\hfil$\deq$}%
+\parbox{20ex}{$\Big\{(r,a)\ :\ r\mdot x=a\ \in\ p\Big\}$.}%
+
+\`E chiaro che questi operatori sono uno l'inverso dell'altro. Il lettore pu\`o facilmente verificare che se $p$ \`e consistente allora $h_p:R^{\oplus\alpha}\to N$ \`e un omomorfismo parziale. Viceversa, se $h:R^{\oplus\alpha}\to N$ \`e un omomorfismo parziale allora $p_h$ \`e consistente. Questa seconda affermazione \`e meno immediata, ma segue dal lemma~\ref{lem_fondhom} che ora dimostreremo.
+
+Se $h\;\subseteq\;R^{\oplus\alpha}\oplus N$ scriveremo $\<h\>$, omettendo il pedice, per la sottostruttura di $R^{\oplus\alpha}\oplus N$ generata da $h$. Se $h:R^{\oplus\alpha} \to N$ \`e un omomorfismo parziale $\<h\>:R^{\oplus\alpha}\to N$ \`e la sua (unica) estensione ad un omomorfismo definito in $\<\dom h\>_{R^{\oplus\alpha}}$.
+
+\begin{lemma}\label{lem_fondhom}
+Sia $h: R^{\oplus\alpha}\to N$ un omomorfismo parziale tra moduli, allora:
+\begin{itemize}
+\item[1.] $p_{\<h\>}(x)$ \`e la chiusura per conseguenze logiche di $p_h(x)$;
+\item[2.] $p_h(x)$ \`e un tipo primo.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+Per prima cosa verifichiamo che $p_h(x)\provesR p_{\<h\>}(x)$. Le equazioni in $p_{\<h\>}(x)$ sono della forma $t(r_1,\dots,r_n)\mdot x=h(t(r_1,\dots,r_n))$ per un qualche termine puro $t(z_1\dots,z_n)$ e qualche $r_1,\dots,r_n\in\dom h$. Ma questa equazione \`e una conseguenza, modulo $T_\Rmod$, delle formule $r_i\mdot x= h(r_i)$, che appartengono tutte a $p_h(x)$.
+
+Ora mostreremo che il seguente tipo $q(x)$ \`e consistente
+
+\parbox{13ex}{\hfill$q(x)$}%
+\parbox{6ex}{\hfil$\deq$}%
+$\displaystyle p_{\<h\>}(x)\ \cup\ \Big\{r\mdot x\neq a\parbox{4ex}{\hfil:} p_h(x)\notprovesR r\mdot x= a\Big\}$.
+
+Da questo otterremo \ssf{1} e, per il lemma~\ref{lemmatipiprimiconsistenti}, anche \ssf{2}. 
+
+Per il teorema di compattezza \`e sufficiente dimostrare la consistenza finita, quindi possiamo assumere che $\alpha$ sia finito. Come struttura in cui realizzare $q(x)$ prendiamo $R^{\oplus\alpha}\oplus_{\<h\>} N$ e come realizzazione prendiamo la tupla $c=([e_i,0]_{\<h\>}:i<\alpha)$ dove $e_i\in R^{\oplus\alpha}$ \`e $1$ nella coordinata $i\jj$esima $0$ altrimenti. Allora $r\mdot c\ =\ [r,0]_{\<h\>}\ =\ [0,hr]_{\<h\>}\  =\ [0,a]_{\<h\>}$.
+\end{proof}
+
+Il seguente corollario \`e immediato.
+
+\begin{corollary}\label{thmhomgen}
+Siano $h, k : R^{\oplus\alpha}\to N$ omomorfismi parziali tra $R\jj$moduli. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\provesR\ p_h(x)\iff p_k(x)$
+\item[2.] $\<h\>\ =\ \<k\>$.
+\end{itemize}
+\end{corollary}
+
+La seguente semplice osservazione ha utili conseguenze (vedi per esempio, criterio di Baer~\ref{prop_CriteioBaer}).
+
+\begin{lemma}\label{totale_realizzato}
+Sia $h : R^{\oplus\alpha}\to N$ omomorfismo parziale tra $R\jj$moduli. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $p_h(x)$ \`e realizzato in $N$
+\item[2.] $h : R^{\oplus\alpha}\to N$ si estende ad un omomorfismo totale.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Per dimostrare la direzione \ssf{1}$\IMP$\ssf{2} fissiamo una tupla $a$ che realizza $p_h(x)$. Posto $q(x)=\atp_N(a)$, \`e immediato verificare che $h_q: R^{\oplus\alpha}\to N$ \`e l'estensione richiesta.  Dimostriamo \ssf{2}$\IMP$\ssf{1}. Scriviamo \emph{$e_i$\/} per l'elemento di $R^{\oplus\!\alpha}$ che \`e $1$ nella coordinata $i\jj$esima e $0$ in tutte le altre. Se $k : R^{\oplus\alpha}\to N$ \`e un'estensione di $h$ allora $p_h(x)\subseteq p_k(x)$. Se \`e totale allora \`e definita in $e_i$, \`e immediato che la tupla $(ke_i:i<\alpha)$ realizza $p_k(x)$.
+\end{proof}
+
+\begin{lemma}\label{noetheriano_tipiprincipali}
+Per ogni omomorfismo parziale $h:R^{\oplus\alpha}\to N$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] il modulo $\<\dom h\>_{R^{\oplus\alpha}}$ \`e finitamente generato;
+\item[2.] il tipo $p_h(x)$ \`e principale.
+\end{itemize} 
+\end{lemma}
+\begin{proof}
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Siano $r_1,\dots,r_m$ dei generatori di $\<\dom h\>_{R^{\oplus\alpha}}$. Il sistema di equazioni che contiene le formule $r_i\mdot x=h\,r_i$ \`e chiaramente equivalente a $p_h(x)$. Per dimostrare che \ssf{2}$\IMP$\ssf{1} supponiamo che 
+
+\noindent\parbox{15ex}{\ssf{1.}}\llap{$\proves\ \ p_h(x)$}%
+\parbox{6ex}{\hfil$\iff$}%
+$\displaystyle\bigwedge^m_{i=1}r_i\mdot x=a_i$.
+
+Per il teorema di compattezza possiamo assumere che $r_i\in\dom h$ e $a_i=hr_i$. Sia $k=h\mathord\restriction\{r_1,\dots,r_m\}$.  Quindi \ssf{1} pu\`o essere riscritta come $\proves p_h(x)\iff p_k(x)$. Dal lemma~\ref{thmhomgen} otteniamo $\<h\>\ =\ \<k\>$ quindi  che $r_1,\dots,r_m$ generano $\<\dom h\>_{R^{\oplus\alpha}}=\<\dom k\>_{R^{\oplus\alpha}}$.
+\end{proof}
+
+Un anello $R$ si dice \emph{coerente\/} (nulla a che vedere con la nozione di teoria coerente) se per ogni $h:R\imp R$ omomorfismo parziale tra $R\jj$moduli, se $\<\range h\>_R$ \`e finitamente generato anche $\<\dom h\>_R$ \`e finitamente generato.
+
+\begin{theorem}
+Per ogni anello $R$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $R$ \`e coerente;
+\item[2.] per ogni ogni insieme finito $A\subseteq M\models T_\Rmod$, ogni tipo atomico $p(x)\subseteq L(A)$ \`e principale.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Per dimostrare \ssf{2}$\IMP$\ssf{1} fissiamo $h:R\imp R$, un omomorfismo parziale tra $R\jj$moduli ed un insieme $A\subseteq R$ finito che genera $\<\range h\>_R$. Assumiamo \ssf{2} con $R$ per $M$, quindi che il tipo $p_h(x)$ \`e equivalente ad un tipo su $A$ e quindi ad uno della forma $\{r_ix=h(r_i): i=1,\dots,n\}$.   Posto $k=h\restriction\{r_1,\dots,r_n\}$, dal lemma~\ref{thmhomgen} otteniamo $\<h\>=\<k\>$ quindi  che $r_1,\dots,r_m$ generano $\<\dom h\>_{R}$.
+
+Per dimostrare \ssf{1}$\IMP$\ssf{2} fissiamo un insieme finito $A\subseteq M\models T_\Rmod$, ogni tipo atomico $p(x)\subseteq L(A)$. 
+\end{proof}
+
+
+Un modulo si dice \emph{noetheriano\/} se tutti i suoi sottomoduli sono finitamente generati. Diremo che $R$ \`e un \emph{anello noetheriano\/} se, in quanto $R\jj$modulo, \`e noetheriano (si ricordi che i sottomoduli di $R$ sono gli ideali).
+
+\begin{lemma}\label{sommadinoetheriani}
+Siano $M$ ed $N$ due $R\jj$moduli noetheriani allora anche $M\oplus N$ \`e noetheriano.
+\end{lemma}
+\begin{proof} 
+Dobbiamo mostrare che ogni $K\subseteq M\oplus N$ \`e finitamente generato. Per ipotesi esistono due tuple finite $a$ e $b$ che generano $K\cap \big(M\oplus 0\big)$ e $K\cap \big(0\oplus N\big)$. \`E immediato verificare che $a,b$ genera $K$.
+\end{proof}
+
+Per il lemma~\ref{noetheriano_tipiprincipali} ed il seguente corollario, in un modulo su un anello noetheriano $R$ i tutti sistemi di equazioni $p(x)$, dove $x$ di lunghezza finita, sono equivalenti a sistemi finiti.
+
+\begin{corollary}
+Se $R$ \`e un anello noetheriano ed $\alpha$ \`e finito allora $R^{\oplus\alpha}$ \`e un modulo noetheriano. Se $\alpha$ \`e infinito $R^{\oplus\alpha}$ non \`e mai noetheriano.
+\end{corollary}
+\begin{proof} Per $\alpha$ \`e finito il corollario si dimostra per induzione: dal lemma~\ref{sommadinoetheriani} si ottiene il passo induttivo. Se $\alpha$ \`e infinito, l'ideale $R^{\oplus\alpha}$ stesso \`e un ideale non finitamente generato. 
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%
+\section{Moduli liberi}
+
+Sia $R$ un anello, $M$ un $R\jj$modulo, ed $A\subseteq M$. Una tupla $c$ di elementi di $M$ si dice \emph{libera su $A$\/} se il tipo $p(x)=\atp_M(c/A)$ \`e banale, ovvero $\provesR p(x)$.  Chiaramente la nozione non dipende da $M$ ma solo da $\<A,c\>_M$. 
+
+\begin{proposition}\label{prop_multipli_elem_liberi}
+Dati $A\subseteq M$ come sopra, sia $c$ un elemento indipendente da $A$. Allora $rc$ \`e indipendente da $A$ per ogni $r\in R$ che non divide $0$. 
+\end{proposition}
+\begin{proof}
+Se $M\models src=0$ per qualche $s\in R$ allora $\provesR srx=0$ quindi $sr=0$ e quindi $s=0$.
+\end{proof}
+
+Un $R\jj$modulo $M$ si dice \emph{libero\/} se esiste una tupla $a$ di elementi di $M$ che genera $M$ e che \`e libera (su $\0$). Diremo che $a$ \`e una \emph{tupla di generatori libera}. La lunghezza di una tupla che genera liberamente $M$ \`e detta il \emph{rango} di $M$. La definizione di rango \`e ben data per la seguente proposizione (tutte le tupla di generatori liberi hanno la stessa lunghezza).
+
+\begin{proposition}
+Sia $M$ \`e un $R\jj$modulo libero e sia $a$ una tupla di generatori liberi di lunghezza $\alpha$. Allora $M$ \`e isomorfo a $R^{\oplus\alpha}$.
+\end{proposition}
+
+\begin{proof}
+Definiamo $h=\{(r,r\mdot a):r\in R^{\oplus\alpha}\}$. Verifichiamo che $h:R^{\oplus\alpha}\to M$ \`e un isomorfismo. Totalit\`a e suriettivit\`a sono immediate, per l'iniettivit\`a supponiamo che $r\mdot a=s\mdot a$ per qualche $r,s\in R^{\oplus\alpha}$. Poich\'e $\atp_M(a)$ \`e banale allora $r\mdot x=s\mdot x$ vale in tutti gli $R\jj$moduli. Questo succede solo se $r=s$.
+\end{proof}
+
+\begin{proposition}\label{prop_pid-submoluli} 
+Sia $R$ un dominio ad ideali principali, $N$ un $R\jj$modulo, $A\subseteq N$ e sia $c\in N$ indipendente da $A$. Se $M\subseteq\<A,c\>_N$ allora $M=\<A,rc\>_N$ per qualche $r\in R$. 
+\end{proposition}
+\begin{proof}
+Chiaramente $I=\{s\in R\ :\ \<A,sc\>_N\subseteq M\}$ \`e un ideale di $R$ ed \`e quindi  generato da un elemento $r$. Verifichiamo che $M=\<A,rc\>_N$. L'inclusione $\<A,sc\>_N\subseteq M$ \`e ovvia perch\`e $r\in I$. Per dimostrare $M\subseteq\<A,sc\>_N$, fissiamo un elemento arbitrario di $M$. Poich\'e $M \subseteq\<A,c\>_N$ possiamo assumere che questo elemento abbia la forma $t+sc$ per un qualche $s\in R$ ed un qualche $t$ termine chiuso a parametri in $A$. Quindi $\<A,sc\>_N\subseteq M$, ovvero $s\in I$. Allora $s$ \`e un multiplo di $r$. Segue che $t+sc\in\<A,rc\>_N$.
+\end{proof}
+
+
+
+
+\begin{proposition}
+Sia $R$ un dominio ad ideali principali e siano $M\subseteq N$ due $R\jj$moduli. Allora se $N$ \`e libero e di rango finito anche $M$ \`e libero. In particolare, se $\{a_i : i<n\}$ genera liberamente $N$, allora esistono $r_0,\dots,r_{n-1}\in R$ tali che la tupla $\{r_ia_i: i<n\}\sm\{0\}$ genera liberamente $M$.
+\end{proposition}
+
+\begin{proof}
+Mostriamo per induzione su $m\le n$ che esistono $r_0,\dots,r_{n-1}\in R$
+
+\def\ceq#1#2#3{\parbox{30ex}{$#1$}\parbox{6ex}{\hfil$#2$}$#3$}
+
+\ceq{\ssf{1.}\hfill\<r_0a_0,\dots,r_{m-1}a_{m-1}\>_N}{=}{M \cap \<a_0,\dots,a_{m-1}\>_N}.
+
+Per $m=0$ l'affermazione \`e vuota. Assumiamo \ssf{1} vera e abbreviamo con $A_{m-1}$ il modulo in detta identit\`a.  \`E immediato verificare che $M \cap \<a_0,\dots,a_{m}\>_N \subseteq \<A_{m-1},a_m\>_N$, inoltre $a_m$ \`e indipendente da $A_{m-1}$. Quindi dalla proposizione~\ref{prop_pid-submoluli} segue l'esistenza di $r_m\in R$ che rende \ssf{1} vera con $m$ per $m-1$. 
+
+Quindi $\{r_ia_i: i<n\}$ genera $M$. Che $\{r_ia_i: i<n\}\sm\{0\}$ sia un insieme libero segue dalla proposizione~\ref{prop_multipli_elem_liberi}. (Serve sottrarre $0$ nel caso qualche $r_i$ sia nullo.) 
+\end{proof}
+
+
+\begin{proposition}
+Sia $R$ un anello che considereremo come $R\jj$modulo. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $R$ \`e un dominio ad ideali principali;
+\item[2.] ogni sottomodulo non nullo di $R$ \`e isomorfo ad $R$.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Sia $I\subseteq R$ un sottomodulo (ovvero, un ideale). Sia $a$ un generatore di $I$ e definiamo $h=\{(r,ra): r\in R\}$. Ovviamente $h:R\to I$ \`e un epimorfismo, ed \`e anche iniettivo perch\'e non ci sono divisori dello $0$.  Dimostriamo \ssf{2}$\IMP$\ssf{1}. Sia $I\subseteq R$ un sottomodulo ed $h:R\to I$ un isomorfismo. Poich\'e $R$ \`e generato da $1$, allora $I$ \`e generato da $h1$. Quindi ogni ideale di $R$ \`e principale. Verifichiamo che $R$ \`e un dominio. Sia $a\in R$ arbitrario e sia $I_a=\{ar=0:r\in R\}$ e sia $h:R\to I_a$ un isomeofismo. Allora $h(a1)=ah(1)=0$ e quindi $a=0$.
+\end{proof}
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Moduli iniettivi}
+
+Un $R\jj$modulo $N$ di dice \emph{iniettivo\/} se, per ogni altro $R\jj$modulo $M$, ogni omomorfismo parziale $k:M\to N$ ha un estensione ad un omomorfismo (totale). 
+
+L'equivalenza \ssf{1}$\IFF$\ssf{4} della proposizione seguente \`e detta \emph{criterio di Baer}.
+
+\begin{proposition}\label{prop_CriteioBaer}
+Per ogni $R\jj$modulo $N$, le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ \`e iniettivo;
+\item[2.] ogni sistema di equazioni $p(x)$ a parametri in $N$ se consistente, \`e realizzato in $N$;
+\item[3.] ogni equazione della forma $rx=a$ con $r\in R$ ed $a\in N$ se consistente ha soluzione in $N$ (ovvero \ssf{2} vale con $x$ una singola variabile).
+\item[4.] ogni omomorfismo parziale $k:R\to N$ si estende ad uno totale.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+L'implicazione \ssf{1}$\IMP$\ssf{2} \`e una conseguenza della lemma~\ref{totale_realizzato}. L'implicazione \ssf{2}$\IMP$\ssf{3}  \`e ovvia mentre \ssf{2}$\IMP$\ssf{3} segue dal   lemma~\ref{totale_realizzato}.
+
+Per dimostre \ssf{2}$\IMP$\ssf{1} \`e sufficiente verificare che ogni omomorfismo $k:M\to N$ si estende ad un omomorfismo $k':M\to N$ definito in $\<\dom k,a\>_M$, dove $a$ \`e un arbitrario elemento di $M$.  Posto $h=\{(r,k(ra)): ra\in\dom k\}$, osserviamo che $h:R\to N$ \`e un omomorfismo parziale e quindi, per ipotesi, ha un estensione totale $h':R\to N$. Gli elementi di $\<\dom k,a\>_M$ hanno la forma $t+ra$ per qualche $t\in\<\dom k\>_M$ e qualche $r\in R$. 
+
+Definiamo $k'(t+ra)=kt+(h'r)a$ e verifichiamo che questo definisce una mappa $k':M\to N$, ovvero che la definizione \`e ben data. Per la linearit\`a di $k$ ed $h'$ sufficiente verificare che se $t+ra=0$ allora $kt+(h'r)a=0$. Ma questo segue dalla definizione di $h'$, infatti se $t+ra=0$ allora $r\in I$ quindi $h'(r)=k(ra)$.
+
+Ora \`e immediato verificare che $k':M\to N$ \`e l'omomorfismo desiderato.
+\end{proof}
+
+Siano $r\in R$ un divisore dello $0$ e sia $a\in M$ arbitrario. L'equazione $rx=a$ ha soluzione in $M$ tali che $rs=0$ e sia $a\neq0$ un elemento di $M$, un $R\jj$modulo. Allora o $rx=a$ o $sx=a$ non ha soluzione. In fatti se $sc=a$ allora $ra=0$. Analogamente $sa=0$.  Allora Un $R\jj$modulo $M$ si dice \emph{divisibile\/} se per ogni $a\in M$ ed ogni $r\in R$ che non divide $0$ l'equazione $rx=a$ ha soluzione in $M$. Si dice \emph{senza torsione\/} se per ogni $a$ ed $r$ come sopra, l'equazione $rx=a$ ha al pi\`u una soluzione in $M$ (equivalentemente, se $rx=0$ non ha altre soluzione oltre a $0$).
+
+Dimostriamo che ogni modulo iniettivo \`e divisibile e che il viceversa vale se $R$ \`e un dominio ad ideali principali. 
+
+\begin{proposition}
+Se $R$ un \`e  dominio ad ideali principali allora per ogni $R\jj$modulo $N$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ \`e iniettivo;
+\item[2.] $N$ \`e divisibile.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Dimostriamo  \ssf{1}$\IMP$\ssf{2}. Fissiamo un elemento $a$ in un $R\jj$modulo iniettivo $M$ ed un $r\in R$. Mostriamo che l'equazione $rx=a$ ha soluzione in $M$. Definiamo $k=\{\<r,a\>\}$. Poich\'e $r$ non divide $0$, la mappa $k:R\to N$ \`e un omomorfismo parziale. Quindi si estende ad un omomorfismo totale $h:R\to N$. L'elemento $h1$ \`e la soluzione cercata. Per dimostrare \ssf{2}$\IMP$\ssf{1} applichiamo il criterio di Baer: fissiamo un arbitrario omomorfismo parziale $k:R\to N$ un omomorfismo parziale e mostriamo che possiamo estenderlo ad un omomorfismo totale. Per ipotesi $\<\dom k\>_R$ \`e principale, sia $r$ un suo generatore.  Sia $a$ una soluzione dell'equazione $rx=kr$. La funzione $h=\{\<r,ra\>:r\in R\}$ estende $k$, quindi l'omomorfismo richiesto \`e $h:R\to N$.
+\end{proof}
+
+\begin{lemma}\label{eliminazionequantificatoritipi}
+Per ogni sistema di equazioni omogenee $p(x,z)$, dove $x$ e $z$ hanno lunghezza arbitraria, esiste un sistema di equazioni omogenee $q(z)$ tale che per ogni modulo $M$ e per ogni tupla $a$ di elementi di $M$,
+
+\hspace*{15ex}\llap{$M\models q(a)$}%
+\parbox{6ex}{\hfil$\IFF$}%
+$N\models \E x\, p(x,a)$ per un qualche $N\supseteq \<a\>_M$.
+\end{lemma}
+
+\begin{proof}
+Definiamo i seguenti tipi
+
+\hspace*{15ex}\llap{$p^+(x,z)$}%
+\parbox{6ex}{\hfil$=$}%
+$\Big\{r\mdot x=s\mdot z\ :\ r\in R^{\lh x},\ \ s\in R^{\le s},\ \ p(x,z)\proves r\mdot x=s\mdot z\Big\}$.
+
+\hspace*{15ex}\llap{$p^-(x,z)$}%
+\parbox{6ex}{\hfil$=$}%
+$\Big\{r\mdot x\neq s\mdot z\ :\ r\in R^{\lh x},\ \ s\in R^{\le s},\ \ p(x,z)\notproves r\mdot x=s\mdot z\Big\}$.
+
+Chiaramente $p^+(x,z)\cup p^-(x,z)\proves p(x,z)$.  Ora fissiamo opportune tuple $\bar r=\<r_i:i<\lambda\>$ ed $\bar s=\<s_i:i<\lambda\>$ tali che
+
+\hspace*{15ex}\llap{$p^+(x,z)$}%
+\parbox{6ex}{\hfil$=$}%
+$\Big\{r_i\mdot x= s_i\mdot z\ :\ i<\lambda\Big\}$. 
+
+Definiamo $q(w)\ \deq\ \etp_{R^{\lh x}}(r)$, dove $w=\<w_i:i<\lambda\>$. Con leggero abuso di notazione scriveremo $q(s\mdot z)$ per il tipo ottenuto sostituendo in $q(w)$ le variabili $w_i$ con i temini $s_i\mdot z$. Dimostriamo che il tipo $q(s\mdot z)$ \`e quello richiesto dal lemma. 
+
+Per verificare la direzione $\IMP$, osserviamo che se $M\models q(s\mdot a)$ allora la mappa $h:R^{\lh x}\to M$, dove $h=\big\{\<r_i,s_ia\>\ :\ i<\lambda\big\}$, \`e un omomorfismo parziale e che $p_h(x)=p^+(x,a)$. Quindi, per il lemma~\ref{thmfondhom}, il tipo $p^+(x,a)$ \`e primo, quindi un qualche  $N\supseteq \<a\>_M$ realizza $p^+(x,a)\cup p^-(x,a)$. Per la direzione $\PMI$ assumiamo che $\E x\,p(x,a)$ sia consistente, e fissiamo $N\models p(b,a)$. Una generica formula in $q(s\mdot z)$ ha la forma
+
+\hspace*{15ex}%
+\parbox{6ex}{}%
+$\displaystyle\sum_{i\in I}u_i (s_i\mdot z)\ \ =\ \ 0$
+
+per un qualche insieme finito $I\subseteq\lambda$ ed una tupla $\<u_i:i\in I\>$ di elementi di $R$. Poich\'e per definizione $R\models  q(r)$ otteniamo
+
+\hspace*{15ex}\llap{$R$}%
+\parbox{6ex}{\hfil$\models$}%
+$\displaystyle\sum_{i\in I}u_i r_i\ \ =\ \ 0$
+
+e quindi
+
+\hspace*{15ex}\llap{$M$}%
+\parbox{6ex}{\hfil$\models$}%
+$\displaystyle\Big(\sum_{i\in I}u_i r_i\Big)\, b\ \ =\ \ \sum_{i\in I}u_i (r_i b)$ 
+
+Poich\'e $M\models p(b,a)$, possiamo sostituire $r_i b$ con $s_i\mdot a$ e ottenere 
+
+\hspace*{15ex}\llap{$M$}%
+\parbox{6ex}{\hfil$\models$}%
+$\displaystyle\sum_{i\in I}u_i (s_i\mdot a)\ \ =\ \ 0$
+
+Dall'arbitrariet\`a di $I\subseteq\lambda$ segue $M\models q(s\mdot a)$ come richiesto.
+\end{proof}
+
+
+
+
+\begin{lemma}
+le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ \`e iniettivo;
+\item[2.] ogni immersione parziale $k:M\to N$, tale che $|k|<|M|\le|N|$, si estende ad un'immersione (totale).
+\end{itemize}
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+
+
+\section{Altro}
+
+
+
+
+
+
+
+
+
+\begin{lemma}\label{eliminazionequantificatoritipi}
+Per ogni tipo formula libera $\phi(x,z)$, dove $x$ e $z$ hanno lunghezza arbitraria, esiste un sistema di equazioni omogenee $q(z)$ tale che per ogni modulo $M$ e per ogni tupla $a$ di elementi di $M$,
+
+\hspace*{15ex}\llap{$M\models q(a)$}%
+\parbox{6ex}{\hfil$\IFF$}%
+$\phi(x,a)$ \`e consistente.
+
+Si ricordi che, come definito in~\ref{notationConseguenzaConsistenzaModuli}, per consistente intendiamo realizzato in qualche modulo che contiene $\<a\>_M$.
+\end{lemma}
+
+\begin{proof}
+Sia $\alpha$ la lunghezza di $x$. \`E sufficiente dimostrare il lemma per formule $\phi(x,z)$ della forma $\phi_+(x,z)\wedge\phi_-(x,z)$ dove $\phi_+(x,z)$ \`e congiunzione di equazioni e $\phi_-(x,z)$ \`e congiunzione di negazioni di equazioni. Infatti ogni formula libera \`e disgiunzione di formule $\phi_i(x,z)$ di questa forma di questa forma ed \`e immediato verificare che la disgiunzione dei corrispondenti tipi $q_i(z)$ dimostra il lemma.
+
+Supponiamo quindi che 
+
+\parbox{15ex}{\hfill $\phi_+(x,z)$}%
+\parbox{6ex}{}%
+$\displaystyle\bigwedge^n_{i=1} r_i\mdot x= t_i(z)$.
+
+dove $r_i\in R^{\oplus\alpha}$ e $t_i(z)$ sono termini puri. Sia $q'(w_1,\dots,w_n)\ \deq\ \atp_{R^{\oplus\alpha}}(r_1,\dots,r_n)$ e infine sia $q(z)=q'(t_1(z),\dots,t_n(z))$.  Dimostriamo che $q(z)$ \`e il tipo richiesto dal lemma. 
+
+Per verificare la direzione $\IMP$, osserviamo che se $M\models q(a)$ allora la mappa $h:R^{\oplus\alpha}\to M$, dove $h=\big\{\<r_i,t_i(a)\>\ :\ i<\lambda\big\}$, \`e un omomorfismo parziale e che $p_h(x)$ \`e equivalente a $\phi_+(x,a)$. Poich\'e per il lemma~\ref{thmfondhom} il tipo $p_h(x,a)$ \`e primo, otteniamo che un qualche $N\supseteq \<a\>_M$ che realizza $p_h(x,a)\cup p^-_h(x,a)$. Se $\phi(x,a)$ \`e consistente  $p^-_h(x,a)$
+
+
+Siano $p^+(x,z)$ e $p^-(x,z)$ definiti come nel lemma~\ref{lemmatipiprimiconsistenti2} con $\Delta$ l'insieme delle formule atomiche con variabili in $x,z$. Ora sia $\big\{\ :\ i<\lambda\big\}$ l'insieme delle equazioni che occorrono in $p^+(x,z)$, dove $r_i\in R^{\oplus\alpha}$ e $t_i(z)$ sono termini puri. Sia $q'(\<w_i:i<\lambda\>)\ \deq\ \atp_{R^{\oplus\alpha}}(\<r_i:i<\lambda\>)$ e sia $q(z)$ il tipo ottenuto sostituendo $t_i(z)$ a $w_i$ in $q'(\<w_i:i<\lambda\>)$.  Dimostriamo che $q(z)$ \`e il tipo richiesto dal lemma. 
+
+Per verificare la direzione $\IMP$, osserviamo che se $M\models q(a)$ allora la mappa $h:R^{\oplus\alpha}\to M$, dove $h=\big\{\<r_i,t_i(a)\>\ :\ i<\lambda\big\}$, \`e un omomorfismo parziale e che $p_h(x)=p^+(x,a)$. Poich\'e per il lemma~\ref{thmfondhom} il tipo $p^+(x,a)$ \`e primo, dal lemma~\ref{lemmatipiprimiconsistenti2} otteniamo che un qualche  $N\supseteq \<a\>_M$ realizza $p^+(x,a)\cup p^-(x,a)$.  Per la direzione $\PMI$ assumiamo che $\E x\,p(x,a)$ sia consistente, e fissiamo $N\models p(b,a)$. Una generica formula in $q(z)$ ha la forma
+
+\hspace*{15ex}%
+\parbox{6ex}{}%
+$\displaystyle\sum_{i\in I}s_i t_i(z)\ \ =\ \ 0$
+
+per un qualche insieme finito $I\subseteq\lambda$ ed una tupla $\<s_i:i\in I\>$ di elementi di $R$. Poich\'e per costruzione $R^{\oplus\alpha}\models  q'((\<r_i:i<\lambda\>)$ otteniamo
+
+\hspace*{15ex}\llap{$R$}%
+\parbox{6ex}{\hfil$\models$}%
+$\displaystyle\sum_{i\in I}u_i r_i\ \ =\ \ 0$
+
+e quindi
+
+\hspace*{15ex}\llap{$M$}%
+\parbox{6ex}{\hfil$\models$}%
+$\displaystyle\Big(\sum_{i\in I}u_i r_i\Big)\mdot b\ \ =\ \ \sum_{i\in I}u_i (r_i\mdot b)$ 
+
+Poich\'e $M\models p(b,a)$, possiamo sostituire $r_i b$ con $t_i(a)$ e ottenere 
+
+\hspace*{15ex}\llap{$M$}%
+\parbox{6ex}{\hfil$\models$}%
+$\displaystyle\sum_{i\in I}u_i t_i(a)\ \ =\ \ 0$
+
+Dall'arbitrariet\`a di $I\subseteq\lambda$ segue $M\models q(z)$ come richiesto.
+\end{proof}
+
+
+
+
+\begin{definition}
+%Diremo che $R$ \`e un \emph{anello coerente\/} (nulla a che vedere con l'omonima nozione in logica) se ogni sistema di equazioni omogenee $p(x)$, dove $x$ ha ariet\`a finita, realizzato in $R$ \`e equivalente modulo $T_\Rmod$ ad un sistema finito.
+
+Diremo che $R$ \`e un \emph{anello coerente\/} (nulla a che vedere con l'omonima nozione in logica) se per ogni $r$ tupla finita di elementi di $R^{\oplus n}$, il tipo $\atp_{R^{\oplus n}}(r)$ \`e principale.
+\end{definition}
+
+
+
+
+\begin{lemma}\label{eqformule}
+Per ogni formula libera $\phi(x,z)$, dove $x$ e $z$ hanno lunghezza arbitraria, esiste un sistema di equazioni finito $\psi(z)$ tale che per ogni modulo $M$ e per ogni tupla $a$ di elementi di $M$,
+
+\hspace*{15ex}\llap{$M\models \psi(a)$}%
+\parbox{6ex}{\hfil$\IFF$}%
+$\phi(x,a)$ \`e consistente.
+
+\end{lemma}
+
+
+
+
+
+
+
+
+
+
+
+\begin{lemma}\label{eliminazionequantificatoritipi}
+Per ogni tipo libero $p(x,z)$, dove $x$ e $z$ hanno lunghezza arbitraria, esiste un sistema di equazioni omogenero $q(z)$ tale che per ogni modulo $M$ e per ogni tupla $a$ di elementi di $M$,
+
+\hspace*{15ex}\llap{$M\models q(a)$}%
+\parbox{6ex}{\hfil$\IFF$}%
+$p(x,a)$ \`e consistente.
+
+Si ricordi che, come definito in~\ref{notationConseguenzaConsistenzaModuli}, per consistente intendiamo realizzato in qualche modulo che contiene $\<a\>_M$.
+\end{lemma}
+
+\begin{proof}
+Sia $\alpha$ la lunghezza di $x$. Definiamo i seguenti tipi
+
+\hspace*{15ex}\llap{$p^+(x,z)$}%
+\parbox{6ex}{\hfil$=$}%
+$\Big\{r\mdot x=t(z)\ :\ r\in R^{\oplus\alpha},\ \ t(z),\ \ p(x,z)\proves r\mdot x= t(z)\Big\}$.
+
+\hspace*{15ex}\llap{$p^-(x,z)$}%
+\parbox{6ex}{\hfil$=$}%
+$\Big\{r\mdot x\neq t(z)\ :\ r\in R^{\oplus\alpha},\ \ t(z),\ \ p(x,z)\notproves r\mdot x= t(z)\Big\}$.
+
+Chiaramente $p^+(x,z)\cup p^-(x,z)\proves p(x,z)$.  Ora fissiamo opportune tuple $\bar r=\<r_i:i<\lambda\>$ ed $\bar s=\<s_i:i<\lambda\>$ tali che
+
+\hspace*{15ex}\llap{$p^+(x,z)$}%
+\parbox{6ex}{\hfil$=$}%
+$\Big\{r_i\mdot x= s_i\mdot z\ :\ i<\lambda\Big\}$. 
+
+Definiamo $q(w)\ \deq\ \etp_{R^{\lh x}}(r)$, dove $w=\<w_i:i<\lambda\>$. Con leggero abuso di notazione scriveremo $q(s\mdot z)$ per il tipo ottenuto sostituendo in $q(w)$ le variabili $w_i$ con i temini $s_i\mdot z$. Dimostriamo che il tipo $q(s\mdot z)$ \`e quello richiesto dal lemma. 
+
+Per verificare la direzione $\IMP$, osserviamo che se $M\models q(s\mdot a)$ allora la mappa $h:R^{\lh x}\to M$, dove $h=\big\{\<r_i,s_ia\>\ :\ i<\lambda\big\}$, \`e un omomorfismo parziale e che $p_h(x)=p^+(x,a)$. Quindi, per il lemma~\ref{thmfondhom}, il tipo $p^+(x,a)$ \`e primo, quindi un qualche  $N\supseteq \<a\>_M$ realizza $p^+(x,a)\cup p^-(x,a)$. Per la direzione $\PMI$ assumiamo che $\E x\,p(x,a)$ sia consistente, e fissiamo $N\models p(b,a)$. Una generica formula in $q(s\mdot z)$ ha la forma
+
+\hspace*{15ex}%
+\parbox{6ex}{}%
+$\displaystyle\sum_{i\in I}u_i (s_i\mdot z)\ \ =\ \ 0$
+
+per un qualche insieme finito $I\subseteq\lambda$ ed una tupla $\<u_i:i\in I\>$ di elementi di $R$. Poich\'e per definizione $R\models  q(r)$ otteniamo
+
+\hspace*{15ex}\llap{$R$}%
+\parbox{6ex}{\hfil$\models$}%
+$\displaystyle\sum_{i\in I}u_i r_i\ \ =\ \ 0$
+
+e quindi
+
+\hspace*{15ex}\llap{$M$}%
+\parbox{6ex}{\hfil$\models$}%
+$\displaystyle\Big(\sum_{i\in I}u_i r_i\Big)\, b\ \ =\ \ \sum_{i\in I}u_i (r_i b)$ 
+
+Poich\'e $M\models p(b,a)$, possiamo sostituire $r_i b$ con $s_i\mdot a$ e ottenere 
+
+\hspace*{15ex}\llap{$M$}%
+\parbox{6ex}{\hfil$\models$}%
+$\displaystyle\sum_{i\in I}u_i (s_i\mdot a)\ \ =\ \ 0$
+
+Dall'arbitrariet\`a di $I\subseteq\lambda$ segue $M\models q(s\mdot a)$ come richiesto.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sia $R$ un dominio di integrit\`a. Un $R\jj$modulo si dice \emph{senza torsione} se  per ogni $r\in R\sm\{0\}$ vale il seguente assioma
+
+\begin{itemize}
+\item[mst] $x\neq0\ \imp\ rx\neq 0$
+\end{itemize}
+
+Si osservi che \ssf{mst} non pu\`o mai vale se se $R$ ha divisori dello zero. La teoria degli $R\jj$moduli senza torsione verr\`a indicata con \emph{$T_{R{\rm mst}}$}. Un $R\jj$modulo si dice \emph{divisibile\/} se \`e senza torsione e inoltre soddisfa i seguenti assiomi per ogni $r\in R\sm\{0\}$
+
+\begin{itemize}
+\item[mnb] $\E x\ x\neq 0$\hfill(questo dice semplicemente che il modulo \`e non banale)
+\item[md] $\E y\ ry=x$
+\end{itemize}
+
+La teoria degli $R\jj$moduli divisibili e senza torsione la indicheremo con \emph{$T_\Rmod\st$}. I gruppi $\QQ$ e $\QQ\times\QQ$, considerati come $\ZZ\jj$moduli, sono moduli divisibili mentre  $\ZZ$ e $\QQ\times\ZZ$ non lo sono. Tutti gli spazi vetoriali sono banalmente divisibili e senza torsione.
+
+Se $M$ un $R\jj$modulo,  $A\subseteq M$, e $x$ una singola variabile. Per il lemma~\ref{formacanonicaterminiga}, le formule atomiche $\phi(x)$ a parametri in $A$ sono, a meno di equivalenza, equazioni della forma $rx=t$ dove $r\in R$ e $t$ \`e un termine chiuso a parametri in $A$. Se non \`e torsione, e una soluzione esiste, questa \`e unica. Infatti se $rx_1=t$ e $rx_2=t$ allora $r(x_1-x_2)=0$ e dall'assioma \ssf{mst} otteniamo $x_1=x_2$. Se il modulo \`e anche divisibile ogni equazione di questa forma con $r\neq0$ ha soluzione. Formalizziamo questa osservazione in un lemma per riferimenti futuri.
+
+\begin{lemma}\label{consistenzastabileallinsu}
+Siano $A\subseteq M\models T_\Rmod\st$. Sia $\phi(x)$ una formula atomica a parametri in $A$ soddisfatta in $M$. Allora $N\models\E x\,\phi(x)$ per ogni $N$ tale che $\<A\>_M\subseteq N\models T_\Rmod\st$.
+\end{lemma}
+
+\begin{proof}
+Modulo $T_\Rmod\st$ la formula $\phi(x)$ \`e equivalente ad una equazione della forma $rx=t$ con $t$ un termine chiuso a parametri in $A$. Nel caso $r\neq0$ l'equazione $rx=t$ ha sempre soluzione in $N\models T_\Rmod\st$. Se $r=0$ allora l'equazione ha soluzione solo se \`e banale ovvero $t=0$.  Si osservi che 
+
+\hfil $M\models t=0\parbox{7ex}{\hfil$\IFF$}\<A\>_M\models t(a)=0\parbox{7ex}{\hfil$\IFF$}\<A\>_N\models t=0\parbox{7ex}{\hfil$\IFF$}N\models t=0$.
+
+Quindi in questo caso ha soluzione in $M$ se e solo se ha soluzione in $N$.
+\end{proof}
+
+Per enunciare il prossimo teorema serve precisare un po' di terminologia. Fissiamo una teoria $T$ ed un insieme di parametri $A$ in un qualche $M\models T$. Diremo che la la formula $\phi(x)$ a parametri in $A$ \`e \emph{banale\/} se \`e una tautologia modulo $T\cup\Diag(M/A)$. Equivalentemente, se $N\models\A x\,\phi(x)$ per ogni $N\models T$ che contiene $\<A\>_M$. Diremo che $\phi(x)$ \`e consistente se \`e consistente con $T\cup\Diag(M/A)$. Diremo che $\phi(x)$ \`e \emph{completa\/} se $\phi(x)$, considerata come $\Delta\jj$tipo con $\Delta$ l'insieme delle formule atomiche con parametri in $A$, \`e completa modulo $T\cup\Diag(M/A)$. (Cfr.\@ paragrafo~\ref{frammenti}.) Questo vuol dire che per ogni $N\models T$ che contiene $\<A\>_M$ e per ogni formula $\psi(x)$ a parametri in $A$ una delle seguenti due possibilit\`a occorre
+\begin{itemize}
+\item[+] $N\models\A x\,[\phi(x)\ \imp \phantom{\neg}\psi(x)]$
+\item[--]$N\models\A x\,[\phi(x)\ \imp \neg\psi(x)]$.
+\end{itemize} 
+L'occorrenza dell'uno o dell'altro caso dipende da $\psi$ ma \`e indipendente da $N$.
+
+Possiamo parafrasare queste due definizioni fissando $a$, una enumerazione di $A$, e scrivendo $\phi(a,x)$ al posto di $\phi(x)$, dove $\phi(z,x)$ \`e una formula pura. Allora, posto $q(z)=\qftp(a)$, otteniamo che $\phi(a,x)$ \`e banale se $q(z)\provesT\phi(z,x)$ ed \`e completa se $q(z)\cup\{\phi(z,x)\}$, in quanto tipo libero e puro, \`e completo. Infatti un modello che realizza $q(z)$ \`e, a meno di isomorfismo, un modello che contiene $\<A\>_M$.
+
+
+\end{comment}
+

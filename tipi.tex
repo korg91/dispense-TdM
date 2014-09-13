@@ -1,0 +1,939 @@
+\chapter{Tipi e morfismi}
+
+Il primo paragrafo tratta di reticoli, algebre di Boole e dualit\`a di Stone. Sono argomenti che aiutano a porre in un contesto le nozioni introdotte in questo capitolo.
+ 
+Il resto del capitolo \`e un catalogo di definizioni e notazione. Sconsiglio di leggerlo in ordine sequenziale ma di scorrerlo velocemente e farvi riferimento quando necessario.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Reticoli}\label{reticoli}
+\label{stone}
+%\def\swedge{\raisebox{.2ex}{\tiny$\mathbin\wedge$}}
+
+\def\ceq#1#2#3{\hspace*{15ex}\llap{#1}\parbox{5ex}{\hfil#2}\rlap{#3}}
+%\ceq{}{}{}
+Un \emph{preordine\/} \`e un insieme $\PP$ su cui \`e data una relazione transitiva e riflessiva $\le$. Scriveremo:
+
+\ceq{\emph{$A\le b$}}{$\dIFF$}{$x\le b$ per ogni $x\in A$}\hspace*{20ex}\ceq{\emph{$b\le A$}}{$\dIFF$}{$b\le x$ per ogni $x\in A$}
+
+\ceq{\emph{$A^\uparrow$}}{$\deq$}{$\big\{x\ :\ A\le x\big\}$}\hspace*{20ex}\ceq{\emph{$A^\downarrow$}}{$\deq$}{$\big\{x\ :\ x\le A\big\}$}
+
+L'insieme $A^\uparrow$ si chiama \emph{cono all'ins\`u generato da $A$}, invece $A^\downarrow$ si chiama \emph{cono all'ingi\`u}. I coni generati da un singoletto $\{a\}$ si dicono \emph{principali} e denotati semplicemente con \emph{$a^\uparrow$\/} ed \emph{$a^\downarrow$}. \`E immediato verificare che:
+
+\ceq{$(A\cup B)^\uparrow$}{$=$}{$A^\uparrow\cap B^\uparrow$}\hspace*{20ex}\ceq{$(A\cup B)^\downarrow$}{$=$}{$A^\downarrow\cap B^\downarrow$}
+
+Da un preordine $\PP$ si ottiene un ordine quozientando per la relazione di equivalenza:
+
+\ceq{$a\sim b$}{$\dIFF$}{$a\le b$ e $b\le a$}
+
+Anche se tratteremo spesso con \textit{pre}\hskip.15ex ordini, siamo essenzialmente interessati all'ordine associato a questo e quindi spesso confonderemo preordini con l'ordine a loro associato. I preordini sono comunissimi in natura, qui ci sta particolarmente a cuore quello indotto su un insieme di formule dalla relazione di conseguenza logica:
+
+\ceq{$\phi\le\psi$}{$\dIFF$}{$\phi\proves\psi$}
+
+Un \emph{(pre)semireticolo inferiore\/} \`e un (pre)ordine $\PP$ in cui coni all'ingi\`u generati da due elementi sono principali. Se i coni all'ins\`u generati da due elementi sono principali diremo che $\PP$ \`e un \emph{semireticolo superiore}. In un semireticolo inferiore possiamo introdurre una funzione binaria $\swedge$, e in un semireticolo superiore una funzione $\svee$, tale che
+
+\ceq{$\{a, b\}^\downarrow$}{$=$}{$(a\swedge b)^\downarrow$}\parbox{20ex}{\hfill e}\ceq{$\{a, b\}^\uparrow$}{$=$}{$(a\svee b)^\uparrow$}
+
+Chiameremo la prima operazione \emph{congiunzione\/} oppure anche \emph{intersezione}. La seconda \emph{disgiunzione\/} oppure \emph{unione}. I termini inglesi sono \emph{meet\/} e \emph{join\/} e non hanno una traduzione letterale in questo contesto. Se $\PP$ \`e un semireticolo sia inferiore che superiore diremo che \`e un \emph{reticolo}. 
+
+Se $\PP$ contiene un elemento \emph{$0$\/} tale che $0\le \PP$, diremo che $\PP$ \`e \emph{limitato inferiormente}. L'elemento $0$ \`e chiamato \emph{fondo\/} del reticolo (avolte denotato con $\bot$). Se  $\PP$ contiene un elemento \emph{$1$\/} tale che $\PP\le 1$, diremo che $\PP$ \`e \emph{limitato superiormente}. L'elemento $1$ \`e detto \emph{cima\/} del reticolo (a volte denotato con $\top$). Diremo che $\PP$ \emph{limitato\/} se \`e limitato sia superiormente che inferiormente.
+
+La congiunzione \`e commutativa e associativa modulo equivalenza, ovvero
+
+\ceq{$a\swedge b$}{$\sim$}{$a\swedge b$}\parbox{20ex}{\hfill e}\ceq{$(a\swedge b)\swedge c$}{$\sim$}{$a\swedge (b\swedge c)$}
+
+Potremo quindi senza ambiguit\`a scrivere $a_1\swedge\dots\swedge a_n$. Quando $C$ \`e un insieme finito non vuoto scriveremo \emph{$\swedge C$} per la congiunzione di tutti i suoi elementi (quando $\P$ \`e limitato superiormente si conviene che $\swedge\0=1$). \`E immediato verificare che $\swedge C$ \`e un generatore del cono $C^\downarrow$. Quindi in un semireticolo inferiore tutti i coni all'ingi\`u generati da finiti elementi sono principali. Lo stesso vale in un reticolo superiore per la disgiunzione ed i coni all'ins\`u.
+
+Un reticolo si dice \emph{distributivo\/} se per ogni $a,b,c\in\PP$ abbiamo le seguenti identit\`a
+
+\ceq{$a\swedge (b\svee c)$}{$\sim$}{$(a\swedge b)\svee (a\swedge c)$}\parbox{20ex}{\hfill e}\ceq{$a\svee (b\swedge c)$}{$\sim$}{$(a\svee b)\swedge (a\svee c)$}
+
+
+%L'esistenza del fondo non verr\`a mai esplicitata nelle ipotesi: il lettore pu\`o facilmente eliminarla dalle dimostrazioni (sostituendo $(\dots)=0$ con  $(\dots)^\uparrow=\PP$).
+
+Sia $\PP$ un semireticolo inferiore. Un \emph{filtro\/} su $\PP$ \`e un insieme non vuoto $F\subseteq \PP$ che soddisfa le seguenti propriet\`a:
+\def\ceq#1#2#3{\hspace*{7ex}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+%\ceq{}{}{}
+\begin{itemize}
+\item[f1.] \ceq{$a\in F$}{$\IMP$}{$a^\uparrow\subseteq F$;}
+\item[f2.] \ceq{$a, b\in F$}{$\IMP$}{$a\swedge  b\in F$.}
+\end{itemize}
+Diremo che $F$ \`e un \emph{filtro proprio\/} se $F\subset \PP$. Diremo che \`e \emph{principale\/} se $F=b^\uparrow$ per un qualche $b\in \PP$. Un filtro $F$ si dice \emph{massimale\/} se $F\subset \PP$ e non esiste nessun filtro $H$ tale che $F\subset H\subset \PP$. 
+
+Conviene generalizzare il concetto di massimalit\`a come segue. Diremo che $F$ \`e \emph{massimale relativo a $c$\/}, se $c\notin F$ e $c\in H$ per ogni filtro $H\supset F$. Diremo semplicemente che $F$ \`e \emph{massimale relativo\/} se \`e massimale rispetto a qualche $c$. Si noti che se $\PP$ \`e limitato inferiormente un filtro massimale relativamente a $0$ \`e massimale tout court.
+
+\`E immediato verificare che l'intersezione di una famiglia arbitraria di filtri \`e un filtro, quindi dato un sottoinsieme arbitrario $B\subseteq \PP$ possiamo definire il \emph{filtro generato da $B$\/} come l'intersezione di tutti i filtri che contengono $B$. Se $B$ \`e un insieme finito non vuoto, allora il filtro da lui generato \`e $(\swedge B)^\uparrow$. In generale abbiamo il seguente lemma la cui verifica \`e immediata: 
+
+\begin{lemma} \label{proppfgen}
+Sia $\PP$ un semireticolo inferiore e $B\subseteq \PP$. Il filtro generato da $B$ \`e l'insieme
+
+\def\ceq#1#2#3{\hspace*{15ex}\llap{#1}\parbox{6ex}{\hfil#2}{#3}}
+\ceq{$F$}{{\rm$\deq$}}{$\Big\{a\ :\ \swedge C\le a\ \textrm{per qualche }\ C\subseteq B\textrm{ finito non vuoto}\Big\}$}.\QED
+\end{lemma}
+
+Il seguente corollario \`e immediato.
+
+\begin{corollary} \label{proppif}
+Sia $\PP$ un semireticolo inferiore, $B\subseteq \PP$, $c\in \PP$. Se per ogni $C\subseteq B$ finito non vuoto $\swedge C\not\le c$ allora il filtro generato da $B$ non contiene $c$.\QED
+\end{corollary}
+
+La seguente proposizione fornisce condizioni equivalenti alla massimalit\`a relativa che spesso sono pi\`u comode da verificare.
+
+\begin{comment}
+\begin{proposition}\label{propmassimale}
+Sia $\PP$ un semireticolo inferiore, $B\subseteq \PP$ e $c\in\PP$ tale che per ogni $C\subseteq B$ finito non vuoto $\swedge C \not\le c$. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $B$ \`e un filtro massimale relativo a $c$;
+\item[2.] $a\notin B\ \ \IMP\ \ b\swedge a \le c$\ \  per qualche \ \ $b\in B$;
+\item[3.] $a\notin B\ \ \IMP\ \ \swedge C\swedge a\le c$\ \ per qualche $C\subseteq B$ finito non vuoto.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Dimostriamo \ssf{1}\,$\IMP$\,\ssf{2}. Poich\'e $B$ \`e un filtro, quindi chiuso per intersezione, \ssf{2} afferma che se $a\notin B$ allora $\swedge C\not\le c$ per ogni insieme finito non vuoto $C\subseteq B\cup \{a\}$. Per il corollario~\ref{proppif}, questo equivale ad affermare che $B$ \`e un filtro massimale relativo a $c$. L'implicazione \ssf{2}\,$\IMP$\,\ssf{3} \`e ovvia. Per dimostrare \ssf{3}\,$\IMP$\,\ssf{1}, osserviamo per prima cosa che \ssf{3} implica che  $B$ \`e un filtro. Verifichiamo \ssf{f1}: sia $a\in B$ e $a\le b$. Se per assurdo $b\notin B$ allora da \ssf{3} otteniamo $\swedge C\swedge b\le c$ per qualche $C\subseteq B$ finito non vuoto. Da $a\le b$ otteniamo $\swedge C\swedge a\le c$. Ma $C\cup\{a\}\subseteq B$ in contraddizione con le ipotesi del lemma.  Verifichiamo \ssf{f2}: siano $a,b\in B$ e supponiamo che per assurdo $a\swedge  b\notin B$. Allora $ \swedge C\swedge a\swedge  b\le c$ per qualche $C\subseteq B$ finito non vuoto. Ma $C\cup\{a,b\}\subseteq B$ in contraddizione con le ipotesi del lemma. Infine per dimostrare la massimalit\`a osserviamo che se $H$ \`e un filtro tale che $B\subset H$ e $c\notin H$, allora un qualunque $a\in H\sm B$ contraddice \ssf{3}.
+\end{proof}
+
+\begin{proposition}\label{esistenzamassimale2}
+Sia $\PP$ un semireticolo inferiore. Fissiamo $B\subseteq \PP$ e $c\in\PP$ tali che per ogni $C\subseteq B$ finito non vuoto $\swedge C\not\le c$. Allora $B$ \`e contenuto in un filtro massimale relativo a $c$.
+\end{proposition}
+\begin{proof}
+La proposizione si ottiene applicando lemma di Zorn in modo del tutto analogo a quanto fatto per la proposizione~\ref{esistenzamassimale1}. Equivalentemente si pu\`o usare una costruzione ricorsiva transfinita che riportiamo qui sotto: la dimostrazione \`e pi\`u lunga ma pi\`u intuitiva.
+
+Sia $\<a_\alpha\ :\ \alpha<\lambda\>$ un'arbitraria enumerazione di $\PP$, dove $\lambda$ \`e la cardinalit\`a di $\PP$. Definiamo per ricorsione transfinita una catena di sottoinsiemi di $\PP$ come segue. Poniamo $B_0=B$ e, dato $B_\alpha$ per $\alpha<\lambda$, definiamo
+
+\def\ceq#1#2#3{\hspace*{15ex}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+
+\ceq{$B_{\alpha+1}$}{$=$}{$\displaystyle\bigg\{\begin{array}{ll} B_\alpha\cup\{a_\alpha\} & \textrm{se }\swedge C\swedge a_\alpha\not\le c\textrm{ per ogni }C\subseteq B_\alpha\textrm{ finito non vuoto }\\ 
+B_\alpha & \textrm{altrimenti.}
+\end{array}$}
+
+Inotre, se $\beta\le\lambda$ \`e un ordinale limite, poniamo 
+
+\ceq{$B_{\beta}$}{$=$}{$\displaystyle\bigcup_{\alpha<\beta}B_\alpha$}
+
+Dimostriamo che l'insieme $B_\lambda$ \`e il filtro desiderato. 
+%
+%Per dimostrare $c\notin B_\lambda$ conviene passare per un'affermazione pi\`u generale. Per ogni $\alpha\le\lambda$ vale:
+% \begin{itemize}
+% \item[\#] $\swedge C\not\le c$ per ogni $C\subseteq B_\alpha$ finito. 
+% \end{itemize}
+% Se cos\`{\i} non fosse, sia $\beta$ il minimo per cui \# non vale. Dalla costruzione \`e chiaro che la condizione \# \`e preservata ai passi successore, quindi $\beta$ dev'essere limite. Fissiamo $C\subseteq B_\beta$ finito tale che $\swedge  C\le c$. Ma ogni $C\subseteq B_\beta$ finito \`e sottoinsieme di qualche $B_\alpha$ con $\alpha<\beta$. Quindi \# non vale per tale $B_\alpha$, contraddicendo la minimalit\`a di $\beta$. Abbiamo dimostrato che \# vale per ogni $\alpha\le\lambda$ e in particolare che  $c\notin B_\lambda$.
+%
+verifichiamo \ssf{3} della proposizione~\ref{propmassimale}. Sia $a\notin B_\lambda$. Poich\'e $a=a_\alpha$ per un qualche $\alpha<\lambda$, il passo $\alpha+1$ della costruzione produce $B_{\alpha+1}=B_\alpha$. Quindi $\swedge C\swedge a\le c$ qualche $C\subseteq B_\alpha$ finito.
+\end{proof}
+
+\end{comment}
+
+
+
+\begin{proposition}\label{esistenzamassimale2}
+Sia $\PP$ un semireticolo inferiore. Fissiamo un filtro $F\subseteq \PP$ e $c\in\PP\sm F$. Allora $F$ \`e contenuto in un filtro massimale relativo a $c$.
+\end{proposition}
+\begin{proof}
+La proposizione si ottiene applicando lemma di Zorn in modo del tutto analogo a quanto fatto per la proposizione~\ref{esistenzamassimale1}. Equivalentemente si pu\`o usare una costruzione ricorsiva transfinita che riportiamo qui sotto: la dimostrazione \`e pi\`u lunga ma pi\`u intuitiva.
+
+Sia $\<a_\alpha\ :\ \alpha<\lambda\>$ un'arbitraria enumerazione di $\PP$, dove $\lambda$ \`e la cardinalit\`a di $\PP$. Definiamo per ricorsione transfinita una catena di sottoinsiemi di $\PP$ come segue. Poniamo $F_0=F$ e, dato $F_\alpha$ per $\alpha<\lambda$, definiamo
+
+\def\ceq#1#2#3{\hspace*{15ex}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+
+\ceq{$F_{\alpha+1}$}{$=$}{$\displaystyle\left\{\begin{array}{ll} \textrm{filtro generato da }F_\alpha\cup\{a_\alpha\}  & \textrm{se questo non contiene } c\\[1ex] 
+F_\alpha & \textrm{altrimenti}
+\end{array}\right.$}
+
+Inoltre, se $\beta\le\lambda$ \`e un ordinale limite, poniamo 
+
+\ceq{$F_{\beta}$}{$=$}{$\displaystyle\bigcup_{\alpha<\beta}F_\alpha$}
+
+Dimostriamo che $F_\lambda$ \`e il filtro desiderato. \`E un filtro, perch\'e unione di filtri. Per verificare la massimalit\`a sia $a\notin F_\lambda$. Poich\'e $a=a_\alpha$ per un qualche $\alpha<\lambda$, il passo $\alpha+1$ della costruzione produce $F_{\alpha+1}=F_\alpha$. Quindi $\swedge C\swedge a\le c$ qualche $C\subseteq F_\alpha$ finito. Quindi ogni filtro $H\supset F_\lambda$ contiene $c$.
+\end{proof}
+
+Sia $\PP$ un reticolo. Un filtro $F$ proprio si dice \emph{primo\/} se per ogni $a,b\in\PP$:
+
+\def\ceq#1#2#3{\hspace*{25ex}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+
+\ceq{$a\svee b \in F$}{$\IMP$}{$a\in F$ o $b\in F$.}
+
+\begin{lemma}\label{massimalisonoprimi}
+Sia $\PP$ un reticolo distributivo. Ogni filtro massimale relativo \`e primo.
+\end{lemma}
+
+\begin{proof}
+Sia $F$ un filtro massimale relativamente a $c$. E supponiamo che $a\notin F$ e $b\notin F$. Allora esiste un elemento $d\in F$ tale che $d\swedge a\le c$ e $d\swedge b\le c$. Quindi $(d\swedge a)\svee(d\swedge b)\le c$ e, per distributivit\`a, $d\swedge (a\svee b)\le c$. Quindi $a\svee b\notin F$.
+\end{proof}
+
+Dato un reticolo distributivo limitato $\PP$, denoteremo con \emph{$S(\PP)$\/} l'insieme dei suoi filtri primi. Introduciamo una \emph{topologia su $S(\PP)$}. I chiusi di base sono gli insiemi della forma:
+
+\noindent\rlap{\ssf{p.}}\ceq{$[a]_\PP$}{$\deq$}{$\Big\{\,F\ :\ \textrm{ filtro primo tale che } a\in F\,\Big\}$.}
+
+per un qualche $a\in\PP$. Il seguente lemma dimostra che si tratta effettivamente di una base per una topologia:
+
+\begin{lemma}\label{brouwerstopology}
+Fissiamo $\PP$, reticolo distributivo limitato. Per ogni $a,b\in\PP$ valgono le seguenti identit\`a:
+\begin{itemize}
+\item[1.]\ $\big[0\big]_\PP\ =\ \0$;
+\item[2.]\ $\big[1\big]_\PP\ =\ S(\PP)$;
+\item[3.]\ $\big[a\big]_\PP\ \cup\ \big[b\big]_\PP\ \ =\ \ \big[a\svee b\big]_\PP$;
+\item[4.]\ $\big[a\big]_\PP\ \cap\ \big[b\big]_\PP\ \ =\ \ \big[a\swedge b]_\PP$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Immediata. Si noti che la dimostrazione di \ssf{3} usa la primalit\`a dei filtri in $S(\PP)$.
+\end{proof}
+
+I chiusi di $S(\PP)$ formano un reticolo distributivo limitato: l'ordine \`e dato dall'inclusione, la disgiunzione e la congiunzione sono l'unione e l'intersezione. Gli estremi sono $\0$ e $S(\PP)$. Il seguente \`e un teorema di rappresentazione per i reticoli distributivi.
+
+\begin{theorem}
+Sia $\PP$ un reticolo distributivo limitato. La mappa che manda $a\mapsto [a]_\PP$ \`e un'immersione di $\PP$ nel reticolo dei chiusi di $S(\PP)$. 
+\end{theorem}
+
+\begin{proof}
+Che la mappa preservi l'ordine \`e immediato, che preservi gli estremi, la disgiunzione e la congiunzione \`e ci\`o che afferma il lemma~\ref{brouwerstopology}. Dobbiamo solo mostrare che \`e iniettiva. Fissiamo $a\neq b$ e mostriamo $\big[a\big]_\PP\neq\big[b\big]_\PP$. Assumiamo $a\nleq b$. Se $a= 0$ allora $\big[a\big]_\PP=\0\neq\big[b\big]_\PP$ \`e immediato. Altrimenti, esiste un filtro $F$ che contiene $a$ ed \`e massimale relativo a $b$. Per il lemma~\ref{massimalisonoprimi} tale $F$ \`e primo. Quindi $F\in [a]_\PP\sm[b]_\PP$. 
+\end{proof}
+
+\def\ceqq#1#2#3#4{\parbox{25ex}{#4\hfill}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+
+\begin{lemma}\label{reticolocompatto}
+Con la topologia sopra definita $S(\PP)$ \`e uno spazio compatto.
+\end{lemma}
+\begin{proof}
+Sia $\<[a_i]_\PP:i\in I\>$ una sequenza arbitraria di chiusi di base tale che per ogni sottoinsieme finito $J\subseteq I$
+
+\ceqq{$\displaystyle\bigcap_{i\in J}[a_i]_\PP$}{$\neq$}{$\0$}{\ssf{1.}}
+
+Dobbiamo mostrare che l'intera sequenza ha intersezione non vuota:
+
+\ceqq{$\displaystyle\bigcap_{i\in I}[a_i]_\PP$}{$\neq$}{$\0$}{\ssf{2.}}
+
+Per punto \ssf{4} del lemma~\ref{brouwerstopology}, da \ssf{1} otteniamo che per ogni $C\subseteq \{a_i:i\in I\}$ finito $\swedge C\nleq 0$. Per la proposizione~\ref{esistenzamassimale2}, esiste un filtro massimale che contiene $\{a_i:i\in I\}$. Per il lemma~\ref{massimalisonoprimi}, tale filtro \`e anche primo e quindi appartiene all'intersezione in \ssf{2}.
+\end{proof}
+
+Se, in un reticolo distributivo limitato $\PP$, per un dato elemento $a$ se esiste un $b$ tale che  $a\swedge  b=0$ e $a\svee b=1$, allora, com'\`e immediato verificare, questo $b$ \`e unico e verr\`a chiamato \emph{complemento\/} di $a$ e denotato con $\neg a$. 
+
+\begin{lemma}\label{Stone_aperti_chiusi}
+Sia $\PP$ un reticolo distributivo limitato e sia $U\subseteq S(\PP)$ un insieme aperto-chiuso (cio\`e sia sia aperto che chiuso). Allora $U=[a]_\PP$ per qualche $a\in\PP$. Inoltre, esiste $\neg a$.
+\end{lemma}
+\begin{proof}
+Sia $U$ che $S(\PP)\sm U$ sono chiusi quindi esistono due insiemi $A, B\subseteq\PP$ tali che 
+
+\hfil $\displaystyle U\ \ =\ \ \bigcap_{a\in A}[a]_\PP$  \hfil e\hfil $\displaystyle S(\PP)\sm U\ \ =\ \ \bigcap_{b\in B}[b]_\PP$.
+
+Per la compattezza garantita dal lemma~\ref{reticolocompatto}, e per il punto \ssf{4} del lemma~\ref{brouwerstopology}, esistono $a\in A$ e $b\in B$ tali che $[a]_\PP\cap[b]_\PP=\0$. Ma questo implica, che $U\subseteq [a]_\PP$ \`e per un $[a]_\PP$ disgiunto da $S(\PP)\sm U$. Quindi $U= [a]_\PP$. Inoltre, poich\'e per la stessa ragione $[b]_\PP=S(\PP)\sm U$ avremo 
+
+\hfil $[a\swedge  b]_\PP\ \ =\ \ [a]_\PP\cap[b]_\PP\ \ =\ \ \0$ \hfil e\hfil $[a\svee b]_\PP\ \ =\ \ [a]_\PP\cup[b]_\PP\ \ =\ \ S(\PP)$. 
+
+Dal lemma~\ref{brouwerstopology}, otteniamo $a\swedge  b=0$ e $a\svee b=1$, ovvero $b=\neg a$.
+\end{proof}
+
+
+Un'\emph{algebra booleana\/} \`e un reticolo distributivo limitato in cui ogni elemento ha un complemento. In questo caso gli insiemi del tipo $[a]_\PP$ sono anche anche aperti e formano una base di aperti della topologia di $S(\PP)$. Una topologia in cui un insieme di aperti-chiusi \`e sia una base di aperti che una base di chiusi si dice \emph{zero-dimensionale}.
+
+Un filtro proprio \`e un \emph{ultrafiltro\/} se $a\in F$ o $\neg a\in F$ per ogni $a$.
+
+\begin{proposition}
+Sia $\PP$ un'algebra booleana. Allora le seguenti affermazioni sono equivalenti
+\begin{itemize}
+\item[1.] $F$ \`e un filtro massimale;
+\item[2.] $F$ \`e un filtro primo;
+\item[3.] $F$ \`e un ultrafiltro.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+L'implicazione \ssf{2}\,$\IMP$\,\ssf{3} si ottiene osservando che $a\svee\neg a\in F$. Il resto \`e immediato.
+\end{proof}
+
+\begin{exercise}
+Sia $\PP$ un semireticolo inferiore, $B\subseteq \PP$ e $c\in\PP$ tale che per ogni $C\subseteq B$ finito non vuoto $\swedge C \not\le c$. Si dimostri che le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $B$ \`e un filtro massimale relativo a $c$;
+\item[2.] $a\notin B\ \ \IMP\ \ b\swedge a \le c$\ \  per qualche \ \ $b\in B$;
+%\item[3.] $a\notin B\ \ \IMP\ \ \swedge C\swedge a\le c$\ \ per qualche $C\subseteq B$ finito non vuoto.\QED
+\end{itemize}
+% \begin{proof}
+% Dimostriamo \ssf{1}\,$\IMP$\,\ssf{2}. Poich\'e $B$ \`e un filtro, quindi chiuso per intersezione, \ssf{2} afferma che se $a\notin B$ allora $\swedge C\not\le c$ per ogni insieme finito non vuoto $C\subseteq B\cup \{a\}$. Per il corollario~\ref{proppif}, questo equivale ad affermare che $B$ \`e un filtro massimale relativo a $c$. L'implicazione \ssf{2}\,$\IMP$\,\ssf{3} \`e ovvia. Per dimostrare \ssf{3}\,$\IMP$\,\ssf{1}, osserviamo per prima cosa che \ssf{3} implica che  $B$ \`e un filtro. Verifichiamo \ssf{f1}: sia $a\in B$ e $a\le b$. Se per assurdo $b\notin B$ allora da \ssf{3} otteniamo $\swedge C\swedge b\le c$ per qualche $C\subseteq B$ finito non vuoto. Da $a\le b$ otteniamo $\swedge C\swedge a\le c$. Ma $C\cup\{a\}\subseteq B$ in contraddizione con le ipotesi del lemma.  Verifichiamo \ssf{f2}: siano $a,b\in B$ e supponiamo che per assurdo $a\swedge  b\notin B$. Allora $ \swedge C\swedge a\swedge  b\le c$ per qualche $C\subseteq B$ finito non vuoto. Ma $C\cup\{a,b\}\subseteq B$ in contraddizione con le ipotesi del lemma. Infine per dimostrare la massimalit\`a osserviamo che se $H$ \`e un filtro tale che $B\subset H$ e $c\notin H$, allora un qualunque $a\in H\sm B$ contraddice \ssf{3}.
+% \end{proof}
+\end{exercise}
+
+
+\begin{exercise}
+Sia $\PP$ un reticolo distributivo. Dato un insieme $C\subseteq\PP$ diremo che un filtro $F$ \`e massimale relativamente a $C$ se $F\cap C=\0$ e $H\cap C\neq\0$ per ogni filtro $H\supset F$. \`E un filtro massimale relativo a $C$ primo? \`E vero che ogni filtro $F\cap C=\0$ \`e contenuto in un filtro massimale rispetto a $C$?\QED
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reticoli di formule e tipi}\label{frammenti}
+
+\def\ceq#1#2#3{\hspace*{25ex}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+
+Fissiamo un insieme \emph{$\Delta$\/} di formule con variabili libere tra quelle della tupla \emph{$x$}. In questo paragrafo la variabile $x$ \`e fissata e non verr\`a mostrata nella notazione. Al termine del paragrafo commentiamo la notazione che useremo in contesti pi\`u ampi. All'insieme $\Delta$ associamo un reticolo limitato che indicheremo con \emph{$\PP(\Delta)$}. Questo \`e la chiusura per congiunzione e disgiunzione di $\Delta\cup\{\bot,\top\}$ ed ha come ordine la relazione di conseguenza logica:
+
+\ceq{$\psi\le\phi$}{$\dIFF$}{$\psi\ \proves\ \phi$} 
+
+Segue immediatamente che congiunzione e disgiunzione del reticolo corrispondono alla congiunzione e disgiunzione tra formule.
+
+Quando diremo in questo paragrafo vale anche, mutatis mutandis, interpretando $\proves$ come conseguenza logica modulo una fissata teoria $T$. \`E in questa forma generalizzata che verr\`a applicato nei prossimi capitoli, ma al momento \`e preferibile non sovraccaricare la notazione. 
+
+Chiameremo \emph{$\Delta\jj$tipo\/} un sottoinsieme di $\Delta$. 
+
+\begin{lemma}\label{poiuyhdsdfd}
+Dato un tipo $p\subseteq\Delta$ sia $q$ il filtro in $\PP(\Delta)$ generato da $p$. Allora
+
+\ceq{$q$}{$=$}{\Big\{$\ \phi\;\in\;\PP(\Delta)\ \ \ :\ \ \ p\ \proves\ \phi\ \Big\}$}
+
+\end{lemma}
+\begin{proof}
+L'inclusione $\subseteq$ \`e immediata. L'inclusione $\supseteq$ \`e una conseguenza del teorema di compattezza: se $p\proves\phi$, allora $\psi\proves\phi$ per una qualche formula $\psi$ congiunzione di formule in $p$. Quindi da $\psi\in q$ e $\psi\le\phi$ otteniamo $\phi\in q$.
+\end{proof}
+
+Diremo che $p\subseteq\Delta$ \`e un \emph{$\Delta\jj$tipo principale\/} se il filtro in $\PP(\Delta)$ generato da $p$ \`e principale. Il seguente lemma generalizza ai $\Delta\jj$tipi quanto la proposizione~\ref{finaxsub} affermava per le teorie. \`E un immediata conseguenza della compattezza, la dimostrazione viene lasciata al lettore per esercizio.
+
+\begin{lemma}
+Per ogni tipo $p\subseteq\Delta$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $p$ \`e principale;
+\item[2.] $\phi\proves p$ dove $\phi$ \`e congiunzione di formule in $p$;
+\item[3.] $\phi\proves p\proves \phi$ per qualche formula $\phi$.\QED 
+\end{itemize}
+\end{lemma}
+
+Si noti che al punto \ssf{3} non \`e necessario richiedere che la formula $\phi$ appartenga a $\PP(\Delta)$. 
+
+\begin{definition}
+Diremo che il tipo $p\subseteq\Delta$ \`e \emph{primo\/} se genera in $\PP(\Delta)$ un filtro primo. Diremo che \`e \emph{completo\/} se genera un filtro massimale. \end{definition}
+
+In generale n\'e $\Delta$ n\'e $\PP(\Delta)$ sono chiusi per negazione. Dal lemma~\ref{poiuyhdsdfd} otteniamo comunque il seguente: 
+
+\begin{corollary}\label{coroll_test_primalita}
+Per ogni tipo $p\subseteq\Delta$ consistente le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $p$ \`e completo;
+\item[2.] $p$ \`e coerente e $p\proves\phi$ o $p\proves\neg\phi$ per ogni formula $\phi\in\Delta$.
+\end{itemize}
+\end{corollary}
+\begin{proof}
+L'implicazione \ssf{2}$\IMP$\ssf{1} \`e immediata, dimostriamo \ssf{1}$\IMP$\ssf{2}. Per il lemma~\ref{poiuyhdsdfd} se $p$ \`e completo, $\phi\in\Delta$ e $p\notproves\phi$ allora $p\cup\{\phi\}$ genera un filtro banale. Di nuovo per lo stesso lemma, $p\cup\{\phi\}\proves\bot$. Quindi $p\proves\neg\phi$. 
+\end{proof}
+
+Quest'altro corollario semplifica la verifica della primalit\`a di un tipo.
+
+
+\begin{corollary}\label{lemma_primo_vs_completo}
+Per ogni tipo $p\subseteq\Delta$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $p$ \`e primo;
+\item[2.] $\displaystyle p\ \proves\ \bigvee^n_{i=1}\phi_i$\parbox{6ex}{\hfil$\IMP$}$p\proves\phi_i$ per qualche $i$,\hfill per ogni $n$ ed ogni $\phi_1,\dots,\phi_n\in\Delta$.
+\end{itemize}
+\end{corollary}
+Qui riportiamo una dimostrazione sintattica. Il lemma~\ref{lemmatipiprimiconsistenti} qui sotto, pu\`o essere usato per una dimostrazione alternativa pi\`u breve.
+\begin{proof} Dato il lemma~\ref{poiuyhdsdfd}, l'implicazione \ssf{1}$\;\IMP\;$\ssf{2} \`e ovvia. Per dimostrare \ssf{2}$\;\IMP\;$\ssf{1} dobbiamo mostrare che \ssf{2} vale per tutte le formule in $\PP(\Delta)$. Procediamo per induzione sulla sintassi. Il passo induttivo per il connettivo $\vee$ \`e ovvio. Quindi supponiamo 
+
+\ceq{$p$}{$\proves$}{$\displaystyle(\psi\wedge\xi)\ \vee\ \bigvee^n_{i=1}\phi_i$}
+
+che $p\notproves \phi_i$, e che l'ipotesi induttiva valga per $\psi$, $\xi$, e tutte le formule $\phi_i$. Per distributivit\`a
+
+\ceq{$p$}{$\proves$}{$\displaystyle\Big(\psi\vee\bigvee^n_{i=1}\phi_i\Big)\ \ \wedge\ \ \Big(\xi\vee\bigvee^n_{i=1}\phi_i\Big)$}
+
+Dall'ipotesi induttiva segue $p\proves\psi$ e $p\proves\xi$ e quindi  $p\proves\psi\wedge\xi$ come richiesto.
+\end{proof}
+
+I tipi primi sono esattamente i tipi di qualche tupla. Sia $x$ una tupla contenente le variabili che occorrono in $\Delta$. Dato un modello $M$ e una tupla $c\in M^{|x|}$  chiameremo \emph{$\Delta\jj$tipo di $c$ in $M$\/} l'insieme:
+
+\hspace*{20ex}\llap{$p$\parbox{6ex}{\hfil$=$}}%
+$\Big\{\phi\in\Delta\ :\ M\models\phi[x/c]\Big\}$.
+
+Scriveremo \emph{$p=\Delta\jj$tp$_M(c)$}. Quando il modello $M$ \`e chiaro dal contesto ometteremo il pedice.%per tipi di formule senza quantificatori useremo la notazione \emph{$\qftp_M(c/A)$}. 
+
+
+\begin{lemma}\label{lemmatipiprimiconsistenti}
+Per ogni tipo $p\subseteq\Delta$ le seguenti affermazioni sono equivalenti
+\begin{itemize}
+\item[1.] $p$ \`e primo;
+\item[2.] $p\ \cup\ \Big\{\neg\phi\ :\  \phi\;\in\;\Delta\ \ \textrm{tale che}\ \ p\notproves\phi\ \Big\}$ \`e consistente.
+\item[3.] $\big\{\phi\in\Delta : p\proves\phi\big\}\ = \ \Deltatp_M(c)$ per qualche struttura $M$ e qualche tupla $c\in M^{|x|}$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Per compattezza se il tipo in \ssf{2} \`e inconsistente allora esiste un numero finito di formule $\phi_i$ tali che $p\notproves\phi_1\vee\dots\vee\phi_n$ e $p\notproves\phi_i$. Quindi $\neg$\ssf{1}. Le implicazioni \ssf{2}$\IMP$\ssf{3}$\IMP$\ssf{1} sono immediate.
+\end{proof}
+
+In questo paragrafo abbiamo fissato assieme a $\Delta$ una tupla variabili libere $x$. Nel seguito servir\`a considerare simultaneamente diverse tuple di variabili libere. Tipicamente fisseremo un insieme di formule $\Delta$ senza specificare le variabili libere. Quando il contesto lo suggerisce, per $\Delta$ intenderemo in realt\`a \emph{$\Delta_{\restriction x}$}, ovvero il sottoinsieme delle formule in $\Delta$ con variabili libere tra quelle della tupla $x$. La notazione  $\Delta_{\restriction x}$ non verr\`a quasi mai usata perch\'e il rischio di fraintendimenti \`e minimo. Si noti comunque che la differenza \`e rilevante: un tipo completo $p\subseteq\Delta_{\restriction x}$ non \`e sicuramente completo se considerato come sottoinsieme di $\Delta_{\restriction x,z}$. Spesso scriveremo $p(x)=\Delta\jj$tp$_M(c)$, dove $x$ \`e una tupla di variabili di lunghezza $|c|$, per suggerire che stiamo riferendoci a $\Delta_{\restriction x}$. 
+
+L'insieme $\Delta$ pi\`u usato \`e quello di tutte le formule in $L(A)$, in questo caso scriveremo \emph{tp$_M(c/A)$}, o quando $A$ \`e vuoto \emph{tp$_M(c)$}. Quando $x$ e $c$ sono le tuple vuote allora i tipi si riducono a teorie e la notazione diventa \emph{$\Th_\Delta(M/A)$} e \emph{$\Th_\Delta(M)$}.
+
+Spesso insiemi di formule $\Delta$ sono costituiti da classi sintattiche, per esempio: le formule atomiche, le formule atomiche e le loro negazioni, le formule senza quantificatori, e simili.  Quando $\Delta$ \`e l'insieme delle formule atomiche scriveremo \emph{$\atp_M(c)$\/} per $\Deltatp_M(c)$. Quando $\Delta$ \`e l'insieme delle formule atomiche con parametri in $A$ scriveremo \emph{\textrm{at}-$\tp_M(c/A)$}. La notazione \emph{\textrm{at}$^\pm\jj$$\tp_M(c/A)$\/} \`e usata per tipi di formule atomiche e negazioni di formule atomiche, scriveremo \emph{$\Th_{\textrm{\scriptsize at}^\pm}(M/A)$\/} per la corrispondente teoria. Quest'ultima \`e molto usata perch\'e descrive, a meno di isomorfismo la struttura $\<A\>_M$. Viene anche detta \emph{diagramma\/} della struttura $\<A\>_M$.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mappe che preservano la verit\`a}
+
+Prima di tutto chiariamo il significato che il termine \emph{mappa\/} avr\`a in queste note. Attenzione: \textit{non\/} \`e terminologia universalmente condivisa.
+
+\begin{definition}\label{defmappa}
+Una \emph{mappa\/} \`e una tripla $h:M\imp N$ dove 
+\begin{itemize}
+\item[1.] $M$ \`e una struttura detta \emph{dominio};
+\item[2.] $N$ \`e una struttura detta \emph{codominio}; e
+\item[3.] $h$ \`e una funzione con \emph{dominio di definizione\/} $\dom h\subseteq M$ e \emph{immagine} $\range h\subseteq N$.\QED
+\end{itemize}
+\end{definition}
+
+Quindi la stessa funzione, nel senso insiemistico di \textit{relazione binaria univoca}, da luogo a mappe diverse se presa con un altro dominio o codominio.  Se $\dom f=M$ la mappa \`e detta \emph{totale}; se $\range f=N$ \`e detta \emph{suriettiva}. Non escludiamo la possibilit\`a che la funzione $h$ sia vuota.
+
+La \emph{composizione di due mappe\/} \`e definita solo quando il codominio della prima coincide con il dominio della seconda. La composizione di $h:M\to N$ e $k:N\to Q$ \`e la mappa $k\circ h:M\to Q$ dove $k\circ h$ \`e la funzione che manda $a\mapsto kha$ per ogni elemento $a\in\dom h$ tale che $ha\in\dom k$, cio\`e per tutti gli $a$ per cui la composizione di funzioni \`e definita (quando $\range h$ \`e disgiunto da $\dom k$ il risultato della composizione pu\`o anche essere la mappa vuota). Non essendoci alcun requisito di totalit\`a, la \emph{mappa inversa\/} di $h:M\imp N$ \`e definita non appena $h$ \`e iniettiva: \`e la mappa $h^{-1}:N\imp M$.
+
+\begin{definition}\label{defpreservaveritas}
+Sia $\Delta$ un insieme di formule. Diremo che la mappa $h:M\imp N$ \emph{preserva la verit\`a\/} delle formule in $\Delta$ se
+\begin{itemize}
+\item[p.] $M\models\phi(a)\ \ \IMP\ \ N\models\phi(ha)$\ \ ogni formula $\phi(x)\in\Delta$ ed ogni tupla $a\in(\dom h)^{|x|}$.
+\end{itemize}
+Notazione: se $a$ \`e la tupla $\<a_0 \dots a_{n-1}\>$ allora $ha$ sta per la tupla $\<ha_0 \dots ha_{n-1}\>$. Per brevit\`a noi diremo anche \emph{$\Delta\jj$morfismo}, ma quest'ultimo non \`e termine standard. Diremo \emph{$\Delta\jj$immersione\/} e \emph{$\Delta\jj$epimorfismo\/} se la mappa \`e totale, rispettivamente, suriettiva.\QED
+\end{definition}
+
+I $\Delta\jj$morfismi sono uno strumento per confrontare localmente due strutture (o punti diversi della stessa struttura) cos\`{\i} come lo sono i $\Delta\jj$tipi. Introduciamo un'altra notazione a volte usata a tale scopo. Dati due tuple $a\in M^{|x|}$ e $b\in N^{|x|}$, definiamo
+
+\def\ceqb#1#2#3{\parbox{15ex}{\hfill\emph{$#1$}}\parbox{5ex}{\hfil\emph{$#2$}}\emph{$#3$}}
+
+
+\ceqb{M,a}{\;\Rrightarrow_\Delta}{N,b}\hskip2ex se $M\models\phi(a)\IMP N\models\phi(b)$ ogni formula $\phi(x)\in\Delta$. 
+
+
+\ceqb{M,a}{\equiv_\Delta}{N,b}\hskip2ex se $M\models\phi(a)\IFF N\models\phi(b)$ ogni formula $\phi(x)\in\Delta$. 
+
+Ricapitoliamo le diverse notazioni nella seguente:
+
+\begin{remark}\label{oss_Delta-morfismi}
+Fissiamo un insieme di formule $\Delta$. Per ogni mappa $h:M\imp N$ le seguenti affermazioni sono sinonime:
+\begin{itemize}
+\item[1.] $h:M\imp N$ \`e un $\Delta\jj$morfismo;
+\item[2.] $M,a\Rrightarrow_\Delta N,ha$ per ogni  tupla $a$ di elementi di $\dom h$;
+\item[3.] $\Deltatp_M(a)\subseteq\Deltatp_N(ha)$ per ogni tupla $a$ di elementi di $\dom h$;
+%\item[3'.] $\neg\!\Deltatp_N(ha)\subseteq\neg\!\Deltatp_M(a)$ per ogni tupla $a$ di elementi di $\dom h$;
+\item[4.] $N,ha\models p(x)$ per ogni tupla $a$ di elementi di $\dom h$ e per $p(x)=\Deltatp_M(a)$;
+\item[4'.] $M,a\models p(x)$ per ogni tupla $a$ di elementi di $\dom h$ e per $p(x)=\neg\!\Deltatp_N(ha)$.
+\end{itemize}
+Abbiamo scritto $\neg\!\Delta$ per l'insieme delle negazioni di formule in $\Delta$.\QED
+\end{remark}
+
+Qualche formula in $\Delta$ potrebbe essere chiusa, quindi \`e importante tener presente la seguente osservazione.
+
+\begin{remark}
+La definizione~\ref{defpreservaveritas} pu\`o essere applicata anche ad enunciati prendendo per $a$ ed $x$ la tupla vuota, in questo caso afferma semplicemente che l'enunciato ha lo stesso valore di verit\`a nel dominio e nel codominio, la funzione diventa irrilevante (quindi $h:M\imp N$ preserva la verit\`a dell'enunciato $\phi$ se e solo se la mappa vuota $\0:M\imp N$ la preserva). La mappa vuota preserva la verit\`a degli enunciati in $\Delta$ se e solo se $\Th_\Delta(M)\subseteq\Th_\Delta(N)$. Si veda per esempio il corollario~\ref{corollariocaratteristica}.\QED
+\end{remark}
+
+La seguente proposizione \`e immediata conseguenza della finitezza delle formule.
+
+\begin{proposition}\label{naturafinitamapel}
+Fissiamo un insieme di formule $\Delta$. Per ogni mappa $h:M\imp N$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[a.] $h:M\imp N$ \`e un $\Delta\jj$morfismo;
+\item[b.] per ogni $k\subseteq h$ finita, $k:M\imp N$ \`e un $\Delta\jj$morfismo.\QED
+\end{itemize}
+\end{proposition}
+
+Nel seguito capiter\`a frequentemente di costruire morfismi usando catene di morfismi. Una \emph{catena di mappe\/} \`e una sequenza $h_i:M\imp N$ di mappe tale che  $h_i\subseteq h_{j}$ per ogni $i<j<\lambda$. La mappa $h:M\imp N$ dove 
+
+\hfil$\displaystyle h\ \ :=\ \ \bigcup_{i<\lambda} h_i$
+
+\`e detta \emph{unione\/} o \emph{limite della catena}. La seguente proposizione \`e una conseguenza immediata della proposizione~\ref{naturafinitamapel}.
+
+\begin{proposition}
+\label{cateneisomorfismiparziali}
+Fissiamo un insieme di formule $\Delta$. L'unione di una catena di $\Delta\jj$morfismi \`e anche un $\Delta\jj$morfismo.\QED
+\end{proposition}
+
+\`E evidente che se $h:M\imp N$ preserva la verit\`a delle formule in $\Delta$ allora preserva anche la verit\`a delle formule nella chiusura di $\Delta$ per congiunzione e disgiunzione. La seguente proposizione illustra il rapporto con la negazione.
+
+\begin{proposition}\label{immparneginv}
+Per ogni mappa $h:M\imp N$ ed ogni formula $\phi(x)\in L$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[a.] $h:M\imp N$ preserva la verit\`a di $\neg\phi(x)$;
+\item[b.] $M\models\phi(a)\ \ \PMI\ \ N\models\phi(ha)$\ \  per ogni tupla $a\in(\dom h)^{|x|}$.
+\end{itemize}
+Inoltre, quando la mappa \`e iniettiva sono equivalenti anche alla seguente:
+\begin{itemize}
+\item[c.]   $h^{-1}:N\imp M$ preserva la verit\`a di $\phi(x)$.\QED
+\end{itemize}
+\end{proposition}
+\begin{proof}
+L'equivalenza \ssf{a}$\IFF$\ssf{b} \`e immediata. Per dimostrare \ssf{b}$\IFF$\ssf{c} esplicitiamo \ssf{c} nella seguente
+\begin{itemize}
+\item[c'.]$N\models\phi(b)\ \ \IMP\ \ M\models\phi(h^{-1}b)$\ \  per ogni tupla $b\in(\dom h^{-1})^{|x|}$.
+\end{itemize}
+Poich\'e $\dom h^{-1}$ coincide con $\range h$, la tupla $b$ \`e della forma $ha$ per una tupla  $a\in(\dom h)^{|x|}$. Quindi \ssf{b} \`e equivalente a \ssf{c'}.
+\end{proof}
+
+Il rapporto con i quantificatori \`e pi\`u delicato perch\'e coinvolge propriet\`a globali della mappa: totalit\`a e suriettivit\`a. Scriveremo $\{\E\}\Delta$ e $\{\A\}\Delta$ per gli insiemi di formule della forma $\E x\,\phi$, rispettivamente $\A x\,\phi$, con $\phi\in\Delta$ ed $x$ una tupla di variabili.
+
+
+\begin{proposition}\label{presesis}
+Ogni $\Delta\jj$immersione preserva anche la verit\`a delle formule in $\{\E\}\Delta$.
+\end{proposition}
+\begin{proof}
+Per ogni formula $\phi(x,y)$ in $\Delta$ ed ogni tupla  $a\in(\dom h)^{|x|}$ abbiamo:
+
+\hfil
+$\begin{array}{rcl}
+M\models\E y\,\phi(a,y) %&\IFF&\\
+&\IMP& M\models\phi(a,b)\textrm{ per una tupla } b\in M^{|y|}  \\[2mm]
+&\IMP& N\models\phi(ha,hb) \\[2mm]
+&\IMP& N\models\phi(ha,c)\textrm{ per una tupla } c\in N^{|y|}  \\[2mm]
+&\IMP& N\models\E y\,\phi(ha,y).\\
+\end{array}$
+
+Si noti che la seconda implicazione richiede la totalit\`a perch\'e in generale non \`e garantito che $\phi(a,y)$ abbia una soluzione in $\dom h$.
+\end{proof}
+
+La dimostrazione della seguente proposizione \`e lasciata al lettore. (Aggiungendo un'ipotesi, l'iniettivit\`a, potremmo riscrivere $\A x$ come $\neg\E x\neg$ e applicare~\ref{presesis} e~\ref{immparneginv}. Senza ipotesi addizionali, serve ripetere l'argomento usato per~\ref{presesis}.)
+
+\begin{proposition}\label{presuniv}
+Ogni $\Delta\jj$epimorfismo preserva anche la verit\`a delle formule in $\{\A\}\Delta$.\QED
+\end{proposition}
+
+Pi\`u avanti, nei corollari~\ref{corol_EDelta_estensione} e~\ref{corol_ADelta_estensione}, dimostreremo una sorta di viceversa  delle proposizioni~\ref{presesis} e~\ref{presuniv}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Le mappe elementari}\label{mappeelementari}
+Una mappa $h:M\imp N$ che preserva la verit\`a di tutte le formule si dice \emph{mappa elementare}. Per effetto della negazione l'implicazione nella definizione~\ref{defpreservaveritas} vale automaticamente anche nel senso inverso:
+\begin{itemize}
+\item[] $M\models\phi(a)\ \ \IFF\ \ N\models\phi(ha)$\ \  per ogni formula $\phi(x)\in L$ ed ogni tupla $a\in(\dom h)^{|x|}$.
+\end{itemize}
+
+Una mappa elementare totale si chiama \emph{immersione elementare}. \`E chiaro che le mappe elementari sono chiuse per composizione ed inversa. Possiamo enunciare il teorema~\ref{isomorfoeleq} con questa nuova terminologia.
+
+\begin{theorem}\label{isomorfismisonoelementari}
+Ogni isomorfismo $h:M\imp N$ \`e una mappa elementare.\QED
+\end{theorem}
+\begin{comment}
+\begin{proof}
+Per definizione gli isomorfismi sono immersioni totali e suriettive. Dimostriamo per induzione sulla sintassi di $\phi(x)$ l'equivalenza 
+
+\hspace*{15ex}\rlap{$M\models\phi(a)$}%
+\hspace{13ex}$\IFF\ \ N\models\phi(ha)$\ \ per ogni tupla $a$ di elementi di $M$
+
+Il caso in cui $\phi(x)$ \`e libera \`e garantito per ipotesi (vedi definizione~\ref{defimmersioneparziale}). Il passo induttivo per il connettivo $\vee$ \`e immediato. Il passo induttivo per la negazione  \`e anche immediato grazie alla doppia implicazione. Poich\'e gli isomorfismi sono suriettivi ed iniettivi, il passo induttivo per il quantificatori esistenziale segue, nella direzione $\IMP$, dalla proposizioni~\ref{presesis}. Per la direzione $\PMI$, applichiamo l'ipotesi induttiva alla formula $\neg\phi(x,y)$ per ottenere
+
+\hspace*{15ex}\rlap{$M\models\neg\phi(a,b)$}%
+\hspace{18ex}\rlap{$\IMP\ \ N\models\neg\phi(ha,hb)$}\hspace{23ex} per ogni coppia di tuple $a,b$ in $M$
+
+Quindi dalla proposizione~\ref{presuniv} otteniamo
+
+\hspace*{15ex}\rlap{$M\models\A y\neg\phi(a,y)$}%
+\hspace{18ex}\rlap{$\IMP\ \ N\models\A y\neg\phi(ha,y)$}\hspace{23ex} per ogni tupla $a$ in $M$.
+
+Che diventa
+
+\hspace*{15ex}\rlap{$M\models\E y\,\phi(a,y)$}%
+\hspace{18ex}\rlap{$\PMI\ \ N\models\E y\,\phi(ha,y)$}\hspace{23ex} per ogni tupla $a$ in $M$.
+\end{proof}
+\end{comment}
+
+Tramite la nozione di mappa elementare possiamo riformulare alcune nozioni introdotte nel paragrafo~\ref{eqel}.
+
+\begin{remark}\label{mapelvseqelfatto}
+Sia $A\subseteq M\cap N$. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[a.] $\id_A:M\imp N$ \`e una mappa elementare.
+\item[b.] $M\equiv_A N$
+\end{itemize}
+In particolare $\0:M\imp N$ \`e una mappa elementare se e solo se $M\equiv N$ e, quando $M\subseteq N$, le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[c.] $\id_M:M\imp N$ \`e una immersione elementare;
+\item[d.] $M\preceq N$.\QED
+\end{itemize}
+\end{remark}
+
+\begin{exercise}
+Si dimostri che per ogni mappa  $h:M\imp N$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $h:M\imp N$ \`e un'immersione elementare 
+\item[2.] $h\big[\phi(a,M)\big]=\phi(ha,N)\cap h[N]$ per ogni tupla $a\in M^{|x|}$ ed ogni $\phi(x,y)\in L$.
+\end{itemize}
+Si ricorda che $h\big[\phi(a,M)\big]$ denota l'insieme $\big\{hc\ :\ c\in M\textrm{ tale che }M\models\phi(a,c)\big\}$.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Le immersioni parziali}
+\label{paragrafoimmersioni}
+
+Gli insiemi definibili di una struttura sono spesso oggetti complicatissimi e non \`e sempre ragionevole sperare di descriverli. Per questa ragione spesso si comincia a considerare insiemi definiti da formule di forma particolarmente semplice: le \emph{formule atomiche} o \emph{formule senza quantificatori}. La nozione di morfismo corrispondente \`e  quindi molto importante.
+
+\begin{definition}\label{defperservaverita}
+Una mappa $h:M\imp N$ \`e un'\emph{immersione parziale\/} se preserva la verit\`a delle formule in $\pmaL$. Equivalentemente, se 
+\begin{itemize}
+\item[ip.] $M\models\phi(a)\ \ \IFF\ \ N\models\phi(ha)$\hfill per ogni $\phi(x)\in\aL$ e per ogni tupla $a\in (\dom h)^{|x|}$.
+\end{itemize}
+Osserviamo immediatamente che questo equivale a preservare la verit\`a di tutte le formule senza quantificatori. 
+
+Se  $h:M\imp N$ \`e totale diremo che \`e un'immersione. Quest'ultima nozione coincide con quella definita in~\ref{isomorfismodef} anche se la formulazione \`e leggermente diversa.\QED
+\end{definition}
+
+Si noti che le immersioni parziali sono sempre iniettive, l'iniettivit\`a si ottiene (ed \`e di fatto equivalente) ad \ssf{ip} applicata alla formula $x=y$. Se la mappa \`e totale allora diremo semplicemente un'\emph{immersione}, anche se per enfasi potremo aggiungere \emph{totale}.
+
+Alcuni autori chiamano le immersioni parziali \emph{isomorfismi parziali}, una terminologia ispirata dalla proposizione~\ref{caratterizzazioneisomorfismiparziali}. Il termine \`e comunque infelice perch\'e generalmente parziale si intende come l'opposto di totale mentre qui si nega  \textit{totale e suriettiva}. Prima della proposizione un lemma la cui dimostrazione \`e lasciata al lettore.
+
+\begin{lemma}\label{ovvio}
+Siano $M$ ed $N$ due strutture e supponiamo che il supporto di $M$ sia contenuto in quello di $N$. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\id_M:M\imp N$ \`e un'immersione parziale;
+\item[2.] $M$ \`e una sottostruttura di $N$.
+\end{itemize}
+\end{lemma}
+
+\begin{proposition}
+\label{caratterizzazioneisomorfismiparziali}
+Per ogni mappa $h:M\imp N$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $h:M\imp N$ \`e un'immersione parziale;
+\item[2.] esiste un isomorfismo $k:\<\dom h\>_{\!M}\imp \<\range h\>_{\!N}$ che estende $h$.
+\end{itemize}
+La funzione $k$ \`e univocamente determinata da $h$.
+\end{proposition}
+
+\begin{proof}
+Per verificare l'implicazione $\ssf{2}\IMP\ssf{1}$ assumiamo \ssf{2} e verifichiamo \ssf{ip}. Per ogni tupla $a$ di elementi di $\dom h$ e per ogni $\phi(x)$ atomica
+
+\hspace*{15ex}\llap{$M\models \phi(a)$}\parbox{5ex}{\hfil$\IFF$}\parbox{10ex}{\hfill$\<\dom h\>_{\!M}$}\ $\models \phi(a)$\hfill per il lemma~\ref{ovvio}
+ 
+\hspace*{15ex}\parbox{5ex}{\hfil$\IFF$}\parbox{10ex}{\hfill$\<\range h\>_{\!N}$}\ $\models \phi(ka)$\hfill per il teorema~\ref{isomorfoeleq} e l'ipotesi
+
+\hspace*{15ex}\parbox{5ex}{\hfil$\IFF$}\parbox{10ex}{\hfill$N\ $}$\ \models\phi(ha)$\hfill per il lemma~\ref{ovvio} e perch\'e $h\subseteq k$ per ipotesi.
+
+Per dimostrare $\ssf{1}\IMP\ssf{2}$, osserviamo che, per il lemma~\ref{strutturagenerata}, gli elementi di $\<\dom h\>_{\!M}$ sono della forma $t^M(a)$ dove $t(x)$ \`e un termine ed $a$ una tupla di $\dom h$. Analogamente, gli elementi di $\<\range h\>_{\!N}$ sono della forma $t^N(ha)$. Definiamo $k$ essere la funzione che manda $t^M(a)\mapsto t^N(h\,a)$, quindi la mappa $k:\<\dom h\>_{\!M}\imp\<\range h\>_{\!N}$ estende $h$ ed \`e totale e suriettiva.  Serve dimostrare che \`e iniettiva ma anche che la definizione \`e ben data, cio\`e che il valore della funzione sia definito univocamente. Queste \`e assicurato dalle due direzioni dell'equivalenza:
+
+\hspace*{15ex}\llap{$t^M(a)=s^M(b)$}\parbox{6ex}{\hfil$\IFF$}$t^N(ha)=s^N(hb)$
+
+che possiamo riscrivere come
+
+\hspace*{15ex}\llap{$M\models t(a)=s(b)$}\parbox{6ex}{\hfil$\IFF$}$N\models t(ha)=s(hb)$.
+
+Ma questa \`e un'istanza di \ssf{ip}, quindi vale perch\'e $h:M\imp N$ \`e un'immersione parziale. Ora \`e immediato verificare le due condizioni della definizione~\ref{isomorfismodef}: la prima  \`e anche un istanza di \ssf{ip}, la seconda \`e ovvia.
+\end{proof}
+
+Chiameremo \emph{caratteristica della struttura $M$\/} la classe di isomorfismo di $\<\0\>_{\!M}$. Ovvero, diremo che due strutture $M$ ed $N$ hanno la stessa caratteristica se le rispettive sottostrutture generate dal vuoto sono isomorfe. Si osservi che, se il linguaggio non ha costanti, la sottostruttura generata dal vuoto \`e vuota e quindi tutte le strutture hanno la stessa caratteristica. Le costanti rendono la nozione non banale, per esempio, se $M$ \`e un anello nel linguaggio $L_{\rm au}$ allora $\<\0\>_{\!M}$ \`e determinata dalla caratteristica di $M$ nel senso usuale dell'algebra.
+
+\begin{corollary}
+\label{corollariocaratteristica}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] la mappa vuota $\0:M\imp N$ \`e un'immersione parziale.
+\item[2.] $M$ ed $N$ hanno la stessa caratteristica.\QED
+\end{itemize}
+\end{corollary}
+
+
+
+
+\begin{comment}
+
+\section{I tipi}\label{primoparagrafotipi}
+
+Nel paragrafo~\ref{eqel} abbiamo introdotto il simbolo $\Th(M/A)$. Se $a$ \`e una enumerazione di $A$ allora $\Th(M/a)$ \`e un sinonimo per $\Th(M/A)$. Scriveremo \emph{$M,a\equiv N,c$\/} se per tutte le formule pure $\phi(x)$ 
+
+\hspace*{25ex}\llap{$M\models \phi(a)$}\parbox{6ex}{\hfil$\IFF$}$N\models \phi(c)$.
+
+Questo dice che $\Th(M/a)$ coincide con $\Th(N/c)$ quando ad $a$ si sostituisce $c$ coordinata per coordinata. Se al posto di formule pure consideriamo formule in $L(A)$ scriveremo \emph{$M,a\equiv_A N,c$}. 
+
+Diremo \emph{tipo\/} per un insieme di formule. Generalmente indicheremo esplicitamente nella notazione le variabili che possono occorrere nelle formule che il tipo contiene: scriveremo \emph{$p(x)$}, \emph{$q(x)$}, ecc.\@ dove $x$ \`e una tupla di variabili.  Quindi la nozione di tipo generalizza quella di teoria: se $x$ \`e la tupla vuota, il tipo $p(x)$ \`e una teoria. Si noti che la tupla $x$ pu\`o essere infinita.
+
+Scriveremo \emph{$M\models p(a)$} se $M\models\phi(a)$ per ogni formula in $p(x)$ e diremo che $a$ \`e una \emph{soluzione\/} o una \emph{realizzazione\/} di $p(x)$. Un'altra notazione spesso usata \`e \emph{$M,a\models p(x)$} o, quando $M$ \`e chiaro dal contesto, anche \emph{$a\models p(x)$}. Diremo che $p(x)$ \`e \emph{consistente\/} (o \emph{coerente}) \emph{in $M$\/} se ha soluzione in $M$ e in questo caso scriveremo \emph{$M\models\E x\,p(x)$}.  Diremo che $p(x)$ \`e \emph{consistente\/} tout court se \`e consistente in qualche modello. \`E sottinteso che, se si tratta di un tipo con parametri, il modello deve contenere i parametri. Definiamo
+
+\hspace*{25ex}\llap{\emph{$p(M)$}}\parbox{6ex}{\hfil$=$}%
+$\Big\{ a\in M\ \ :\ \ M\models p(a)\Big\}$,
+\\
+ovvero
+\\
+\hspace*{25ex}\parbox{6ex}{\hfil$=$}%
+$\displaystyle\bigcap_{\phi(x)\in p(x)}\phi(M)$.
+
+Gli insiemi di soluzioni di tipi si dicono \emph{insiemi definibili da un tipo}, in inglese: \emph{type-defin\-able sets}.
+
+Sia $M$ una struttura e $c$ una tupla di elementi di $M$. Il \emph{tipo in $M$ di $c$ su $A$\/} \`e l'insieme
+
+\hspace*{25ex}\llap{$p(x)$}\parbox{6ex}{\hfil$=$}%
+$\Big\{\phi(x)\in L(A)\ :\ M\models\phi(c)\Big\}$.
+
+Scriveremo in breve \emph{$p(x)=\tp_M(c/A)$} o, quando $A$ \`e vuoto, \emph{$p(x)=\tp_M(c)$}. Il pedice $M$ si omette quando chiaro dal contesto. Quindi scrivere \emph{$\tp_M(a/A)=\tp_N(c/A)$\/} \`e equivalente a scrivere $M,a\equiv_A N,c$. \`E immediato verificare che se $a$ \`e una tupla che enumera $A$ allora $p(x)=\tp_M(c/A)$ coincide con $q(x,a)$ dove $q(x,y)=\tp_M(c,a)$.
+
+\begin{example} 
+Consideriamo $\RR$ come struttura nel linguaggio dell'analisi non standard definito nel paragrafo~\ref{nonstandard}. Il seguente \`e un  tipo puro  $p(x)=\big\{ n<|x|\ :\ n\in \NN\big\}$ perch\'e tutti i reali standard sono costanti del linguaggio. Non \`e realizzato in $\RR$ ma \`e realizzato in una qualsiasi estensione elementare di $\RR$ da qualsiasi iperreale infinito.\QED
+\end{example}
+
+La nozione di conseguenza logica definita nel paragrafo~\ref{conseguenzelogiche} per teorie ed enunciati si generalizza a tipi e formule. Scriveremo \emph{$p(x)\proves\phi(x)$\/} se per ogni $M$ ed ogni $a$, tupla di elementi di $M$, se $M\models p(a)$ allora $M\models\phi(a)$. A parole, diremo che $\phi(x)$ \`e una \emph{conseguenza (logica)\/} di $p(x)$. Spesso fa comodo lavorare modulo una fissata teoria $T$: scriveremo  \emph{$p(x)\provesT\phi(x)$\/} se $\phi(x)$ \`e una conseguenza di $p(x)$ \emph{modulo $T$}. Ovvero se $p(x)\cup T\proves\phi(x)$.
+
+Se $p(x)$ \`e un tipo su $A$ diremo che $p(x)$ \`e \emph{coerente massimale\/} se non \`e contenuto propriamente in nessun tipo coerente. Equivalentemente, se $p(x)$ contiene ogni formula $\phi(x)$ a parametri in $A$ che \`e consistente con $p(x)$. Diremo che $p(x)$ \`e \emph{completo\/} se l'insieme delle sue conseguenze logiche \`e coerente massimale.  Si noti che la completezza dipende da due dati che spesso non vengono esplicitati ma si dovranno dedurre dal contesto: la tupla di variabili $x$ e l'insieme di parametri $A$. Dal contesto si deve anche dedurre se la massimalit\`a \`e intesa modulo una teoria, e se \`e relativa ad una data classe di formule (come spiegato nel paragrafo~\ref{frammenti}).
+
+Un tipo $p(x)$ si dice \emph{finitamente consistente\/} se ogni suo sottoinsieme finito \`e consistente, si dice finitamente consistente \emph{in $M$\/} se ogni suo sottoinsieme finito \`e consistente in $M$.% Adattiamo la dimostrazione del teorema di compattezza per ricavare il seguente risultato pi\`u generale.
+
+\begin{theorem}\label{compattezzatipi}
+Un tipo puro finitamente consistente \`e consistente. Inoltre, per ogni modello $M$, ogni tipo a parametri in $M$ e finitamente consistente in $M$, \`e realizzato in un estensione elementare di $M$. 
+\end{theorem}
+
+\begin{proof}
+Espandiamo il linguaggio $L$ con un nuovo simbolo di costante $c$. Sia $L'$ il nuovo linguaggio. Sostituendo $x$ con $c$ nelle formule in $p(x)$ otteniamo una teoria $p(c)$ nel linguaggio $L'$. \`E immediato osservare che $p(c)$ \`e finitamente consistente. Per il teorema di compattezza $p(c)$ ha un modello $N'$. Sia $N$ il ridotto di $N'$ ad $L$, cio\`e il modello che si ottiene da $N'$ dimenticando l'interpretazione di $c$.  Chiaramente $N$ realizza $p(x)$. 
+
+Lasciamo al lettore adattare questo argomento per dimostrare la seconda affermazione del teorema.
+\begin{comment}
+
+Sia $p(x)$ un tipo puro finitamente consistente. Sia $I$ l'insieme delle formule che sono congiunzione di formule in $p$. Per ogni $\xi(x)\in I$ fissiamo un arbitrario $M_{\xi}$ e in questo una tupla $a_{\xi}$ tale che $M_{\xi}\models\xi(a_{\xi})$. Questi esistono perch\'e $p$ \`e finitamente consistente. Per ogni formula $\phi(x)$ scriveremo $X_{\phi}$ per il seguente sottoinsieme di $I$
+
+\hspace*{25ex}\llap{$X_{\phi}$}\parbox{6ex}{\hfil$=$}$\Big\{\xi\in I\ :\ \xi(x)\proves \phi(x)\Big\}$
+
+Come per il teorema~\ref{thmcompattezza}, si verifica che la consitenza finita di $p$ implica che l'insieme 
+
+\hspace*{25ex}\llap{$B$}\parbox{6ex}{\hfil$=$}$\Big\{X_{\phi}\ :\ \phi\textrm{ congiunzione di formule in }p\Big\}$
+
+gode della propriet\`a dell'intersezione finita. Esiste quindi un ultrafiltro $F$ sull'algebra dei sottoinsiemi di $I$ che contiene $B$. Definiamo
+
+\hspace*{25ex}\llap{$N$}\parbox{6ex}{\hfil$=$}$\displaystyle\prod_{\xi\in I}M_{\xi}$
+
+Per verificare che $N/F\models \E x\ p(x)$ applichiamo il teorema di \L o\v{s} al generico enunciato $\phi(x)$ e alla tupla $\hat a:\xi\mapsto a_{\xi}$ per ogni $\xi\in I$.
+
+\hspace*{25ex}\llap{$N/F\models \phi\big([\hat a]_F\big)$}%
+\parbox{6ex}{\hfil$\IFF$}%
+$\Big\{\xi\ :\ M_{\xi} \models \phi(a_{\xi})\Big\}\ \in\ F$.
+
+Si osservi che che $X_\phi\subseteq \big\{\xi\ :\ M_\xi\models \phi(a_\xi)\big\}$. Quindi $N/F\models p([\hat a]_F)$.
+
+Questo conclude la dimostrazione della prima affermazione del teorema. Per la seconda si prende come $I$ l'insieme delle formule $\xi(x)$ a parametri in $M$ consistenti in $M$ e definiamo
+
+\hspace*{25ex}\llap{$X_{\phi}$}\parbox{6ex}{\hfil$=$}$\Big\{\xi\in I\ :\ M\models\A x\,[\xi(x)\imp \phi(x)]\Big\}$
+
+Il filtro $F$ \`e scelto in maniera analoga. Fissiamo ora un $b_{\xi}:I\to M$ tale che $M\models\xi(b_\xi)$. Dal teorema di \L o\v{s} otteniamo che per ogni tupla $a$ di elementi di $M$
+
+\hspace*{25ex}\llap{$M^I/F\models \phi\big([a^I]_F, [\hat b]_F\big)$}%
+\parbox{6ex}{\hfil$\IFF$}%
+$\Big\{\xi\ :\ M \models \phi(a,b_{\xi})\Big\}\ \in\ F$.
+
+
+Si osservi che $X_{\phi(a,x)}\subseteq \big\{\xi\ :\ M\models \phi(a,b_\xi)\big\}$. Quindi a meneo di identificare $a$ con $[a^I]_F$ otteniamo $N/F\models p\big([\hat b]_F\big)$.
+\end{proof}
+
+
+
+\begin{exercise}
+Sia $N_1\preceq M\preceq N_2$ e $N_2\equiv_M N_3$ e sia $p(x)$ un tipo puro realizzato in $M$. Quali altri modelli $N_i$ realizzano $p(x)$?
+\end{exercise}
+
+\begin{exercise}
+Supponiamo che $L$ sia numerabile. Sia $F$ un ultrafiltro nell'algebra dei sottoinsiemi di $\omega$. Si mostri che per ogni modello $M$ ogni tipo con finiti parametri in $M$ finitamente coerente in $M$ \`e realizzato nell'ultrapotenza $M^\omega/F$ (con la terminologia che introdurremo nel capitolo~\ref{saturazione} si dice che $M^\omega/F$ \`e $\omega\jj$saturo).
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formule infinitarie}\label{sec_formuleinfinitarie}
+
+Spesso identificheremo i tipi con la congiunzione delle formule che questi contengono. Di norma i tipi contengono infinite formule quindi la loro congiunzione esula dalla definizione di formula del prim'ordine. Espressioni che contengono congiunzioni e disgiunzioni infinite o anche sequenze infinite di quantificatori si dicono \emph{formule infinitarie}. Si definiscono per induzione transfinita in modo simile (ma tecnicamente pi\`u sofisticato) a quanto fatto nel capitolo~\ref{formule} per le formule del prim'ordine. 
+
+Noi faremo solo uso di formule infinitarie molto semplici ottenute a partire da tipi tramite un numero finito di connettivi booleani e quantificatori: le possiamo quindi pensare come abbreviazioni. 
+
+La semantica \`e quella naturale. Per esempio $p(x)\wedge q(x)$ si interpreta come segue: $a$ soddisfa  $p(x)\wedge q(x)$ se soddisfa contemporaneamente $p(x)$ e $q(x)$. L'interpretazione di $p(x)\vee q(x)$ e di $p(x)\imp q(x)$ \`e analoga. Potremo quindi scrivere $\proves p(x)\iff q(x)$ per  $p(x)\proves q(x)\proves p(x)$.  Anche i quantificatori si interpretano nel modo ovvio:  $\A y\,p(x,y)$ \`e realizzata da $a$ in $M$ se $M\models p(a,b)$, per ogni $b$. Analogamente per $\E y\,p(x,y)$. 
+
+Tipicamente queste formule infinitarie non sono equivalenti a formule del prim'ordine. A volte per\`o risultano equivalenti a tipi. Lasciamo al lettore la dimostrazione della seguente proposizione.
+
+\begin{proposition}
+Siano $p_i(x)$, per $i=1,2$, e $q(x,y)$ tipi arbitrari. In ogni modello $M$ valgono le seguenti equivalenze
+\begin{itemize}
+\item[a.]\hspace*{3ex}$\proves$\hspace{20ex}\llap{$p_1(x)\wedge p_2(x)$\parbox{6ex}{\hfil$\iff$}}%
+$\Big\{\phi_2(x)\wedge\phi_2(x)\ :\ \phi_i(x)\in p_i(x)\Big\}$;
+
+\item[b.]\hspace*{3ex}$\proves$\hspace{20ex}\llap{$p_1(x)\vee p_2(x)$\parbox{6ex}{\hfil$\iff$}}%
+$\Big\{\phi_1(x)\vee\phi_2(x)\ :\ \phi_i(x)\in p_i(x)\Big\}$;
+
+\item[c.]\hspace*{3ex}$\proves$\hspace{20ex}\llap{$\A y\,q(x,y)$\parbox{6ex}{\hfil$\iff$}}%
+$\Big\{\A y\,\phi(x,y)\ :\ \phi(x,y)\in q(x,y)\Big\}$.\QED
+\end{itemize}
+\end{proposition}
+
+Per\`o la seguente equivalenza \textit{non\/} vale in generale
+
+\begin{itemize}
+\item[d.]\hspace*{3ex}$\notproves$\hspace{20ex}\llap{$\E y\,q(x,y)$\parbox{6ex}{\hfil$\iff$}}%
+$\Big\{\E y\,\phi(x,y)\ :\ \phi(x,y) \textrm{ congiunzione di formule in }  p(x,y)\Big\}$.
+\end{itemize}
+
+Vedremo per\`o che l'equivalenza vale in particolari strutture (quelle sature). Infine osserviamo che, tranne casi banali, formule infinitarie come $\neg p(x)$, $p(x)\imp q(x)$,  $p(x)\iff q(x)$ non sono equivalenti a tipi. Per esempio dal seguente lemma segue che $\neg p(x)$ \`e equivalente ad un tipo solo nel caso banale in cui $p(x)$ \`e equivalente ad una formula.
+
+\begin{lemma}\label{bisemidefinibile0}
+Siano $p(x)$ e $q(x)$ tipi puri con $x$ una tupla di variabili. Se $\proves p(x)\niff q(x)$ allora esiste una formula $\phi(x)$ congiunzione di formule in $p(x)$ tale che  $\proves\phi(x)\iff p(x)$.
+\end{lemma}
+
+\begin{proof}
+Il tipo $p(x)\wedge q(x)$ non \`e consistente. Per compattezza esiste una formula $\phi(x)$, congiunzione di formule in $p(x)$, tale che $\phi(x)\wedge q(x)$ \`e inconsistente. Quindi $\proves\phi(x)\imp\neg q(x)$. Poich\'e per ipotesi $\neg q(x)$ \`e equivalente a $p(x)$ otteniamo $\proves\phi(x)\imp p(x)$. L'implicazione opposta \`e ovvia.
+\end{proof}
+
+%Per esempio consideriamo una struttura $M$ con nella signatura solo costanti che nominano un insieme $C$ infinito e co-infinito.  Diamo per noto che $C$ non \`e semidefinibile (saremo in grado di dimostrarlo tra breve). \`E immediato verificare che $M\sm C$ \`e semidefinibile:
+
+%\hspace*{25ex}\llap{$p(x)$\parbox{6ex}{\hfil$\IFF$}}%
+%$\Big\{x\neq c\ :\ c\in  C\Big\}$
+
+%Quindi nella struttura in esame non c\`e nessun tipo puro equivalente a $\neg p(x)$. 
+
+%Nella stessa struttura consideriamo il tipo
+
+%\hspace*{25ex}\llap{$p(x,y)$\parbox{6ex}{\hfil$\IFF$}}%
+%$\Big\{r<x<y<s\ :\ r,s\in \Q\ \textrm{ e }\ r<\sqrt2<s\Big\}$
+
+%Chiaramente $\E y\, p(x,y)$ ha come soluzione $\sqrt2$. Invece il tipo $q(x)$, definito come in \ssf{\#} non ha soluzioni (in $\RR$). Vedremo anche esempi in cui  $\E y\, p(x,y)$ non \`e nemmeno equivalente ad un tipo.
+
+\begin{exercise}
+Si dimostri che se $p(x)$ e $q(x)$ sono chiusi per conseguenza logica allora $p(x)\vee q(x)$ \`e equivalente a $p(x)\cap q(x)$.
+\end{exercise}
+
+
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Frammenti di linguaggio}\label{frammenti}
+
+\def\ceq#1#2#3{\hspace*{25ex}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+
+Fissiamo due tuple disgiunte di variabili $z$ e $x$. Variabili in $z$ verranno interpretate come segnaposti per parametri, le variabili in $x$ come variabili libere. Fissato un insieme $\Delta(z;x)$ di formule con variabili tra $z,x$, indicheremo con $\Delta(x/\!A)$ l'insieme delle formule in  $\Delta(z;x)$ in cui tutte le variabili $z$ sono state sostituite da parametri in $A$. Scriveremo $\Delta(x)$ se $A$ \`e vuoto. Chiameremo \emph{$\Delta(x/A)\jj$tipi\/} i sottoinsiemi di $\Delta(x/A)$. 
+
+Un esempio con cui avremo molto a che fare  $\Delta(x;z)$ contiene due formule $\phi(x,z)$ e $\neg\phi(x,z)$. 
+
+Il reticolo \emph{$\PP(T,\Delta,x,A)$\/} ha come elementi formule che sono ottenute da $\Delta(x/A)$ tramite disgiunzioni e congiunzioni e come ordine la relazione di conseguenza logica modulo $T$:
+
+\ceq{$\psi\le\phi$}{$\dIFF$}{$\psi\ \provesT\ \phi$}\hfill abbreviamo $T\cup\{\psi\}\proves\phi$ con \emph{$\psi\provesT\phi$}\index{0segue@$\provesT$}) 
+
+Segue immediatamente che congiunzione e disgiunzione del reticolo corrispondono alla congiunzione e disgiunzione tra formule. 
+
+\begin{lemma}\label{poiuyhdsdfd}
+Dato un tipo $p\subseteq\Delta(x/A)$ sia $q$ il filtro in $\PP(T,\Delta,x,A)$ generato da $p$. Allora
+
+\ceq{$q$}{$=$}{\Big\{$\ \phi\;\in\;\PP(T,\Delta,x,A)\ \ \ :\ \ \ p\ \provesT\ \phi\ \Big\}$}
+
+\end{lemma}
+\begin{proof}
+L'inclusione $\subseteq$ \`e immediata. L'inclusione $\supseteq$ \`e una conseguenza del teorema di compattezza: se $p\provesT\phi$, allora $\psi\provesT\phi$ per una qualche una formula $\psi$ congiunzione di formule in $p$. Poich\'e $\psi\in q$ anche $\psi\le\phi\in q$.
+\end{proof}
+
+\begin{definition}
+Diremo che il tipo $p\subseteq\Delta(x/A)$ \`e \emph{primo\/} se genera in $\PP(T,\Delta,x,A)$ un filtro primo. Diremo che \`e \emph{completo\/} se genera un filtro massimale. Equivalentemente, se per ogni formula $\phi\in\Delta(x/A)$ occorre esattamente una delle seguenti due possibilit\`a: $p\provesT\phi$ o $p\provesT\neg\phi$.
+\end{definition}
+
+\begin{lemma}\label{lemma_primo_vs_completo}
+Per ogni tipo $p\subseteq\Delta(x/A)$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $p$ \`e primo;
+\item[2.] $\displaystyle p\ \provesT\ \bigvee^n_{i=1}\phi_i$\parbox{6ex}{\hfil$\IMP$}$p\provesT\phi_i$ per qualche $i$,\hfill per ogni $\phi_1,\dots,\phi_n\in\Delta$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Dato il lemma~\ref{poiuyhdsdfd}, l'implicazione \ssf{1}$\;\IMP\;$\ssf{2} \`e ovvia. Per dimostrare \ssf{2}$\;\IMP\;$\ssf{1} dobbiamo mostrare che \ssf{2} vale per tutte le formule in $\PP(\Delta)$. Procediamo per induzione sulla sintassi. Il passo induttivo per il connettivo $\vee$ \`e ovvio. Quindi supponiamo 
+
+\ceq{$p$}{$\provesT$}{$\displaystyle(\psi\wedge\xi)\ \vee\ \bigvee^n_{i=1}\phi_i$}
+
+che $p\notprovesT \phi_i$, e che l'ipotesi induttiva valga per $\psi$, $\xi$, e tutte le formule $\phi_i$. Per distributivit\`a
+
+\ceq{$p$}{$\provesT$}{$\displaystyle\Big(\psi\vee\bigvee^n_{i=1}\phi_i\Big)\ \ \wedge\ \ \Big(\xi\vee\bigvee^n_{i=1}\phi_i\Big)$}
+
+Dall'ipotesi induttiva segue $p\provesT\psi$ e $p\provesT\xi$ e quindi  $p\provesT\psi\wedge\xi$ come richiesto.
+\end{proof}
+
+\begin{lemma}\label{lemmatipiprimiconsistenti}
+Per ogni tipo $p\subseteq\Delta(x/A)$ le seguenti affermazioni sono equivalenti
+\begin{itemize}
+\item[1.] $p$ \`e primo;
+\item[2.] $p\ \cup\ \Big\{\neg\phi\ :\  \phi\;\in\;\Delta\ \ \textrm{tale che}\ \ p\notprovesT\phi\ \Big\}$ \`e consistente.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Per compattezza se il tipo in \ssf{2} \`e inconsistente allora esiste un numero finito di formule $\phi_i$ tali che $p\notprovesT\phi_1\vee\dots\vee\phi_n$ e $p\notprovesT\phi_i$. Questo nega \ssf{1}. Il viceversa \`e immediato.
+\end{proof}
+
+Denoteremo con $\pmDelta(x/A)$ l'insieme che contiene formule in $\Delta(x/A)$ o negazioni di queste.
+
+\def\ceq#1#2#3{\hspace*{15ex}\llap{#1}\parbox{6ex}{\hfil#2}\rlap{#3}}
+
+%Se $p(x)$ \`e un $\pmDelta\jj$tipo, denotiamo con $p^+(x)$ la sua parte positiva, cio\`e l'insieme delle formule in $p(x)$ \`e sono congiunzione di formule in $\Delta$. \`E immediato che se $p(x)$ \`e massimale allora $p^+(x)$ \`e un $\Delta\jj$tipo primo. In effetti, questo fatto caratterizza i tipi primi:
+
+Se $c$ \`e una tupla di elementi di qualche modello $M$ chiameremo \emph{$\Delta(x/A)\jj$tipo di $c$ in $M$\/} l'insieme:
+
+\hspace*{20ex}\llap{$p(x)$\parbox{6ex}{\hfil$=$}}%
+$\Big\{\phi(x)\ :\ \textrm{formula in }\Delta \textrm{ tale che }\ M\models\phi(c)\Big\}$.
+
+Scriveremo $p(x)=\Deltatp_M(c/A)$. 
+% 
+% In modo analogo si definisce $p(x)=\Deltatp_M(c/A)$, il $\Delta\jj$tipo di $c$ \emph{su $A$}, un insieme di parametri:
+% 
+% \hspace*{20ex}\llap{$p(x)$\parbox{6ex}{\hfil$=$}}%
+% $\Big\{\phi(a,x)\ :\ \phi(z,x)\textrm{ formula in }\Delta,\ \ a \textrm{ tupla in } A \textrm{ tale che }\ M\models\phi(a,c)\Big\}$.
+% 
+La notazione \emph{$M,a\equiv_{\Delta,A} N,b$\/} \`e sinonima di $\Deltatp_M(a/A)=\Deltatp_N(b/A)$.  Si osservi che \`e equivalente a $M,a\equiv_{\Delta\!^\pm,A} N,b$. 
+%Scriveremo \emph{$M,a\equiv_{\Delta,A} N,b$\/} per l'omologa nozione con parametri.
+
+Per alcune classi molto usate useremo una notazione specifica, per esempio, \emph{$\qftp$\/} sta per $\Deltatp$ quando $\Delta(x/A)$ \`e l'insieme delle formule libere (l'abbreviazione \textit{qf\/} sta per \textit{quantifier-free\/}).
+
+Diremo che un $\Delta\jj$tipo \`e \emph{primo\/} se per ogni coppia di formule $\phi(x)$ e $\psi(x)$ in $\Delta$
+
+\hspace*{25ex}\llap{$p(x)\ \proves\ \phi(x)\vee\psi(x)$}%
+\parbox{6ex}{\hfil$\IMP$}%
+$p(x)\proves\phi(x)$\ \ o\ \ $p(x)\proves\psi(x)$
+
+\begin{proposition}
+Sia $p(x)$ un $\Delta\jj$tipo primo. Allora esiste un unico 
+
+$\wedgevee\Delta\jj$tipo primo sia $p_\Delta(x)$ l'insieme di quelle formule in $p(x)$ che sono in $\Delta$. Allora $\proves p(x)\iff p_\Delta(x)$.
+\end{proposition}
+
+Notiamo che poich\'e assumeremo sempre che ogni modello $N$ che contiene $c$ coincide con $M$ su tutto $\<c\>_M$, allora non \`e strettamente necessario menzionare $M$. In fatti, per il corollario~\ref{sdefsex}, se $N$ \`e un altro modello contenente $c$ allora per ogni formula libera $\phi(x)$
+
+\hfil $M\models \phi(c)$\hfil$\IFF$\hfil  $\<c\>_M\; = \;\<c\>_N\; \models \phi(c)$\hfil  $\IFF$\hfil  $N\models \phi(c)$.
+
+Riportiamo per facilit\`a di riferimento la versione per i tipi liberi della proposizione~\ref{proposizioneequivalenticompletezzatipi}.
+infinitarie
+\begin{proposition}\label{propmklp}
+Sia $p(x)$ un tipo libero con parametri in quanche insieme $A$. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[a.] $p(x)$ \`e completo;
+\item[b.] $p(x)=\qftp_M(a/A)$ dove $M$ \`e un qualsiasi modello che contiene $A,a$;
+\item[c.] $p(x)$ \`e consistente e $\phi(x)\in p(x)$ per ogni $\phi(x)$ libera a parametri in $A$ tale che $\neg\phi(x)\notin p(x)$;
+\item[d.] $M,a\equiv_{{\rm qf},A} N, b$ per ogni $M$, ed $N$ tali che $A, a\subseteq M\models p(a)$ e $A,b\subseteq N\models p(b)$.\QED
+\end{itemize}
+\end{proposition}
+\end{comment}
+
+

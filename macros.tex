@@ -1,0 +1,325 @@
+\usepackage[italian]{babel}
+\usepackage{amssymb}
+\usepackage{pstricks}
+\usepackage{pst-node}
+\usepackage{comment}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{exscale}
+\usepackage{amsrefs}
+\usepackage{dsfont}
+\usepackage{yfonts}
+\usepackage{stmaryrd}
+\usepackage{ifsym}
+\usepackage{setspace}
+\usepackage{euscript}
+\usepackage{tocloft}
+\usepackage{fourier}
+\usepackage{cclicenses}
+\usepackage{marvosym}
+\usepackage{graphicx}
+% \usepackage{pdfsync}
+\usepackage{tikz}
+\newcommand{\jj}{\mbox{-}}
+% \usetikzlibrary{trees}
+\definecolor{myred}{rgb}{0.7,0,0}
+\usepackage[a4paper,colorlinks=true,bookmarksopen=false,linkcolor=myred,citecolor=myred]{hyperref}
+
+\def\swedge{\mathbin{\raisebox{.2ex}{\tiny$\mathbin\wedge$}}}
+\def\svee{\mathbin{\raisebox{.2ex}{\tiny$\mathbin\vee$}}}
+\def\dIFF{\IFF\llap{\smash{\raisebox{1.3ex}{\tiny def\hskip1.5ex}}}}
+\def\deq{=\llap{\smash{\raisebox{1.2ex}{\tiny def}}}}
+
+%\usepackage[dvips,a4paper,landscape, mag=\magstep3, hmargin={1.2cm,1.2cm},vmargin={1.5cm,1.5cm},truedimen]{geometry}
+%\usepackage[dvips,paperwidth=17cm,paperheight=100cm, hmargin={1.5cm,1.5cm},vmargin={2cm,2cm}]{geometry}
+
+
+\newrgbcolor{myblue}{0 0.1 0.6}
+\newrgbcolor{lightblue}{0.5 0.5 1}
+\newrgbcolor{mybrown}{0.5 0.21 0}
+\def\mr{\mybrown}
+
+\parindent0mm
+\setlength{\parskip}{.3\baselineskip}
+\renewcommand{\baselinestretch}{1.1}
+
+\setlength{\belowdisplayskip}{0mm}
+\setlength{\abovedisplayskip}{0mm}
+\setlength{\belowdisplayshortskip}{0mm}
+\setlength{\abovedisplayshortskip}{0mm}
+
+\newcommand{\labella}[1]{{\sf\footnotesize #1}\hfill}
+\renewenvironment{itemize}
+  {\begin{list}{$\triangleright$}{%
+   \setlength{\parskip}{0mm}
+   \setlength{\topsep}{.5\baselineskip}
+   \setlength{\rightmargin}{0mm}
+   \setlength{\listparindent}{0mm}
+   \setlength{\itemindent}{0mm}
+   \setlength{\labelwidth}{2.5ex}
+   \setlength{\itemsep}{.5\baselineskip}
+   \setlength{\parsep}{0mm}
+   \setlength{\partopsep}{0mm}
+   \setlength{\labelsep}{1ex}
+   \setlength{\leftmargin}{\labelwidth+\labelsep}
+   \let\makelabel\labella}}{%
+   \end{list}\vspace*{-1.3mm}}
+
+% 
+% \makeatletter
+% \def\section{\@ifstar\unnumberedsection\numberedsection}
+% \def\numberedsection{\@ifnextchar[%]
+%   \numberedsectionwithtwoarguments\numberedsectionwithoneargument}
+% \def\unnumberedsection{\@ifnextchar[%]
+%   \unnumberedsectionwithtwoarguments\unnumberedsectionwithoneargument}
+% \def\numberedsectionwithoneargument#1{\numberedsectionwithtwoarguments[#1]{#1}}
+% \def\unnumberedsectionwithoneargument#1{\unnumberedsectionwithtwoarguments[#1]{#1}}
+% \def\numberedsectionwithtwoarguments[#1]#2{%
+%   \ifhmode\par\fi
+%   \removelastskip
+%   \vskip 3ex\goodbreak
+%   \refstepcounter{section}%
+%   \noindent
+%   \begingroup
+%   \leavevmode\Large\bfseries\raggedright
+%   \llap{\thesection\quad}%
+%   #2
+%   \par
+%   \endgroup
+%   \vskip 2ex\nobreak
+%   \addcontentsline{toc}{section}{%
+%     \protect\numberline{\thesection}%
+%     #1}%
+%   }
+% \def\unnumberedsectionwithtwoarguments[#1]#2{%
+%   \ifhmode\par\fi
+%   \removelastskip
+%   \vskip 3ex\goodbreak
+% %  \refstepcounter{section}%
+%   \noindent
+%   \begingroup
+%   \leavevmode\Large\bfseries\raggedright
+%   \leavevmode\Large\bfseries\raggedright
+% %  \thesection\quad 
+%   #2
+%   \par
+%   \endgroup
+%   \vskip 2ex\nobreak
+%   \addcontentsline{toc}{section}{%
+% %    \protect\numberline{\thesection}%
+%     #1}%
+% }
+% %
+% %
+% \def\@makechapterhead#1{%
+%   \noindent\hfill\ssf{\today}\par
+%   \vspace*{30\p@}%
+%   {\parindent \z@ \raggedright \normalfont
+%     \ifnum \c@secnumdepth >\m@ne
+%       \if@mainmatter
+%         \huge\bfseries \@chapapp\space \thechapter
+%         \par\nobreak
+%         \vskip 20\p@
+%       \fi
+%     \fi
+%     \interlinepenalty\@M
+%     \Huge \bfseries #1\par\nobreak
+%     \vskip 40\p@
+%   }}
+% \makeatother
+
+\def\re{{\rm re}}
+\def\im{{\rm im}}
+
+
+\def\mdot{\mathord\cdot}
+\def\E{\exists}
+\def\A{\forall}
+\def\models{\vDash}
+\def\notmodels{\nvDash}
+\def\proves{\vdash}
+\def\notproves{\nvdash}
+\def\provesT{\mathrel{\mathord{\vdash}\llap{\raisebox{-.5ex}{\tiny$T$\hskip.5ex}}}}
+\def\provesR{\mathrel{\mathord{\vdash}\llap{\raisebox{-.5ex}{\tiny$R$\hskip.5ex}}}}
+\def\notprovesdi{\mathrel{\mathord{\nvdash}\llap{\raisebox{-.4ex}{\hskip.2ex\tiny\rm di\hskip.5ex}}}}
+\def\provesdi{\mathrel{\mathord{\vdash}\llap{\raisebox{-.4ex}{\hskip.2ex\tiny\rm di\hskip.5ex}}}}
+\def\notprovesT{\mathrel{\mathord{\nvdash}\llap{\raisebox{-.5ex}{\tiny$T$\hskip.5ex}}}}
+\def\notprovesR{\mathrel{\mathord{\nvdash}\llap{\raisebox{-.5ex}{\tiny$R$\hskip.5ex}}}}
+\def\ZZ{\mathds Z}
+\def\NN{\mathds N}
+\def\QQ{\mathds Q}
+\def\RR{\mathds R}
+\def\PP{\mathds P}
+\def\BB{\mathds B}
+\def\OO{\mathds O}
+\def\PM{\mathds M}
+\def\DD{\mathds D}
+\def\CC{\mathds C}
+\def\MM{\mathds M}
+\def\VV{\mathds V}
+\def\UU{\mathds U}
+\def\I{\mathds I}
+\def\AA{\mathds A}
+\def\dom{\mathop{\rm dom}}
+\def\degree{\mathop\textrm{deg}}
+\def\dcl{\mathop{\rm dcl}}
+\def\acl{\mathop{\rm acl}}
+\def\range{\mathop{\rm img}}
+\def\rad{\mathop{\rm rad}}
+\def\st{\mathop\textrm{st}}
+\def\Th{\textrm{Th}}
+\def\Mod{\mathop\textrm{Mod}}
+\def\mod{\mathrel\textrm{mod}}
+\def\ccl{{\rm ccl}}
+\def\eq{{\rm eq}}
+\def\Rmod{{\mbox{\scriptsize $R$-mod}}}
+
+\def\Ann{\mathop\textrm{\rm Ann}}
+\def\Aut{\textrm{Aut}}
+\def\orbit{\textrm{O}}
+\def\id{\textrm{id}}
+\def\lh{\mathop\mathrm{lh}}
+\def\apm{{\tiny\rm at^\pm}}
+\def\tp{\textrm{tp}}
+\def\qftp{\textrm{qf\mbox{-}tp}}
+\def\atp{\textrm{at\mbox{-}tp}}
+\def\etp{\textrm{e\mbox{-}tp}}
+\def\Etp{\E\textrm{\mbox{-}tp}}
+\def\Diag{\Th_{\apm}\hskip-.3ex}
+\def\pmDelta{\Delta\hskip-.3ex\raisebox{1ex}{\tiny$\pm$}}
+\def\bDelta{\Delta\hskip-.3ex\raisebox{1ex}{\tiny qf}}
+\def\pmDeltatp{\noindent\pmDelta\hskip-.3ex\textrm{-tp}}
+\def\veewedge{{\vee}\hskip-.5ex{\wedge}\hskip-.2ex}
+\def\wedgevee{{\wedge}\hskip-.5ex{\vee}\hskip-.33ex}
+\def\pmatp{\apm\textrm{-tp}}
+\def\pmaL{L_{\apm}\hskip-.3ex}
+\def\qfL{L_{\rm qf}}
+\def\Lo{L_{\mbox{\tiny$\0$}\!}}
+\def\aL{L_{\tiny\rm at}\hskip-.3ex}
+\def\Spec{\textrm{Spec\,}}
+\def\Deltatp{\Delta\mbox{-}\textrm{tp}}
+\def\Thetatp{\Theta\mbox{-}\textrm{tp}}
+\def\Ar{{\rm Ar}}
+\def\GL{\textrm{GL}}
+\def\sm{\smallsetminus}
+\def\simdif{\triangle}
+\def\rest{\mathord\restriction}
+\def\IMP{\Rightarrow}
+\def\IMPP{\Longrightarrow}
+\def\PMI{\Leftarrow}
+\def\IFF{\Leftrightarrow}
+\def\NIFF{\nLeftrightarrow}
+\def\IFFF{\Longleftrightarrow}
+\def\imp{\rightarrow}
+\def\pmi{\leftarrow}
+\def\iff{\leftrightarrow}
+\def\niff{\leftrightarrow\llap{\raisebox{.2ex}{{\tiny$/$}}\hskip1.2ex}}
+%\def\nequiv{\equiv\llap{\raisebox{0ex}{{\small$/$}}\hskip.7ex}}
+\def\nequiv{\mathrel{\mbox{$\equiv$\llap{{\small$/$}\hskip.3ex}}}}
+\def\neq{\parbox{1.5ex}{\hfil=\llap{\raisebox{-.1ex}{{\small$/\,$}}}}}
+\def\Rrightarrow{\mathrel{\hskip.2ex\equiv\hskip-.3ex\>\hskip-.2ex}}
+\def\downfree{\mathop{\hskip1ex\mid\hskip.35ex\llap{\raisebox{-.7ex}{$\smile$}}}}
+
+\def\P{\EuScript P}
+\def\Aa{\EuScript A}
+\def\Ee{\EuScript E}
+\def\D{\EuScript D}
+\def\Ll{\EuScript L}
+\def\X{\EuScript X}
+\def\Y{\EuScript Y}
+\def\Z{\EuScript Z}
+\def\C{\EuScript C}
+\def\U{\EuScript U}
+\def\V{\EuScript V}
+\def\R{\EuScript R}
+\def\F{\EuScript F}
+\def\B{\EuScript B}
+\def\M{\EuScript M}
+\def\K{\EuScript K}
+\def\J{\EuScript J}
+\def\<{\langle}
+\def\>{\rangle}
+\def\0{\varnothing}%\def\0{\textrm{\O}}
+\def\theta{\vartheta}
+\def\phi{\varphi}
+\def\epsilon{\varepsilon}
+\def\emph#1{{\myblue\boldmath\bfseries #1}}
+\def\ssf#1{\textsf{\small #1}}
+
+
+\def\nsR{{}^{*\hskip-.3ex}\RR}
+\def\nsQ{{}^{*\hskip-.2ex}\QQ}
+\def\nsZ{{}^{*\hskip-.1ex}\ZZ}
+\def\nsN{{}^{*\hskip-.3ex}\NN}
+\def\ns{{}^{*\hskip-.5ex}}
+
+
+\newtheoremstyle{mio}% name
+     {2\parskip}%      Space above
+     {0mm}%      Space below
+     {\sl}%         Body font
+     {}%         Indent amount (empty = no indent, \parindent = para indent)
+     {\bfseries}% Thm head font
+     {}%        Punctuation after thm head
+     {3mm}%     Space after thm head: " " = normal interword space;
+           %   \newline = linebreak
+     {\llap{\thmnumber{#2}\hskip2mm}\thmname{#1}\thmnote{\bfseries{} #3}}% Thm head spec (can be left empty, meaning `normal')
+
+
+\newtheoremstyle{liscio}% name
+     {2\parskip}%      Space above
+     {0mm}%      Space below
+     {}%         Body font
+     {}%         Indent amount (empty = no indent, \parindent = para indent)
+     {\bfseries}% Thm head font
+     {}%        Punctuation after thm head
+     {3mm}%     Space after thm head: " " = normal interword space;
+           %   \newline = linebreak
+     {\llap{\thmnumber{#2}\hskip2mm}\thmname{#1}\thmnote{\bfseries{}#3}}% Thm head spec (can be left empty, meaning `normal')
+
+
+\newcounter{thm}[chapter]
+
+\renewcommand{\thethm}{\thechapter.\arabic{thm}}
+%\def\thechapter{\Roman{chapter}}
+
+\theoremstyle{mio}
+\newtheorem{theorem}[thm]{Teorema}
+\newtheorem{corollary}[thm]{Corollario}
+\newtheorem{proposition}[thm]{Proposizione}
+\newtheorem{lemma}[thm]{Lemma}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{claim}[theorem]{Claim}
+\newtheorem{fact}[thm]{Fatto}
+\newtheorem{emptythm}[thm]{}
+\newtheorem{definition}[thm]{Definizione}
+% \newtheorem{question}[theorem]{Question}
+% \newtheorem{conjecture}[theorem]{Conjecture}
+% \newtheorem{convention}[theorem]{Convention}
+% \newtheorem{app}[theorem]{Applications}
+
+\theoremstyle{liscio}
+\newtheorem{void}[thm]{}
+\newtheorem{remark}[thm]{Osservazione}
+\newtheorem{notation}[thm]{Notazione}
+\newtheorem{note}[thm]{Nota}
+\newtheorem{exercise}[thm]{Esercizio}
+\newtheorem{exercise*}[thm]{Esercizio\rlap{\raisebox{.5ex}{\boldmath$*$}}\hskip1ex}
+\newtheorem{example}[thm]{Esempio}
+\setlength{\partopsep}{0mm}
+\setlength{\topsep}{0mm}
+\def\QED{\noindent\nolinebreak[4]\hfill\rlap{\ \ $\Box$}\medskip}
+%\renewenvironment{proof}[1][Dimostrazione]{\begin{trivlist}
+%\item[\hskip \labelsep {\bf #1}]}{\hfill\QED\end{trivlist}}
+\renewenvironment{proof}[1][Dimostrazione]%
+{\begin{trivlist}\item[\hskip\labelsep {\bf #1}]}
+{\QED\end{trivlist}}
+% 
+% \let\oldsection\section
+% \def\section#1{\ifnum\value{section}=0\oldsection{#1}\else\clearpage\oldsection{#1}\fi}
+% \pagestyle{empty}
+\long\def\lavori{
+\hfil\psframebox*[fillcolor=lightblue, framearc=.2]{\parbox{.7\textwidth}{\tt \hfil Lavori in corso
+\smallskip\par
+\hfil Vietato l'accesso ai non addetti ai lavori}}\bigskip\bigskip
+}

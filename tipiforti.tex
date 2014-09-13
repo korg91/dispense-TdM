@@ -1,0 +1,250 @@
+\chapter{Tipi forti}
+\label{tipiforti}
+
+\lavori
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tipi forti di Lascar}
+\def\equivL{\stackrel{\smash{\scalebox{.5}{\rm L}}}{\equiv}}
+
+\def\Autf{{\rm Autf}}
+Sia $z$  una tupla possibilmente infinita. Diremo che  $\D\subseteq\U^{|z|}$ \`e \emph{quasi $A\jj$invariante\/} (o anche \emph{Lascar $A\jj$invariante\/}) se \`e invariante su $M$ per ogni  modello $M\supseteq A$. Data la tupla ${\mr a}\in\U^{|z|}$, scriveremo \emph{$\Ll(a/A)$\/} per l'intersezione  di tutti gli insiemi quasi $A\jj$invarianti che contengono $A$. Chiaramente $\Ll({\mr a}/A)$ \`e quasi $A\jj$invariante. Diremo che ${\mr a}$ e ${\mr b}$ hanno lo stesso \emph{tipo forte di Lascar\/} su $A$ se ${\mr a}\in\D\iff{\mr b}\in\D$ per ogni $\D$ quasi invariante su $A$, ovvero se $\Ll(a/A)=\Ll(b/A)$. In notazione scriveremo \emph{$a\stackrel{\smash{\scalebox{.5}{\rm\bf L}}}{\equiv}_Ab$}.
+
+\begin{proposition}\label{prop_numero_quasi_invarianti}
+ Gli insiemi $\D\subseteq\U^{|z|}$ quasi $A\jj$invarianti sono al pi\`u $2^{2^{|T|+|A|+|z|}}$.
+\end{proposition}
+
+\begin{proof}
+Sia $N$ un modello che contiene una copia $A\jj$isomorfa di ogni modello $M\supseteq A$ di cardinalit\`a $\ge|T|+|A|$. Ogni insieme quasi $A\jj$invariante \`e invariante su uno di questi modelli, quindi tutti sono invarianti su $N$. Il modello $N$ ha cardinalit\`a $\le2^{|T|+|A|}$ e come gi\`a osservato gli insiemi invarianti su $N$ sono al pi\`u $2^{|N|+|z|}$.
+\end{proof}
+
+
+Vediamo ora una diversa rappresentazione dei tipi di Lascar. Il \emph{grafo di Lascar\/} su $A$ ha come nodi gli elementi di $\U^{|z|}$ e come archi le coppie ${\mr a},{\mr b}$ tali che  ${\mr a}\equiv_M{\mr b}$ per qualche modello $M\supseteq A$. Scriveremo \emph{$d_A(a,b)$\/} per la distanza di tra ${\mr a}$ e ${\mr b}$ nel grafo di Lascar su $A$. Ovvero $d_A({\mr a},{\mr b})\le n$ se esiste una sequenza $a_0,\dots,a_n$ tale che ${\mr a}=a_0$, ${\mr b}=a_n$, ed $a_i\equiv_{M_i}a_{i+1}$ per qualche $M_i\supseteq A$. Scriveremo $d_A({\mr a},{\mr b})<\infty$ se ${\mr a}$ e ${\mr b}$ appartengono alla stessa componente connessa del grafo.
+
+\begin{proposition}\label{tipoforteLascarediametro} Per ogni ${\mr a}\in\U^{|z|}$ abbiamo $\Ll({\mr a}/A)\ =\ \big\{c\ :\ d_A({\mr a},c)<\infty\big\}$.
+\end{proposition}
+
+\begin{proof}
+Per dimostrare l'inclusione $\supseteq$ \`e sufficiente mostrare che tutti gli insiemi quasi $A\jj$invarianti contengono l'insieme di destra. Se $\D$ \`e quasi $A\jj$invariante e ${\mr a}\in\D$ allora $\D$  contiene anche ogni $c$ tale che ${\mr a}\equiv_M c$ per un qualche modello $M\supseteq A$, ovvero ogni $c$ tale che $d_A({\mr a},c)\le 1$. Segue che $\D$ contiene anche tutti i $c$ tali che $d_A({\mr a},c)<\infty$. 
+
+Per dimostrare l'inclusione $\subseteq$ mostriamo che l'insieme di destra quasi $A\jj$invariante. Infatti, se la sequenza $a_0,\dots,a_n$ testimonia  $d_A({\mr a},c)\le n$ e se $c'\equiv_Mc$ per un qualche $M\supseteq A$, allora allora la sequenza $a_0,\dots,a_n,c'$ testimonia $d_A({\mr a},c')\le n+1$.
+\end{proof}
+
+Scriveremo \emph{Autf$(\U/A)$\/} per il sottogruppo di $\Aut(\U/A)$ generato dagli automorfismi che fissano (puntualmente) un qualche modello $M\supseteq A$. (La ``f'' sta per \textit{fort\/}, il francese per \textit{strong}.) La seguente equivalenza \`e immediata conseguenza della proposizione~\ref{tipoforteLascarediametro}: 
+
+\ceq{\hfill {\mr a}\equivL_A{\mr b}}{\IFF}{{\mr a}=f{\mr b}}\ \ per un qualche $f\in\Autf(\U/A)$.
+
+Si osservi che  $\Autf(\U/A)$ \`e normale in  $\Aut(\U/A)$.
+
+Ricordiamo che $\kappa=|\U|$ \`e un cardinale inaccessibile, ovvero \`e regolare ed \`e limite forte. Quest'ultima propriet\`a (che useremo nella dimostrazione che segue) afferma che $2^\lambda<\kappa$ per ogni $\lambda<\kappa$.
+
+\begin{proposition}
+Per ogni $\D\subseteq\U^{|z|}$, ed ogni $A\subseteq M$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e quasi $A\jj$invariante;
+\item[2.] tutti gli insiemi in $O(\D/A)$ sono $M\jj$invarianti;
+\item[3.] $O(\D/A)$ ha cardinalit\`a $<\kappa$;
+\item[4.] se $c=\<c_i:i<\omega\>$ \`e una sequenza $A\jj$indiscernibile, allora $c_0\in\D\iff c_1\in\D$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+L'implicazione \ssf{1}$\IMP$\ssf{2} \`e ovvia perch\'e tutti gli insiemi in $O(\D/A)$ sono quasi $A\jj$invarianti. Per \ssf{2}$\IMP$\ssf{3} \`e sufficiente osservare che ci sono $<\kappa$ insiemi invarianti su $M$. Dimostriamo \ssf{3}$\IMP$\ssf{4}. Assumiamo $\neg$\ssf{4}, e sia $\<c_i:i<\kappa\>$ una sequenza di $A\jj$indiscernibili che estende $c$.  Definiamo la relazione di equivalenza 
+
+\ceq{\hfill E(x,y)}{\dIFF}{ x\in\C\iff y\in\C}\ \ \ per ogni \ \ $\C\in O(\D/A)$
+
+\`E immediato dalla definizione che $E(x,y)$ \`e $A\jj$invariante. Poich\'e $\neg E(c_0,c_1)$, per l'indiscernibilit\`a possiamo concludere che  $\neg   E(c_i,c_j)$ per ogni $i<j$. Quindi $E(x,y)$ ha $\kappa$ classi di equivalenza. Poich\'e $\kappa$ \`e un cardinale limite forte, questo \`e incompatibile con \ssf{3}.
+
+Dimostriamo \ssf{4}$\IMP$\ssf{1}. Sia ${\mr a}\equiv_M{\mr b}$, per qualche $M\supseteq A$. Sia $p(z)$ un coerede globale di $\tp({\mr a
+}/M)=\tp({\mr b}/M)$. Sia $c=\<c_i:i<\omega\>$ una sequenza di Morley di $p(z)$ su $M,{\mr a},{\mr b}$. Allora sia ${\mr a},c$ che ${\mr b},c$ sono sequenze $A\jj$indiscernibili su $M$. Da \ssf{4} otteniamo le due equivalenze ${\mr a}\in\D\iff c_0\in\D\iff {\mr b}\in\D$ e quindi \ssf{1}. 
+\end{proof}
+
+Ci sono al pi\`u $2^{2^{|M|+|z|}}$ insiemi $\D\subseteq\U^{|z|}$ invarianti su $M$. Quindi abbiamo il seguente importante corollario.  
+
+\begin{corollary}Per ogni $\D\subseteq\U^{|z|}$, le seguenti affermazioni sono equivalenti.
+\begin{itemize}
+\item[1.] $O(\D/A)$ ha cardinalit\`a $<\kappa$;
+\item[2.] $O(\D/A)$ ha cardinalit\`a $\le 2^{2^{|T|+|A|+|z|}}$.\QED
+\end{itemize} 
+\end{corollary}
+
+
+\begin{exercise}
+Si dimostri che per ogni $\D\subseteq\U^{|z|}$, ed ogni $A\subseteq M$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e quasi $A\jj$invariante;
+\item[2.] ogni $c=\<c_i:i<\omega\>$ sequenza $A\jj$indiscernibile \`e $A,\D\jj$indiscernibile.\QED
+\end{itemize}
+\end{exercise}
+
+\begin{comment}
+
+Sia $p(x)\subseteq L(\U)$ un tipo, possibilmente globale. Diremo che $p$ \`e \emph{finitamente quasi-soddisfacibile\/} in $A$ se $\phi(M)\neq\0$ per ogni $M\supseteq A$ ed ogni $\phi(x)$ congiunzione di formule in $p$. La seguente proposizione si dimostra in modo del tutto analogo alla proposizione~\ref{prop_coeredi_invarienti}.
+
+\begin{proposition}
+Sia $p(x)\in S(\U)$ un tipo globale. Se $p$ \`e finitamente quasi-soddisfacibile in $A$, allora $p$ \`e quasi $A\jj$invariante.
+\end{proposition}
+
+\begin{proof}
+Supponiamo per assurdo che $p$ non contenga la formula  $\phi(x,a)\iff\phi(x,a')$ per qualche $a\equivL_Aa'$. Allora, per completezza, contiene la formula $\phi(x,a)\niff\phi(x,a')$. Si osservi che senza perdita di generalit\`a possiamo assumere che $a\nequiv_Ma'$ per qualche $M\supseteq A$. Ma $p$ \`e finitamente quasi-soddisfatto in $A$, quindi esiste $c\in M$ tale che $\phi(c,a)\niff\phi(c,a')$. Questo contraddice $a\equiv_Ma'$.
+\end{proof}
+
+\begin{lemma}
+Fissiamo un insieme di parametri $A$ ed una formula $\phi(x)\in L(\U)$. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\phi(M)\neq\0$ per ogni un modello $M\supseteq A$;
+\item[2.] esiste una formula consistente $\psi(x_0,\dots,x_n)\in L(A)$ tale che \smash{$\displaystyle\psi(x_0,\dots,x_n)\imp\bigvee^n_{i=0}\phi(x_i)$}.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+L'implicazione \ssf{2}$\IMP$\ssf{1} \`e immediata, dimostriamo \ssf{1}$\IMP$\ssf{2}. Fissiamo un arbitrario modello $N\supseteq A$. Sia $\bar c=(c_i:i<\lambda)$ un'enumerazione di $N^{|x|}$. Sia $p(\bar x)=\tp(\bar c/A)$, dove $\bar x=(x_i:i<\lambda)$. Da \ssf{1} segue che $p(\bar x)\cup \{\neg\phi(x_i)\ :\ i<\lambda\}$ \`e inconsistente. Quindi otteniamo \ssf{2}  per compattezza. 
+\end{proof}
+
+\begin{lemma}
+Sia $p(x)\subseteq L(B)$ un tipo finitamente quasi-soddisfacibile in $A$ e sia $b$ un elemento arbitrario. Allora $p(x)$ pu\`o essere esteso ad un tipo $p'(x)\in S(B,b)$ finitamente quasi-soddisfacibile in $A$.
+\end{lemma}
+
+\begin{proof} %Sia $(\phi_i(x,z):i<\lambda)$ un'enumerazione delle formule in $L(B)$ nelle variabili $x,z$. Costruiamo $p'$ come unione della seguente catena di tipi. Posto $p_0=p$, definiamo induttivamente $p_{i+1}$ essere  $p_i\cup\{\phi_i(x,b)\}$ se questo \`e finitamente soddisfacibile in $A$, altrimenti $p_{i+1}=p_i$. Ai passi limite prendiamo l'unione.
+
+%Chiaramente $p'$ \`e finitamente soddisfacibile in $A$; 
+Esiste un tipo $p'(x)\subseteq L(B,b)$ massimale tra i tipi finitamente quasi-soddisfacibili che contengono $p$. Verifichiamo che $p'$ \`e completo. Se per assurdo $p'$ non contiene n\'e $\phi(x,b)$ n\'e $\neg\phi(x,b)$ per una qualche formula $\phi(x,z)\in L(B)$, allora n\'e $p'\cup\big\{\phi(x,b)\big\}$ n\'e $p'\cup\big\{\neg\phi(x,b)\big\}$ sono finitamente quasi-soddisfacibili in $A$. Allora esiste una formula $\psi(x)\in p'$ tale che $\psi(x)\wedge\phi(x,b)$ e $\psi(x)\wedge\neg\phi(x,b)$ vengono omessi da modelli contenenti $A$. Per\`o $[\psi(x)\wedge\phi(x,b)]\vee[\psi(x)\wedge\neg\phi(x,b)]$ Quindi $\psi(x)$ non \`e soddisfatta in $A$, ma questo contraddice la quasi-soddisfacibilit\`a finita di $p'$.
+\end{proof}
+ 
+\end{comment}
+
+
+\section{I tipi forti di Kim-Pillay}
+\begin{comment}
+
+Diremo che $\D\subseteq\U^{|z|}$ \`e un \emph{iperimmaginario\/} se \`e invariante e definibile da un tipo. Diremo che ${\mr a},{\mr b}\in\U^{|z|}$ hanno lo stesso \emph{tipo forte di Kim-Pillay\/} se ${\mr a}\in\D\iff{\mr b}\in\D$ per ogni $\D$  iperimmaginario quasi $A\jj$invariante. Scriveremo $\C({\mr a}/A)$ per l'intersezione di tutti gli iperimmaginari quasi $A\jj$invarianti che contengono ${\mr a}$. Questo insieme \`e ovviamente quasi $A\jj$invariante e per la proposizione~\ref{prop_numero_quasi_invarianti} \`e un iperimmaginario (\`e sufficiente fare l'intersezione di $<\kappa$ iperimmaginari quindi il numero di parametri necessari rimane piccolo).
+ 
+\end{comment}
+
+
+
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Insiemi esternamente definibili}
+
+%Data una formula $\phi(x)$ e un insieme $B\subseteq\U^{|x|}$, scriveremo $\phi(B)$ per $B\cap\phi(\U)$.
+
+Dati $A\subseteq\U$ e $\D\subseteq\U^{|z|}$ chiameremo $D=\D\cap A^{|z|}$ la \emph{traccia\/} di $\D$ su $A$. Per ogni formula $\psi(z)\in L(\U)$ definiamo \emph{$\psi(A)$\/} $=$ $\psi(\U)\cap A^{|z|}$ ovvero $\psi(A)$ \`e la traccia su $A$ dell'insieme definibile $\psi(\U)$. 
+
+Diremo che $\D\subseteq\U^{|z|}$ \`e un insieme \emph{esternamente definibile\/} di sorta $\phi(x,z)$, una formula pura, se per ogni insieme finito $B\subseteq\U$ esiste un $c\in\U^{|x|}$ tale che $\phi(c,B)=\D\cap B$. La seguente proposizione afferma che un insieme esternamente definibile \`e la traccia su $\U$ di un insieme definibile con parametri in una estensione elementare di $\U$, di qui la terminologia. 
+
+\begin{proposition}\label{lem_approx_infty}
+Per ogni $\D\subseteq\U^{|z|}$ e $\phi(x,z)\in L$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e un insieme esternamente definibile di sorta $\phi(x,z)$;
+\item[2.] $\D=\D_{p,\phi}$ per un qualche tipo globale $p\subseteq S_x(\U)$. (La notazione \`e definita nel paragrafo~\ref{tipi_invarianti}.)\QED 
+\end{itemize}
+\end{proposition}
+
+Fissiamo una formula $\phi(x,z)$ ed un insieme di parametri $A$ e sia $\Delta_{\!\phi,A}=\{\phi(x,a)\ :\ a\in A^{|z|}\}$. Ad ogni insieme $B\subseteq A^{|z|}$ associamo il seguente $\pmDelta_{\!\phi,A}\jj$tipo 
+
+\ceq{\hfill }{}{\big\{\phi(x,a)\:\ a\in B\big\}\ \cup\ \big\{\neg\phi(x,a)\ :\ a\in A^{|z|}\sm B\big\}}
+
+che qui denoteremo con \emph{$\phi(x,A)=B$}. Quest'ultima \`e notazione non standard. Se consistente, $\phi(x,A)=B$ \`e completo come $\pmDelta_{\!\phi,A}\jj$tipo. L'insieme dei $\pmDelta_{\!\phi,A}\jj$tipi completi verr\`a denotato con $S_{\phi}(A)$.
+
+Una formula $\phi(x,z)$ si dice \emph{instabile\/} se per ogni $n$ esistono due sequenze di tuple $(c_i\,:\,i< n)$ e $(a_i\,:\,i<n)$ tali che 
+
+\ceq{\ssf{ins.}\hfill \phi(c_i,a_j)}{\IFF}{i<j} \ \ \ \ per ogni $i,j<n$
+
+Se  $\phi(x,z)$ \`e instabile allora per compattezza \ssf{ins} vale anche sostituendo $(n,\le)$ con un qualsiasi ordine lineare $(I,\le_I)$. L'unica ovvia limitazione \`e che $|I|\le\kappa$. Diremo che $\phi(x,z)$ \`e \emph{stabile\/} se non \`e instabile.   
+
+Diremo che  $\phi(x,z)$ ha \emph{rango binario infinito\/} se per ogni $n$ esiste una sequenza  $(a_s\ :\ s\in2^{<n})$ tale che  per ogni $s\in2^{n}$ i seguenti tipi siano consistenti
+
+\ceq{\ssf{rbi.}\hfill p_s(x)}{=}{\big\{\phi(x,a_{s\restriction i})\ :\ s(i)=0,\ \ i<n\big\}\ \cup\ \big\{\neg\phi(x,a_{s\restriction i})\ :\ s(i)=1,\ \ i<n\big\}}.
+
+Di nuovo, per compattezza se $\phi(x,z)$ ha rango binario infinito allora possiamo sostituire $n$ con qualsiasi ordinale $\le\kappa$.
+
+\begin{proposition}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\phi(x,z)$ \`e una formula instabile;
+\item[2.] $\phi(x,z)$ ha rango binario infinito.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Ordiniamo $2^{<\omega}$ linearmente per induzione su $n$. Supponiamo di aver ordinato linearmente $2^{<n}$. Estendiamo quest'ordine a $2^{\le n}$ stipulando che $s0<s<s1$ per ogni $s\in2^n$ e che $s$ \`e l'unico elemento tra $s0$ ed $s1$. Da \ssf{1} otteniamo che per ogni $n$ esiste una sequenza $(c_s\ :\ s\in2^{\le n})$ tale che
+
+\ceq{\ssf{\#}\hfill \phi(c_s,a_r)}{\IFF}{s<r} \ \ \ \ per ogni $s,r\in 2^{\le n}$
+
+ora \`e immediato che per ogni $s\in 2^n$ la tupla $c_s$ testimonia la consistenza del tipo $p_s(x)$ definito in \ssf{rbi}. Questo dimostra che il rango binario di $\phi(x,z)$ \`e infinito. 
+
+Dimostriamo \ssf{2}$\IMP$\ssf{1}. Se per ogni $s\in 2^n$ tutti i tipi $p_s(x)$ definiti in \ssf{rbi} sono consistenti, allora fissati $c_s\models p_s(x)$ otteniamo \ssf{\#} come richiesto.
+\end{proof}
+
+\begin{corollary}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\phi(x,z)$ \`e una formula instabile;
+\item[2.] $|S_\phi(\U)|=2^\kappa$;
+%\item[3.] per ogni $\lambda<\kappa$ esiste un insieme $A$ di cardinalit\`a $\lambda$ tale che $2^\lambda=|S_\phi(A)|$;
+%\item[4.] $|A|<|S_\phi(A)|$ per un qualche insieme $A$ infinito.
+\item[4.] $|S_\phi(\U)|>\kappa$.
+\end{itemize}
+\end{corollary}
+\begin{proof}
+Per dimostrare l'implicazione \ssf{1}$\IMP$\ssf{2} assumiamo $\phi(x,z)$ abbia rango infinito. Posto  $\bar z=(x_s:s\in2^{<\kappa})$ i seguenti tipi sono  finitamente in $\U$ per ogni $\alpha\in2^\kappa$:
+
+\ceq{\hfill p_\alpha(x,\bar z)}{=}{\big\{\phi(x,z_{\alpha\restriction i})\ :\ \alpha(i)=0,\ \ i<\kappa\big\}\ \cup\ \big\{\neg\phi(x,z_{\alpha\restriction i})\ :\ \alpha(i)=1,\ \ i<\kappa\big\}}.
+
+Quindi, posto $\bar x=(x_\alpha:\alpha\in 2^\kappa)$ e
+
+\ceq{\hfill p(\bar x,\bar z)}{=}{\bigcup_{\alpha\in2^\kappa} p_\alpha(x_\alpha)}.
+
+otteniamo che $\E \bar x\, p(\bar x,\bar z)$ \`e finitamente consistente. Quest'ultimo ha $\kappa$ variabili libere e quindi \`e realizzato in $\U$, diciamo da $\bar a=(a_s: s\in2^{<\kappa})$. Ora si osservi che i tipi globali $p_\alpha(x,\bar a)$ sono mutualmente inconsistenti la variare di $\alpha\in2^\kappa$. Quindi $|S_\phi(\U)|=2^\kappa$. 
+
+L'implicazione \ssf{2}$\IMP$\ssf{3} \`e banale. Dimostriamo \ssf{3}$\IMP$\ssf{1}. 
+%Fissiamo due sequenze di (tuple  di) variabili $(x_i\,:\,i\in\QQ)$ e $(z_i\,:\,i\in\QQ)$. Se $\phi(x,z)$ \`e instabile, per compattezza il seguente il tipo 
+% 
+% \ceq{\hfill p}{=}{\{\phi(x_i,z_j)\ :\ i<j\}\ \cup\ \{\neg\phi(x_i,z_j)\ :\ j\le i\}}
+% 
+% Fissiamo $(c_i\,:\,i\in\QQ)$ e $(a_i\,:\,i\in\QQ)$ che realizzano $p$. Ora consideriamo una nuova sequenza di variabili $(x_r\,:\,r\in\RR)$ e per ogni osserviamo che il seguente tipo \`e finitamente consistente 
+% 
+% \ceq{\hfill p_r}{=}{\{\phi(x_r,a_j)\ :\ r<j\}\ \cup\ \{\neg\phi(x_r,a_j)\ :\ j\le r\}}
+% 
+% per ogni $r\in\RR$. Otteniamo $2^\omega$ tipi su $A=\{a_i\ :\ i\in\QQ\}$.
+Assumiamo \ssf{3} e mostriamo che il rango binario di $\phi(x,z)$ \`e infinito. Supponiamo aver costruito $(a_s\ :\ s\in2^{<n})$ tale che ogni tipo $p_s(x)$ definito in \ssf{rbi} abbia pi\`u di $\kappa$ estensioni in $S_\phi(\U)$. L'estensione dell'albero all'altezza $n+1$ si ottiene procedendo come nella dimostrazione della proposizione~\ref{prop_small_tree}. 
+\end{proof} 
+
+
+\begin{corollary}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\phi(x,z)$ \`e una formula stabile;
+\item[2.] ogni insieme $\D$ esternamente definibile di sorta $\phi(x,z)$ \`e definibile, precisamente, $\D$  \`e combinazione booleana positiva di insiemi della forma $\phi(a,\U)$ per qualche $a\in\U^{|x|}$.\QED
+\end{itemize}
+\end{corollary}
+\begin{proof}
+L'implicazione \ssf{1}$\IMP$\ssf{2} \`e un corollario del teorema~\ref{thm_fin_apprx_def}. Per l'implicazione \ssf{2}$\IMP$\ssf{1} osserviamo che se $\phi(x,z)$ \`e instabile allora ha rango binario infinito esistono quindi $2^\kappa$ tipi globali $S_\phi(\U)$, ad ognuno corrisponde un diverso insieme esternamente definibile. Non ci sono abbastanza formule in $L(\U)$ per definirli tutti.
+\end{proof}
+
+\begin{exercise}
+Si dimostri che per ogni $A$ infinito le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $|S_\phi(A)|=2^{|A|}$
+\item[2.] $|S_\phi(A)|>|A|$.\QED
+\end{itemize}
+\end{exercise}
+
+
+\begin{exercise}
+Si dimostri che per ogni cardinale infinito $\lambda$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $|S_\phi(\U)|=2^\kappa$
+\item[2.] $|S_\phi(A)|=2^{|A|}$ per qualche insieme $A$ infinito;
+\item[3.] $|S_\phi(A)|=2^{\lambda}$ per qualche insieme $A$ di cardinalit\`a $\lambda$.\QED
+\end{itemize}
+\end{exercise}
+
+\end{comment}

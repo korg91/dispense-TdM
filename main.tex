@@ -1,0 +1,44 @@
+
+% arara: makechapters: {items: [prefazione,termini,formule]}
+
+\documentclass[11pt,openany]{book}
+%\synctex=1
+\usepackage[dvips,a4paper,hmargin={3.5cm,3.5cm},vmargin={2.5cm,2.5cm}]{geometry}
+%\usepackage[dvips,a4paper,landscape, mag=\magstep3, hmargin={1.2cm,1.2cm},vmargin={1.5cm,1.5cm},truedimen]{geometry}
+%\usepackage[dvips,paperwidth=17cm,paperheight=100cm, hmargin={1.5cm,1.5cm},vmargin={2cm,2cm}]{geometry}
+
+%\usepackage[dvips,a5paper,hmargin={1.3cm,1cm},vmargin={.7cm,1.5cm}]{geometry}
+
+\include{macros}
+\usepackage{makeidx}
+\makeindex
+
+\mathcode`\=="203D
+
+\pagestyle{plain}
+\begin{document}
+\raggedbottom
+\tableofcontents
+%\pagestyle{empty}
+\include{prefazione}
+\include{termini}
+\include{formule}
+\include{teorie}
+\include{ultraprodotti}
+\include{tipi}
+\include{relazionali}
+\include{algebra}
+\include{saturazione}
+\include{eliminazione}
+\include{geometria}
+\include{numerabili}
+\include{immaginariA}
+\include{immaginariB}
+\include{indiscernibili}
+\include{invariant}
+\include{tipiforti}
+\include{esterni}
+\include{combinatoria}
+% \include{insiemi}
+%\printindex
+\end{document}

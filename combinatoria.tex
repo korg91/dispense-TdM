@@ -1,0 +1,420 @@
+\chapter{Un po' di combinatoria}\label{insiemi}
+
+\lavori
+
+\def\bigsum{\mathop{\mbox{\large$\displaystyle\sum$}}}
+\def\bigint{\mathop{\mbox{\large$\displaystyle\int$}}}
+
+%\section{Il teorema di Ramsey}
+
+Fissiamo un'insieme infinito $\Omega$ e sia $\Delta\subseteq\P(\Omega)$ un insieme non vuoto. Dato $B\subseteq \Omega$ scriveremo \emph{$\Delta\mathord\restriction B$\/} per l'insieme $\{\phi\cap B\ :\ \phi\in\Delta\}$. L'insieme $\phi\cap B$ \`e talvolta chiamato la \emph{traccia\/} di $\phi$ su $B$.
+
+Sia $\le_I$ un ordine su un insieme $I$. Diremo che $\Delta$ \emph{realizza\/} $\le_I$ se esiste $B\subseteq \Omega$ ed esistono $\{\phi_i:i\in I\}$ tali che 
+
+\hfil$\phi_i\cap B\subseteq\phi_j\cap B\ \ \IFF\ \ i\le_Ij$. 
+
+Oggetto del nostro interesse sono insiemi $\Delta$ che \textit{non\/} realizzano tipi di ordine troppo complessi. Ci concentreremo sui seguenti due tipi d'ordine finiti. Scriveremo \emph{$\le_k$\/} per l'ordine usuale sull'insieme $k=\{0,\dots,k-1\}$ e scriveremo \emph{$\subseteq_k$\/} per l'ordine su $\P(k)$ indotto dall'inclusione insiemistica. 
+
+Si noti che il ruolo dell'insieme $B$ nella definizione di realizzazione \`e fondamentale. Consideriamo $\Omega=\RR$ e come $\Delta$ prendiamo l'insieme degli insiemi della forma $A\cup\{f(A)\}$ dove $A\subseteq\ZZ$ ed $f:\P(\ZZ)\to \RR\sm\ZZ$ \`e un'arbitraria biiezione. Con $B=\Omega$ possiamo realizziare solo ordini banali, mentre qualsiasi ordine numerabile \`e realizzato con $B=\ZZ$. 
+
+Nel contesto della teoria dei modelli, $\Omega=\U^{|z|}$, dove $z$ \`e una tupla di variabili finita,  e $\Delta$ contiene insiemi della forma $\phi(c,\U)$ dove $\phi(x,z)$  \`e fissata e $c$ varia in $\U^{|z|}$. In questo contesto, avendo a disposizione il teorema di compattezza, \`e sufficiente considerare insiemi $B\subseteq\U^{|z|}$ finiti.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{La propriet\`a dell'ordine}
+
+Dato un intero positivo $h$, scriveremo \emph{$\Delta_{\wedge h}$\/} per l'insieme i cui elementi sono intersezione di una qualche tupla $\phi_1\dots \phi_h\ \in\ \Delta$. 
+
+\begin{lemma}\label{lem_ramsey} Per ogni intero positivo $h$, le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\Delta$ realizza $\le_k$ per ogni $k$;
+\item[2.] $\Delta_{\wedge h}$ realizza $\le_k$ per ogni $k$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+L'implicazione \ssf{1}$\IMP$\ssf{2} \`e ovvia perch\'e $\Delta\subseteq\Delta_{\wedge h}$, dimostriamo quindi \ssf{2}$\IMP$\ssf{1}. \`E sufficiente dimostrare il lemma per $h=2$. Supponiamo che $B$ e $\phi_i, \psi_i\in\Delta\mathord\restriction B$, per $i<k$, siano tali che 
+
+\begin{itemize}
+\item[a.] $\phi_i\cap\psi_i\cap B\ \subseteq\ \phi_j\cap\psi_j\cap B\ \ \IFF\ \ i\le j$
+\end{itemize}
+
+Mostriamo che $\Delta$ realizza $\le_{f(k)}$, dove $f(k)$ \`e una funzione illimitata che verr\`a definita pi\`u sotto. Fissiamo per ogni $i<k$ un elemento 
+
+\begin{itemize}
+\item[b.] $a_i\in \phi_j\cap\psi_j\cap B\ \ \IFF\ \ i\le j$
+\end{itemize}
+
+Osserviamo che \ssf{b} implica che per ogni coppia $j<i\le k$ vale (almeno) una delle seguenti 
+
+\begin{itemize}
+\item[c.] $a_i\notin \phi_j\cap B$\qquad o\qquad $a_i\notin \psi_j\cap B$
+\end{itemize}
+
+Sia $f(k)$ la massima cardinalit\`a di un insieme $I\subseteq\big\{0,\dots,k\big\}$ tale che per ogni $i,j\in I$ occorre sempre la stessa (diciamo, la prima) delle due possibilit\`a in \ssf{c}. Riassumendo, possiamo assumere che per $i,j\in I$
+
+\begin{itemize}
+\item[] $a_i\in \phi_j\cap B\ \ \IFF\ \ i\le j$ 
+\end{itemize}
+
+Posto $C=\{a_i\;:\;i\in I\}$ \`e immediato che $\phi_i\cap C = \{ a_l\;:\; l\in I,\ l<i\}$. Quindi per $i,j\le f(k)$  avremo
+\begin{itemize}
+\item[]$\phi_i\cap C\ \subseteq\ \phi_j\cap C\ \ \IFF\ \ i\le j$
+\end{itemize}
+La dimostrazione si conclude notando che per il teorema di Ramsey finito $f(k)$ \`e una funzione illimitata.
+\end{proof}
+
+Diremo che $D\subseteq \Omega$ \`e \emph{finitamente approssimabile\/} in $\Delta$ se per ogni $B\subseteq \Omega$ finito esiste un $\phi\in\Delta$ tale che $B\cap\phi=B\cap D$.
+
+\def\ceq#1#2#3#4{\parbox[t]{15ex}{$\displaystyle #1$}\parbox{5ex}{$\displaystyle\hfil #2$}{$\displaystyle #3$}\parbox{5ex}{$\displaystyle\hfil #4$}}
+
+\begin{theorem}\label{thm_fin_apprx_def} Supponiamo che $\Delta$ ometta $\le_k$ per qualche $k>0$. Allora ogni $D\subseteq \Omega$ finitamente approssimabile in $\Delta$ \`e unione di insiemi in $\Delta_{\wedge k}$.
+\end{theorem}
+\begin{proof}
+Mostriamo che per ogni $C\subseteq D$ finito esiste un $\phi\in\Delta_{\wedge k}$ tale che $C\subseteq\phi\subseteq D$. Posto $B_0=C$ definiamo $B_i$ e $\phi_i$ induttivamente come segue. Poich\'e $D$ \`e finitamente approssimabile in $\Delta$, esiste $\phi_i\in\Delta$ tale che 
+
+\ceq{\hfill \phi_i\cap B_i}{=}{D\cap B_i}{}
+
+Se $\phi_0\cap\dots\cap\phi_i\subseteq D$ terminiamo la costruzione al passo $i$: abbiamo ottenuto 
+
+\ceq{\hfill C}{\subseteq}{\phi_0\cap\dots\cap\phi_i}{\subseteq}$D$
+
+come desiderato. Altrimenti fissiamo un arbitrario $a_i\in \phi_0\cap\dots\cap\phi_i\sm D$ e definiamo $B_{i+1}=B_i\cup\{a_i\}$. Ora osservando che per ogni $i,j\le h$ otteniamo $\phi_i\cap B_h\subseteq\phi_j\cap B_h\IFF j\le i$. (L'ordine \`e invertito ma \`e irrilevane.) Quindi la costruzione deve terminare ad un passo $\le k$.
+
+Per il lemma~\ref{lem_ramsey} possiamo assumere che $\Delta_{\wedge k}$ ometta $\le_m$, per un qualche $m$. Ora usiamo un argomento simile al precedente per mostrare che $D$ \`e unione di $m$ insiemi in $\Delta_{\wedge k}$. 
+
+
+Posto $B_0=\0$ definiamo $B_i$ e $\phi_i$ induttivamente. Per quanto dimostrato sopra esiste $\phi_i\in\Delta_{\wedge k}$ tale che 
+
+\ceq{\hfill B_i}{\subseteq}{\phi_i}{\subseteq}$D$.  
+
+Se $D= \phi_0\cup\dots\cup\phi_i$ terminiamo la costruzione con successo. Altrimenti definiamo $B_{i+1}=B_i\cup\{a_i\}$, dove $a_i$ \`e un arbitrario elemento di $D\sm \phi_0\cup\dots\cup\phi_i$. Di nuovo per ogni $i,j\le h$ otteniamo $\phi_i\cap B_h\subseteq\phi_j\cap B_h\IFF i\le j$ quindi la costruzione deve terminare ad un passo $\le m$.
+\end{proof}
+
+Possiamo riformulare il teorema precedente con terminologia topologica usando la seguente topologia su $\P(\Omega)$. Questa  \`e generata dagli aperti della forma $\{D\subseteq \Omega\ :\ A\subseteq D\subseteq B\}$ dove $A,B\subseteq \Omega$ sono rispettivamente un insieme finito ed uno co-finito. Scriviamo $\bar\Delta$ per la chiusura di $\Delta$ in questa topologia. Il seguente \`e un'immediata conseguenza del teorema~\ref{thm_fin_apprx_def}. 
+
+\begin{corollary} Supponiamo che $\Delta$ ometta $\le_k$ per qualche $k$ allora ogni $D\in\bar\Delta$ \`e combinazione booleana positiva di insiemi in $\Delta$.
+\end{corollary}
+
+
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{6ex}{$\displaystyle\hfil #2$}{$\displaystyle #3$}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{La dimensione di Vapnik-Chevornenkis}
+
+
+La dimensione di Vapnik-Cher\-vo\-nen\-kis di $\Delta$, per brevit\`a \emph{VC-dimensione}, \`e  la massima cardinalit\`a di un insieme $B\subseteq\Omega$ finito tale che $\Delta\mathord\restriction B=\P B$. Se questo massimo non esiste, diremo che $\Delta$ ha VC-dimensione infinita. 
+
+Equivalentemente, la VC-dimesione di $\Delta$ \`e il massimo $k$ per cui esiste una tupla $a_0,\dots,a_{k-1}\in\Omega$ ed una funzione $\phi_{\mbox{-}}:\P(k)\to\Delta$ tale che 
+
+\ceq{\#\hfill a_i\in\phi_J}{\IFF}{i\in J}\ \  per ogni $i\in k$ ed ogni $J\subseteq k$.
+
+\begin{lemma}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\Delta$ realizza $\subseteq_k$;
+\item[2.] $\Delta$ ha VC-dimesione $\ge k$.
+\end{itemize}  
+\end{lemma}
+
+\begin{proof}
+L'implicazione \ssf{2}$\IMP$\ssf{1} \`e immediata. Per dimostrare \ssf{1}$\IMP$\ssf{2} supponiamo che $\Delta$ realizzi $\subseteq_k$ e fissiamo un insieme $B\subseteq\Omega$ ed una funzione $\phi_{\mbox{-}}:\P(k)\to\Delta$ tale che  
+
+\ceq{\natural\hfill\phi_I\cap B\,\subseteq\,\phi_J\cap B}{\IFF}{I\subseteq J}\ \ per ogni $I,J\subseteq k$.
+
+La tupla $a$ che verifica $\#$ si ottiene scegliendo per ogni $i\in k$ un qualsiasi $a_i\in B$ tali che 
+
+\ceq{\hfill a_i}{\in}{\phi_{\{i\}}\;\sm\;\bigcup_{i\notin J}\phi_J}.
+
+La verifica di $\#$ \`e immediata, mostriamo gli elementi richiesti esistono. Supponiamo per assurdo che l'insieme sia vuoto. Dal verso $\PMI$ in $\natural$ otteniamo
+
+\ceq{\hfill\bigcup_{i\notin J}\phi_J}{\subseteq}{\phi_{k\sm\{i\}}}
+
+e quindi $\phi_{\{i\}}\subseteq\phi_{k\sm\{i\}}$. Ancora da $\natural$, questa volta nel verso $\IMP$, otteniamo $i\in k\sm\{i\}$, una contraddizione.
+\end{proof}
+
+Dimostriamo ora lemma combiatoriale da cui deriveremo una importante dicotomia scoperta indipendentemente da Shelah, Sauer, e Vapnik-Cher\-vo\-nen\-kis nei primi anni '70 del secolo scorso. Shelah studiava questa nozione nel contesto della teoria dei modelli, mentre Sauer, Vapnik e Chervonenkis lavoravano in statistica. 
+
+
+\begin{lemma}
+Se $\subseteq_k$ non si immerge in $\Delta\mathord\restriction B$ allora $\displaystyle \left|\Delta\mathord\restriction B \right|\ \ \le\ \ \bigsum^{k}_{i=0} \binom{|B|}{i}$.
+\end{lemma}
+
+\begin{proof}
+Procediamo per induzione su $k$ e, fissato $k$ per induzione su $|B|$. Il caso in cui $k=0$ \`e banale: perch\'e $\subseteq_0$ si immerge in $\Delta\mathord\restriction B$ per qualsiasi $B$ non appena $\Delta$ \`e non vuoto. Anche il caso in cui $B=\0$ \`e banale per ogni $k$. 
+
+Ora per un dato $k$ supponiamo il lemma vero per ogni $\Delta$ e ogni $B$. Inoltre supponiamo il lemma vero anche per $k+1$ e per $\Delta$ e $B$ fissati, dimostriamolo per $k+1$, $\Delta$ e $B,a$ con $a\in\Omega$ arbitrario. Definiamo
+
+\ceq{\hfill \Gamma}{=}{\Big\{\phi\in\Delta\ :\ \E\psi\in\Delta\ \big[ a\in\phi\sm\psi\ \wedge\ \phi\cap B=\psi\cap B\big] \Big\}}
+
+e osserviamo che 
+
+\ceq{\hfill |\Delta\mathord\restriction B,a|}{=}{|\Delta\mathord\restriction B|\ +\ |\Gamma\mathord\restriction B|.}
+
+Ora, l'osservazione cruciale \`e che non possiamo immergere $\subseteq_k$ in $\Gamma\mathord\restriction B$, altrimenti dalla definizione di $\Gamma$ potremmo anche immergere $\subseteq_{k+1}$ in $\Delta\mathord\restriction B,a$ che abbiamo escuso per ipotesi. Possiamo quindi applicare l'ipotesi induttiva su $k$ a $\Gamma$ e l'ipotesi induttiva su $B$ a $\Delta$ ed ottenere
+
+\ceq{\hfill |\Delta\mathord\restriction B,a|}{\le}{\bigsum^{k+1}_{i=0} \binom{|B|}{i} +  \bigsum^{k}_{i=0}  \binom{|B|}{i}}
+
+\ceq{}{=}{\binom{|B|}{0}\ \ +\ \ \bigsum^{k+1}_{i=1}\ \ \binom{|B|}{i}\ +\  \binom{|B|}{i-1}}
+
+
+\ceq{}{=}{\bigsum^{k+1}_{i=0} \binom{|B|+1}{i}}
+
+che \`e quanto volevamo dimostrare.
+\end{proof}
+
+La dicotomia di cui sopra afferma che la funzione (chiamata \textit{shatter function\/})
+
+\ceq{\hfill S(n,\Delta)}{=}{\max\Big\{|\Delta\mathord\restriction B|\ \ :\ \ B\subseteq\Omega,\ |B|=n\Big\}}
+
+cresce esponenzialmente, se la VC-dimensione \`e infinita, oppure cresce polinomialmente con esponente dato dalla VC-dimensione di $\Delta$. Questo, in altre parole, \`e ci\`o che afferma il seguente corollario:
+
+\begin{comment}%MAGGIORAZIONE ALLA MATOUSEK
+\begin{corollary}
+Se la VC-dimensione di $\Delta$ \`e $k$, allora per ogni $n\ge k$
+
+\ceq{\hfill S(n,\Delta)}{\le}{\displaystyle\Bigg(\frac{en}{k}\Bigg)^k,}
+
+dove $e$ \`e la base del logaritmo naturale.
+\end{corollary}
+\begin{proof}
+La seconda affermazione \`e ovvia. Per la prima \`e sufficiente osservare che 
+
+\ceq{\hfill \bigsum^{k}_{i=0}\binom{n}{i}}{\le}{\bigsum^{n}_{i=0}\binom{n}{i}}
+
+\ceq{}{\le}{\bigsum^{n}_{i=0}\binom{n}{i}\Bigg(\frac{n}{k}\Bigg)^{k-i}}
+
+\ceq{}{=}{\Bigg(\frac{n}{k}\Bigg)^k\bigsum^{n}_{i=0}\binom{n}{i}\Bigg(\frac{k}{n}\Bigg)^i}
+
+\ceq{}{\le}{\Bigg(\frac{n}{k}\Bigg)^k\Bigg(1+\frac{k}{n}\Bigg)^{n}}
+
+\ceq{}{\le}{\Bigg(\frac{n}{k}\Bigg)^ke^k}
+
+Per l'ultima disuguaglianza ricordiamo che per ogni $x$ positivo $1+x\le e^x$, e quindi $\ln(1+x)\le x$.
+\end{proof}
+
+Per semplificare i dettagli la maggiorazione che useremo sar\`a come riportiamo nella seguente:
+
+\begin{remark}
+Se la dimensione \`e infinita $S(n,\Delta)=2^n$  per ogni $n$ e cos\`i anche per dimensione finita ed $n<k$. Quindi  per ogni $n$
+
+\ceq{\hfill S(n,\Delta)}{\le}{\displaystyle\Bigg(\frac{2en}{k}\Bigg)^k.}\hfill\qed
+\end{remark}
+\end{comment}
+
+
+\def\ceq#1#2#3#4{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{7ex}{$\displaystyle\hfil #2$}{$\displaystyle #3$}\parbox{7ex}{$\displaystyle\hfil #4$}}
+
+\begin{corollary}
+Se $\Delta$ ha VC-dimensione $k\ge 2$ allora $S(n,\Delta)\le n^k$ per ogni $n$. 
+\end{corollary}
+
+\begin{proof}
+\`E sufficiente osservare che
+
+\ceq{\hfill\bigsum^{k}_{i=0}\binom{n}{i}}{\le}{\bigsum^{k}_{i=0}\frac{n^i}{i!}}{\le}{$n^k$}
+
+L'ultima disuguaglianza vale per $k\ge 2$ e si dimostra facilmente per induzione su $k$.
+\end{proof}
+
+Il casi di dimensione $0$ ed $1$ sono banali e non verranno trattati.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{La co-dimensione}
+
+La VC-co-dimensione di $\Delta$ \`e il massimo $k$ per cui esiste una tupla $\phi_0,\dots,\phi_{k-1}\in\Delta$ ed una funzione $a_{\mbox{-}}:\P(k)\to\Delta$ tale che 
+
+\ceq{\hfill a_I\in\phi_j}{\IFF}{j\in I}\ \  per ogni $I\subseteq k$ ed ogni $j\in k$.
+
+% Con notazione presa a prestito dalla logica definiamo $\Gamma\mbox{-}\tp(a)=\{\phi\in\Gamma\ :\ a\in\phi\}$ e quindi
+% 
+% \ceq{\hfill\Omega^*}{=}{\Delta};
+% 
+% \ceq{\hfill\Delta^*}{=}{\big\{\Gamma\mbox{-}\tp(a)\ :\ a\in\Omega\big\}}.
+% 
+% Non \`e difficile da verificare che $\Delta^{**}=\Delta$. Se  $\Gamma\mbox{-}\tp(a)\neq\Gamma\mbox{-}\tp(b)$ per ogni coppia di elementi distinti $a,b\in\Omega$ vale anche $\Omega^{**}=\Omega$.  Lasciamo la verifica al lettore.
+% 
+% Il massimo $k$ per cui esiste $\Gamma\subseteq\Delta$ di cardinanit\`a $k$ ed una mappa $\Sigma\mapsto a_\Sigma$ from $\P\Gamma$ to $\Delta$ tale che 
+
+
+\begin{lemma}
+Se la VC-dimensione di $\Delta$ \`e $\ge 2^k$, allora la VC-co-dimensione \`e $\le k$.
+\end{lemma}
+
+\begin{proof}
+Supponiamo che la VC-dimensione di $\Delta$ sia $\ge 2^k$. Possiamo enumerare le sequenza che testimoniano questo usando sottoinsiemi di $k$, rispettivamente di $\P(k$). Ovvero esistono $\<a_I: I\subseteq k\>$ e $\<\phi_{\mr \J}: {\mr \J}\subseteq \P(k)\>$ tali che 
+
+\ceq{\#\hfill a_I\in\phi_{\mr\J}}{\IFF}{I\in{\mr \J}}\ \  per ogni $I\subseteq k$ ed ogni $\J\subseteq \P k$.
+
+Per ogni $j\in k$ definiamo ${\mr \J_j}=\{I\subseteq k: {\mr j}\in I\}$. Come caso particolare di $\#$ otteniamo
+
+\ceq{\hfill a_I\in\phi_{\mr \J_j}}{\IFF}{I\in{\mr \J_j}}\ \  per ogni $I\subseteq k$ ed ogni ${\mr j}\in k$.
+
+ovvero
+
+\ceq{\hfill a_I\in\phi_{\mr \J_j}}{\IFF}{{\mr j}\in I}\ \  per ogni $I\subseteq k$ ed ogni ${\mr j}\in k$.
+
+abbreviando $\phi_{\mr \J_j}$ con $\phi_{\mr j}$, otteniamo il risultato voluto.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Epsilon-approssimazioni}
+
+\def\Av{\mathbin{\textrm{Av}}}
+\def\disc{\mathbin{\textrm{disc}}}
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\parbox{5ex}{$\displaystyle\hfil #2$}{$\displaystyle #3$}}
+
+
+In questo paragrafo $\mu$ denota un'arbitraria misura di probabilit\`a su $\Omega$ che rende tutti gli insiemi di $\Delta$ misurabili. Diremo che $B\subseteq\Omega$, un insieme di cardinalit\`a finita $n$, \`e una \emph{$\epsilon$-approssimazione\/} di $\Delta$ se per ogni $\phi\in\Delta$
+
+\ceq{\hfill\left|\mu(\phi) - \frac{\big|B\cap\phi\big|}{n}\right|}{\le}{\epsilon}
+
+Dato $\epsilon$ vogliamo stimare la grandezza del minimo $n$ per cui esiste una $\epsilon$-approssimazione di cardinalit\`a $n$. Uno strumento utile per ridurre la grandezza di un approssimazione \`e quello della discrepanza che ora definiamo. 
+
+Sia $B\subseteq\Omega$ un arbitrario insieme finito, e sia $n=|B|$.  Una mappa totale $c:B\to\{-1,+1\}$ \`e detta una \emph{colorazione\/} di $B$.  Per $\phi\in\Delta\cup\{B\}$ scriveremo:
+
+\ceq{\hfill c(\phi)}{=}{\sum_{a\in B\cap \phi} c(a).}
+
+Definiamo quindi la \emph{discrepanza (relativa)\/} di $\Delta\mathord\restriction B$
+
+\ceq{\hfill \delta_B}{=}{\min_{c:B\to\{\pm 1\}}\ \ \max_{\phi\in\Delta\cup\{B\}}\ \frac{c(\phi)}{n}}
+
+%\ceq{\hfill \disc(n,\Delta)}{=}{\max_{|B|=n}\ \disc(\Delta\mathord\restriction B)}
+
+
+\begin{lemma}\label{aprossimazionediapprossimazione}
+Sia $B\subseteq\Omega$ una $\epsilon$-approssimazione di $\Delta$ di cardinalit\`a $n$ e con discrepanza $\delta_B$. Allora esiste una $(\epsilon+2\delta_B)$-approssimazione $B^+\subseteq B$ di cardinalit\`a $\le n/2$.
+\end{lemma}
+
+\begin{proof}
+Fissiamo $c:B\to\{-1,+1\}$ tale che $c(\phi)\le\delta_B$ per ogni $\phi\in\Delta\cup\{B\}$ e definiamo $B^+=c^{-1}[+1]$ e $n^+=|B^+|$. Possiamo assumere che $n^+\le n/2$, altrimenti invertiamo $+1$ con $-1
+$. Per ogni $\phi\in\Delta\cup\{B\}$ abbiamo
+
+\ceq{\ssf{1.}\hfill\frac{|B\cap\phi|}{n}}{\le}{\frac{2|B^+\cap\phi|}{n} + \frac{c(\phi)}{n}}
+
+\ceq{}{\le}{\frac{2|B^+\cap\phi|}{2n^+} + \frac{c(\phi)}{n}}
+
+\ceq{}{\le}{\frac{|B^+\cap\phi|}{n^+} + \delta_B}
+
+D'altro canto:
+
+\ceq{\ssf{2.}\hfill\frac{|B\cap\phi|}{n}}{\ge}{\frac{2|B^+\cap\phi|}{2n^++c(B)}}
+
+\ceq{}{=}{\frac{|B^+\cap\phi|}{n^+}\cdot\left(1+\displaystyle\frac{c(B)}{2n^+}\right)^{-1}}
+
+\ceq{}{\ge}{\frac{|B^+\cap\phi|}{n^+}\cdot\left(1+\frac{c(B)}{n+c(B)}\right)^{-1}}
+
+\ceq{}{=}{\frac{|B^+\cap\phi|}{n^+}\cdot\frac{n+c(B)}{n+2c(B)}}
+
+\ceq{}{\ge}{\frac{|B^+\cap\phi|}{n^+}\cdot\frac{n}{n+2c(B)}}
+
+\ceq{}{\ge}{\frac{|B^+\cap\phi|}{n^+} - 2\delta_B}\hfill quest'ultima perch\'e $\displaystyle\frac{1}{1+x}\le1-x$.
+
+Combinando le disequazioni \ssf{1} e \ssf{2} otteniamo che per ogni $\phi$
+
+\ceq{\hfill\left|\frac{|B\cap\phi|}{n}\ -\ \frac{|B^+\cap\phi|}{n^+}\right|}{\le}{2\delta_B}
+
+e quindi dalla disuguaglianza triangolare otteniamo
+
+\ceq{\hfill\left|\mu(\phi)\ -\ \frac{|B^+\cap\phi|}{n^+}\right|}{\le}{\epsilon + 2\delta_B}
+
+Come volevamo dimostrare.
+\end{proof}
+
+Possiamo limitare la discrepanza in funzione della cardianlit\`a di $B$ e di $\Delta\mathord\restriction B$.  Questo limite pu\`o essere calcolato con una semplice costruzione probabilistica ovvero mostrando che sceglendo una colorazione aleatoria (rispetto ad una data misura di probabilit\`a) questa verifica il limite richiesto con probabilit\`a positiva.
+
+
+\begin{lemma}\label{discrepanzarandom} Dato un insieme finito $B\subseteq\Omega$ poniamo $n=|B|$ e $m=|\Delta \mathord\restriction B|$. Allora 
+
+\ceq{\hfill \delta_B}{\le}{\frac{1}{n}\sqrt{n\ln(4m)}}
+\end{lemma}
+
+\begin{proof}
+\ 
+\end{proof}
+
+\begin{lemma}\label{lem_nemesis}
+Per $y\ge2$ sia $f(y)$ quel (unico) $x$ tale che $y=\displaystyle\frac{x}{\ln x}$. Allora $f(y)\le2y\,\ln y$ per ogni $y\ge2$.
+\end{lemma}
+
+\begin{proof}
+Poich\'e $\displaystyle\frac{x}{\ln x}$ \`e una funzione crescente, la disequazione $f(y)\le2y\ln y$ \`e equivalente a 
+
+\ceq{\hfill \frac{f(y)}{\ln f(y)}}{\le}{\frac{2y\ln y}{\ln(2y\ln y)}}
+
+Per la definizione di $f(y)$ il termine sinistro della disequazione \`e uguale ad $y$. Quindi la disequazione da dimostrare diventa:
+
+\ceq{\hfill y}{\le}{\frac{2y\ln y}{\ln(2y\ln y)}}
+
+Poich\'e $0\le\ln(2\ln y)\le \ln y$ per ogni $y\ge2$, la disuguaglianza \`e immediata da verificare.
+\end{proof}
+
+
+\begin{lemma}
+Supponiamo che $\Delta$ abbia VC-dimensione $k\ge 2$ e che esistano $\epsilon$-approssimazioni finite per $\epsilon$ arbitrariamente piccoli. Allora per ogni $0<\epsilon<2^{-1}$ esiste una $\epsilon$-approssimazione di cardinalit\`a 
+
+\ceq{\natural}{\le}{C\frac{k}{\epsilon^2}\ln\frac{k}{\epsilon}}
+
+dove $C$ \`e una costante assoluta (qui sotto, con approssimazioni un po' generose, otterremo $2^9$).
+\end{lemma}
+
+\begin{proof}
+Sia $B_0$ una $\epsilon/2$-approssimazione di $\Delta$ di cardinalit\`a $n_0$. Costruiremo una catena discendente di $\epsilon$-approssimazioni $B_0\supseteq \dots\supseteq B_h\supseteq \dots$ di insiemi di cardinalit\`a $n_h$ con $n_{h+1}\le n_h/2$, ovvero $n_h\le 2^{-h}n_0$. La costruzione si interrompe quando la cardinalit\`a $B_h$ soddisfa $\natural$. Osserviamo che, per $C=2^9$,  la funzione in $\natural$ non \`e mai minore di $2^{14}$. Quindi potremo tranquillamente assumere che $n_h$ o $2^{-h}n_0$ siano sufficientemente grandi. 
+
+Scriviamo $\delta_i$ per la discrepanza di $B_i$. Per il lemma~\ref{aprossimazionediapprossimazione} possiamo richiedere che $B_h$ sia una $\epsilon$-approssimazione se la seguente disuguaglianza \`e verificata
+
+\ceq{\#\hfill2\sum^h_{i=0}\delta_{i}}{\le}{\frac{\epsilon}{2}}
+
+Per il lemma~\ref{discrepanzarandom} possiamo richiedere
+
+\ceq{\hfill\delta_i}{\le}{\sqrt{\frac{\ln 4 n_i^k}{n_i}}}
+
+\ceq{}{\le}{\sqrt{\frac{2k\ln n_i}{n_i}}}\hfill poich\'e possiamo assumere $n_i\ge 4$
+
+\ceq{}{\le}{\sqrt{\frac{2 k\ln(2^{-i}n_0)}{2^{-i}n_0}}}
+
+Il lettore pu\`o facilmente dimostrare per induzione su $h$ che per $n_0\ge 2^{h+1}$
+
+\ceq{\hfill\sum^h_{i=0}2^i\ln(2^{-i}n_0)}{\le}{2^{h+1}\ln(2^{-h}n_0})
+
+Quindi la disequazione $\#$ \`e soddisfatta se
+
+\ceq{\hfill 2^4\ k\ \frac{\ln(2^{-h}n_0)}{2^{-h}n_0}}{\le}{\epsilon^2}
+
+che riscriviamo come 
+
+\ceq{\hfill2^4\frac{ k}{\epsilon^2}}{\le}{\frac{2^{-h}n_0}{\ln (2^{-h}n_0)}}
+
+per il lemma~\ref{lem_nemesis}, condizione sufficiente per soddisfare questa disuguaglianza \`e che 
+
+\ceq{\hfill 2^5\frac{k}{\epsilon^2} \ln\frac{2^4 k}{\epsilon^2}}{\le}{ 2^{-h}n_0} 
+
+a fortiori
+
+\ceq{\flat\hfill 2^8\frac{k}{\epsilon^2} \ln\frac{k}{\epsilon}}{\le}{ 2^{-h}n_0} 
+
+Sia quindi $h$ il massimo che soddisfa $\flat$, quindi $B_h$ \`e una $\epsilon$-approssimazione e, dal fatto che $h+1$ non soddisfa $\flat$, segue che $2^{-h}n_0$, quindi a fortiori $n_n$,  \`e maggiorato da $\natural$.
+\end{proof}
+

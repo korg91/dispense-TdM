@@ -1,0 +1,529 @@
+\chapter{Alcune strutture relazionali}
+\label{relazionali}
+%\setcounter{page}{1}
+
+\def\ceq#1#2#3{\parbox{20ex}{$\displaystyle #1$}\parbox{4ex}{\hfil$#2$}$\displaystyle #3$}
+
+
+
+%In questo capitolo $x, y,z,\dots$ denotano singole variabili, $a,b,c,\dots$ singoli parametri~--~non tuple 
+
+Due ordini densi numerabili e senza estremi sono isomorfi. Questo \`e un risultato elementare attribuito a Cantor. In questo capitolo esamineremo al microscopio la costruzione di Cantor. Vedremo anche i grafi aleatori, una struttura per certi versi molto simile a quella degli ordini densi.  Dimostreremo che le corrispondenti teorie hanno eliminazione dei quantificatori e sono $\omega\jj$categoriche. Nel capitolo~\ref{eliminazione} torneremo sull'eliminazione dei quantificatori in modo pi\`u concettuale ma \`e utile poter usare questo risultato fin da subito. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gli ordini densi}
+\label{ordinilinearidensi}
+Il linguaggio $L$ degli ordini stretti contenete un solo simbolo di relazione binaria $<$ che useremo con notazione infissa. Una struttura $M$ di segnatura $L$ \`e un \emph{ordine parziale (stretto)} se rende validi i seguenti assiomi (usiamo le usuali abbreviazioni con l'ovvio significato, inoltre, scriviamo delle formule intendendo la loro chiusura universale)
+
+\begin{itemize}
+\item[ir.] $x \not< x$
+\item[tr.] $x< z< y\ \imp\ x< y$
+\end{itemize}
+
+Questi assiomi affermano che  $<$ viene interpretato in una relazione riflessiva e transitiva
+\begin{itemize}
+\item[as.] $x<y\ \imp\ y\not<x$.
+\end{itemize}
+
+Diremo che l'ordine \`e un \emph{lineare\/} o \emph{totale\/} se vale
+
+\begin{itemize}
+\item[ln.] $x< y \vee y< x \vee x=y$
+\end{itemize}
+
+Un ordine lineare si dice \emph{denso\/} se se vale
+
+\begin{itemize}
+\item[nb]  $\E x,y\ (x\neq y)$;
+\item[d] $x<y\ \imp\ \E z\;(x<z<y)$.
+\end{itemize}
+
+Per evitare ordini banali \ssf{nb} richiedere l'esistenza almeno due elementi, poi da \ssf{d} segue che ogni ordine denso ha infiniti elementi.
+
+Se $a<b$ diremo che $a$ \`e un minorante di $b$ e che $b$ \`e un maggiorante di $a$. Un \emph{elemento massimale\/} \`e un elemento senza maggioranti. Un \emph{elemento minimale\/} \`e un elemento senza minoranti. Diremo che un ordine \`e  \emph{senza estremi\/} se non ha n\'e elementi massinali n\'e elementi minimali, ovvero se vale
+
+\begin{itemize}
+\item[se.] $\E y\ (x<y)\ \wedge\ \E y\ (y<x)$
+\end{itemize}
+
+I numeri razionali $\QQ$ con l'ordine usuale sono l'esempio canonico di ordine lineare denso senza estremi. Indiche remo con \emph{$T_{\rm ol}$} la teoria degli ordini lineari, con \emph{$T_{\rm old}$} la teoria degli ordini lineari densi e con \emph{$T_{\rm oldse}$} la teoria degli ordini lineari densi e senza estremi.
+
+% 
+% \begin{lemma}%\label{}
+% Sia $M\models T_{\rm ol}$. Sia $A\subseteq M$ e sia $p(x)=\tp(a/A)$, dove $a$ \`e una tupla finita di elementi di $M$. Allora, se $A$ \`e finito, esiste una formula $\phi(x)\in p(x)$ tale che $T_{\rm ol}\models \phi(x)\iff p(x)$.
+% \end{lemma}
+
+
+%\def\ceq#1#2#3{\hspace*{20ex}\llap{#1}{\parbox{6ex}{\hfil#2}}{\rlap{#3}\hspace{12ex}}}
+%\ceq{}{}{}
+% 
+% \begin{lemma}
+% Per ogni mappa $h:M\imp N$ tra modelli di $T_{\rm ol}$ le seguenti affermazioni sono equivalenti
+% \begin{itemize}
+% \item[a.] $h:M\imp N$ \`e un immersione parziale;
+% \item[b.] $M\ \models\  a<b\ \ \ \IFF\ \ \ N\ \models\  h(a)<h(b)$
+% \end{itemize}
+% \end{lemma}
+% 
+% \begin{proof}
+% \`E sufficiente mostrare che viene preservata la verit\`a di $x\neq y$, poi l'equivalenza segue lemma~\ref{immparfatto}. Questa viene preservata per \ssf{b}, infatti negli ordini lineari \`e equivalente a $x<y\ \vee\ y<x$.
+% \end{proof}
+
+Introduciamo un po' di notazione per aumentare la leggibilit\`a della dimostrazione del prossimo teorema. Se $A$ e $B$ sono sottoinsiemi di un insieme ordinato scriveremo $A<B$ se $a<b$ per ogni $a\in A$ e per ogni $b\in B$. Scriveremo $a<B$ e $A<b$ al posto di $\{a\}<B$ e $A<\{b\}$. Un ordine lineare \`e un modello di $M\models T_{\rm oldse}$ esattamente quando:
+
+\begin{itemize}
+\item[dse.] per ogni coppia di insiemi finiti $A, B\subseteq M$ tali che $A<B$ esiste $c$ tale  $A<c<B$.
+\end{itemize} 
+
+Si osservi che $A<B$ \`e sempre vera quando uno dei due insiemi \`e vuoto, quindi la condizione \textit{senza estremi\/} corrisponde al caso degenere in cui $A$ o $B$ sono vuoti.
+
+Finalmente enunciamo il teorema principale sugli ordini densi senza estremi. Da questo discendono gli altri teoremi di questo paragrafo. 
+
+
+\begin{lemma}\label{lem_ordinericco}
+Siano $M\models T_{\rm ol}$ numerabile, $N\models T_{\rm oldse}$, e $k:M\imp N$ un'immersione parziale finita. Allora esiste un'immersione $h:M\imp N$ che estende $k$.
+\end{lemma}
+
+Vedremo due dimostrazioni di questo semplice teorema. La prima \`e diretta:
+
+\begin{proof}
+Sia $\<a_i:i<\omega\>$ un'enumerazione di $M$. Definiremo per induzione una catena di isomorfismi parziali finiti $h_i:M\imp N$. Al termine della costruzione porremo
+
+\hfil$\displaystyle h\ \ :=\ \ \bigcup_{i\in\omega} h_i$.
+
+Dalla proposizione~\ref{cateneisomorfismiparziali} sappiamo che $h:M\imp N$, in quanto unione di una catena di immersioni parziali, \`e un'immersione parziale. Qui sotto definiremo $h_{i+1}$ in modo che $a_i\in\dom h_{i+1}$, quindi $h$ sar\`a totale. Al passo base dell'induzione definiamo $h_0=k$ in modo da soddisfare la richiesta $k\subseteq h$. Supponiamo di aver definito $h_i$, al passo $i+1$ estendiamo il dominio di definizione di $h_i$ all'elemento $a_i$ come segue.
+
+Come prima cosa controlliamo se $a_i$ appartiene gi\`a al dominio di definizione $h_i$. (Pu\`o succedere che $a_i$ stia nel dominio di definizione di $k$, o che l'enumerazione scelta abbia delle ripetizioni.) In questo caso non serve fare nulla, \`e sufficiente porre $h_{i+1}=h_i$. Nel caso in cui $a_i\notin\dom h_i$ definiamo $h_{i+1}=h_i\cup\{\<a_i,c\>\}$ dove elemento $c$ \`e un elemento di $N$ scelto nel modo che ora mostriamo. Denotiamo con $A$ e $B$ i seguenti insiemi
+
+\hfil$A\displaystyle \ =\ \big\{a\in\dom(h_i)\;:\;a<a_i\big\}$\hfil e\hfil $B\ =\ \big\{b\in\dom(h_i)\;:\;a_i<b\big\}$
+
+e con $h_i[A]$ ed $h_i[B]$ le loro immagini secondo $h_i$. Per la linearit\`a di $M$, e poich\'e $a_i\notin\dom h_i$ questi insiemi formano una partizione di $\dom h_i$. Osserviamo che, $A<B$ e, poich\'e $h_i$ \`e un immersione parziale, anche $h_i[A]<h_i[B]$. Quindi scegliamo come $c$ un qualsiasi elemento $h_i[A]<c<h_i[B]$. Un tale $c$ esiste perch\'e $N$ \`e denso e senza estremi.
+
+Per completare la dimostrazione \`e sufficiente verificare che $h_{i+1}$ \`e un immersione parziale, ovvero preserva l'ordine. Come ipotesi induttiva abbiamo assunto che $h_i$ preservava l'ordine. Sappiamo anche che $h_{i+1}$ coincide con $h_i$ in tutto il suo dominio di definizione tranne che per $a_i$ in cui vale $c$, quindi rimane solo da controllare che per ogni $d\in\dom h_i$ se $d<a_i$ allora $h_i(d)<c$ e se $a_i<d$ allora $c<h_i(d)$. Ma questo \`e chiaro per la scelta di $c$ e perch\'e $A$ e $B$ ricoprono $\dom h_i$.
+\end{proof}
+
+Ora deriviamo dal lemma~\ref{lem_ordinericco} un classico teorema di Cantor: due qualsiasi ordini lineari densi di cardinalit\`a numerabile sono isomorfi. Ne dimostreremo una versione pi\`u generale, il teorema di Cantor si ottiene prendendo per $k:M\imp N$ la mappa vuota che tra strutture relazionali \`e sempre un'immersione parziale (cfr. Corollario~\ref{corollariocaratteristica}). Questa costruzione \`e molto generale e verr\`a riutilizzata in altri contesti \`e un esempio di una tecnica molto versatile che viene chiamata \emph{costruzione andirivieni}, in inglese: \emph{back-and-forth}.
+
+\begin{theorem}\label{zigzagcantor}
+Per ogni $M$ ed $N$ modelli numerabili di $T_{\rm oldse}$ ed ogni mappa finita $k:M\imp N$ le seguenti affermazioni sono equivalenti:
+\begin{itemize} 
+\item[1.] $k:M\imp N$ \`e una immersione parziale; 
+\item[2.] esiste un isomorfismo $g:M\imp N$ che estende $k$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+L'implicazione \ssf{2}$\,\IMP\,$\ssf{1} \`e ovvia. Per dimostrare \ssf{1}$\,\IMP\,$\ssf{2} fissiamo delle enumerazioni di $M$ ed $N$. Diciamo $M=\{a_i\;\;i\in\omega\}$ ed $N=\{b_i\;\;i\in\omega\}$. Definiamo per induzione su $i$ una catena di isomorfismi parziali finiti. Ci cureremo di ottenere che $a_i\in\dom g_{i+1}$ e $b_i\in\range g_{i+1}$ per ogni $i\in\omega$. In questo modo otterremo che
+
+\hfil$\displaystyle g\ \ =\ \ \bigcup_{i\in\omega}g_i$
+
+\`e sia totale che suriettiva. Al passo $0$ poniamo $g_0=k$.
+
+Il passo induttivo $i+1$ si divide in due mezzi passi. Col primo mezzo passo estendiamo a $g_{i+^1\!/_2}$ in modo da ottenere $a_i\in\dom g_{i+^1\!/_2}$ col secondo estendiamo ulteriormente per ottenere $b_i\in\range g_{i+1}$. 
+
+Per il lemma~\ref{lem_ordinericco} esiste un'immersione $h:M\imp N$ che estende $g_i:M\imp N$. Definiamo quindi $g_{i+^1\!/_2}=g_i\cup\{\<a_i,ha_i\>\}$. Ora applichiamo lo stesso lemma alla mappa inversa $\big(g_{i+^1\!/_2})^{-1}:N\to M$ per ottenere un'estensione totale $f:N\to M$. Quindi definiamo $g_{i+1}=g_{i+^1\!/_2}\cup\{\<fb_i,b_i\>\}$.
+\end{proof}
+
+
+
+\begin{comment}
+% \begin{proof}
+% L'implicazione \ssf{2}$\,\IMP\,$\ssf{1}. \`e ovvia. Per dimostrare \ssf{1}$\,\IMP\,$\ssf{2} fissiamo delle enumerazioni di $M$ ed $N$. Diciamo $M=\{a_i\;\;i\in\omega\}$ ed $N=\{b_i\;\;i\in\omega\}$. Definiamo per induzione su $i$ una catena di isomorfismi parziali finiti distinguendo passi pari dai passi dispari. Ci cureremo di ottenere che $a_i\in\dom g_{2i+1}$ e  $b_i\in\range g_{2i+2}$ per ogni $i\in\omega$. In questo modo otterremo che
+% 
+% \hfil$\displaystyle g\ \ =\ \ \bigcup_{i\in\omega}g_i$
+% 
+% \`e sia totale che suriettiva. Al passo $0$ poniamo $g_0=k$. 
+% 
+% Passo $2i+1$. Per il lemma~\ref{lem_ordinericco} esiste un'immersione $h:M\imp N$ che estende $g_{2i}:M\imp N$. Definiamo quindi 
+% 
+% \hfil $g_{2i+1}\ =\ h\restriction (\dom g_{2i}\cup\{a_i\})$.
+% 
+% Passo $2i+2$. Per il lemma~\ref{lem_ordinericco} esiste un'immersione $h:N\imp M$ che estende $g^{-1}_{2i+1}:N\imp M$. Definiamo 
+% 
+% \hfill $g^{-1}_{2i+2}\ =\ h\restriction (\dom g^{-1}_{2i+1}\cup\{b_i\})$.
+% \end{proof}
+\end{comment}
+
+Una teoria si dice \emph{$\omega\jj$categorica\/} se ha un unico modello numerabile a meno di isomorfismi. Il teorema di Cantor (cio\`e il teorema~\ref{zigzagcantor} con $k$ la funzione vuota) dice che la teoria degli ordini lineari densi senza estremi \`e $\omega\jj$categorica. 
+
+\begin{exercise}
+L'assioma di densit\`a \ssf{od} fa uso di due quantificatori. Si dice che ha la forma \emph{$\A\E$}, ovvero \emph{universale-esistenziale}. Esiste un enunciato universale equivalente modulo $T_{\rm ol}$, a questo assioma? Esiste un enunciato esistenziale equivalente a questo assioma? Esiste un enunciato delle forma \emph{$\E\A$}, ovvero \emph{esistenziale-universale}, equivalente a questo assioma?\QED
+\end{exercise}
+
+\begin{exercise}
+Consideriamo $\QQ$ ed $\RR$ come strutture nel linguaggio degli ordini stretti. Mostrare che $\QQ\preceq \RR$. (L'esercizio sar\`a ovvio una volta dimostrato il teorema~\ref{imparzialemappeelementari}. Al momento si pu\`o procedere usando L\"owenheim-Skolem all'ingi\`u, e poi ragionare come nell'esempio~\ref{expl_ordini_elem}.)\QED
+\end{exercise}
+
+\begin{exercise}
+Le seguenti teorie assiomatizzano entrambe la teoria degli ordini lineari \textit{con\/} estremi, ma in un linguaggio diverso. Sia $L$ il linguaggio degli ordini stretti.
+\begin{itemize}
+\item[] $T_1\ \ =\ \ T_{\rm old}\ \cup\  \Big\{\E x\,z\,\A y\,\ \ x\le y\le z\Big\}$, il linguaggio \`e $L$.
+\item[] $T_2\ \ =\ \ T_{\rm old}\ \cup\  \Big\{\A x\ \ 0\le x\le 1\Big\}$, il linguaggio estende $L$ con due costanti $0$ ed $1$.
+\end{itemize} 
+Si dimostri che il lemma~\ref{lem_ordinericco} vale con $T_2$ al posto di $T_{\rm ol}$ e con $T_2\cup\{\ssf{d}\}$ al posto di $T_{\rm oldse}$. Si porti un controesempio per dimostrare che questo non vale per $T_1$.\QED 
+\end{exercise}
+
+\begin{exercise}\label{VaughtEsempio3modelli}
+Sia $L$ il linguaggio degli ordini stretti a cui aggiungiamo le costanti $\{c_i: i\in\omega\}$. Sia $T$ la teoria che, oltre agli assiomi degli ordini lineari densi e senza estremi, contiene per ogni $i\in\omega$ l'enunciato $c_i<c_{i+1}$. Mostrare che esistono tre modelli numerabili di questa teoria tra loro non isomorfi. Questo \`e un esercizio pi\`u difficile degli altri. Si tratta di un famoso esempio di teoria completa con esattamente tre modelli (a meno di isomorfismi). L'esempio~--~dovuto a Robert Vaught~--~compare in un famoso articolo in cui dimostra che nessuna teoria completa pu\`o avere esattamente due modelli numerabili. Vedi~\ref{VaughtThm3modelli}\QED
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Grafi aleatori}
+\label{grafoaleatorio}
+
+Sia $L$ un linguaggio che contiene un'unica relazione binaria $r$. In teoria dei modelli, per \emph{grafo\/} si intende una struttura che interpreta $r$ in una relazione irriflessiva e simmetrica, ovvero una struttura che rende veri i seguenti assiomi
+
+\begin{itemize}
+\item[g1.] $\neg r(x,x)$\hfill irriflessivit\`a
+\item[g2.] $r(x,y)\imp r(y,x)$\hfill simmetria
+\end{itemize}
+
+Gli elementi di un grafo vengono chiamati \emph{vertici\/} o \emph{nodi}. Un \emph{arco\/} di un grafo $M$ \`e una coppia non ordinata $\{a,b\}$ tale che $M\models r(a,b)$. A parole diremo che $a$ \`e \emph{legato\/} a $b$.
+
+Un \emph{grafo aleatorio\/} (in inglese: \emph{random graph}) \`e una struttura che soddisfa i seguenti assiomi (il secondo \`e uno schema di assiomi, cio\`e per ogni intero positivo $n$, un enunciato diverso)
+\begin{itemize}
+\item[nb.] $\E x,y,z\ \ (x\neq y\neq z\neq x)$
+\item[ga.] $\displaystyle\bigwedge^n_{i,j=1} x_i\neq y_j\ \ \imp\ \ \E z \bigwedge^n_{i=1} \big[r(x_i,z) \wedge \neg r(z,y_i)\big]$
+\end{itemize}
+
+La teoria dei grafi aleatori verr\`a denotata con \emph{$T_{\rm rg}$}. La seguente proposizione mostra che si tratta di una teoria consistente.
+
+\begin{proposition}
+Esiste un grafo aleatorio.
+\end{proposition}
+\begin{proof}
+Prendiamo come dominio del grafo aleatorio l'insieme dei numeri naturali e stabiliamo che $r(n,m)$ vale se l'$n\jj$esimo numero primo divide $m$ oppure se, viceversa, (per renderla simmetrica) l'$m\jj$esimo numero primo divide $n$. La verifica dell'assioma \ssf{ga} \`e immediata.
+\end{proof}
+
+Lo schema di assiomi \ssf{ga} gioca il ruolo che negli ordini avevano l'assioma di densit\`a. Dice che dati due insiemi finiti $X$ e $Y$ disgiunti, esiste un nodo $z$ che \`e legato a tutti gli elementi di $X$ e a nessun elemento di $Y$. Osserviamo che $X$ ed $Y$ non debbono necessariamente avere la stessa cardinalit\`a perch\'e \ssf{ga} non richiede $x_i\neq x_j$ n\'e  $y_i\neq y_j$. L'assioma \ssf{nb} dice che il grafo non \`e vuoto, insieme a \ssf{ga} basta per garantire che sia infinito.
+
+\begin{proposition}
+Tutti i grafi aleatori sono infiniti.
+\end{proposition}
+\begin{proof}
+I grafi aleatori hanno almeno tre elementi. Quindi possiamo scegliere due elementi distinti $a,b\in M$ e porre $Y=\{a,b\}$ e $X=M\sm Y\neq \0$.  Per \ssf{ga}, esiste $z$ legato a tutti gli elementi di $X$ e a nessun elemento di $Y$. Per l'irriflessivit\`a, $z\in\{a,b\}$, diciamo $z=a$. Sempre per \ssf{ga}, esiste $w$ legato a $b$ e a nessun elemento di $X\cup\{a\}$. Per l'irriflessivit\`a $w\in X\cup\{a\}$. Ma tutti gli elementi di $X\cup\{a\}$ sono legati a qualche elemento in $X\cup\{a\}$: infatti per costruzione $a$ \`e legato a tutti gli elementi di $X$. Contraddizione.
+\end{proof}
+
+Gli assiomi in \ssf{ga} non richiedono $z\notin X\cup Y$. Comunque per l'irriflessivit\`a $z\notin X$ e aggiungendo la richiesta $z\notin Y$ non otteniamo una teoria pi\`u forte. 
+
+\begin{exercise}\label{assioma_ga_esteso}
+In ogni grafo aleatorio valgono per ogni $n$ i seguenti enunciati
+
+\hfill$\displaystyle\bigwedge^n_{i,j=1} x_i\neq y_j\ \ \imp\ \ \E z \bigwedge^n_{i=1} \big[r(x_i,z) \wedge \neg r(z,y_i)\wedge y_i\neq z\big]$.\QED
+\end{exercise}
+
+\`E immediato che le immersioni parziali $h:M\imp N$ tra due grafi sono mappe iniettive tali che per ogni coppia di elementi $a,b\in\dom h$:
+
+\hfil $M\ \models\  r(a,b)\ \ \ \IFF\ \ \ N\ \models\  r(h(a),h(b))$
+
+Il seguente teorema asserisce per i grafi aleatori quello che il lemma~\ref{lem_ordinericco} asseriva per gli ordini lineari densi cio\`e che questi sono ricchi relativamente alla classe dei grafi numerabili.
+
+\begin{lemma}\label{lem_graforicco}
+Sia $M$ un grafo di cardinalit\`a numerabile, $N$ un grafo aleatorio, e $k:M\imp N$ un'immersione parziale finita. Allora esiste un'immersione $h:M\imp N$ che estende $k$.
+\end{lemma}
+\begin{proof} Riprendiamo lo schema della dimostrazione per gli ordini lineari, con la stessa notazione. \`E sufficiente mostrare come trovare in $N$ un elemento $c$ che rende $h_{i+1}:=h_i\cup\{(a_i,c)\}$ un'immersione parziale. Poniamo\medskip
+
+\hfil$A=\big\{a\in\dom h_i\ :\ M\models r(a,a_i)\big\}\ \ \ \textrm{e}\ \ \ B=\big\{b\in\dom h_i\ :\  M\models \neg r(b,a_i)\big\}$.\medskip
+
+Questi insiemi sono finiti e disgiunti quindi, per l'assioma {\sf ga}, possiamo scegliere $c$ tale che\medskip
+
+\hfil$\displaystyle\bigwedge_{a\in A}r(h_i(a),c)\ \ \wedge\ \bigwedge_{b\in B}\neg r(h_i(b),c)$.
+
+\`E immediato verificare che $h_{i+1}:M\imp N$ \`e un'immersione parziale.
+\end{proof}
+
+Quindi otteniamo anche il seguente corollario, corrispondente al corollario~\ref{zigzagcantor}. Nel caso $k=\0$ il corollario dice che la teoria dei grafi aleatori \`e $\omega\jj$categorica.
+
+\begin{corollary}\label{gaomegacat}
+Per ogni $M$ ed $N$ modelli numerabili di $T_{\rm rg}$ ed ogni mappa finita $k:M\imp N$ le seguenti affermazioni sono equivalenti:
+\begin{itemize} 
+\item[1.] $k:M\imp N$ \`e una immersione parziale; 
+\item[2.] esiste un isomorfismo $g:M\imp N$ che estende $k$.
+\end{itemize}
+\end{corollary}
+\begin{proof}
+Segue dal lemma~\ref{lem_graforicco} con letteralmente la stessa dimostrazione del teorema~\ref{zigzagcantor}.
+\end{proof}
+
+\begin{exercise}
+Sia $N$ un grafo aleatorio e sia $M\subseteq N$ con $N\sm M$ finito. \`E vero che anche $M$ \`e un grafo aleatorio?\QED% Suggerimento: si dimostri che in un grafo aleatorio, dati $\{x_1,\dots,x_n\}$ e $\{y_1,\dots,y_n\}$, esistono infiniti $z$ che testimoniano la validit\`a di \ssf{ga}.
+\end{exercise}
+
+\begin{exercise}
+Sia $N$ un grafo aleatorio si dimostri che per ogni elemento $b\in N$ l'insieme $r(b,N)$ \`e un grafo aleatorio.\QED
+\end{exercise}
+
+\begin{exercise}\label{unionedisgiunta1}
+Sia $N$ un grafo che \`e unione libera di due grafi aleatori numerabili. Cio\`e $N$ ha come dominio l'unione disgiunta dei domini di due grafi aleatori $N_1$ ed $N_2$ e come relazione l'unione di $r^{N_1}$ ed $r^{N_2}$. Mostrare che questo \`e un grafo universale non aleatorio. Si esibisca una mappa finita $k:N\to N$ che non si estende ad un automorfismo.\QED
+\end{exercise}
+
+\begin{exercise}\label{unionedisgiunta2}
+Sia $\K$ la classe delle strutture che sono unione libera di due grafi aleatori (vedi esercizio~\ref{unionedisgiunta1}). Si dimostri che $\K$ \`e una classe elementare, ovvero che esiste una teoria $T$ tale che $\K=\Mod(T)$. Suggerimento: si usi che per ogni due elementi di grafo aleatorio esiste un terzo a cui entrambi sono collegati (si usa dire: la distanza tra due vertici di un grafo aleatorio \`e $\le 2$). Si dimostri che $T$ \`e $\omega\jj$categorica.\QED
+\end{exercise}
+
+
+\begin{exercise}\label{ex_grafo_aleatorio_no_finiti_definibili} Dati $A\subseteq N\models T_{\rm rg}$ si dimostri che ogni formula $\phi(x)\in L(A)$ se ha una soluzione in $N\sm A$ allora ha infinite soluzioni.\QED
+\end{exercise}
+
+
+\begin{exercise}\label{N1N2}
+Siano $N_1$ ed $N_2$ due grafi aleatori numerabili. Sia $N$ un grafo che ha per dominio l'unione disgiunta di $N_1$ ed $N_2$ e come archi quelli di $N_1$ pi\`u quelli di $N_2$ pi\`u quelli che congiungono tutti i vertici di $N_1$ con tutti i vertici di $N_2$. Si dimostri concisamente che $N$ non \`e un grafo aleatorio. Esiste un immersione di $N$ in un grafo aleatorio? Mostrare che l'insieme $N_1$ \`e definibile con parametri in $N$ ma non \`e definibile senza parametri.\QED %Suggerimento: \`e simile all'esercizio~\ref{unionedisgiunta} per quanto visto all'esercizio~\ref{grafocomplementare}.
+\end{exercise}
+
+%$\E x,y\; \Big[ r(x,b)\wedge r(y,b)\wedge \neg\E z\,\big[z\neq b\wedge r(x,z)\wedge r(x,z)\big]\Big]$
+
+\begin{exercise}
+Siano $N_1$ ed $N_2$ due grafi aleatori numerabili e sia $c\in N_2$. Sia $N$ un grafo che ha per dominio l'unione disgiunta di $N_1$ ed $N_2$ e come archi quelli di $N_1$ pi\`u quelli di $N_2$ pi\`u quelli che congiungono tutti i vertici di $N_1$ con $c$. Si dimostri concisamente che $N$ non \`e un grafo aleatorio. \`E l'insieme $N_1$ definibile con una formula pura? Si dimostri che due qualsiasi di questi grafi sono tra loro isomorfi.\QED
+\end{exercise}
+
+
+\begin{exercise}
+Sia $T$ la teoria definita nell'esercizio~\ref{unionedisgiunta2} e sia $N\models T$. Si dimostri che per ogni grafo numerabile $M$, ogni mappa finita $k:M\to N$ che preserva la verit\`a delle formule esistenziali ha un'estensione ad una mappa totale $h:M\to N$ che preserva la verit\`a le formule esistenziali.\QED
+\end{exercise}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%immersione
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Equivalenze mutualmente indipendenti}
+% 
+% La segnatura $L_{\rm re}$ contiene solo relazioni binarie. Non fisseremo la cardinalit\`a di $L_{\rm re}$, che pu\`o essere arbitaria. La teoria che denomineremo con $T_{\rm re}$ contienme per ogni $r\in L$ gli assiomi che affermano
+% 
+% \begin{itemize}
+% \item[re.] $r(x,y)$ definisce una relazione di equivalenza.
+% \end{itemize}
+% 
+% La teoria delle equivalenze mutualmente indipendenti $T_{\rm rei}$ contiene anche, per ogni $n, m$ ed ogni scelta delle relazioni $r_1,\dots,r_n, s_1,\dots,s_m\in L$ gli assiomi
+% % 
+% % \begin{itemize}
+% % \item[i.] $\displaystyle\neg \A z\ \bigg[\bigwedge^n_{i=1}s_i(x_0,z)\; \iff\; \bigvee^n_{i=1} r_i(x_i,z)\bigg]$
+% % \end{itemize}
+% %Questo schema dice che la nessuna classe della relazione di equivalenza e $s_1\wedge\dots\wedge s_m$ \`e unione di classi delle relazioni $r_1,\dots,r_n$. 
+% 
+% 
+% \begin{itemize}
+% \item[i.] $\displaystyle  \bigwedge^n_{i=1}\neg r_i(x_0,x_i)\ \imp\ \E z\ \bigg[\bigwedge^n_{i=1}r_i(x_0,z)\; \wedge\; \bigwedge^n_{i=1} \neg s_i(x_i,z)\bigg]$
+% \end{itemize}
+
+
+
+
+\section{Strutture omogenee-universali}\label{omogenee-universali}
+
+La seguente definizione generalizza gli esempi esposti nei paragrafi precedenti.
+
+\begin{definition}
+Sia $\M$ una classe di strutture e $\lambda$ un cardinale infinito. Diremo che una struttura $N\in\M$ \`e \emph{$\lambda\jj$ricca\/} per $\M$ se per ogni $M\in\M$ di cardinalit\`a $\le\lambda$ ed ogni immersione parziale finita $k:M\imp N$ di cardinalit\`a $<\lambda$ esiste un'immersione $h:M\imp N$ che estende $k$. Quando $\M$ \`e la classe dei modelli di una qualche teoria $T$, diremo che $N$ \`e un modello ricco \emph{di\/} $T$.
+
+Diremo che $N$ \`e una struttura \emph{ricca\/} tout court  se \`e $\lambda\jj$ricca con $\lambda=|N|$. Le strutture ricche sono anche chiamate strutture \emph{omogenee-universali\/} per la ragione che vedremo tra breve.\QED
+\end{definition}
+
+Il lemma~\ref{lem_ordinericco} mostra che ogni $N\models T_{\rm oldse}$ \`e un modello $\omega\jj$ricco della teoria degli ordini lineari. Il lemma~\ref{lem_graforicco} mostra l'analogo per i grafi aleatori e la teoria dei grafi. (E vale anche una sorta di viceversa, cfr.\@ esercizio~\ref{ex_poijnmkiuyg}.) Pi\`u avanti descriveremo i modelli ricchi della teoria dei domini di integrit\`a, e di varie altre teorie.
+
+\begin{exercise}\label{ex_poijnmkiuyg}
+Si dimostri che le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N\models T_{\rm oldse}$;
+\item[2.] $N$ \`e un modello ricco di $T_{\rm ol}$.
+\end{itemize}
+Si dimostri una proposizione analoga per $T_{\rm rg}$ e $T_{\rm grf}$.\QED
+\end{exercise}
+
+
+
+Possiamo riformulare il teorema~\ref{zigzagcantor} nel seguente modo.
+
+\begin{theorem}\label{riccozigzag}
+Sia $\M$ una classe di strutture e siano $M, N\in\M$ due modelli ricchi della stessa cardinalit\`a $\lambda$. Allora ogni immersione parziale $k:M\imp N$ di cardinalit\`a $<\lambda$ si estende ad un isomorfismo. In particolare se $M$ ed $N$ hanno la stessa caratteristica sono isomorfi.
+\end{theorem}
+
+\begin{proof}
+Come osservato, la dimostrazione teorema~\ref{zigzagcantor} dipende solo dal lemma~\ref{lem_ordinericco} e quindi pu\`o essere riportata pari pari al caso generale. Solo, ora $k$ potrebbe non essere finita. Ma \`e sufficiente estendere la costruzione del teorema~\ref{zigzagcantor} ad ordinali infiniti prendendo l'unione ai passi limite. 
+\end{proof}
+
+Il teorema~\ref{riccozigzag} non menziona teorie, infatti la ricchezza non \`e in generale una propriet\`a elementare (cio\`e, invariante per equivalenza elementare). Quando succede, otteniamo un risultato di categoricit\`a. 
+
+\begin{corollary}
+Sia $\M$ una classe di strutture e sia $T$ una teoria. Supponiamo che tutti i modelli di $T$ di cardinalit\`a $\lambda$ siano ricchi ed abbiano la stessa caratteristica. Allora allora $T$ \`e $\lambda\jj$categorica.\QED
+\end{corollary}
+
+La seguente \`e un'altra importante conseguenza dell'assiomatizzabilit\`a dei modelli ricchi.
+
+\begin{lemma}\label{imparzialemappeelementari}
+Sia $\lambda$ un cardinale infinito $\ge|L|$. Sia $\M$ una classe di strutture e sia $T$ una teoria.  Supponiamo che tutti i modelli di $T$ di cardinalit\`a $\lambda$ siano ricchi. Allora le seguenti affermazioni sono equivalenti per ogni $M,N\models T$ ed ogni mappa $k:M\to N$:\nobreak
+\begin{itemize}
+\item[1.] $k:M\to N$ \`e un'immersione parziale;
+\item[2.] $k:M\to N$ \`e una mappa elementare.
+\end{itemize}
+In particolare, se tutti i modelli di $T$ hanno la stessa caratteristica, $T$ \`e completa.
+\end{lemma}
+
+Il risultato vale sotto ipotesi pi\`u deboli, vedi esercizio~\ref{ex_imparzialemappeelementari}.
+
+%\def\tqf{\hspace{-.3ex}\raisebox{-.25ex}{\mbox{\rm\tiny qf}}}
+
+
+\begin{proof}
+La direzione \ssf{2}$\IMP$\ssf{1} \`e ovvia, dimostriamo quindi \ssf{1}$\IMP$\ssf{2}. Come osservato nel lemma~\ref{naturafinitamapel}, possiamo assumere senza perdere di generalit\`a che $k$ sia finita. Consideriamo prima il caso in cui $M$ ed $N$ siano modelli ricchi in $\M$. Esiste quindi un isomorfismo, in particolare una mappa elementare, $g:M\to N$ che estende $k$. Gli isomorfismi sono mappe elementari, quindi anche $k$ \`e elementare.
+
+Per il caso generale ragioniamo come nel lemma~\ref{categorica->completa}. Applichiamo prima il teorema di L\"owenheim-Skolem all'ins\`u per ottenere $M'\succeq M$ ed $N'\succeq N$ entrambi di cardinalit\`a maggiore di $\lambda$. Ora vogliamo $M''$ ed $N''$ di cardinalit\`a $\lambda$ tali che $\dom k\subseteq M''\preceq M'$ ed $\range k\subseteq N''\preceq N'$. L'esistenza di questi modelli segue dal teorema di L\"owenheim-Skolem all'ingi\`u poich\'e abbiamo assunto $k$ finita. Ora, per quanto dimostrato sopra $k:M''\to N''$ \`e elementare. Segue che  $k:M\to N$ \`e elementare.
+
+L'osservazione finale segue immediatamente dal corollario~\ref{corollariocaratteristica}.
+\end{proof}
+
+\begin{exercise}\label{ex_imparzialemappeelementari}
+Si mostri che nel teorema~\ref{imparzialemappeelementari} \`e sufficiente assumere che tutti i modelli di $T$ di cardinalit\`a $\le|L|+\omega$ hanno un estensione elementare ad una struttura ricca di cardinalit\`a $\lambda$. (Cfr.\@ con esercizio~\ref{ricchezza_saturazione_EQ}.)\QED
+\end{exercise}
+
+Quando le immersioni parziali tra modelli di una teoria $T$ coincidono con le mappe elementari, \`e sempre per una ragione molto fondamentale: tutte le formule sono equivalenti a formule senza quantificatori. 
+%
+% Per cominciare verifichiamo che ogni tipo completo \`e equivalente ad un tipo senza quantificatori: se $p(x)$ \`e un tipo completo e $p_{\tqf}(x)$ \`e l'insieme delle formule libere in $p(x)$ allora  
+% 
+% \hfil$\displaystyle T\proves\ p(x)\iff p_{\tqf}(x)$.
+% 
+% Infatti se $N\models p_{\tqf}(b)$, per mostrare che $N\models p(b)$, \`e sufficiente prendere una qualsiasi realizzazione $M\models p(a)$ e considerare l'immersione parziale $h:M\to N$, con $h=\{(a,b)\}$. Se questa \`e elementare, $N\models p(b)$.
+%
+%Trasportare questa osservazione a livello delle formule \`e pi\`u laborioso e richiede l'uso del teorema di compattezza. 
+Fissiamo un po' di terminologia. Diremo che la teoria $T$ \emph{ammette\/} (o \emph{ha\/}) \emph{eliminazione dei quantificatori} se se ogni formula $\psi(x)$ esiste una formula senza quantificatori $\phi(x)$ tale che 
+
+\hfil$\displaystyle T\proves\ \psi(x)\iff\phi(x)$.
+
+L'eliminazione dei quantificatori verr\`a ripresa e trattata in dettaglio nel capitolo~\ref{eliminazione}. Qui citiamo solo senza dimostrazione il seguente risultato (una versione semplificata del corollario~\ref{criterioeq1}). Nel frattempo dell'eliminazione dei quantificatori useremo solo la forma debole stabilita dal lemma~\ref{imparzialemappeelementari}.
+
+
+\begin{theorem}\label{tutteleimmersionisonoelementari=eliminazioneqantificatori}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $T$ ha eliminazione dei quantificatori;
+\item[2.] ogni immersione parziale tra modelli di $T$ \`e una mappa elementare.\QED
+\end{itemize}
+\end{theorem}
+
+In particolare, l'eliminazione dei quantificatori \`e utile per stabilire la completezza delle teorie.
+
+\begin{corollary}\label{elimquanToldseTrg}
+Le teorie  $T_{\rm oldse}$  e $T_{\rm rg}$ sono teorie complete che ammettono eliminazione dei quantificatori.\QED
+\end{corollary}
+
+
+\begin{exercise}\label{ex_R=Mod(Th(R))}
+Sia $\lambda$ un cardinale infinito $\ge|L|$ e sia $T$ una teoria arbitraria. Supponiamo che la seguente classe non sia vuota 
+
+\ceq{\hfill\R}{=}{\big\{M\ :\ M \textrm{ modello }\lambda\textrm{-ricco di }T\big\}}
+
+Si dimostri che se $\R$ \`e una classe elementare, cio\`e $\R=\Mod\big(\Th(R)\big)$, allora $\Th(\R)$ \`e una teoria $\lambda\jj$categorica con eliminazione dei quantificatori.\QED 
+\end{exercise}
+
+\begin{definition}\label{def_omogenea_universale}
+Sia $\M$ una classe di strutture e $\lambda$ un cardinale infinito. Diremo che una struttura $N\in\M$ \`e \emph{$\lambda\jj$universale\/} se per ogni $M\in\M$ di cardinalit\`a $\le\lambda$ esiste un'immersione $h:M\imp N$ che estende $k$. 
+
+Diremo che $N$ \`e \emph{$\lambda\jj$(ultra)omogenea\/} se per ogni immersione parziale finita $k:N\imp N$ di cardinalit\`a $<\lambda$ esiste un automorfismo $h:M\imp N$ che estende $k$. Come per la ricchezza, se $\lambda=|N|$, diremo semplicemente \emph{universale\/} e \emph{omogenea}.
+\end{definition}
+
+Per esempio, il grafo vuoto, o quello completo sono omogenei. A aggiungendo ad un grafo aleatorio un nodo sconnesso da tutti gli altri, otteniamo un grafo universale che per\`o non \`e omogeneo.
+
+
+\begin{theorem}\label{ricco<->universaleomogeneo}
+Sia $\M$ una classe di strutture tutte con la stessa caratteristica. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ \`e ricco;
+\item[2.] $N$ \`e universale ed omogeneo.
+\end{itemize}
+\end{theorem}
+\begin{proof} 
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Per ipotesi la mappa vuota \`e un immersione parziale, quindi l'universalit\`a \`e una caso particolare della ricchezza. L'omogeneit\`a segue dal teorema~\ref{riccozigzag}. Dimostriamo \ssf{2}$\IMP$\ssf{1}. Dobbiamo verificare che ogni immersione parziale finita $k:M\imp N$, con $M$ un grafo numerabile, pu\`o essere estesa ad un immersione. Per l'universalit\`a esiste un'immersione $f:M\imp N$. La mappa $k\circ f^{-1}:N\imp N$ \`e un'immersione parziale finita che, per ultraomogeneit\`a, ha un estensione ad un automorfismo $h:N\imp N$. \`E immediato verificare che $h\circ f:M\imp N$ estende $k$. Questa \`e dunque l'immersione richiesta.
+\end{proof}
+
+Una generalizzazione immediata del concetto di modello ricco si ottiene sostituendo le immersioni parziali con $\Delta\jj$morfismi dove $\Delta$ \`e una insieme di formule. Tipicamente, la classe dei morfismi dovr\`a essere intuita dal contesto. Il teorema~\ref{riccozigzag} si generalizza a $\Delta\jj$morfismi a condizione che $\Delta$ sia chiuso per negazione e contenga la formula $x=y$. Questo assicura che l'inverso di un $\Delta\jj$morfismo sia ancora un $\Delta\jj$morfismo. Chiaramente in questo caso la costruzione ad andirivieni produce sono un $\Delta\jj$morfismo biettivo che, se $\Delta$ non contiene $\pmaL$, potrebbe non essere un isomorfismo.  
+
+Nel capitolo~\ref{saturazione} introdurremo i modelli $\lambda\jj$saturi e mostreremo che, se come morfismi prendiamo le mappe elementari, $N$ \`e un modello $\lambda\jj$saturo se e solo se \`e $\lambda\jj$ricco nella classe dei modelli di $\Th(N)$. In quel capitolo studieremo concetti di universalit\`a e omogeneit\`a relativi alle mappe elementari.
+
+Un'ulteriore generalizzazione si ottiene prendendo come morfismi un insieme di mappe scelte con criteri combinatori. Una tecnica introdotta da Hrushovski negli anni '90 per ottenere strutture con propriet\`a molto sorprendenti (tra queste, il controesempio menzionato nel paragrafo~\ref{tfm}). 
+
+
+\begin{exercise}\label{categorica->completa}
+Sia $\lambda$ un cardinale infinito $\ge|L|$. Ogni teoria $\lambda\jj$categorica senza modelli finiti \`e completa. Mostrare che l'ipotesi $|L|\le\lambda$ \`e necessaria. (Suggerimento: sia $\lambda$ un cardinale infinito. Il linguaggio contiene solo costanti, una per ogni ordinale $<\lambda$. La teoria $T$ dice che esistono infiniti elementi e, o $i=0$ per ogni $i<\lambda$, o $i\neq j$ per ogni $i<j<\lambda$.)\QED
+% \begin{proof}
+% Dati $M$ ed $N$ modelli di $T$, vogliamo dimostrare che $M\equiv N$. Per il teorema di L\"owenheim-Skolem all'ins\`u  esistono due modelli $M'\succeq M$ ed $N'\succeq N$ di cardinalit\`a maggiore di $\lambda$. Per L\"owenheim-Skolem all'ingi\`u esistono due modelli $M''\preceq M'$ ed $N''\preceq N'$ di cardinalit\`a $\lambda$. Per $\lambda\jj$categoricit\`a $M''$ ed $N''$ sono isomorfi, in particolare $M''\equiv N''$. Quindi $M\equiv N$. 
+% \end{proof}
+\end{exercise}
+
+\begin{exercise}
+Si dimostri che le teorie $T_{\rm oldse}$  e $T_{\rm rg}$ non sono $\lambda\jj$categoriche per nessun cardinale $\lambda$ non numerabile. Suggerimento: la prima affermazione \`e semplice, per la seconda si dimostri l'esistenza di un un grafo aleatorio $N$ di cardinalit\`a $\lambda$ con solo nodi da cui escono $\lambda$ archi e lo si confronti con il grafo complementare (quello che ha un arco esattamente dove $N$ non ce l'ha).\QED
+\end{exercise}
+
+\section{Un esercizio risolto}\label{eserciziorisolto}
+
+Nel prossimo capitolo incontreremo modelli $\omega\jj$ricchi di teorie non $\omega\jj$categoriche. \`E utile vedere prima un esempio in un contesto pi\`u semplice.
+
+Per $\alpha\le\omega$ il linguaggio $L_\alpha$ estende quello degli ordini stretti con i predicati unari $r_i$ per $i<\alpha$. La teoria  $T_\alpha$ afferma che $<$ definisce un ordine lineare e che $\neg \big[r_i(x)\wedge r_j(x)\big]$ per ogni $i<j<\alpha$. Denotiamo con 
+
+\ceq{\hfill\R_\alpha}{=}{\big\{M\ :\ M \textrm{ modello }\omega\textrm{-ricco di }T_\alpha\big\}}
+
+Vogliamo assiomatizzare la teoria $\Th(\R_\alpha)$. Il caso $\alpha<\omega$ \`e semplice perch\'e $\R_\alpha$ \`e elementare e non differisce da quanto visto nei paragrafi~\ref{ordinilinearidensi} e~\ref{grafoaleatorio}.
+
+\begin{proposition}\label{prop_ex_R_n}
+Dato $\alpha<\omega$, sia $R_\alpha$ la teoria che  estende $T_\alpha$ con l'assioma che dice che l'ordine non ha estremi e le seguenti varianti dell'assioma di densit\`a:
+\begin{itemize}
+\item[d$_i$] $x<y\ \imp\ \E z\,[\,x<z<y\ \wedge\ r_iz]$ \ \ \ \ per ogni $i<\alpha$;
+\item[d$_\alpha$] $\displaystyle x<y\ \imp\ \E z\,\Big[ x<z<y\ \wedge\ \bigwedge_{i<\alpha} \neg r_iz\Big]$.
+\end{itemize}
+Allora $\R_\alpha=\Mod(R_\alpha)$ e quindi $R_\alpha$ \`e una teoria $\omega\jj$categorica che ammette eliminazione dei quantificatori.
+\end{proposition}
+
+
+\begin{proof}
+Per verificare la coerenza di $R_\alpha$ si consideri $\QQ$, con l'ordine naturale e come $r_i$ si prenda l'insieme dei razionali della forma: 
+
+\hfil $n+\dfrac{m}{p_i^k}$\hfil dove $n\in\ZZ$ ed $m,k\in\NN$ tali che $0<m<p^k_i$,
+
+dove con $p_i$ denotiamo l'$i\jj$esimo numero primo. 
+
+La dimostrazione del lemma~\ref{lem_ordinericco} pu\`o essere facilmente adattata per dimostrare che tutti i modelli di $R_\alpha$ sono $\omega\jj$ricchi e quindi che $\R_\alpha=\Mod(R_\alpha)$. Segue quindi anche che $R_\alpha$ \`e $\omega\jj$categorica e per il lemma~\ref{imparzialemappeelementari} ha eliminazione dei quantificatori.
+\end{proof}
+
+Invece $\R_\omega$ non  \`e una classe elementare, mostriamo come assiomatizzare $\Th(\R_\omega)$. 
+
+\begin{proposition}\label{prop_ex_R_omega}
+Sia $R_\omega$ la teoria che  estende $T_\omega$ con l'assioma che dice che l'ordine non ha estremi e gli assiomi \ssf{d$_i$} della proposizione~\ref{prop_ex_R_n} per ogni $i<\omega$. Allora $\ccl(R_\omega)=\Th(\R_\omega)$. Inoltre $R_\omega$ ammette eliminazione dei quantificatori.
+\end{proposition}
+
+\begin{proof}
+La consistenza di $R_\omega$ segue per compattezza dalla consistenza di $R_\alpha$ per ogni $\alpha<\omega$. Ora, posto $p(x) = \{\neg r_ix\ :\ i<\omega\}$, il lettore pu\`o facilmente verificare che un modello di $R_\omega$ \`e ricco se e solo se realizza tutti i tipi  (per tutte le possibili coppie di parametri $a,b$) della forma
+
+\begin{itemize}
+\item[d$_\omega$] $\displaystyle a<b\ \imp\ \big[ a<x<b\ \wedge\ p(x)\big]$.
+\end{itemize}
+
+Per concludere che $\ccl(R_\omega)=\Th(\R_\omega)$ \`e sufficiente verificare che ogni modello numerabile di $R_\omega$ ha un'estensione elementare ad un modello che realizza tutti i tipi della forma \ssf{d$_\omega$}. Lasciamo al lettore anche questa verifica. Il modello richiesto pu\`o essere costruito con una catena elementare di lunghezza $\omega$ in cui $M_{i+1}$ realizza tutti i tipi della forma \ssf{d$_\omega$} con $a,b\in M_i$. L'unione della catena \`e il modello richiesto. 
+
+Per dimostrare l'eliminazione dei quantificatori serve applicare il lemma~\ref{imparzialemappeelementari} ma indebolendo le ipotesi come osservato nell'esercizio~\ref{ex_imparzialemappeelementari}. Infatti, come notato sopra ogni modello numerabile di $R_\omega$ ha un estensione ad un modello numerabile ricco.
+\end{proof}
+
+
+
+
+
+
+\begin{exercise}\label{ex_infiniti_colori_1}
+Per $T$ una delle teorie elencate qui sotto, denotiamo con 
+
+\ceq{\hfill\R}{=}{\big\{M\ :\ M \textrm{ modello }\omega\textrm{-ricco di }T\big\}}
+
+si assiomatizzi $\Th(\R)$ e si dica se \`e $\omega\jj$categorica e se ammette eliminazione dei quantificatori. Nel caso $\R$ non sia una classe elementare, si indichi cosa contraddistingue i modelli ricchi di $\Th(\R)$ dai modelli non ricchi.
+
+
+\begin{itemize}
+\item[1.] Il linguaggio consiste di due simboli di relazione binaria $<$ ed $r$. La teoria $T$ afferma che $<$ definisce un ordine lineare ed $r$ una relazione di equivalenza.
+\item[3.] Il linguaggio consiste dei predicati unari $r_i$ per $i<\alpha$.  La teoria $T$ \`e vuota.  Si distinguano due casi: $\alpha<\omega$ e $\alpha=\omega$.\QED
+\end{itemize}
+\end{exercise}

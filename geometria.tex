@@ -1,0 +1,537 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\chapter{Geometria e dimensione}\label{geometria}% OMITTING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setcounter{page}{1}
+
+%Per tutto questo capitolo, tranne il primpo paragrafo, assumeremo la notazione e le ipotesi esposte nella nota~\ref{notazionemostro} del capitolo~\ref{saturazione}. Dal terzo paragrafo assumeremo che $T$ sia fortemente minimale.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Le teorie fortemente minimali\label{tfm}}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+In qualsiasi struttura gli insiemi finiti e cofiniti (cio\`e complemento di un insieme finito) sono sempre definibili con parametri nella struttura. Una struttura infinita $M$ si dice \emph{minimale\/} se tutti i suoi sottoinsiemi di ariet\`a uno, definibili con parametri in $M$, sono finiti o cofiniti. Questa richiesta viene fatta solo per gli insiemi di ariet\`a uno: gi\`a gli insiemi definibili di ariet\`a due potrebbero essere molto complessi. %
+
+La nozione di struttura minimale non \`e elementare: se $M$ \`e minimale e $N\equiv M$ non \`e detto che $N$ sia anche minimale. Per questo introduciamo il seguente concetto. Diremo che $M$ \`e una \emph{struttura fortemente minimale\/} se \`e minimale e ogni sua estensione elementare \`e anche minimale. Vogliamo mostrare che si tratta di una nozione del prim'ordine. Per fare questo introduciamo la versione sintattica della nozione di struttura fortemente minimale. Una teoria $T$ senza modelli finiti si dice \emph{fortemente minimale\/} se per ogni formula $\phi(x,z)$, dove $x$ \`e una singola variabile esiste un $n\in\omega$ tale che
+
+\hfil$T\ \ \proves\ \ \A z\ \Big[\E^{\le n}x\;\phi(x,z)\ \vee\ \E^{\le n}x\;\neg\phi(x,z)\Big]$.
+
+
+\begin{theorem}\label{fmequivalenzadefinizioni}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $M$ \`e una struttura fortemente minimale;
+\item[2.] esiste un modello $\omega$-saturo $N\equiv M$ minimale;
+\item[3.] $\Th(M)$ \`e una teoria fortemente minimale.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Le implicazioni \ssf{3}$\IMP$\ssf{1}$\IMP$\ssf{2} sono immediate. Per dimostrare \ssf{2}$\IMP$\ssf{3}, fissiamo una formula $\phi(x,z)$ ed un modello $\omega$-saturo $N\succeq M$. Consideriamo il tipo 
+
+\hfil$p(z)\ \ =\ \ \Big\{ \E^{> n}x\;\phi(x,z)\ \wedge\ \E^{> n}x\;\neg\phi(x,z) \ \ :\ \ n\in\omega\Big\}$.
+
+Poich\'e $N$ \`e minimale, $N\notmodels \E z\,p(z)$ non \`e finitamente consistente in $N$. Quindi non lo \`e nemmeno in $M$. Ovvero esiste un $n$ tale che
+
+\hfil$M\ \ \models\ \  \A z\ \Big[\E^{\le n}x\;\phi(x,z)\ \vee\ \E^{\le n}x\;\neg\phi(x,z)\Big]$.
+
+Quindi $\Th(M)$ \`e fortemente minimale.
+\end{proof}
+
+\begin{theorem}\label{esempism}
+Le seguenti teorie sono fortemente minimali:
+\begin{itemize}
+\item[1.] la teoria degli insiemi infiniti (nel linguaggio vuoto);
+\item[2.] la teoria degli spazi vettoriali su un campo fissato;
+\item[3.] la teoria dei campi algebricamente chiusi di caratteristica arbitraria (ma fissata).
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Vediamo solo \ssf{3}. Gli altri casi sono simili. Poich\'e la teoria  $T^p_{\rm acf}$ ha eliminazione dei quantificatori, a meno di equivalenza le formule a parametri in $A$ sono combinazione booleana di equazioni del tipo $t(x)=0$ dove $t(x)$ \`e un polinomio coefficienti nell'anello generato da $A$. Quando $x$ \`e una singola variabile l'equazione $t(x)=0$ ha un numero finito di soluzioni. Combinazioni booleane di insiemi finiti producono insiemi finiti o cofiniti.  
+\end{proof}
+
+Non \`e banale costruire esempi essenzialmente diversi da questi. Per molti anni una famosa congettura, la congettura di Zilber, ne escludeva l'esistenza. Un controesempio (profondo e innovativo) \`e stato trovato da Hrushovski negli anni ottanta.
+
+
+\begin{exercise}
+%Una modello si dice \emph{minimale\/} se tutti i suoi sottoinsiemi di ariet\`a uno, definibili con parametri in $M$, sono finiti o co-finiti (cio\`e complemento di un insieme finito). 
+Fissiamo un'arbitraria teoria completa $T$ senza modelli finiti. E sia $N$ un modello $\omega$-saturo di $T$.  Dimostrare che le seguenti affermazioni sono equivalenti.
+\begin{itemize}
+\item[1.] $M$ \`e minimale;
+\item[2.] $a\equiv_M b$ per ogni coppia di elementi $a,b\in N\sm M$.\QED
+\end{itemize}
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{La chiusura algebrica}\label{acl}
+
+Fissiamo una arbitraria teoria completa $T$ con un modello infinito e assumiamo la notazione presentata nel paragrafo~\ref{mostro}.
+
+Sia $\phi(x)$ una formula (quindi con parametri arbitrari in $\U$). Diremo che $\phi(x)$ \`e una \emph{formula algebrica\/} se ha un numero finito di soluzioni, cio\`e se vale $\E^{\le n}x\,\phi(x)$ per un qualche $n\in\omega$. Un \emph{tipo algebrico\/} \`e un tipo con un numero finito di soluzioni. 
+
+\begin{proposition}\label{tipialgebrici}
+Per ogni tipo $p(x)$, con $x$ di lunghezza finita, le seguenti affermazioni sono equivalenti.
+\begin{itemize} 
+\item[1] $p(x)$ \`e algebrico;
+\item[2] esiste formula algebrica $\phi(x)$ che \`e congiunzione di formule in $p(x)$.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Dimostriamo la direzione non banale \ssf{1}$\IMP$\ssf{2}. Supponiamo che $p(x)$ sia algebrico, diciamo non ha pi\`u di $n$ soluzioni. Allora seguente tipo \`e incoerente
+
+\hfil$\displaystyle   \bigcup_{j<i<n}\big[p(x_i)\cup\{x_i\neq x_j\}\big]$
+
+dove le $x_i$ sono tuple di variabili distinte della lunghezza di $x$. Quindi esiste una formula $\phi(x)$, congiunzione di formule in $p(x)$, tale che
+
+\hfil$\displaystyle\phi(x_0)\ \wedge\ \dots\ \wedge\ \phi(x_n)\ \wedge\bigwedge_{j<i\le n}x_i\neq x_j$.
+
+\`e incoerente. Ma questo dice che $\phi(x)$ ha al pi\`u $n$ soluzioni.
+\end{proof}
+
+Sia $a$ un elemento e sia $A$ un insieme di parametri. Diremo che $a$ \`e un \emph{elemento algebrico su $A$\/} se \`e soluzione di una qualche formula algebrica con parametri in $A$. Equivalentemente, se $\tp(a/A)$ \`e un tipo algebrico. L'insieme degli elementi algebrici su $A$ \`e detto \emph{chiusura algebrica\/} di $A$ e si denota con \emph{${\rm\bf acl} A$}. Un insieme $A$ si dice \emph{algebricamente chiuso\/} se $A=\acl A$. Tutti i modelli sono algebricamente chiusi (dovrebbe essere immediato, altrimenti si veda il teorema~\ref{fmgalois}) e gli insiemi algebricamente chiusi sono delle sottostrutture (perch\'e la formula $t(a)=x$ \`e algebrica).
+
+La definizione di chiusura algebrica non richiede che $A$ abbia cardinalit\`a piccola ed occasionalmente potremo scrivere $\acl(\Aa)$ per un qualsiasi $\Aa\subseteq\U$. Comunque i seguenti teoremi richiedono che $A$ sia un insieme piccolo.
+
+Dalla dimostrazione del teorema~\ref{esempism} \`e chiaro che nei campi algebraicamente chiusi la chiusura algebrica di $A$ coincide con l'insieme delle soluzioni di equazioni polinomiali in una variabile a coefficienti nell'anello generato da $A$, quindi con l'usuale nozione di chiusura algebrica che si incontra in algebra. Per la teoria degli spazi vettoriali su un campo $K$ la chiusura algebrica coincide con il sottospazio vettoriale generato dal campo di scalari $K$. Per le teorie $T_{\rm oldse}$ e $T_{\rm rg}$ la chiusura algebrica di $A$ \`e semplicemente $A$.
+
+Diremo che $a$ \`e una \emph{tupla algebrica su $A$\/} se tutti i suoi elementi sono algebrici su $A$.
+
+\begin{lemma}
+Ogni una tupla finita algebrica su $A$ \`e soluzione di una formula algebrica su $A$.
+\end{lemma}
+\begin{proof}
+Sia $a_0,\dots,a_{n-1}$ una tupla algebrica su $A$. Fissiamo per ogni $i<n$ una formula $\phi_i(x_i)$ algebrica su $A$, diciamo con al pi\`u $n_i$ soluzioni. Allora
+
+\hfill $\displaystyle\bigwedge_{i<n}\phi_i(x_i)$\hfill ha al pi\`u \ \  $\displaystyle\prod_{i<n}n_i$\ \ soluzioni.
+\end{proof}
+
+Il seguente teorema da un'importante caratterizzazione semantica della nozione di algebricit\`a.
+
+%%%%%%%%
+\begin{theorem}\label{fmgalois}
+Sia $A$ un insieme di parametri e sia $a$ un elemento. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1] $a$ \`e algebrico su $A$;
+\item[2] $\orbit(a/A)$ \`e un insieme finito;
+\item[3] $a$ appartiene ad ogni modello che contiene $A$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof} 
+L'equivalenza \ssf{1}$\,\IFF\,$\ssf{2} \`e ovvia per la proposizione~\ref{tipialgebrici} se si ricorda che $p(\U)=\orbit(a/A)$ dove $p(x)=\tp(a/A)$. Dimostriamo \ssf{1}$\,\IMP\,$\ssf{3}. Supponiamo che $a$ sia algebrico su $A$. Sia $\phi(x)$ una formula a parametri in $A$ tale che $\phi(a)\wedge\E^{= n}x\,\phi(x)$ per un qualche $n$. Se $M$ contiene $A$ allora $\E^{=n}x\,\phi(x)$ vale anche in $M$. Per elementarit\`a, se $c$ \`e una soluzione di $\phi(x)$ in $\U$ lo \`e anche in $M$ e quindi $\phi(x)$ ha le stesse soluzioni in $M$ ed in $\U$. Quindi $a\in M$.
+
+Dimostriamo $\neg$\ssf{2}$\,{\IMP}\neg$\ssf{3}. Supponiamo che $\orbit(a/A)$ sia infinita quindi, per il teorema~\ref{cadinalitafinitasaturazione}, ha la stessa cardinalit\`a di $\U$. Vogliamo trovare un modello che contenga $A$ ma non contenga $a$. Fissiamo un arbitrario modello $M$ che contiene $A$. Per questioni di cardinalit\`a, $\orbit(a/A)\nsubseteq M$, e quindi esiste un automorfismo $f\in\Aut(\U/A)$ tale che $fa\notin M$. Allora $a\notin f^{-1}[M]$ e quindi $f^{-1}[M]$ \`e il modello richiesto.
+\end{proof}
+
+Riassumiamo alcune delle propriet\`a dell'operatore di chiusura algebrica. I punti \ssf{1}-\ssf{4} dicono che un operatore di chiusura di carattere finito. L'affermazione in \ssf{1} \`e ovvia, le altre seguono immediatamente dalla \ssf{5} che \`e una riformulazione dell'equivalenza \ssf{1}$\,\IFF\,$\ssf{3} del teorema~\ref{fmgalois}.
+
+\begin{corollary}\label{fmacl123} Sia $A$ un arbitrario insieme di elementi reali.
+\begin{itemize}
+\item[1]  Se $a\in\acl A$ allora $a\in\acl B$ per un qualche $B\subseteq A$ finito;\hfill\emph{carattere finito}
+\item[2]  $A\subseteq \acl A$;
+\item[3]  $\acl A=\acl(\acl A)$;\hfill\emph{transistivit\`a}
+\item[4]  se $A\subseteq B$ allora $\acl A\subseteq \acl B$;\hfill\emph{monotonicit\`a}
+\item[5]  $\displaystyle\acl A=\bigcap_{A\subseteq M}M$.\QED
+\end{itemize} 
+\end{corollary}
+
+Il seguente lemma \`e reminiscente della proposizione~\ref{caratterizzazioneisomorfismiparziali} dimostrata per le immersioni parziali. La differenza principale \`e che ora l'estensione non \`e unica.
+
+\begin{lemma}\label{estensionemappechiusuraalgebrica}
+Se $h\in\Aut(\U)$ allora $h[\acl(A)]=\acl(h[A])$ per ogni $A\subseteq\U$. 
+\end{lemma}
+
+\begin{proof}
+Per verificare l'inclusione $\subseteq$, fissiamo $c\in\acl(A)$ e mostriamo che $hc\in\acl(h[A])$. Sia $\phi(a,x)$, con $a$ una tupla in $A$, una formula algebrica soddisfatta da $c$.  Per elementarit\`a $\phi(ha,x)$ \`e una formula algebrica su $h[A]$ soddisfatta da $hc$. Quindi $hc\in\acl(h[A])$. Per l'inclusione inversa, applichiamo quanto dimostrato sopra all'automorfismo $h^{-1}$ ed all'insieme $h[A]$ ottenendo $h^{-1}[\acl(h[A])]\,\subseteq\,\acl(A)$. Agendo con $h$ su entrambi gli insiemi, otteniamo $\acl(h[A])\,\subseteq\,h[\acl(A)]$ come richiesto.
+\end{proof}
+
+\begin{exercise}
+Si dimostri la seguente affermazione:
+\begin{itemize}
+\item[a.] per ogni formula algebrica $\phi(x)$ a parametri in $\acl A$ esiste una formula algebrica $\psi(x)$ a parametri in $A$ tale che $\phi(x)\imp\psi(x)$.
+\end{itemize} 
+L'affermazione \ssf{a} \`e una conseguenza del punto \ssf{3} del corollario~\ref{fmacl123}. Si suggerisce di trovare una dimostrazione sintattica. (\`E anche facile verificare che \ssf{3} segue da \ssf{a}.)\QED
+\end{exercise}
+
+% \begin{exercise}\label{exlhxfinita}
+% Mostrare che se $p(x)$ \`e un tipo algebrico allora $x$ non pu\`o avere lunghezza infinita.
+% \end{exercise}
+% 
+% \begin{exercise}\label{exlhxfinita}
+% Mostrare che se $a\equiv_A b$ allora esiste $f\in\Aut(\U/A)$ tale che $a\equiv_{\acl A}fb$.
+% \end{exercise}
+
+\begin{exercise}\label{pofu}
+Sia $\phi(z)\in L(A)$ una formula consistente. Si dimostri che se $b\in\acl(A,a)$ per ogni $a\models\phi(z)$ allora $b\in\acl(A)$.\QED
+\end{exercise}
+
+\begin{exercise}
+Lavoriamo all'interno di un modello $\U$ saturo e di cardinalit\`a grande. Si dimostri che per ogni $A\subseteq N$ esiste un $M$ tale che $\acl A\,=\,M\cap N$. Suggerimento: si dimostri il seguente fatto: alla costruzione usata per dimostrare il L\"owenheim-Skolem all'ingi\`u~\ref{lowenheimskolemallingiu} bisogna aggiungere la condizione  $\acl(A_i)\cap N\subseteq\acl(A)$. Bisogna prima dimostrare che, data l'ipotesi induttiva, ogni $\phi(x)\in L(A_i)$ consistente \`e soddisfatta da un qualche $a$ tale che $\acl(A_i,a)\cap N\subseteq\acl(A)$. L'elemento $a$ deve soddisfare il tipo
+
+\hfil$\big\{\phi(x)\big\}\ \ \cup\ \ \big\{\psi(b,x)\imp\neg\E^{\le n}y\,\psi(y,x)\ :\ b\in N\sm\acl(A),\ \ \ \psi(y,x)\in L(A_i),\ \ \ n\le\omega\big\}$
+
+la cui consistenza dev'essere verificata (serve esercizio~\ref{pofu}).\QED
+\end{exercise}
+
+\begin{exercise}
+Fissiamo un'arbitraria teoria completa $T$ senza modelli finiti. Sia $N\models T$ saturo. Si dimostri che esiste un modello $M\prec N$ isomorfo ad $N$. Suggerimento: bisogna prima dimostrare che $N$ contiene un elemento $a$ non algebrico. Poi, %fissata un enumerazione $c$ di $N$ e posto $p(x)=\tp(c)$ si verifica che $p(x)\cup\{ x_i\neq a :i<|x|\}$ \`e realizzato in $N$. Alternativamente si pu\`o 
+bisogna costruire un modello $M\preceq N$ saturo e della stessa cardinalit\`a di $N$ basandosi sulla procedura di L\"owenheim-Skolem all'ingi\`u~\ref{lowenheimskolemallingiu}. Gli elementi da aggiungere al passo $i+1$-esimo dovranno soddisfare la condizione $a\notin\acl A_{i+1}$.\QED
+\end{exercise}
+
+
+
+% \begin{exercise}[\hskip-1ex\raisebox{.5ex}{\boldmath$*$}]
+% Sia $a$ un elemento e $A$ un insieme qualsiasi. Si dimostri che se ogni mappa elementare $k$ con $\dom k\subseteq A$ ha un estensione ad una mappa definita in $A$, allora $a\in\acl A$. 
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Indipendenza e dimensione}
+
+Fissiamo una arbitraria teoria completa $T$ fortemente minimale e assumiamo la notazione presentata nel paragrafo~\ref{mostro}. L'ipotesi di minimali\`a forte verr\`a ripetuta per enfasi negli enunciati dei principali teoremi.
+
+Sia $a$ un elemento. Diremo che $a$ \`e \emph{(algebricamente) indipendente\/} da $B$ se $a\notin\acl B$. Diremo che $B$ \`e un \emph{insieme (algebraicamente) indipendente\/} se ogni elemento $a\in B$ \`e indipendente da $B\sm\{a\}$. Abbrevieremo $B\cup\{a\}$ con \emph{$B,a$} e  $B\sm\{a\}$ con \emph{$B\sm a$}. 
+
+Diremo che l'\emph{indipendenza algebrica \`e simmetrica\/} se per ogni insieme $B$ e per ogni coppia di elementi $a,b\notin\acl B$ vale la seguente equivalenza 
+
+\hfill$b\notin\acl (B,a)\ \ \IFF\ \ a\notin\acl(B,b)$\hfill\llap{\emph{simmetria}}
+
+Nei campi algebraicamente chiusi questa propriet\`a \`e ben nota: si chiama \emph{principio dello scambio di Steinitz}. La simmetria \`e la propriet\`a caratterizzante delle teoria fortemente minimali (ma qui dimostriamo solo che vale).
+
+\begin{theorem}[(principio dello scambio)]
+Supponiamo che $T$ sia fortemente minimale allora l'indipendenza algebrica \`e simmetrica.
+\end{theorem} 
+
+\begin{proof} 
+Supponiamo che $b\notin\acl(B,a)$ ed $a\in\acl(B,b)$. Mostriamo che $a\in\acl B$. Sia $\phi(x,y)$ una formula con parametri in $B$ tale che 
+
+\hfil$\phi(b,a)\;\wedge\;\E^{\le n}y\,\phi(b,y)$.
+
+Poich\'e $b\notin\acl(B,a)$, allora la formula
+
+\hfil\llap{$\psi(x,a)\ \ =\ \ $}$\phi(x,a)\;\wedge\;\E^{\le n}y\,\phi(x,y)$\phantom{.}
+
+ha infinite soluzioni quindi, per la minimalit\`a forte, vale per quasi tutti gli $x$. Quindi ogni modello che contiene $B$ contiene anche una soluzione di $\psi(x,a)$. Ma $a$ \`e algebrico in una qualsiasi di queste soluzioni e quindi $a$ \`e contenuto in tutti i modelli che contengono $B$. Quindi $a\in\acl B$.
+\end{proof}
+
+% 
+% \begin{remark}
+% Dal carattere finito della chiusura agebrica segue facilmente che l'unione di una catena di insiemi indipendenti \`e un insieme indipendente. Questo \`e rilevante, per esempio, per poter applicare il lemma di Zorn.
+% \end{remark}
+
+Diremo che $B\subseteq A$ \`e una \emph{base\/} di $A$ se $B$ \`e un insieme indipendente ed $A\subseteq\acl B$. Il prossimo teorema dimostra che tutte le basi hanno la stessa cardinalit\`a. Chiameremo questa cardinalit\`a la \emph{dimensione\/} di $A$ e la denoteremo con \emph{$\dim A$}. Abbiamo prima bisogno del seguente lemma.
+
+\begin{lemma}\label{indipendenza+1}
+Sia $B$ un insieme indipendente e sia $a\notin \acl B$. Allora $B,a$ \`e un insieme indipendente.
+\end{lemma}
+\begin{proof}
+Se $B,a$ non fosse indipendente, allora $b\in\acl(B\sm b,a)$ per qualche $b\in B$. Poich\'e $a,b\notin\acl(B\sm b)$ possiamo applicare il principio dello scambio per ottenere $a\in\acl(B\sm b,b)=\acl B$, contrariamente alle ipotesi.
+\end{proof}
+
+\begin{corollary}\label{basemassimale}
+Sia $B\subseteq A$. Le seguenti affermazioni sono equivalenti.
+\begin{itemize}
+\item[1.] $B$ \`e una base di $A$.
+\item[2.] $B$ \`e un sottoinsieme massimale indipendente.\QED
+\end{itemize}
+\end{corollary}
+
+Scriveremo \emph{acl$(B/A)$\/} per $\acl(B\cup A)$. Una notazione che ha lo scopo di suggere che stiamo interpretando gli elementi di $A$ come costanti in un'espansione del linguaggio. L'operatore di chiusura algebrica su $A$ gode esattamente delle stesse propriet\`a della chiusura algebrica. Le nozioni di indipendenza, base, e dimensione su $A$ si generalizzano nel modo ovvio.
+
+\begin{theorem} Fissiamo un insieme arbitrario $C$. Allora:
+\begin{itemize}
+\item[1] ogni sottinsieme indipendente pu\`o essere esteso ad una base di $C$;
+\item[2] tutte le basi di $C$ hanno la stessa cardinalit\`a;
+\item[3] le asserzioni \ssf{1} e \ssf{2} valgono anche su un qualsiasi insieme parametri $A$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Per dimostrare \ssf{1}, si pu\`o usare il lemma di Zorn per ottenere un insieme indipendente massimale. Per il corollario~\ref{basemassimale} quest'insieme massimale \`e una base. Alternativamente possiamo costruire una base come unione di una catena $\<D_i:i<\lambda\>$ di insiemi indipendenti di lunghezza al pi\`u $|C|$. La catena comincia con $D=D_0$ e al passo $i+1$ si definisce $D_{i+1}=D_i,d$ dove $d\in C\sm\acl D_i$. Per il lemma~\ref{indipendenza+1} questo \`e un insieme indipendente. Ai passi limite si prende l'unione. In questo caso si ottiene un insieme indipendente per il carattere finito della chiusura algebrica. Questo dimostra \ssf{1}. La generalizzazione di questa affermazione come richiesto al punto \ssf{3} \`e immediata.
+
+Per dimostrare che due basi hanno la stessa cardinalit\`a supponiamo per assurdo che $B_1$ e $B_2$ siano due basi e che $|B_1|<|B_2|$. Trattiamo prima il caso in cui $B_2$  \`e infinito. Per ogni elemento $b\in B_1$ scegliamo un insieme finito $D_b\in B_2$ tale che $b\in\acl(D_b)$. Sia
+
+\hfil$\displaystyle D=\bigcup_{b\in B_2}D_b$
+
+Quindi $B_1\subseteq\acl D$ e $|D|<|B_2|$. Per la transitivit\`a della chiusura algebrica, $C\subseteq\acl D$ e questo contraddice l'indipendenza di $B_2$ perch\'e $B_2\sm D$ \`e non vuoto. Anche questo argomento si generalizza immediatamente come richiesto in \ssf{3}. 
+
+Supponiamo ora che $B_2$ sia finito. Conviene dimostrare direttamente l'affermazione generalizzata come in \ssf{3}. Supponiamo per assurdo che esistano $B_1$ e $B_2$, basi di $C$ su un qualche $A$, tali che $|B_1|<|B_2|=n+1$. Supponiamo che $n$ sia il minimo ottenibile anche al variare di $A$. 
+
+Sia $c\in B_2$ un elemento qualsiasi e sia $D_2=B_2\sm c$. Chiaramente $D_2$ \`e una base di $C$ su $A, c$ di cardinalit\`a $n$. Sia $D_1\subseteq B_1$ massimale indipendente su $A,c$. Si osservi che $c\in\acl(B_1/A)\sm\acl A$ e quindi per simmetria (vedi esercizio~\ref{scambioex}) $B_1$ non \`e indipendente su $A,c$, e quindi $|D_1|<|B_1|$. Allora $|D_1|<|D_2|=n$, che contraddice  la minimalit\`a di $n$.
+\end{proof}
+
+\begin{theorem}\label{mappetraindipendenti} 
+Sia $k$ una mappa elementare, sia $a\notin\acl(\dom k)$ e $b\notin\acl(\range k)$. Allora $k\cup\{\<a,b\>\}$ \`e una mappa elementare.
+\end{theorem}
+\begin{proof}
+Dobbiamo mostrare che per ogni $c$, tupla di elementi di $\dom k$, e per ogni formula pura $\phi(x,y)$, vale $\phi(c,a)\iff\phi(kc,b)$. Essendo $k$ elementare le formule $\phi(c,y)$ e  $\phi(kc,y)$ sono entrambe algebriche o entrambe non algebriche. Nel primo caso, per l'indipendenza di $a$ e $b$ da $\dom k$, rispettivamente $\range k$, avremo  $\neg\phi(c,a)$ e $\neg\phi(kc,b)$. Nel secondo caso, sempre per l'indipendenza, avremo $\phi(c,a)$ e $\phi(kc,b)$.
+\end{proof}
+
+\begin{corollary}\label{mappetraindipendenti2} 
+Ogni biiezione tra insiemi indipendenti \`e una mappa elementare.\QED
+\end{corollary}
+
+Finalmente enunciamo il teorema fondamentale che classifica i modelli di $T$.
+
+\begin{theorem}
+Sia $T$ una teoria fortemente minimale. Due modelli di $T$ con la stessa dimensione sono isomorfi.
+\end{theorem}
+\begin{proof}
+Siano $A$ e $B$ basi rispettivamente di $M$ ed $N$ che per ipotesi hanno la stessa cardinalit\`a. Sia $f$ una qualsiasi mappa iniettiva con $\dom f=A$ ed $\range f=B$. Per il corollario~\ref{mappetraindipendenti2}, $f$ \`e una mappa elementare e, per il lemma~\ref{estensionemappechiusuraalgebrica}, ha un'estensione ad una mappa elementare $h$ con $\dom h=\acl A=M$ ed $\range h=\acl B=N$. Quindi $h:M\imp N$ \`e l'isomorfismo richiesto.
+\end{proof}
+
+\begin{corollary} 
+Le teorie fortemente minimali sono $\lambda$-categoriche per ogni $\lambda>|L|+\omega$.
+\end{corollary}
+\begin{proof}
+\`E sufficiente osservare che $|\acl A|\le |L|+|A|+\omega$ e che quindi i modelli di cardinalit\`a $\lambda$ non possono che avere tutti dimensione $\lambda$ e quindi essere isomorfi.
+\end{proof}
+
+\begin{theorem} 
+Sia $T$ una teoria fortemente minimale. Allora per ogni modello $N$ di cardinalit\`a $\ge|L|$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ \`e saturo;
+\item[2.] $\dim N=|N|$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Dimostriamo \ssf{2}$\IMP$\ssf{1}. Mostriamo che ogni mappa elementare $k:M\imp N$ tale che $|k|<|M|$ e $|M|\le|N|$ si estende ad un'immersione elementare. Sia $A$ una base di $M$ su $\dom k$.  E sia $B\subseteq N$ un insieme indipendente su $\range k$ di cardinalit\`a $|A|$. Un tale $B$ esiste perch\'e per ipotesi $|A|\le|M|\le|N|=\dim N$. Sia $a$ un'enumerazione di $A$ e sia $b$ una enumerazione di $B$ della stessa lunghezza. Per il teorema~\ref{mappetraindipendenti}, iterato $|a|$ volte, la mappa $k\cup\{\<a,b\>\}$ \`e elementare. Quindi dal lemma~\ref{estensionemappechiusuraalgebrica} otteniamo l'immersione richiesta.
+Per dimostrare \ssf{1}$\,\IMP\,$\ssf{2} fissiamo una base $B$ e osserviamo che il tipo
+
+\hfil $p(x)\ \ =\ \ \Big\{\neg\phi(x)\ :\ \phi(x)\textrm{ algebrica a parametri in }B\Big\}$
+
+non \`e realizzato in $N$ perch\'e $N\subseteq\acl B$. Quindi se $N$ \`e saturo $|B|=|N|$.
+\end{proof}
+
+\begin{exercise}\label{scambioex}
+Sia $T$ una teoria fortemente minimale. Si dimostri che se $c\in\acl(B/A)\sm\acl A$ allora esiste un $b\in B$ tale che $b\in\acl(B\sm b/A,c)$.\QED 
+\end{exercise}
+
+\begin{exercise}
+Sia $T$ una teoria fortemente minimale. Si dimostri che ogni insieme infinito algebricamente chiuso \`e un modello.\QED 
+\end{exercise}
+
+\begin{exercise}
+Sia $T$ una teoria fortemente minimale. Si dimostri che ogni modello \`e omogeneo.\QED 
+\end{exercise}
+
+\begin{exercise}
+Sia $T$ una teoria fortemente minimale. Siano $M\preceq N$ tali che $\dim N=\dim M+1$. Si dimostri che non esiste un modello $K$ tale che $M\prec K\prec N$.\QED 
+\end{exercise}
+
+
+
+%\begin{exercise}
+%Siano $a\equiv_A c$ due tuple e siano $b\notin\acl(A,a)$ e $d\notin\acl(A, c)$ due elementi. Si dimostri che $a,b\equiv_A c,d$.
+%\end{exercise}
+% 
+% \begin{exercise} 
+% Sia $T$ la teoria degli spazi vettoriali su un fissato campo $K$. Descrivere i modelli saturi di $T$.
+% \end{exercise}
+
+\begin{comment}
+
+
+\section{Dimensione di una formula}
+
+Sia $\phi(x)$ \`e una formula, dove $x$ \`e una tupla di variabili. La dimensione di $\phi(x)$ \`e la dimensione massima di una tupla che soddisfa $\phi(x)$. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{Localization.\label{dimension localized}}
+\index{localization} 
+The definitions and theorems above can be relativized to some arbitrary set of parameters $A$. We write $\acl_AC$ for $\acl(AC)$. It is immediate to check that $\acl_AC$ is a finitary closure operator with the exchange property. The definitions above localize to $A$: we say that $a$ is {\it independent from $B$} \new{over $A$}, that $B$ is an {\it independent set\/} \new{over $A$}, that $B$ is a {\it base for $C$} \new{over $A$}. We write $\dim_AC$ for the {\it dimension of $C$} \new{over $A$}.\STOP
+\PARAGRAPH{An observation.\label{An observation}} The following is straightforward but worth of mention.  Let $T$ be strongly minimal. If $C$ is a set cardinality larger than $|T|$ then $\dim C=|C|$.\STOP
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{All bases have the same cardinality.} The following proposition is the analogous to an elementary theorem of linear algebra; the proof follows the same lines. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{An exercise.\label{relative dimension}}
+Prove that $\dim(AB)-\dim A=\dim_A B$ holds for every $A$ and $B$.\EX
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{Bases and isomorphisms.\label{Bases and isomorphisms}} Here we prove that when $T$ is strongly minimal any bijection between algebraically independent sets is an elementary map. Recall Exercise~\ref{extension to acl} above (which holds in every theory $T$): if $F$ is an automorphism and $F[B]=C$ then $F[\acl B]=\acl C$. So two models of a strongly minimal theory with the same dimension are isomorphic. \Proposition Let $T$ be a strongly minimal theory. If $B$ and $C$ are two $A$--independent sets of the same cardinality then every bijection between $B$ and $C$ is an $A$--elementary map. \Proof We have to prove that $\phi(\bb)\iff\phi(\cc)$ for every $A$--formula $\phi(\xx)$, every $\bb\sbs B$ and every $\cc\sbs C$. This is proved by induction on the arity of $\bb$ and $\cc$. So, assume the claim is true for $\bb$ and $\cc$ and prove it for the tuples $\bb\,b'$ and $\cc\,c'$ where $b'\in B\sm\bb$ and $c'\in C\sm\cc$ are arbitrary. Let $\phi(\xx\,y)$ be an $A$--formula and let $d\in B\sm\bb$  be arbitrary. By induction hypothesis $\phi(\bb\,y)$ is algebraic if and only if $\phi(\cc\,y)$ is algebraic. In the first case, by the $A$--independence of $B$ and $C$, we have that  $\neg\phi(\bb\,b')$ and $\neg\phi(\cc\,c')$. In the second case $\phi(\bb\,b')$ and $\phi(\cc\,c')$.\QED
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{A toy version of Morley and Baldwin-Lachlan's theorems\label{A toy version of the Morley and Baldwin-Lachlan theorems}.}\index{Morley theorem}\index{Baldwin-Lachlan theorem}  We have the following corollary: two models of a strongly minimal theory $T$ are isomorphic if and only if they have the same dimension. In particular, by what observed in~\ref{An observation} above, $T$ is categorical in every cardinal $\lambda>|L|$. The same conclusion, but assuming only that $T$ is categorical in some $\mu>|L|$, is a celebrated theorem of Michael Morley (for countable languages) and of Saharon Shelah (for arbitrary languages). Morley's theorem will be proved in Chapter~\ref{} below. The proof we give (due to John Baldwin and Alistar Lachlan) uses essentially the results in this section. Now, suppose $L$ is countable and reason again under the hypothesis that $T$ is strongly minimal. Note that if $M$ has finite dimension $n$ then for every $b\not\in M$ the set $\acl(M+b)$ is a model of dimension $n+1$ and hence non-isomorphic to $M$. So either all countable models of $T$ have infinite dimension so they are all isomorphic and $T$ is countably categorical, or there are infinitely many non-isomorphic countable models. The same conclusion can be obtained simply assuming that $T$ is categorical in some uncountable cardinal. This is the famous theorem of Baldwin and Lachlan.\STOP
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{An exercise.\label{strongly minimal and algebraic witnesses}} Let $T$ be strongly minimal. Prove that if $\acl C$ is infinite then it is a model. So, the intersection of two models $M$ and $N$ is a model whenever it is infinite.\EX
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Independence}%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The give a definition of independence that is tailored to work in a strongly minimal theory. For a more general definition of independence we have to wait until the notion of (non)forking is introduced.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{Independence and dimension} Let $T$ be strongly minimal. If $\dim_A B=\dim_{AC} B$, we say that \new{$B$ is independent of $C$ over $A$\/} and write
+
+\hfil\new{$\displaystyle B\bnonfork_AC$}\smallskip
+
+When $A$ and/or $B$ are singletons this notion coincide with that of~\ref{dimension localized} above.\STOP
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{The symmetry of independence}
+The following is one of the most important properties of the relation of independence.
+\Proposition Let $T$ be strongly minimal. If $B\nonfork_AC$ then  $C\nonfork_AB$.
+\Proof By exercise~\ref{relative dimension} above,\medskip
+
+\hfil $\displaystyle B\nonfork_AC\ \ \IFF\ \ \dim_A B=\dim_A BC-\dim_A C$ \medskip
+
+\hfil $\displaystyle C\nonfork_AB\ \ \IFF\ \ \dim_A C=\dim_A BC-\dim_A B$,\medskip
+
+hence they are equivalent.\QED
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{Independence and finite satisfiability.\label{Independence and finite satisfiability}}%
+The following characterization of independence is used in the next section. It is interesting because it is gives a notion of independence that is more general. Sometime property (2) below is expressed saying that the type of $\bb$ over $M\aa$ is finitely satisfiable in $M$. (The following proposition considers only independence {\it over a model\/} for independence {\it over a set\/} see the exercise below)
+\Proposition Let $T$ be strongly minimal. The following are equivalent 
+\begin{itemizeshort}
+\item[\casebox{1}] $\aa\nonfork_M \bb$; and
+\item[\casebox{2}] for every $M$--formula $\phi(\xx\,\yy)$ such that $\phi(\aa\,\bb)$ there is an $\bb'\sbs M$ such that $\phi(\aa\,\bb')$.
+\end{itemizeshort}
+\Proof We prove \casebox{$1\IMP2$} by induction on $\dim_M(\bb)$. If this is $0$, then $\bb\sbs M$ and there is nothing to prove. Now assume as induction hypothesis that the claim holds for $\bb$ and fix $b$ such that $\dim_{M}(\bb\,b)=\dim_{M}\bb+1$. By hypothesis,  $\dim_{M\aa}(\bb\,b)=\dim_{M\aa}\bb+1$ so $\phi(\aa\,\bb\,b)$ implies that $\phi(\aa\,\bb\,\UU)$ is coinfinite. Then $\phi(\aa\,\bb\,\UU)$ contains some $b'\in M$. Now apply the induction hypothesis to the formula $\phi(\aa\,\bb\,b')$.
+\p
+We show that (2) implies $\bb\nonfork_M \aa$, then  \casebox{$2\IMP1$} follows by symmetry.  We reason by induction on $\dim_M\aa$. Suppose the claim is true for $\aa$ and prove it for $\aa\,a'$ where $\dim_{M}(\aa\,a)=\dim_{M}\aa+1$. We need to show that $\dim_{M\bb}(\aa\,a)=\dim_{M\bb}\aa+1$. Suppose not, then $a\in\acl_{M,\bb}\aa$, so there is an $M$--formula such that $\psi(\bb\,\aa\,a)\wedge\E^{<n}y\,\psi(\bb\,\aa\,y)$. By (2) we can replace $\bb$ with dome $\bb'\sbs M$ and obtain that $a\in\acl_{M}\aa$ a contradiction.\QED
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{An exercise.} Prove that the following are equivalent:\begin{itemizeshort}
+\item[\casebox{1}] $\aa\nonfork_A \bb$; and
+\item[\casebox{2}] for every model $M$ containing $A$ and for every $M$--formula $\phi(\xx\,\yy)$ such that $\phi(\aa\,\bb)$ there is an $\bb'\sbs M$ such that $\phi(\aa\,\bb')$.\EX
+\end{itemizeshort}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{An exercise.} Let $M$ and $\aa$ be arbitrary. Let $p(\xx)$ be a type over $M$. Then $p(\xx)$ is realized by some $\bb$ such that $\aa\nonfork_M \bb$. Prove that the same holds when $p(x)$ is a type over $M\,\bb$, provided that it is finitely satisfied in $M$ (that is, every formula in $p(\xx)$ has a solution in $M$).\EX
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{An exercise.\label{esercizio}} Generalize the exercise above to show that if $A\nonfork_MB$ then there is a saturated model $N$ such that $B\sbs N$ and $A\nonfork_MN$.\EX
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Modularity and linearity\label{Modularity and linearity}}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We want to show, at this early stage of the course, that strongly minimal theories are rich enough to develop some geometric ideas. 
+\p
+We cannot use $\UU^\eq$ nor canonical bases yet so, to keep the proofs concise, we work under the assumption that $\acl\0$ is infinite (we want that $T$ weakly eliminates imaginary, see Chapter~\ref{eq}). Necessarily, we define linearity without referring to canonical bases but the notion is the usual one.\STOP
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{Planar curves.} A \new{planar curve\/} is a strongly minimal subset of $\UU^2$. We say that two planar curves are \new{similar\/} if their symmetric difference is finite. By strong minimality a curve over $A$ and a curve over $B$ are similar if and only if they intersect outside of $\acl(AB)$ if and only if they coincide outside of $\acl(AB)$ (hence similarity is an equivalence relation).\STOP
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{A lemma.\label{Planar curves}}% 
+This proposition is an easy corollary of a general fact about Morley rank which we will prove later. Here we  give a direct proof.
+\Proposition Let $M$ and $b\,c$ be such that $\dim_M(b\,c)=1$. Then $b\,c$ belongs to a planar curve over $M$. 
+\Proof Fix an $M$--formulas $\phi(x\,y)$ such that\medskip 
+
+\hfil $\phi(b\,c)\wedge\E^{=n}y\,\phi(b\,y)$\medskip  
+
+for some $n$. Choose these formulas so that $n$ is minimal. We claim that $\phi(x\,y)$ is a planar curve. To prove the claim, we fix a saturated model model $N$ such that $b\,c\nonfork_MN$, which exists by exercise~\ref{esercizio} above. We fix also an arbitrary $M$--formula $\psi(\zz\, x\,y)$ and an arbitrary $\dd\sbs N$. We need to prove that either $\phi(x\,y)\imp\psi(\dd\,x\,y)$ or $\phi(x\,y)\imp\neg\psi(\dd\,x\,y)$ holds for every $x,y\notin N$. We assume $\psi(\dd\,b\,c)$, the same argument apply when $\neg\psi(\dd\,b\,c)$. It cannot be that $\E y\,\big[\phi(b\,y)\wedge\neg\psi(\dd\,b\,y)\big]$ otherwise we could replace $\dd$ with some $\dd'\sbs M$ and contradict the minimality of $n$. So it must be that $\A y\,\big[\phi(b\,y)\imp\psi(\dd\,b\,y)\big]$ and since $b\notin N$ then $\A y\,\big[\phi(x\,y)\imp\psi(\dd\,x\,y)\big]$ holds for every $x\notin N$.\QED 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LINEARITY
+\PARAGRAPH{Linearity.\label{Linearity def}}%
+We say that \new{$T$ is linear\/} if every planar curve is similar to a planar curve over some tuple $\aa$ of dimension $\le1$.\STOP
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{A lemma.}%
+\Proposition Let $T$ be linear (and recall that in this section we always assume $\acl\0$ infinite). Then every planar curve over $A$ is similar to a planar curve that is over some tuple $\aa\sbs\acl A$ of dimension $\le1$.
+\Proof Let $\psi(x\,y)$ be a planar curve over $A$ that is similar to $\phi(\aa\,x\,y)$ for some $\aa$ of dimension $\le1$. Say, $\psi(x\,y)$ and $\phi(\aa\,x\,y)$ coincide up to $n$ points. Let $\theta(\zz)$ be the formula witnessing that $\aa$ has dimension $\le1$. The first-order $A$--formula saying $\theta(\zz)$ and that $\psi(x\,y)$ and $\phi(\zz\,x\,y)$ coincide up to $n$ points is consistent. So it has a solution $\aa'\sbs\acl A$ (which is a model by the assumption that $\acl\0$ is infinite).\QED
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{Locally linear \ifft linear.\label{local linearity}}%
+Localizing the notion of linearity to a set of parameter $E$ does not yield anything new.
+\Proposition Let $E$ be set of parameters. Suppose that every planar curve is similar to a planar curve over $E\aa$ for some $\aa$ such that $\dim_E\aa\le 1$. Then $T$ be linear. 
+\Proof Let $\psi(\cc\,x\,y)$ be a planar curve, where $\cc$ are all the parameters occurring in the formula. Fix some $\bb\equiv\cc$ such that $\bb\nonfork_\0 E$. Let $\phi(\ee\,\aa\,x\,y)$ be a planar curve similar to $\psi(\bb\,x\,y)$, say equal up to $n$ points, for some $\ee\sbs E$ and some $\aa$ such that $\dim_{\ee}\aa\le 1$. There is a first-order formula $\theta(\ee\,\bb)$ saying that $\phi(\ee\,\zz\,x\,y)$ is equal to $\psi(\bb\,x\,y)$ up to $n$ points for some $\zz$ such that $\dim_{\ee}\zz\le 1$. By Proposition~\ref{Independence and finite satisfiability} above, there is $\ee'\sbs\acl\0$ such that $\theta(\ee'\,\bb)$. Let $\aa'$ witness $\E \zz$ in  $\theta(\ee'\,\bb)$. Then $\phi(\ee'\,\aa'\,x\,y)$ is a formula over $\aa'$, where $\dim\aa'\le1$, and is similar to $\psi(\bb\,x\,y)$. Finally, by homogeneity, we map automorphically $\cc$ to $\bb$. The image $\aa''$ of $\aa'$ under this automorphism gives the required planar curve $\phi(\ee'\,\aa'\,x\,y)$.\QED
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{Modularity.\label{Modularity def}} 
+We say that \new{$T$ is modular\/} if for every algebraically closed sets $A$ and $B$\smallskip
+
+\casebox{$\#$}\hfil $\dim AB\ \ =\ \ \dim A\ +\ \dim B\ -\ \dim(A\cap B)$\smallskip
+
+This can be written\smallskip
+
+\casebox{$\#\#$}\hfil$\dim_AB=\dim_{A\cap B} B$.\hfil\smallskip
+
+We say that \new{$T$ is locally modular\/} if there is a set $E$ such that $T$ is modular when localized to $E$. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{A lemma.}%
+Via pure combinatorial reasoning, we obtain a useful characterization of modularity. 
+\Proposition Let $T$ be strongly minimal. The following are equivalent:
+\begin{itemizeshort}
+\item[\casebox{1}] $T$ is modular;
+\item[\casebox{2}] whenever $c\in\acl(Ab)$ there is a $a\in\acl A$ such that $c\in\acl(a\,b)$; and
+\item[\casebox{3}] whenever $c\in\acl(AB)$ there is a $a\in\acl A$ and $b\in\acl B$ such that $c\in\acl(a\,b)$.
+\end{itemizeshort}
+\Proof For the whole proof we assume $A$ is algebraically closed. We prove \casebox{$1\IMP2$} first. Suppose $c\in\acl(Ab)$. Then $\dim (A\,b)$\ \  =\ \ $\dim (A\,b\,c)$. If $T$ is modular, from ($\#$) we obtain\smallskip
+
+\hfil$\dim A\;+\;\dim b\;-\;\dim(A\cap\acl b)$\ \  =\ \ $\dim A\;+\;\dim(b\,c)\;-\;\dim(A\cap\acl(b\,c))$\smallskip
+
+Assume $c\notin\acl b$, otherwise we are done. Then $\dim(b\,c)=\dim b+1$ so \smallskip
+
+\hfil\llap{$\dim(A\cap\acl b)$}\ \  =\ \ \rlap{$\dim(A\cap\acl(b\,c))\,-\;1$}\smallskip
+
+Hence $A\cap\acl(b\,c)$ contains an element $a\notin\acl b$. By exchange, from $a\in\acl(b\,c)$ we obtain $c\in\acl(a\,b)$. 
+\p
+Now we prove \casebox{$2\IMP3$} by induction on the dimension of $B$. If $B$ has dimension $0$, the claim is clear. So assume the claim holds for $B$ and prove it for $Bb$ where $b\notin\acl B$. If $c\in\acl(ABb)$ then, by (2), there is a $d\in AB$ such that $c\in\acl(d\,b)$. By induction hypothesis $d\in\acl(a\,e)$ for $a\in A$ and $e\in\acl B$. So $c\in\acl(a\,e\,b)$. Apply (2) a second time to find $f\in\acl(e\,b)$ such that $c\in\acl(a\,f)$. Since $f\in\acl(Bb)$, we are done. 
+\p
+Finally we prove \casebox{$3\IMP1$} so assume (3). We prove ($\#$) by induction on the dimension of $B$. If $B$ has dimension $0$ there is nothing to prove. So suppose the claim holds for some algebraically closed set $B$ and let $c\not\in B$. We to prove that\smallskip 
+
+\hfil$\dim(ABc)\ \ =\ \ \dim A\ +\ \dim(Bc)\ -\ \dim(A\cap\acl(Bc)\big)$\smallskip
+
+We consider two cases: $c\in\acl(AB)$ and $c\notin\acl(AB)$. In the first case we need to show that $A\cap\acl(Bc)$ contains an element not in $A\cap B$. From  $c\in\acl(AB)$ and the induction hypothesis we get some $a\in A$ and some $b\in B$ such that $c\in\acl(a\,b)$. To avoid triviality we assume $b\notin\acl\0$ so, by exchange, we get $a\in\acl(b\,c)$. So $a\notin A\cap B$, otherwise $c\in B$. In the second case it suffices to show that $A\cap\acl(Bc)=A\cap B$. So observe that if $a\in\acl(Bc)\sm\acl B$ then, by exchange, $c\in\acl(Ba)$. So $a\notin A$.\QED 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PARAGRAPH{Locally modular \ifft linear.} 
+\Proposition Let $T$ be strongly minimal. The following are equivalent:
+\begin{itemizeshort}
+\item[\casebox{1}] $T$ is linear;
+\item[\casebox{2}] for any $e\notin\acl\0$ the localization of $T$ at $e$ is modular; and
+\item[\casebox{3}] $T$ is locally modular.
+\end{itemizeshort}
+\Proof We prove \casebox{$1\IMP2$} first. Fix any $e\notin\acl\0$ and suppose $c\in\acl_e(Ab)$. We show that $c\in\acl_e(a\,b)$ for some $a\in\acl_eA$. Assume also that $c\notin\acl_e b$ and $c\notin\acl_e A$, otherwise we are done. So $\dim_{Ae}(b\,c)=1$. As $\acl_e A$ is a model, by~\ref{Planar curves} above, there is a planar curve over $\acl_e A$ through $b\,c$. By linearity this is of the form $\phi(\aa\,x\,y)$ where $\phi(\zz\,x\,y)$ is a parameter-free formula and $\aa\sbs\acl_e A$ has dimension $\le1$. Since we assumed that $c\notin\acl b$, we have $\dim\aa=1$. 
+\p
+We show that $\aa\in\acl(c\,b)$. As $\dim\aa=1$, there is an $a'\notin\acl\0$ such that $\aa\in\acl a'$. Since $c\in\acl(\aa\,b)$, then $c\in\acl(a'\,b)$. By symmetry, $a'\in\acl(c\,b)$. So $\aa\in\acl(c\,b)$ as desired.
+\p
+We now prove that $e\notin\acl\aa$ by showing that $a'\notin\acl e$. As $c\,b$ belong to a planar curve over $\aa$, then $c\in\acl_{\aa} b$. So, from $a'\in\acl e$ we would obtain $c\in\acl_e b$ which is contrary to the assumptions.
+\p
+We also have that $c\notin\acl\aa$, so there is a automorphism mapping $c$ to $e$ over $\aa$. Let $a$ be the image of $b$ under this automorphism. We claim that this $a$ is the required element of $\acl_e A$. Observe that since $b\in\acl(c\,\aa)$, then $a\in\acl_e\aa\sbs\acl_e A$. So we only have to check that $c\in\acl_e(a\,b)$. This follows from symmetry if we can show that $a\in \acl_e(c\,b)$ and $a\notin\acl_e b$. The first is clear since $\acl_e\aa\sbs \acl_e(c\,b)$. For the second observe that $b\notin\acl_e a$ and that $a\in\acl_e \0$,  so $a\notin\acl_e b$ follows by symmetry.
+\p
+The implication \casebox{$2\IMP3$} does not need a proof so only the implication \casebox{$3\IMP1$} is left. The argument is clearer if we assume that $T$ is modular. Let $\phi(\aa\,x\,y)$ be a planar curve and let $c\,b$ be a pair in the curve not in $\acl\aa$. Replacing $A$ with $\acl\aa$ and $\acl(c\,b)$ for $B$ in ($\#\#$) of~\ref{Modularity def} we obtain that the dimension of $c\,b$ over $\acl(c\,b)\cap\acl\aa$ is $1$. Since $\acl(c\,b)\cap\acl\aa$ has dimension 1 and is a model, the claim follows from Proposition~\ref{Planar curves} above. In general, i.e.\@ when $T$ is simply locally modular, we need just to fix a set $E$ containing the the parameters that make $T$ modular and in any case infinite. Then the argument above yields that $T$ is linear over $E$ so, by~\ref{local linearity} above, linear.\QED
+
+
+ 
+\EndChapter
+
+
+\PARAGRAPH{The definability of dimension} 
+The following is an important property of dimension (it will not be used in this chapter). 
+\Proposition  Let $T$ be strongly minimal. Let $\phi(\zz\,\xx)$ be an parameter-free formula. For every positive integer $k$ there is a parameter-free formula $\psi(\zz)$ such that $\psi(\aa)$ holds if and only if $\phi(\aa\,\bar\UU)$ has dimension $k$. 
+\Proof  We prove first a slightly different claim: for every non-negative integer $k$ there is a parameter-free formula $\psi(\zz)$ such that $\psi(\aa)$ holds if and only if $\phi(\aa\,\bar\UU)$ has dimension $k$ over $\aa$. By what observed above, for positive $k$ we can replace $\aa$ with $\0$.
+\p
+Observe that when $\xx$ has arity $1$ the claim follows easily form the strong minimality of $T$. In fact, for some $n$ we have
+
+\smallskip\hfil$\displaystyle
+\A\zz\ \Big[\E^{< n}x\;\phi(\zz\,x)\ \vee\ \E^{< n}x\;\neg\phi(\zz\,x)\Big]$.
+\smallskip
+
+So the formula $\E^{\ge n}x\;\phi(\zz\,x)$ defines the sets tuples $\aa$ such that $\phi(\aa\,\UU)$ has dimension $1$ over $\aa$, its negation the sets tuples $\aa$ such that $\phi(\aa\,\UU)$ has dimension $0$ over $\aa$. (For values of $k$ that are larger than the arity of $\xx$ the claim is trivial.)
+\p
+Now we reason by induction on the arity of $\xx$. Consider the formula  $\phi(\zz\,y\,\xx)$. Assume as induction hypothesis that for every $k$ there is a formula $\psi_k(\zz,y)$ that holds at $\aa\,b$ if and only if $\phi(\aa\,b\,\bar\UU)$ has dimension $k$ over $\aa\,b$. By the observation above (with $\psi_k(\zz\,y)$ for $\phi(\zz\,x)$) the set of the $\aa$ such that $\psi_k(\aa\,y)$ is coinfinite is definable. Let $\theta_k(\zz)$ define this set. It is immediate that $\phi(\aa\,\UU\,\bar\UU)$ has dimension $k+1$ over $\aa$ if $\theta_k(\aa)$ and has dimension $k$ if $\neg\theta_k(\aa)$. Concluding $\phi(\aa\,\UU\,\bar\UU)$ has dimension $k$ if and only if $\aa$ satisfies the formula $\theta_{k-1}(\zz)\vee\neg\theta_k(\zz)$ where, for uniformity, we take $\theta_{-1}(\zz)$ to be $\zz\neq\zz$.
+\end{comment}

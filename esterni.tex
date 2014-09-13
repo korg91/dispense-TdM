@@ -1,0 +1,649 @@
+\chapter{Insiemi esternamente definibili}
+\label{esterni}
+
+\lavori
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Insiemi approssimabili}
+
+Dati $A\subseteq\U$ e $\D\subseteq\U^{|z|}$ chiameremo $D=\D\cap A^{|z|}$ la \emph{traccia\/} di $\D$ su $A$. Per ogni formula $\psi(z)\in L(\U)$ definiamo \emph{$\psi(A)$\/} $=$ $\psi(\U)\cap A^{|z|}$ ovvero $\psi(A)$ \`e la traccia su $A$ dell'insieme definibile $\psi(\U)$. 
+
+Diremo che $\D\subseteq\U^{|z|}$ \`e un insieme \emph{approssimabile\/} di sorta $\phi(x;z)$ se per ogni insieme finito $B\subseteq\U^{|z|}$ esiste un $b\in\U^{|x|}$ tale che $\phi(b,B)=\D\cap B$. La terminologia non \`e standard.
+
+Presentiamo lo stesso concetto da una prospettiva diversa. Diremo che $\D$ \`e \emph{esternamente definibile\/} di sorta $\phi(x;z)$ se \`e la traccia su $\U$ di un insieme definibile con parametri in un'estensione elementare di $\U$ ovvero, riformulando la nozione senza menzionare elementi al di fuori di $\U$, se $\D=\D_{p,\phi}$ per un qualche tipo globale $p\subseteq S_x(\U)$. La notazione \`e definita nel paragrafo~\ref{tipi_invarianti}. Queste due nozioni coincidono per la seguente proposizione. La dimostrazione \`e una semplice applicazione della compattezza. 
+
+\begin{proposition}\label{lem_approx=external}
+Per ogni $\D\subseteq\U^{|z|}$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e approssimabile;
+\item[2.] $\D$ \`e esternamente definibile.\QED 
+\end{itemize}
+\end{proposition}
+
+Nella definizione di approssimabile abbiamo fissato una sorta $\phi(x;z)$ ovvero abbiamo richiesto che la definizione fosse uniforme (altrimenti ogni insieme sarebbe banalmente approssimabile). \`E utile osservare che se estendiamo la richiesta di approssimabilit\`a a insiemi $B$ sufficientemente grandi possiamo omettere la richiesta di uniformit\`a.
+
+\begin{proposition}\label{lem_approx_nonunif}
+Per ogni $\D\subseteq\U^{|z|}$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e approssimabile;
+\item[2.] per ogni $B\subseteq\U^{|z|}$ di cardinalit\`a $\le(|L|+\omega)^+$ esiste $\psi(z)\in L(\U)$ tale che $\psi(B)=\D\cap B$.
+\end{itemize}
+\end{proposition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formule stabili}
+Fissiamo una sorta $\phi(x;z)$ ed un insieme di parametri $A$ e sia $\Delta_{\!\phi,A}=\{\phi(x;a)\ :\ a\in A^{|z|}\}$. Ad ogni insieme $B\subseteq A^{|z|}$ associamo il seguente $\pmDelta_{\!\phi,A}$-tipo 
+
+\ceq{\hfill }{}{\big\{\phi(x;a)\:\ a\in B\big\}\ \cup\ \big\{\neg\phi(x;a)\ :\ a\in A^{|z|}\sm B\big\}}
+
+che qui denoteremo con \emph{$\phi(x;A)=B$}. Quest'ultima \`e notazione non standard. Se consistente, $\phi(x;A)=B$ \`e completo come $\pmDelta_{\!\phi,A}$-tipo. L'insieme dei $\pmDelta_{\!\phi,A}$-tipi completi verr\`a denotato con \emph{$S_{\phi}(A)$}.
+
+Una formula $\phi(x;z)$ si dice \emph{instabile\/} se per ogni $n$ esiste una sequenza $\<c_i\,:\,i< n\>$ di tuple in $\U^{|x|}$ ed una sequenza $\<a_i\,:\,i<n\>$ di tuple in $\U^{|z|}$ tali che 
+
+\ceq{\ssf{ins.}\hfill \phi(c_i,a_j)}{\IFF}{i<j} \ \ \ \ per ogni $i,j<n$
+
+Se  $\phi(x;z)$ \`e instabile allora per compattezza \ssf{ins} vale anche sostituendo $(n,\le)$ con un qualsiasi ordine lineare $(I,\le_I)$. L'unica ovvia limitazione \`e che $|I|\le\kappa$. Diremo che $\phi(x;z)$ \`e \emph{stabile\/} se non \`e instabile.   
+
+Diremo che  $\phi(x;z)$ ha \emph{rango binario infinito\/} (questa termine non \`e standard) se per ogni $n$ esiste una sequenza  $\<a_s\ :\ s\in2^{<n}\>$ di tuple in $\U^{|z|}$ tale che  per ogni $s\in2^{n}$ i seguenti tipi siano consistenti
+
+\ceq{\ssf{rbi.}\hfill p_s(x)}{=}{\big\{\phi(x;a_{s\restriction i})\ :\ s(i)=0,\ \ i<n\big\}\ \cup\ \big\{\neg\phi(x;a_{s\restriction i})\ :\ s(i)=1,\ \ i<n\big\}}.
+
+Di nuovo, per compattezza se $\phi(x;z)$ ha rango binario infinito allora possiamo sostituire $n$ con qualsiasi ordinale $\le\kappa$.
+
+\begin{proposition}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\phi(x;z)$ \`e una formula instabile;
+\item[2.] $\phi(x;z)$ ha rango binario infinito.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Dimostriamo \ssf{1}$\IMP$\ssf{2}. Ordiniamo $2^{<\omega}$ linearmente per induzione su $n$. Supponiamo di aver ordinato linearmente $2^{<n}$. Estendiamo quest'ordine a $2^{\le n}$ stipulando che $s0<s<s1$ per ogni $s\in2^n$ e che $s$ \`e l'unico elemento tra $s0$ ed $s1$. Da \ssf{1} otteniamo che per ogni $n$ esiste una sequenza $\<c_s\ :\ s\in2^{\le n}\>$ tale che
+
+\ceq{\ssf{\#}\hfill \phi(c_s,a_r)}{\IFF}{s<r} \ \ \ \ per ogni $s,r\in 2^{\le n}$
+
+ora \`e immediato che per ogni $s\in 2^n$ la tupla $c_s$ testimonia la consistenza del tipo $p_s(x)$ definito in \ssf{rbi}. Questo dimostra che il rango binario di $\phi(x;z)$ \`e infinito. 
+
+Dimostriamo \ssf{2}$\IMP$\ssf{1}. Se per ogni $s\in 2^n$ tutti i tipi $p_s(x)$ definiti in \ssf{rbi} sono consistenti, allora fissati $c_s\models p_s(x)$ otteniamo \ssf{\#} come richiesto.
+\end{proof}
+
+\begin{corollary}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\phi(x;z)$ \`e una formula instabile;
+\item[2.] $|S_\phi(\U)|=2^\kappa$;
+%\item[3.] per ogni $\lambda<\kappa$ esiste un insieme $A$ di cardinalit\`a $\lambda$ tale che $2^\lambda=|S_\phi(A)|$;
+%\item[4.] $|A|<|S_\phi(A)|$ per un qualche insieme $A$ infinito.
+\item[4.] $|S_\phi(\U)|>\kappa$.
+\end{itemize}
+\end{corollary}
+\begin{proof}
+Per dimostrare l'implicazione \ssf{1}$\IMP$\ssf{2} assumiamo $\phi(x;z)$ abbia rango infinito. Posto  $\bar z=\<z_s:s\in2^{<\kappa}\>$ i seguenti tipi sono  finitamente in $\U$ per ogni $\alpha\in2^\kappa$:
+
+\ceq{\hfill p_\alpha(x,\bar z)}{=}{\big\{\phi(x;z_{\alpha\restriction i})\ :\ \alpha(i)=0,\ \ i<\kappa\big\}\ \cup\ \big\{\neg\phi(x;z_{\alpha\restriction i})\ :\ \alpha(i)=1,\ \ i<\kappa\big\}}.
+
+Quindi, posto $\bar x=\<x_\alpha:\alpha\in 2^\kappa\>$ e
+
+\ceq{\hfill p(\bar x,\bar z)}{=}{\bigcup_{\alpha\in2^\kappa} p_\alpha(x_\alpha,\bar z)}.
+
+otteniamo che $\E \bar x\, p(\bar x,\bar z)$ \`e finitamente consistente. Quest'ultimo ha $\kappa$ variabili libere e quindi \`e realizzato in $\U$, diciamo da $\bar a=\<a_s: s\in2^{<\kappa}\>$. Ora si osservi che i tipi globali $p_\alpha(x,\bar a)$ sono mutualmente inconsistenti la variare di $\alpha\in2^\kappa$. Quindi $|S_\phi(\U)|=2^\kappa$. 
+
+L'implicazione \ssf{2}$\IMP$\ssf{3} \`e banale. Dimostriamo \ssf{3}$\IMP$\ssf{1}. 
+%Fissiamo due sequenze di (tuple  di) variabili $(x_i\,:\,i\in\QQ)$ e $(z_i\,:\,i\in\QQ)$. Se $\phi(x;z)$ \`e instabile, per compattezza il seguente il tipo 
+% 
+% \ceq{\hfill p}{=}{\{\phi(x_i,z_j)\ :\ i<j\}\ \cup\ \{\neg\phi(x_i,z_j)\ :\ j\le i\}}
+% 
+% Fissiamo $(c_i\,:\,i\in\QQ)$ e $(a_i\,:\,i\in\QQ)$ che realizzano $p$. Ora consideriamo una nuova sequenza di variabili $(x_r\,:\,r\in\RR)$ e per ogni osserviamo che il seguente tipo \`e finitamente consistente 
+% 
+% \ceq{\hfill p_r}{=}{\{\phi(x_r,a_j)\ :\ r<j\}\ \cup\ \{\neg\phi(x_r,a_j)\ :\ j\le r\}}
+% 
+% per ogni $r\in\RR$. Otteniamo $2^\omega$ tipi su $A=\{a_i\ :\ i\in\QQ\}$.
+Assumiamo \ssf{3} e mostriamo che il rango binario di $\phi(x;z)$ \`e infinito. Supponiamo aver costruito $\<a_s\ :\ s\in2^{<n}\>$ tale che ogni tipo $p_s(x)$ definito in \ssf{rbi} abbia pi\`u di $\kappa$ estensioni in $S_\phi(\U)$. L'estensione dell'albero all'altezza $n+1$ si ottiene procedendo come nella dimostrazione della proposizione~\ref{prop_small_tree}. 
+\end{proof} 
+
+
+\begin{corollary}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\phi(x;z)$ \`e una formula stabile;
+\item[2.] ogni insieme $\D$ esternamente definibile di sorta $\phi(x;z)$ allora \`e definibile da una combinazione booleana positiva di insiemi della forma $\phi(a,\U)$ per qualche $a\in\U^{|x|}$;
+\item[2.] ogni insieme $\D$ esternamente definibile di sorta $\phi(x;z)$ \`e definibile.
+\end{itemize}
+\end{corollary}
+\begin{proof}
+L'implicazione \ssf{1}$\IMP$\ssf{2} \`e un corollario del teorema~\ref{thm_fin_apprx_def}. Per l'implicazione \ssf{2}$\IMP$\ssf{1} osserviamo che se $\phi(x;z)$ \`e instabile allora ha rango binario infinito esistono quindi $2^\kappa$ tipi globali $S_\phi(\U)$, ad ognuno corrisponde un diverso insieme esternamente definibile. Non ci sono abbastanza formule in $L(\U)$ per definirli tutti.
+\end{proof}
+
+\begin{exercise}
+Si dimostri che per ogni $A$ infinito le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $|S_\phi(A)|=2^{|A|}$
+\item[2.] $|S_\phi(A)|>|A|$.\QED
+\end{itemize}
+\end{exercise}
+
+
+\begin{exercise}
+Si dimostri che per ogni cardinale infinito $\lambda$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $|S_\phi(\U)|=2^\kappa$
+\item[2.] $|S_\phi(A)|=2^{|A|}$ per qualche insieme $A$ infinito;
+\item[3.] $|S_\phi(A)|=2^{\lambda}$ per qualche insieme $A$ di cardinalit\`a $\lambda$.\QED
+\end{itemize}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\section{Approssimazioni monotone}\label{approxmonotone}
+\def\i{{\rm i}}
+
+Diremo che $\D\subseteq\U^{|z|}$ \`e un insieme \emph{approssimabile dall'interno\/} di sorta $\phi(x;z)$ se per ogni insieme finito $B\subseteq\D$ esiste un $b\in\U^{|x|}$ tale che $B\subseteq\phi(b,\U)\subseteq\D$. Diremo che \`e \emph{approssimabile dall'esterno\/} di sorta $\phi(x;z)$ se per ogni insieme finito $B$ tale che $\D\subseteq\neg B$ esiste un $b\in\U^{|x|}$ tale che $\D\subseteq\phi(b,\U)\subseteq\neg B$. Ovvero se $\neg\D$ \`e approssimabile dall'interno di sorta $\neg\phi(x;z)$. %Diremo che \`e \emph{quasi-definibile\/} se \`e approssimabile sia dall'interno che dall'esterno.
+
+\begin{example}
+Sia $\U\models T_{\rm oldse}$ e sia $\D\subseteq\U$ un intervallo. Allora $\D$ \`e approssimabile sia dall'esterno che dall'interno con la formula $x_1<z<x_2$.  Se $\U\models T_{\rm rg}$ ogni $\D\subseteq\U$ \`e approssimabile. Ogni insieme $D$ di cardinalit\`a piccola \`e approssimabile dall'esterno ma, per quanto affermato nell'esercizio~\ref{ex_grafo_aleatorio_no_finiti_definibili}, non \`e approssimabile dall'interno.\QED
+\end{example}
+
+\begin{exercise}
+Si dimostri che se $\D\subseteq\U^{|z|}$ \`e approssimabile sia dall'interno che dall'esterno allora possiamo trovare un unica formula per entrambe le approssimazioni.\QED 
+\end{exercise}
+
+Osserviamo che l'equivalente della proposizione~\ref{lem_approx_nonunif}
+
+\begin{proposition}\label{lem_approx_int_nonunif}
+Per ogni $\D\subseteq\U^{|z|}$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e approssimabile dall'interno;
+\item[2.] per ogni $B\subseteq\U^{|z|}$ di cardinalit\`a $\le|T|^+$ esiste $\psi(z)\in L(\U)$ tale che $B\subseteq\psi(\U)=\D$.
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}\label{coroll_proj_approx}
+Sia $\D\subseteq\U^{|w,z|}$ un insieme approssimabile dall'interno. Allora anche l'insieme $\C=\big\{z: \E w\, \<w,z\>\in\D\big\}$ \`e approssimabile dall'interno. Se $\C,\D\subseteq\U^{|z|}$ sono insiemi approssimabili dall'interno allora anche $\C\cup\D$ e  $\C\cap\D$ sono approssimabili dall'interno.
+\end{proposition}
+\begin{proof}
+Sia $\phi(x;w,z)$ una formula che approssima $\D\subseteq\U^{|w,z|}$ dall'interno. Verifichiamo che la formula $\psi(x,z)=\E w\,\phi(x;w,z)$ approssima $\C$ dall'interno. Sia $C\subseteq\C$ e fissiamo un qualsiasi insieme $D\subseteq\D$ tale che $\A z\in C\,\E w\,\<w,z\>\in D$. Esiste un $b$ tale che $D\subseteq \phi(b,\U,\U)\subseteq\D$ ed \`e immediato verificare che $C\subseteq \psi(b,\U)\subseteq\C$.
+
+La seconda affermazione \`e ovvia.
+\end{proof}
+
+Indicheremo con $L\<r\>$ il linguaggio ottenuto espandendo $L$ con un predicato $|z|$-ario $r$. Indicheremo con $\<\U,\D\>$ la struttura di segnatura $L\<r\>$ che espande $\U$ ed interpreta $r$ con $\D$. Quando non c'\`e rischio di ambiguit\`a identificheremo l'insieme $\D$ con la struttura $\<\U,\D\>$. Per esempio, scriveremo $\D\equiv_A\C$ per abbreviare $\<\U,\D\>\equiv_A\<\U,\C\>$ o diremo che $\C$ \`e saturo intendendo che tale \`e la struttura $\<\U,\C\>$.
+
+\begin{proposition}\label{prop_apprx_int_E}
+Per ogni $A$ ed ogni $\D\subseteq\U^{|z|}$ esiste $\C\subseteq\U^{|z|}$ saturo tale che $\C\equiv_A\D$.
+\end{proposition}
+
+\begin{proof}
+Dal teorema~\ref{thm_esistenza_staturo_card_inacc} otteniamo $\<\U',\D'\>$, un'estensione elementare satura di  $\<\U,\D\>$. In particolare $\U\preceq\U'$ sono due strutture sature della stessa cardinalit\`a. Quindi esiste un isomorfismo  $f:\U'\to\U$ che fissa $A$. Allora $f[\D']$ \`e l'insieme $\C$ richiesto.
+\end{proof}
+
+
+\begin{proposition}\label{prop_apprx_elmentare}
+Se $\D$ \`e approssimabile da $\phi(x;z)$, tale \`e anche ogni $\C\equiv\D$. Lo stesso vale per l'approssimabilit\`a dall'interno e dall'esterno.
+\end{proposition}
+\begin{proof}
+L'insieme $\D$ \`e approssimabile da $\phi(x;z)$ se e solo se per ogni $n$ vale
+
+\hfil$\displaystyle\A z_1,\dots,z_n\;\E x\ \bigwedge^n_{i=1}\Big[\phi(x;z_i)\ \iff\ z_i\in\D\Big]$. 
+
+Ed \`e approssimabile dall'interno se 
+
+\hfil$\displaystyle\A z_1,\dots,z_n\in\D\;\E x\ \Bigg[\bigwedge^n_{i=1}\phi(x;z_i)\ \wedge\ \A z\,\big[\phi(x;z)\imp z\in\D\big]\Bigg]$. 
+
+Quindi lo stesso vale anche per ogni $\C\equiv\D$.
+\end{proof}
+
+
+
+Definiamo \emph{$\neg^i$} =\; 
+%$\overbrace{\,\neg\dots\dots\neg\ }^{i\textrm{ volte}}$. 
+$\neg\dots(i$ volte$)\dots\neg$.
+Scriveremo anche  \emph{$\,\notin^i\,$} per $\neg^i(\cdot\in\cdot)$.
+
+
+\begin{lemma}\label{lem_tipi_inv}
+Sia $\C\subseteq\U^{|z|}$ un insieme saturo approssimabile da una formula nip e sia $A$ arbitrario. Allora ogni tipo globale $A$-invariante $p(z)$ contiene una formula $\psi(z)$ tale che $\psi(\U)\subseteq\C$ o $\psi(\U)\subseteq\neg\C$.
+\end{lemma}
+
+\begin{proof}
+Poich\'e $\C$ \`e approssimabile da una formula nip, non pu\`o esistere alcuna sequenza infinita $\<b_i:i<\omega\>$ di tuple tali che
+
+\ceq{\ssf{1.}\hfill b_i}{\models}{p(z)|_{A,b_{\restriction i}}\ \ \wedge\ \ z\notin^i\C.}
+
+Sia quindi $n$ massimale tale che $\<b_i:i<n\>$ soddisfa \ssf{1}. Allora 
+
+\ceq{\hfill}{}{ p(z)|_{A,b_{\restriction n}}\,\imp\, z\notin^n\C.}
+
+Per saturazione possiamo sostituire $p(z)|_{A,b_{\restriction n}}$ con una formula $\psi(z)$. Quindi se $n$ \`e pari otteniamo $\psi(\U)\subseteq\C$, se \`e $n$ dispari $\psi(\U)\subseteq\neg\C$.
+\end{proof}
+
+Si osservi che $p(z)\in S(\U)$ \`e finitamente soddisfatto in $A$ se e solo se contiene il tipo
+
+\ceq{\hfill q(z)}{=}{\big\{\neg\phi(z)\in L(\U)\ :\ \phi(A)=\0\big\}.}
+
+Abbiamo quindi il seguente:
+
+\begin{corollary}\label{corol_approx_C}
+Sia $\C\subseteq\U^{|z|}$ un insieme saturo approssimabile da una formula nip e sia $A$ arbitrario. Allora esistono due formule $\psi_i(z)$, dove $i<2$, tali che $\psi_i(z)\imp z\notin^i\C$ e, se $q(z)$ \`e il tipo definito sopra,   $q(z)\imp\psi_0(z)\vee\psi_1(z)$.
+\end{corollary}
+
+\begin{proof}
+Se $a\models q(z)$ allora $\tp(a/A)$ \`e finitamente soddisfatto in $A$ e quindi ha un'estensione ad un coerede globale. Quindi, per il lemma~\ref{lem_tipi_inv}, $q(\U)$ \`e ricoperto da formule $\psi(z)$ tali che $[\psi(z)\imp z\in\C]\;\vee\;[\psi(z)\imp z\notin\C]$. La conclusione segue per compattezza.
+\end{proof}
+
+\begin{corollary}\label{coroll_nip_qd}
+Sia $\D\subseteq\U^{|z|}$ un insieme approssimabile da una formula nip. Allora $\D$ \`e approssimabile dall'interno.
+\end{corollary}
+\begin{proof}
+Sia $\C\equiv\D$ saturo. Dato $A\subseteq\C$, sia $q(z)\subseteq L(A)$ come nel corollario~\ref{corol_approx_C}. Chiaramente $A\subseteq q(\U)$ e quindi $A\subseteq\psi_0(\U)\subseteq\C$. L'insieme $A$ ha cardinalit\`a piccola ma arbitraria quindi, per il lemma~\ref{}, $\C$ \`e approssimabile dall'interno. Dalla proposizione~\ref{prop_apprx_elmentare} segue che anche $\D$ \`e approssimabile dall'interno.
+\end{proof}
+
+Denotiamo con $\U^{\rm Sh}$ l'espansione di $\U$ ottenuta aggiungendo un simbolo di relazione per ogni insieme approssimabile. Dalla proposizione~\ref{prop_apprx_int_E} il corollario~\ref{coroll_nip_qd} otteniamo che se $T$ \`e nip allora $\Th(\U^{\rm Sh})$ ammette eliminazione dei quantificatori. Un risultato dovuto a Shelah (da cui l'apice) con una dimostrazione ben pi\`u complessa. L'idea di riportarsi agli insiemi quasi-definibili \`e di Chernikov e Simon. Loro parlano di \textit{definizioni oneste di tipi}, ma la dimostrazione \`e essenzialmente quella qui riportata. 
+
+
+\section{Sottosequene convergenti}
+
+Diremo che una sequenza di insiemi $\<\D_i:i<\omega\>$ converge a $\D$ se per ogni $a\in\U^{|z|}$ si ha che per ogni $i<\omega$ sufficientemente grande $a\in\D_i\iff a\in\D$. 
+
+\begin{proposition} 
+Sia $\phi(x;z)$ una formula arbitraria. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\phi(x;z)$ \`e una formula nip;
+\item[2.] ogni sequenza di definibili di sorta $\phi(x;z)$ quasi indiscernibile \`e convergente;
+\item[3.] ogni sequenza di definibili di sorta $\phi(x;z)$ ha una sottosequenza convergente.
+\end{itemize} 
+\end{proposition}
+
+\begin{proof}
+L'equivalenza \ssf{1}$\IFF$\ssf{2} \`e immediata. L'implicazione \ssf{2}$\IMP$\ssf{3} vale perch\'e ogni sequenza ha una sottosequenza quasi indiscernibile. Per dimostrare \ssf{3}$\IMP$\ssf{2} assumiamo $\neg$\ssf{2} e fissiamo una sequenza $a=\<a_i:i<\omega\>$ indiscernibile per cui esiste $b\in\U^{|x|}$ tale che $b\in^i\!a_i$ per ogni $i<\omega$. Per indiscernibilit\`a lo stesso vale per ogni sottosequenza di $a$. Quindi nessuna sottosequenza converge.
+\end{proof}
+
+
+
+\begin{proposition}[?]
+Sia $\D$ un insieme approssimabile in $M$ di sorta $\phi(x;z)$, una formula nip. Allora $\D$ \`e limite di una sequenza di insiemi definibili in $M$.
+\end{proposition}
+
+
+
+\begin{comment}
+
+\section{Insiemi invarianti}
+
+Diremo che $\D\subseteq\U$ \`e \emph{$A$-invariante\/} se $f[\D]=\D$ per ogni $f\in\Aut(\U/A)$. Diremo che $\D$ \`e \emph{invariante\/} tout court se \`e $A$-invariante per qualche insieme $A$.
+
+Vogliamo dimostrare che la traccia su un modello $M$ di un insieme definibile \`e sempre anche la traccia di un insieme approssimabile in $M$ e quindi, per lemma seguente, $M$-invariante. La dimostrazione del lemma \`e immediata.
+
+\begin{lemma}\label{lemma_findefinv}
+Se $\D\subseteq\U$ \`e approssimabile su $A$ allora \`e $A$-invariante.\hfill\QED
+\end{lemma}
+
+Diremo che $B$ \`e un insieme \emph{$A$-saturo\/} se realizza tutti in tipi in $S(A)$.
+
+\begin{lemma}\label{lemma_invarince_extension}
+Fissato $A$, sia $B$ un insieme $A$-saturo. Se $\D_1,\D_2\subseteq\U$ sono $A$-invarianti hanno la stessa traccia su $B$ allora $\D_1=\D_2$.
+\end{lemma}
+\begin{proof}
+Supponiamo per assurdo che esista $a\in\D_1\sm\D_2$ e sia $a'\in B$ tale che $a'\equiv_A a$. Quindi esiste un $A$-automorfismo $f$ tale che $f(a)=a'$. Per invarianza $fa\in\D_1\sm\D_2$. Ma questo non pu\`o essere perch\'e $\D_1$ e $\D_2$ hanno la stessa traccia su $B$.  
+\end{proof}
+
+\begin{corollary}
+Ogni $D\subseteq A$ ha pi\`u $2^{2^{|L(A)|}}$ estensioni $A$-invarianti. 
+\end{corollary}
+
+\begin{proof}
+Sia $B$ un insieme che realizza tutti i tipi in $S(A)$. Possiamo assumere $|B|\le2^{|L(A)|}$. Per il lemma~\ref{lemma_invarince_extension} il numero delle estensioni invarienti \`e uguale al numero di possibili tracce su $B$. Quindi la cardinalit\`a delle estensioni \`e al pi\`u $2^{|B|}$ e la conclusione segue.
+\end{proof}
+
+%Sia $D$ la traccia su $M$ di un insieme definibile. Un insieme $\D\subseteq\U$ finitamente approssimabile su $M$ tale che $\D\cap M=D$ si chiama un \emph{coerede (globale)\/} di $D\subseteq M$. Per il lemma~\ref{lemma_findefinv} ogni coerede \`e automaticamente $M$-invariante. Si noti che la definizione \`e data per tracce su un modello $M$, estenderla a tracce su un arbitario insieme $A$, \`e questione delicata. 
+
+\begin{lemma}
+Fissiamo $C, A\subseteq\U$ ed una formula $\phi(x,z)\in L$. Sia $D\subseteq A$ tale che per ogni $B\subseteq A$ esiste un $c\in C$ tale che $\phi(B,c)=D\cap B$. Allora esiste $\D$ approssimabile in $C$ tale che $D=\D\cap A$.
+\end{lemma}
+
+
+
+\begin{proof}
+Sia $\<a_i:i<\kappa\>$ un'enumerazione di $\U\sm A$ e sia $A_i=M\cup\{a_j\,:\,j<i\}$. Costruiremo $\D$ come unione di una catena di insiemi $D_i$. Durante la costruzione garantiremo che i seguente tipi siano finitamente soddisfatti in $C$:  
+
+\ceq{\hfill p_i(z)}{=}{\big\{\phi(B,z)=B\cap D_i\ :\ B\subseteq A_i\textrm{ finito}\big\}.}
+
+Questo assicura che $\D$ sia finitamente approssimabile in $C$. Infatti, se $B\subseteq\U$ \`e finito allora per un qualche $i$ avremo $B\subseteq A_i$ e $B\cap D_i=B\cap\D$. Segue che $\phi(B,b)=B\cap\D$ per ogni $b\models p_i(z)$. Quindi $\phi(B,b)=B\cap\D$ per un qualche $b\in C$.
+
+Cominciamo la costruzione ponendo $D_0=D$ e osservando che per ipotesi $p_0(z)$ \`e finitamente soddisfacibile in $C$. Ai passi limiti prendiamo l'unione e osserviamo che la finita soddisfacibilit\`a di $p_i(z)$ in $C$ \`e preservata. Per i passi successore definiamo $D_{i+1}$ scegliendo tra due alternative: $D_i\cup\{a_i\}$ o $D_i$. Dobbiamo solo mostrare che una di queste due alternative rende $p_{i+1}(z)$ finitamente soddisfacibile in $C$, assumendo che $p_i(z)$ lo sia. Osserviamo che
+
+\ceq{\hfill p_{i+1}(z)}{\iff}{\left\{\parbox{40ex}{$p_i(z)\;\wedge\phantom{\neg}\phi(a_i,z)$\quad se $D_{i+1}=D_i\cup\{a_i\}$\\[1ex]$p_i(z)\;\wedge\neg\phi(a_i,z)$\quad se $D_{i+1}=D_i$.}\right.}
+
+Supponiamo per assurdo che esistano che nessuna delle due alternative produca un tipo $p_{i+1}$ finitamente soddisfacibile in $C$. Allora esistono $B', B''\subseteq D_i$ tali che 
+
+\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\parbox{19ex}{\hfil #2}{$\displaystyle #3$}}
+
+\ceq{\hfill \phi(B',b)=B'\cap D_i\imp\phi(a_i,b)}{e}{\phi(B'',b)=B''\cap D_i\imp\neg\phi(a_i,b)}
+
+per ogni $b\in C$. Quindi posto $B=B'\cup B''$ otteniamo $\phi(B,b)\neq B\cap D_i$ per ogni $b\in C$ che contraddice l'ipotesi induttiva.
+
+La dimostrazione si conclude verificando che $D=\D\cap A$. Questo vale per la scelta di $D_0$ e perch\'e $a_i\in\U\sm A$ per ogni $i$.
+\end{proof}
+
+In particolare la traccia di un definibile ha sempre un'estensione globale invariante. Il seguente lemma limita il numero di tali estensioni.
+
+
+
+
+
+\begin{exercise}
+Si dimostri la seguente affermazione. Per ogni $A$ esiste un insieme $B$ di cardinalit\`a $\le2^{|L(A)|}$ tale che ogni un insieme $A$-invariante finitamente approssimabile \`e approssimabile in $p(\U)$ per un qualche $p(z)\in S(B)$.
+%SOLUTION Fissiamo un insieme $B$ che realizza tutti i tipi su $A$ con un numero finito di variabili. Sia $\phi(x,z)\in L$ una formula che approssima finitamente $\D$. Per il lemma~\ref{lem_approx_infty} esiste un $c$ tale che $\D\cap B=\phi(B,c)$. Sia $D\subseteq\U$ un insieme finito. Per la scelta di $B$ esiste un $A$-automosfismo $f$ tale che $f[D]\subseteq B$. Quindi $\D\cap f[D]=\phi(f[D],c)$. Per l'$A$-invarianza di $\D$ otteniamo  $\D\cap D=\phi(D,f^{-1}c)$. Quindi il lemma vale con $p(z)=\tp(c/B)$. 
+\end{exercise}
+
+% 
+% \begin{lemma}
+% Sia $M$ un modello e sia $\D$ un insieme finitamente approssimabile in $M$. Esiste un modello $N$ tale che 
+% \begin{itemize}
+% \item[1.] $\D$ \`e un coerede di $\D\cap N\subseteq N$;
+% \item[2.] $\D\cap M\subseteq M$  \`e la traccia di un definibile su $N$.
+% \end{itemize}
+% 
+% 
+% \end{lemma}
+% 
+% \begin{proof}
+%  
+% \end{proof}
+
+\section{Esperimenti}
+\def\ceq#1#2#3{\parbox[t]{10ex}{$\displaystyle #1$}\parbox{5ex}{$\displaystyle\hfil #2$}{$\displaystyle #3$}}
+
+Sia $A\subseteq\U$ e sia $C\subseteq\U^{\rm im}$ contenente definibili di sorta arbitraria ma tutti con la stessa ariet\`a $|x|$. Sia $\Z$ una variabile del secondo ordine. Posto 
+
+\ceq{\hfill\Delta(A;C)}{=}{\big\{ a\in\Z\;:\;a\in A\big\}\ \cup\ \big\{x\in\Z\big\}\ \cup\ \big\{x\in c\;:\;c\in C\big\}.}
+
+Indicheremo con $\Sigma(A;C)$ l'insieme delle formule della forma $\E x\,\psi(x;\Z)$ con $\psi(x;\Z)\in\pmDelta(A;C)$. Se $\D$ \`e $A$-invariante e $p(\Z)=\Sigma$-$\tp(\D/A;C)$ allora per ogni insieme definibile $d$ della stessa sorta di $\D$ se $\models p(d)$.   
+
+Diremo che $p(\Z)\subseteq\Sigma(A;C)$ \`e $A$-invariante se $\models p(\D)\iff p(f\D)$ per ogni $f\in\Aut(\U/A)$ e per ogni insieme approssimabile $\D\subseteq\U$.
+
+Diremo che $\<d_i:i<\lambda\>$ \`e una \emph{sequenza di Morley di $\D$ su $A$\/} se $d_i\models\Sigma$-$\tp(\D/A;d_{\restriction i})$ e $\Sigma$-$\tp(d_i/A;d_{\restriction i})$ \`e massimale.
+
+
+
+Sia $A\subseteq\U$ e sia $C\subseteq\U^{\rm im}$ contenente definibili di sorta arbitraria ma tutti con la stessa ariet\`a $|x|$. Fissiamo una formula $\phi(x;z)\in L$. Scriviamo $\Phi(C)$ per l'insieme delle congiunzione di formule in $\big\{\phi(x;z), \neg\phi(x;z)\big\}\cup\big\{x\in c, x\notin c \;:\;c\in C\big\}$. Definiamo
+
+\ceq{\hfill\Sigma(A;C)}{=}{\big\{ \phi(a;z), \neg\phi(a;z)\;:\;a\in A\big\}\ \cup\ \big\{\E x\; \psi(x;z)\;:\;\psi(x;z)\in\Phi(C)\big\}}
+
+Un tipo $p(z)\subseteq\Sigma(A;C)$ si dice massimale se \`e consistente e non \`e propriamente conteneuto in nessun tipo consistente $q(z)\subseteq\Sigma(A;C)$.
+
+\begin{lemma}
+Fissiamo $A\subseteq A'\subseteq\U$ e  $C\subseteq C'\subseteq\U^{\rm im}$. Sia $p(z)\subseteq\Sigma(A;C)$ massimale tra i tipi finitamente soddisfacibili in $D$. Allora esiste $p'(z)\subseteq\Sigma(A';C')$ che contiene $p(z)$  massimale tra i tipi finitamente soddisfacibili in $D$.
+\end{lemma}
+
+\begin{proof}
+Consideriamo prima il caso $A'=A,a$ e $C'=C$. Poniamo $p'(z)=p(z)\cup\{\phi(a,z)\}$, se questo \`e finitamente soddisfacibile in $D$, altrimenti $p'(z)=p(z)\cup\{\neg\phi(a,z)\}$. \`E immediato che una dei due tipi dev'essere finitamente soddisfacibile in $D$ e in tal caso anche primo (dato che $p(z)$ lo era).
+
+Ora consideraimo il caso  $A'=A$ e $C'=C,c$. 
+
+\ceq{\hfill\Sigma(A;C,c)}{=}{\Sigma(A;C)\ \cup\ \Big\{\E x\;[\psi(x;z)\wedge x\in c],\ \E x\;[\psi(x;z)\wedge x\notin c]\;:\;\psi(x;z)\in\Phi(C)\Big\}}
+
+Sia $\<\psi_i(x;z):i<\lambda\>$ un'enumerazione delle formule in $\Phi(C)$. Sia $p_0(z)=p(z)$ e $p_{i+1}(z)=p_i(z)\cup\{\E x\;[\psi(x;z)\wedge x\in c]\}$ se questa \`e finitamente soddisfacibile in $D$, altrimenti $p_{i+1}(z)=p_i(z)\cup\{\E x\;[\psi(x;z)\wedge x\notin c]\}$. Mostriamo che almeno una delle due definizione produce un tipo $p_{i+1}(z)$ finitamente soddisfacibile in $D$. Supponiamo per assurdo che per ogni $d\in D$ 
+
+$\xi(d)\imp\A x\;[\psi_i(x;d)\imp x\in c]\vee\A x\;[\psi_i(x;d)\imp x\notin c]$
+
+Questo implica che per ogni $d\in\xi(D)$ la formula  $\psi_i(x,d)$ \`e inconsistente. Il che contraddice la finita soddisfacibilit\`a di $p_i(z)$.
+
+
+
+
+Una (almeno) delle seguenti definizioni di  
+
+$p(z)\cup\{\phi(a,z)\}$ e   $p(z)\cup\{\neg\phi(a,z)\}$ \`e fininitamente soddisfacibile in $D$. Se il primo \`e consistente definiamo $\D'=\D\cup\{a\}$ altrimenti $\D'=\D\cup\{a\}$.
+
+
+
+
+ 
+\end{proof}
+
+
+
+Le formule in  $\Sigma(A;C)$ 
+
+
+
+ e per ogni $i\in\omega$ fissiamo una tupla di variabili $x_i$ di lunghezza $|x|$.  Indicheremo con $E(A;C)$ l'insieme delle formule della forma $\E\bar x\,\psi(\bar x;\Z)$ dove $\psi(\bar x;\Z)$ \`e una conbinazione booleana di formule in
+
+\ceq{}{}{\big\{ a\in\Z\;:\;a\in A\big\}\ \cup\ \big\{x_i\in\Z\;:\;i\in\omega\big\}\ \cup\ \big\{x_i\in c\;:\;c\in C,\ i\in\omega\big\}}
+
+Sia $\D\subseteq\U^{|x|}$ un insieme non necessariamente definibile e sia $\psi(\Z)\in E(A;C)$. Le espressioni $\psi(\D)$ e $\D\models\psi(\Z)$ hanno l'ovvio significato. Scriveremo $\D\equiv_{E(A;C)}\C$ se questi soddisfano le stesse formule in $E(A;C)$.  Scriveremo $p(\Z)=\tp(\D/A;C)$ per
+
+\ceq{\hfill p(\Z)}{=}{\big\{\psi(\Z)\in E(A;C)\ :\ \D\models\psi(\Z)\big\}}  
+
+Indicheremo con $\psi(z)$ la formula ottenuta sostituendo in $\psi(\Z)$ ogni espressione del tipo $x_i\in\Z$ con $\phi(x_i,z)$. La formula $\phi(x,z)\in L$ \`e fissata dal contesto e non comparir\`a mai nella notazione. Le formue $\psi(\Z)$ e $\psi(z)$ verranno spesso identificate.
+
+\begin{lemma}
+Posto 
+
+\ceq{\hfill\Delta(A;C)}{=}{\big\{ a\in\Z\;:\;a\in A\big\}\ \cup\ \big\{x\in\Z\big\}\ \cup\ \big\{x\in c\;:\;c\in C\big\}}
+
+le formule in $E(A;C))$ sono (a meno di equivalenza) combinazioni booleane positive di formule della forma $\E x\,\psi(x;\Z)$ con $\psi(x;\Z)\in\pmDelta(A;C)$.
+\end{lemma}
+
+
+L'espressione $p(z)=\tp(\D/A;C)$ indicher\`a che $p(z)$ \`e il tipo del prim'ordine ottenuto da $p(\Z)$ con questa identificazione. Potremmo anche scrivere $\D\equiv_{E(A;C)}d$ intendendo $d\models p(z)$.
+
+Si osservi che il tipo $p(z)=\tp(\D/A;C)$ non \`e necessariamente (finitamente) consistente. 
+Quando  $p(z)=\tp(\D/A;C)$ \`e finitamente soddisfacibile diremo che $\D$ \`e E-approsssimabile su $A;C$. Esplicitando la definizione $\D$ \`e  E-approsssimabile su $A;C$ se per ogni per ogni $\psi(\Z)\in E(A;C)$ tale che $\D\models\psi(\Z)$ esiste un $d$ tale che  $d\models\psi(z)$. %Specificheremo E-approssimabile o 
+
+\begin{lemma}
+Fissiamo $A\subseteq A'\subseteq\U$ e  $C\subseteq C'\subseteq\U^{\rm im}$. Supponiamo che $p(z)=\tp(\D/A;C)$ sia finitamente soddisfacibile in $D$. Allora esiste $\D'\equiv_{E(A;C)}\D$ tale che $p'(z)=\tp(\D'/A';C')$ \`e finitamente soddisfacibile in $D$ .
+\end{lemma}
+
+\begin{proof}
+Consideriamo prima il caso $A'=A\cup\{a\}$ e $C'=C$. Ponendo $\D'=\D\cup\{a\}$ otteniamo
+$p'(z)=p(z)\cup\{\phi(a,z)\}$. Invece ponendo $\D'=\D\cup\{a\}$ otteniamo $p'(z)=p(z)\cup\{\neg\phi(a,z)\}$. In entrambi i casi  $\D'\equiv_{E(A;C)}\D$. Chiaramente una delle due possibilit\`a rende $p'(z)$ finitamente soddisfacibile in $D$.
+
+Ora consideraimo il caso  $A'=A$ e $C'=C\cup\{c\}$.
+
+
+
+Una (almeno) delle seguenti definizioni di  
+
+$p(z)\cup\{\phi(a,z)\}$ e   $p(z)\cup\{\neg\phi(a,z)\}$ \`e fininitamente soddisfacibile in $D$. Se il primo \`e consistente definiamo $\D'=\D\cup\{a\}$ altrimenti $\D'=\D\cup\{a\}$.
+
+
+
+
+ 
+\end{proof}
+
+
+\begin{lemma}
+Sia $C$ un insieme di sottoinsi di $\U$ e sia $A\subseteq\U$. Sia $\C\subseteq\U$ tale che per ogni $B\subseteq A$ finito esiste $\C'\in A$  tale che $\C'\cap B=\C\cap B$. Allora esiste un  Per ogni formula $\phi(x,z)\in L$, ogni modello $M$ ed ogni tupla $c\in\U$, esiste un insieme $\D$ approssimabile in $M$ tale che $\phi(M,c)=\D\cap M$.
+\end{lemma}
+
+Sia $A$ un insieme di insiemi definibili della stesa sorta. Scriveremo $\ssf{B}(A)$ per l'algebra booleana generata da $A$. Se $b$ \`e un insieme definibile scriveremo $\ssf{B}(b/A)=\{a\in\ssf{B}(A): b\wedge a\,\neq\0\}$. Diremo che $b$ \`e generico se $\ssf{B}(b/A)$ \`e massimale. Diremo che $\<a_i:i<\lambda\>$ una sequenza di insiemi definibili (della stessa sorta) \`e una sequenza di generici se $\ssf{B}(a_i/A,a_{\restriction i})$ \`e generico per ogni $i<\lambda$. 
+
+
+Per $a,b$ insiemi definibili, scriveremo $a\bumpeq_A b$ se la mappa che fissa $A$ e manda $a\mapsto b$ genera un isomorphismo tra $\ssf{B}(A,a)$ e $\ssf{B}(A,b)$.
+
+
+
+\section{Sequenze di insiemi indiscernibili}
+
+Sia $\<a_i:i<\lambda\>$ una sequenza di insiemi definibili. Sia $A$ un insieme di insiemi definibili. Diremo che \`e una sequenza di Morley su $A$ se per ogni $n<\lambda$ ed ogni insieme $B\subseteq A\cup\{a_i:i<n\}$ finito
+\begin{itemize}
+\item[1.] $a_n\bumpeq_B a_{n+1}$;
+\item[2.] $a_n\bumpeq_B c$ per qualche $c\in A$. 
+\end{itemize}
+
+\begin{lemma}
+Se  $\<a_i:i<\lambda\>$ \`e una sequenza di Morley su $A$ allora per ogni $i_0<\dots<i_{n-1}<\lambda$ 
+
+\ceq{\hfill a_0,\dots,a_{n-1}}{\bumpeq_B}{a_{i_0},\dots,a_{i_{n-1}}}
+
+per ogni insieme $B\subseteq A$ finito.
+\end{lemma}
+
+
+
+Per $i<\lambda$ fissiamo dei modelli $M_i$, delle formule $\psi_i(x)\in L(M_{i+1})$ tali che $\D$ \`e un co-erede di $\D\cap M_i\subseteq M_i$ e $\psi_{i+1}(M_i)=\D\cap M$.
+
+
+Sia $\<a_i:i<\lambda\>$ una sequenza di immaginari. Siremo che \`e se $\D_i$ \`e invariante su  $\<a_j:j<\i\>$ e $a_i$  $\D\cap M=a_i\cap M$ for some model 
+
+\hrulefill
+
+Sia $\D\subseteq\U^{|x|}$ e sia $\Delta$ un insieme di formule con variabili libere in $x$. Dato $\B\subseteq\U$ scriveremo $\D\mathord\restriction\B$ per $\D\cap\B^{|x|}$. Diremo che $\D\mathord\restriction\B$ \`e localmente $\Delta$-definibile se  per ogni $B\subseteq\B$ finito esiste una formula $\phi(x)\in\Delta$ tale che $\phi(B^{|x|})=\D\cap B^{|x|}$.  Diremo che $\D\mathord\restriction\B$ \`e $\Delta$-invariante se  $a\in\D\mathord\restriction\B$ ed $a\Rrightarrow_\Delta b$ implica che $b\in\D\mathord\restriction\B$. Ricordiamo che $a\Rrightarrow_\Delta b$ sta per $\tp(a/\Delta)\subseteq\tp(b/\Delta)$.
+
+\begin{remark}\label{oss_invarianza}
+Quando $\D\mathord\restriction\B$ \`e un insieme $\Delta$-invariante avremo che 
+
+\hfil$\displaystyle\D\mathord\restriction\B\ \ =\ \ \bigcup\Big\{p(\B^{|x|})\ :\ p(x)=\tp(a/\Delta){\rm\ for\ some\ }a\in\B^{|x|}\Big\}$
+
+In particolare, se $\Delta$ \`e finito, $\D\mathord\restriction\B\ =\ \psi(\B^{|x|})$ per una qualche $\psi(x)$ combinazione booleana positiva di formule in $\Delta$.
+\end{remark}
+
+
+%Diremo che $A$ \`e autosufficente per $\D$ and $\phi(x,z)$ se per ogni $B\subseteq A$ finito esiste un $b\in A^{|z|}$ tale che $\phi(\U^{|x|},b)\cap B^{|x|}=\D\cap B^{|x|}$.
+
+
+\begin{theorem}
+Fissato un insieme di formule $\Delta$ con variabili libere nella tupla $x$ e due insiemi $\D\subseteq\U^{|x|}$ e $\B\subseteq\U$ tali che $\D\mathord\restriction\B$ \`e localmente $\Delta$-definibile, then \ssf{1}$\IMP$\ssf{2}:
+\begin{itemize}
+%\item[1.] per un qualche $n\in\omega$ non esistono $B\subseteq\B$ e $\phi_i(x)\in\Delta$, per $i<n$, tali che $\phi_{i+1}(B^{|x|})\subset\phi_i(B^{|x|})$;
+\item[1.] non esistono $\phi_i(x)\in\Delta$, per $i\in\omega$, tali che $\phi_{i+1}(\B^{|x|})\ \subset\ \phi_i(\B^{|x|})$;
+\item[1.] non esistono $\phi_i(x)\in\Delta$, per $i\in\omega$, tali che $\phi_i(\B^{|x|})\ \subset\ \phi_{i+1}(\B^{|x|})$;
+\item[2.] $\D\mathord\restriction\B\ =\ \psi(\B^{|x|})$ per una qualche $\psi(x)$ combinazione booleana positiva di formule in $\Delta$.
+\end{itemize}
+\end{theorem}
+
+
+\begin{proof}
+Per l'osservazione~\ref{oss_invarianza} \`e sufficiente mostrare che $\D\mathord\restriction\B$ \`e $\Delta_0$-invariante per un qualche sottoinsieme finito $\Delta_0\subseteq\Delta$. Definiamo ricorsivamente $\phi_i(x)\in\Delta$ e degli insiemi finiti $B_i\subseteq\B^{|x|}$. Cominciando col porre $B_0=\0$ e supponiamo di aver ottenuto per definibilit\`a locale una formula $\phi_i(x)$ tale che $\phi_i(B_i^{|x|})=\D\cap B_i^{|x|}$. Possiamo assumere che $\phi_i(\B^{|x|}) \neq\D\cap\B^{|x|}$, altrimenti l'affermazione \ssf{2} \`e banalmente vera.  Quindi $\phi_i(b) \niff b\in\D\cap\B^{|x|}$ per una qualche tupla $b\in\B^{|x|}$. Definiamo $B_{i+1}=B_i\cup\range b$.
+\end{proof}
+
+\hrulefill
+
+
+Diremo che l'insieme esternamente definibile $\D\subseteq\U^\eq$ \`e \emph{basato su\/} $A\subseteq\U^\eq$ se la condizione richiesta per la locale definibilit\`a pu\`o esserer rafforzata richiedendo $\phi(x)\in L(A)$. Diremo che $\D$ \`e \emph{basato\/} se \`e basato su qualche $A\subseteq\U^\eq$.
+
+
+\begin{lemma}
+Per ogni $\D\subseteq\U^{n}$ esternamente definibile le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ basato su $A$;
+\item[2.] $\D$ \`e $A$-invariante ed \`e basato.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+L'implicazione \ssf{1}$\IMP$\ssf{2} \`e facile: se $a\equiv_Ab$ ed $a\in\D\niff b\in\D$, allora l'insieme $B=\{a,b\}$ contraddice \ssf{1}. Per dimostrare \ssf{2}$\IMP$\ssf{1} supponiamo che $\phi(x,z)\in L$ definisca esternamente $\D$ che supporremo basato su $C$. Costriuiamo per un modello $M\supseteq C$ saturo tale che per ogni $B\subseteq M$ finito esiste $b\in M^{|z|}$ tale che $\phi(\U,b)\cap M^{|z|} = \D\cap M^{|z|}$.  
+
+
+
+
+si osservi che la richiesta $\phi(\U,z)\cap B=\D\cap B$ \`e esprimibile da un tipo $p(z)\subseteq L(B)$ che, per \ssf{2}, \`e finitamente consistente.
+\end{proof}
+
+\hrulefill
+
+Se $\D$ \`e $A$-invariante per qualche $A$ (il caso su cui ci concentreremo), basta vericicare la condizione \ssf{2} del lemma~\ref{lem_unif_loc_def} per un unico $B$.
+
+\begin{lemma}
+Dato $A$ esiste un insieme $B$ di cardinalit\`a $\le2^{|L(A)|}$ tale che per ogni $n$ ed ogni insieme $A$-invariante $\D\subseteq\U^{n}$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e esternamente definibile;
+\item[2.] esiste una formula $\psi(x)\in L(\U)$ tale che $\phi(\U)\cap B^n=\D\cap B^n$.
+\end{itemize}
+\end{lemma}
+
+Fissata una formula $\phi(x,z)\in L(\U)$ ed un insieme di parametri $A$ un $\phi(x,A)$-tipo \`e un tipo che contiene combinazioni booleane positive di formule della forma $\phi(x,a)$ per $a\in A^{|z|}$.  
+
+\begin{lemma}
+Sia $\D\subseteq\U^n$ un insieme $A$-invariante, chiuso nella $A$-topologia, e esternamente definibile dalla formula $\phi(x,z)\in L(A)$. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e un insieme definibile da un tipo;
+\item[2.] $\D$ \`e un insieme definibile su $A$;
+\item[3.] l'orbita di $\D$ su $A$ ha cardinalit\`a $1$;
+\item[4.] $\D$ \`e definibile da un $\phi(x,A)$-tipo.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+\hrulefill
+
+
+esiste una formula $\phi(x,z)\in L(A)$ tale che per ogni $B\subseteq\U$ esiste una tupla $b$ tale che $\phi(\U,b)\cap B=\D\cap B$.
+
+Diremo che la formula $\phi(x,z)$ definisce esternamente (esternamente) l'insieme $\D\subseteq\U$ se $\D$ \`e $A$-invariante e per ogni $B\subseteq\U^{|x|}$ finito esiste una tupla $b$ tale che $\phi(\U,b)\cap B=\D\cap B$.
+
+
+
+\begin{lemma}
+Fissato $A$ esiste un insieme $B$ di cardinalit\`a $\le2^{|L(A)|}$ tale che per ogni $n$ ed ogni $\D\subseteq\U^{n}$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e esternamente definibile su $A$;
+\item[2.] esiste una formula $\phi(x)\in L(A)$ tale che $\phi(\U)\cap B^n=\D\cap B^n$.
+\end{itemize}
+\end{lemma}
+
+
+
+\begin{definition}\label{def_locally}
+Diremo che $\D\subseteq\U^{|x|}$ \`e \emph{esternamente\/} (o anche \emph{esternamente\/}) \emph{definibile} su $A$ dalla formula $\phi(x,z)$ se $\D$ \`e $A$-invariante, $\phi(x,z)\in L(A)$, e per ogni $B\subseteq\U^{|x|}$ finito esiste una tupla $b$ tale che $\phi(\U,b)\cap B=\D\cap B$.
+\end{definition}
+
+
+\begin{lemma}
+Fissato $A$ esiste un insieme $B$ di cardinalit\`a $\le2^{|L(A)|}$ tale che per ogni $\D\subseteq\U^{|x|}$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e esternamente definibile su $A$ dalla formula $\phi(x,z)$;
+\item[2.] esiste una tupla $b$ tale che $\phi(\U,b)\cap B=\D\cap B$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+Sia $B\subseteq\U^{|x|}$ tale che ogni sottoinsieme finito di $\U^{|x|}$ \`e $A$-congiugato ad un sottoinsieme finito di $B^{|x|}$. Chiaramente possiamo richiedere che $|B|\le2^{|L(A)|}$. L'implicazione \ssf{2}$\IMP$\ssf{1} \`e immediata. Per dimostraiamo \ssf{1}$\IMP$\ssf{2} si osservi che la richiesta $\phi(B,z)=\D\cap B$ \`e esprimibile da un tipo $p(z)$ e che per \ssf{1} \`e finitamente consistente.
+\end{proof}
+
+
+\begin{lemma}
+Il modello $\<\U,\D\>$ \`e saturo. \medskip
+\end{lemma}
+
+Definiamo \emph{$\orbit(\D/A)$} $=\big\{f[\D]\,:\,f\in\Aut(\U/A)\big\}$. Chiameremo questo insieme l'orbita di $\D$ su $A$.
+
+\begin{lemma}
+Sia $\D$ un insieme esternamente definibile su $A$ dalla formula $\phi(x,z)$. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\D$ \`e un insieme definibile;
+\item[2.] $\D$ \`e definibile da una combinazione booleana positiva di formule della forma $\phi(x,b)$;
+\item[3.] l'orbita di $\D$ su $A$ ha cardinalit\`a $\le|\U|$;
+\item[4.] l'orbita di $\D$ su $A$ ha cardinalit\`a $<2^{|\U|}$.
+\end{itemize}
+\end{lemma}
+
+\begin{lemma}
+Sia $\D$ esternamente definibile su $A$ dalla formula $\phi(x,z)$. Allora per ogni $N\supseteq A$ e per ogni $B\subseteq\U^{|x|}$ finito esiste un $c\in N^{|z|}$ tale che $\phi(\U,c)\cap B=\D\cap B$.
+\end{lemma}
+
+\begin{proof}
+Note that, by $A$-invariance, nella definizione~\ref{def_locally}, possiamo senza perderdita di generalit\`a restringere $B$ to be a subLet $C$ 
+Sia $b$ tale che $\phi(\U,b)\cap B=\D\cap B$. Sia $b'\equiv_Nb$ tale che $B\downfree_N b'$. Sia $f$ un $N$- automorfismo tale che $fb=b'$. 
+\end{proof}
+
+\end{comment}

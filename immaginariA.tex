@@ -1,0 +1,325 @@
+\chapter{Definibilit\`a e automorfismi}
+\label{immaginariA}
+%\setcounter{page}{1}
+\def\b{b\llap{\raisebox{-.8ex}{-\hskip.2ex}}}
+\def\a{a\llap{\raisebox{-.8ex}{-\hskip.2ex}}}
+\def\d{{\rm def}}
+
+Fin'ora abbiamo usato elementi dell'universo come parametri per definire insiemi. In questo capitolo vedremo che anche gli insiemi definibili possono essere usati come parametri per definire insiemi o elementi. Vedremo anche come estendere il concetto di elemento algebrico agli insiemi definibili.
+
+In questo capitolo introduciamo $\U^\eq$, evitando di usare i linguaggi a pi\`u sorte. Alcune dimostrazioni risultano pi\`u lunghe ma la notazione pi\`u semplice le rende meno oscure.  
+
+Per tutto questo capitolo fissiamo un linguaggio $L$ ed una teoria completa $T$ senza modelli finiti. Fissiamo anche un modello saturo $\U$ di cardinalit\`a maggiore di $|L|+\omega$. La notazione e le assunzioni implicite sono quelle presentate nel paragrafo~\ref{mostro}.
+
+
+
+
+
+\def\ceq#1#2#3{\parbox{20ex}{\hskip0pt #1}\llap{#2}\parbox{8ex}{\hfil #3}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elementi immaginari e definibilit\`a}\label{immaginari}
+
+Denoteremo con \emph{$\U^{\rm\bf eq}$} l'unione di $\U$ con l'insieme dei suoi sottoinsiemi definibili. Definibili, si intende, con parametri in $\U$ e di ariet\`a finita. Questi verranno chiamati \emph{(elementi) immaginari}, per contrasto chiameremo \emph{reali\/} gli usuali elementi di $\U$. Questo \`e un leggero abuso di terminologia (in letteratura il termine \textit{immaginari\/} ha un significato leggermente diverso). La nostra scelta verr\`a giustificata pi\`u avanti, vedi esercizio~\ref{eximmaginaristandard}. In questo capitolo con le lettere $a$, $b$, ecc.\@ denoteremo tuple di elementi $\U^\eq$ e le lettere $A$, $B$, ecc.\@ denoteranno sottoinsiemi di $\U^\eq$, sempre col vincolo di avere cardinalit\`a piccola. L'etimologia del simbolo verr\`a spiegata pi\`u avanti.
+
+%Scriveremo $\dcl^\eq A$} per l'insieme che contiene $A$ e tutti quei sottoinsiemi di $\U$ che sono definibili a parametri in $A$.
+
+Ogni automorfismo $f:\U\imp\U$ agisce in modo naturale anche sugli insiemi definibili: l'insieme definibile $a$ viene mappato nell'insieme
+
+\hfil$f[a]\ \ =\ \ \big\{fx\;:\;x\in a\big\}$.
+
+Questo \`e un insieme definibile: se $a$ \`e l'insieme definito da $\phi(x;c)$ allora $f[a]$ \`e l'insieme definito da $\phi(x;fc)$. Scriveremo  $fa$ o $f(a)$ per l'insieme $f[a]$, identificando la notazione per gli insiemi definibili con quella per gli elementi.
+
+Sia $A\subseteq\U^\eq$. Denotiamo con \emph{$\Aut(\U/A)$\/} l'insieme degli automorfismi di $\U$ che fissano tutti gli elementi di $A$. Gli elementi immaginari si intendono fissati come insiemi. Se $a$ \`e una tupla di elementi di $\U^\eq$, con \emph{$\orbit(a/A)$\/} denoteremo l'\emph{orbita di $a$ su $A$\/} ovvero
+
+\hfil\emph{$\orbit(a/A)$}$\ \ \deq\ \ \{fa\;:\; f\in\Aut(\U/A)\}$.
+
+Diremo che $a\in\U^\eq$ \`e \emph{Galois-definibile\/} su $A$ se $\orbit(a/A)$ consiste del solo elemento $a$. O equivalentemente se $\Aut(\U/a)\subseteq\Aut(\U/A)$, ovvero ogni automorfismo che fissa $A$ fissa anche $a$.
+
+Ora vogliamo dare una caratterizzazione sintattica di $\dcl^\eq A$. Per far questo dobbiamo permettere l'uso di insiemi definibili come parametri nelle formule. Una \emph{formula a parametri in $A\subseteq\U^\eq$}, si costruisce induttivamente con tutti gli usuali connettivi logici, a partire dalle seguenti formule atomiche:
+
+\begin{itemize}
+\item[1.] le usuali formule atomiche del prim'ordine con parametri (reali) in $A$;
+\item[2.] le formule atomiche della forma $t\in a$ dove $a\in A$ \`e un elemento immaginario e $t$ \`e una tupla di termini a parametri (reali) in $A$.
+\end{itemize}
+
+La semantica di queste formule \`e quella naturale: \`e come se avessimo aggiunto al linguaggio un nuovo predicato $x\mathord\in a$ per ogni insieme definibile, predicato che viene interpretato nell'insieme $a$. 
+
+Con le formule in questo nuovo linguaggio non otteniamo nuovi insiemi definibili: se in una formula a parametri in $A$ sostituiamo $t\in a$ con $\sigma(t)$, dove $\sigma(x)$ \`e una qualsiasi definizione di $a$, otteniamo una formula equivalente a parametri reali. Questa sar\`a una formula a parametri in $AB$ per qualche insieme di parametri reali $B$. La ragione per introdurre una nuova definizione \`e che in generale non esiste una scelta canonica per $B$.
+
+Per quanto osservato sopra, il modello $\U$ realizza tutti i tipi $p(x)\subseteq L(A)$ finitamente consistenti a parametri in un qualsiasi $A\subseteq\U^\eq$. Se $a$ \`e una tupla di elementi reali, scriveremo \emph{$p(x)=\tp(a/A)$} per l'insieme delle formule a parametri in $A$ soddisfatte da $a$; anche la notazione \emph{$a\equiv_Ab$\/} si estende in modo naturale ad insiemi che contengono parametri immaginari. 
+
+\begin{lemma}
+Sia $A\subseteq\U^\eq$ e siano $a$ e $b$ due tuple reali tali che $a\equiv_Ab$. Allora esiste un automorfismo $h\in\Aut(\U/A)$ tale che $ha=b$.
+\end{lemma} 
+
+\begin{proof}
+\`E sufficiente estendere la mappa $k=\{\<a,b\>\}$ ad un automorfismo che fissa $A$. L'usuale argomento per andirivieni si generalizza perch\'e la saturazione si $\U$ implica anche la realizzazione dei tipi finitamente consistenti a parametri in $\U^\eq$.
+\end{proof}
+
+Quindi possiamo argomentare per omogeneit\`a su insiemi $A\subseteq\U^\eq$ ed ottenere per esempio il seguente corollario.
+\begin{corollary}
+Sia $A\subseteq\U^\eq$ e sia $a$ una tupla reale. Sia  $p(x)=\tp(a/A)$. Allora $p(\U)=\orbit(a/A)$.\QED
+\end{corollary}
+
+Se $a$ \`e un elemento reale diremo che \emph{$a$ \`e definibile su $A$\/} se esiste una formula $\phi(x)\in L(A)$ tale che $\phi(a)\wedge\E^{=1}x\,\phi(x)$, ovvero $a$ \`e l'unica soluzione di $\phi(x)$. Quando $a$ \`e un elemento immaginario diremo che  \emph{$a$ \`e definibile su $A$\/} se $a=\phi(\U)$ per una qualche formula $\phi(x)\in L(A)$. Scriveremo \emph{${\rm\bf dcl^{eq}} A$\/} per la \emph{chiusura definibile di $A$}, ovvero l'insieme degli elementi reali ed immaginari che sono definibili su $A$. Se $a$ \`e una tupla di elementi di $\U^\eq$, diremo che $a$ \`e definibile se tutti gli elementi enumerati da $a$ sono definibili. (Si veda esercizio~\ref{definibilituple}.)
+
+\begin{theorem}\label{thm_Galois_def=def}
+\label{galois1} Per ogni $A\subseteq\U^\eq$ ed $a\in\U^\eq$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $a$ \`e Galois-definibile su $A$;
+\item[2.] $a$ \`e definibile su $A$ .
+\end{itemize}
+\end{theorem}
+\begin{proof} L'implicazione \ssf{2}$\,\IMP\,$\ssf{1} \`e immediata. Per dimostrare \ssf{1}$\,\IMP\,$\ssf{2} considereremo separatamente i casi $a$ reale ed $a$ immaginario. (Il formalismo per trattarli simultaneamente non \`e stato introdotto.)
+
+Se $a\in\U$ \`e fissato da tutti gli automorfismi che fissano $A$, allora il tipo $p(x)=\tp(a/A)$ ha come unica soluzione $a$. Per compattezza $p(x)$ contiene una formula $\phi(x)$ con un'unica soluzione.
+
+Se $a\in\U^\eq\sm\U$ \`e fissato da tutti gli automorfismi che fissano $A$. Sia $\sigma(x;b)$ una qualsiasi definizione di $a$ e sia $p(z)=\tp(b/A)$. Per omogeneit\`a otteniamo
+
+\hfil$p(z)\ \ \imp\ \ \A x\,[\sigma(x;z)\iff x\in a]$.
+
+Per compattezza esiste una formula $\phi(z)$ in $p(z)$ tale che
+
+\hfil$\phi(z)\ \ \imp\ \ \A x\,[\sigma(x;z)\iff x\in a]$
+
+\`E immediato verificare che $\E z\,[\phi(z)\wedge\sigma(x;z)]$ definisce $a$.
+%
+%\hfil$a\ \ =\ \ \Big\{x\ :\ \E w\;\big[p(w)\wedge\sigma(x;w)\big]\Big\}$.
+%
+%Per dimostrare questa uguaglianza \`e sufficiente mostrare che ogni soluzione di $\E w\;\big[p(w)\wedge\sigma(x;w)\big]$ soddisfa anche $\sigma(x;b)$, infatti il viceversa \`e ovvio. Supponiamo quindi che valga $\sigma(c,d)$ per un qualche $d$ che realizza $p(w)$. Per omogeneit\`a esiste un automorfismo che fissa $A$ tale che $fd=b$. Quindi vale $\sigma(fc,b)$ ovvero $fc\in a$. Quindi $c\in f^{-1}a$ e, poich\'e $a$ \`e fissato da $f$, segue che $c\in a$. Questo dimostra che $a$ \`e definibile da $\E w\;\big[p(w)\wedge\sigma(x;w)\big]$ che per saturazione \`e equivalente ad un tipo. Quindi $a$ \`e semidefinibile su $A$. Lo stesso argomento mostra che anche il complemento di $a$ \`e semidefinibile, quindi $a$ \`e definibile.
+\end{proof}
+
+Il teorema mostra che la nozione Galois-teoretica di definibilit\`a coincide con quella sintattica.  Il termine Galois-definibile in queste note non verr\`a pi\`u usato. Si osservi che per introdurre la nozione sintattica di definibilit\`a dobbiamo distingue tra elementi ed insiemi. La nozione  Galois-teoretica di definibilit\`a \`e pi\`u semplice ed elegante di quella sintattica ma \`e molto difficile da utilizzare e per questo abbiamo cercato equivalenti sintattici. In alcuni contesti (al di fuori della logica del prim'ordine) non si ha chiara intuizione della corretta nozione di \textit{definibile}. Generalmente in questi casi si parte dalla nozione Galois-teoretica.
+
+Lasciamo al lettore la dimostrazione della seguente proposizione.
+
+\begin{proposition}\label{dcl123} Le seguenti affermazioni valgono per ogni $A\subseteq\U^\eq$:
+\begin{itemize}
+\item[1.]  Se $a\in\dcl\/^\eq A$ allora $a\in\dcl\/^\eq B$ per un qualche $B\subseteq A$ finito.
+\item[2.]  $A\subseteq \dcl\/^\eq A$.
+\item[3.]  $\dcl\/^\eq A=\dcl\/^\eq(\dcl\/^\eq A)$.\QED
+\end{itemize} 
+\end{proposition}
+
+\begin{exercise}\label{definibilituple}
+Sia $A\subseteq\U^\eq$ e sia $a$ una tupla finita di elementi di $\dcl^\eq(A)$, diciamo $a_1,\dots,a_n$ con $a_i\in\dcl^\eq(A)$. Si dimostrino le seguenti affermazioni.
+\begin{itemize}
+\item[\re] Se in $a$ occorrono solo di elementi reali allora esiste una formula $\phi(x)\in L(A)$ tale che $\phi(a)\wedge\E ^{=1}x\,\phi(x)$. 
+\item[im] Se $a$ \`e composta solo di elementi immaginari allora l'insieme $a_1\times\dots\times a_n$ \`e definibile su $A$.\QED
+\end{itemize}
+\end{exercise}
+
+
+\begin{exercise}
+Per $A,B\subseteq\U^\eq$, sia $p(x)\subseteq L(B)$ e supponiamo che $p(\U)$ sia invariante su $A$. Si dimostri che $p(\U)=q(\U)$ per qualche $q(x)\subseteq L(A)$.  Suggerimento: ragionando come per il teorema~\ref{thm_Galois_def=def} si dimostri che ogni insieme definibile che contiene $p(\U)$ contiene un $A$-definibile che a sua volta contiene $p(\U)$.
+\end{exercise}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elementi algebrici}\label{chiusura algebrica}
+
+Sia $A\subseteq\U^\eq$ e sia $a$ un elemento di $\U^\eq$. Se l'orbita $\orbit(a/A)$ \`e finita diremo che \emph{$a$ \`e Galois-algebrico su $A$}.
+
+Ora, vogliamo dare una caratterizzazione sintattica di questa nozione. Sia $a$ un elemento reale. Riprendiamo la definizione data nel paragrafo~\ref{acl}, con la differenza (irrilevante) \`e che ora i parametri sono in $\U^\eq$. Diremo che \emph{$a$ \`e algebrico su $A$\/} se \`e soluzione di una qualche formula che ha un numero finito di soluzioni, ovvero se  esiste una formula $\phi(x)$ con parametri in $A$ tale che $\phi(a)\wedge\E^{=n}x\,\phi(x)$ per un qualche $n$. Una tale formula $\phi(x)$  verr\`a chiamata \emph{formula algebrica}. Analogamente un \emph{tipo algebrico\/} \`e un tipo con un numero finito di soluzioni. La \emph{chiusura algebrica (reale)\/} di $A$ \`e l'insieme degli elementi reali algebrici su $A$, verr\`a denotato con \emph{${\rm\bf acl} A$}.
+
+Per definire il corrispondente sintattico di un immaginario Galois-algebrico abbiamo bisogno della seguente nozione. Siano $x$ e $y$ due tuple finite di uguale lunghezza. Diremo che la formula $\epsilon(x,y)$ \`e un'\emph{equivalenza\/} se definisce una relazione d'equivalenza; diremo che \`e un'\emph{equivalenza finita\/} se  ha un numero finito di classi di equivalenza.
+
+Sia $\epsilon(x,y)\in L(A)$ un'equivalenza. Le classi di equivalenza di $\epsilon(x,y)$ sono definibili con parametri in $A$ pi\`u un qualsiasi elemento della classe. Gli automorfismi che fissano $A$ mappano coppie equivalenti in coppie equivalenti, quindi mappano classi di equivalenza in altre classi di equivalenza. Se $\epsilon(x,y)$ \`e un'equivalenza finita, le sue classi hanno necessariamente un'orbita finita: sono Galois-algebriche su $A$. Lo stesso vale per insiemi che sono unione di classi di una equivalenza finita. Un \emph{elemento immaginario algebrico su $A$\/} \`e un insieme definibile che \`e unione di classi di una qualche equivalenza finita definibile con parametri in $A$. 
+
+Scriveremo \emph{${\rm\bf acl^{eq}} A$} per la \emph{chiusura algebrica di $A$ in $\U^\eq$}, ovvero l'insieme degli elementi reali ed immaginari che sono algebrici su $A$. Se $a$ \`e una tupla, diremo che $a$ \`e algebrica se tutti gli elementi enumerati da $a$ sono algebrici.
+Abbiamo bisogno del seguente seguente lemma tecnico.
+
+\begin{lemma}\label{lemmapartizionetipo} Sia $\epsilon(x,y)$ un'equivalenza e sia $p(x)$ un tipo. Se un numero finito di classi di equivalenza di $\epsilon(x,y)$ intersecano $p(x)$, allora esiste un'equivalenza finita $\eta(x,y)$ che coincide con $\epsilon(x,y)$ su $p(x)$. (Tutto con parametri in un qualche $A\subseteq\U^\eq$.)
+\end{lemma}
+
+\begin{proof} \`E sufficiente mostrare $\epsilon(x,y)$ induce una partizione finita di una qualche $\phi(x)$, congiunzione di formule in $p(x)$. Infatti, data la formula $\phi(x)$, come equivalenza $\eta(x,y)$ possiamo prendere 
+
+\hfil$[\phi(x)\iff\phi(y)]\ \wedge\ [\phi(x)\wedge\phi(y)\imp\epsilon(x,y)]$. 
+
+Questa \`e un'equivalenza finita perch\'e raccoglie tutte le tuple in $\neg\phi(x)$ un'unica classe. Per dimostrare l'esistenza della formula $\phi(x)$ richiesta, consideriamo il tipo:
+
+\hfil$\displaystyle\bigwedge_{i\le n} p(x_i)\ \ \wedge \ \ \bigwedge_{i<j\le n} \neg\epsilon(x_i,x_j)$.
+
+Se $n$ \`e sufficientemente grande, questo tipo \`e contraddittorio. L'esistenza della formula $\phi(x)$ segue per compattezza.
+\end{proof}
+
+Dimostriamo per gli elementi di $\U^\eq$ l'analogo del teorema~\ref{cadinalitafinitasaturazione}.% (non avendo introdotto la nozione di tipo di un immaginario, qui lavoriamo con le orbite).
+
+\begin{lemma}\label{cadinalitafinitasaturazioneimmaginari}
+Fissiamo $A\subseteq\U^\eq$ sia $a\in\U^\eq$ con $\orbit(a/A)$ infinita. Allora $\orbit(a/A)$ ha cardinalit\`a di $\U$.
+\end{lemma}
+
+\begin{proof} 
+Il caso $a$ reale \`e l'esercizio~\ref{cadinalitafinitasaturazione}, quindi assumiamo $a$ sia un elemento immaginario. Fissiamo una definizione $\sigma(x;b)$ di $a$ e sia $p(z)=\tp(b/A)$. Supponiamo per assurdo che $\orbit(a/A)$ abbia cardinalit\`a piccola. Quindi il seguente \`e un tipo inconsistente
+
+\hfil $\displaystyle p(z)\ \cup\  \Big\{\neg\A x\big[x\in c\iff\sigma(x;z)\big]\ :\ c\in \orbit(a/A)\Big\}$
+
+Per saturazione esiste un insieme finito $C\subseteq\orbit(a/A)$ tale che 
+
+\hfil $\displaystyle p(z)\ \imp\ \bigvee_{c\in C} \A x\big[x\in c\iff\sigma(x;z)\big]$
+
+Ma questo implica che $\orbit(a/A)$ \`e finita.
+\end{proof}
+
+%%%%%%%%
+\begin{theorem}\label{galois2} Per ogni $A\subseteq\U^\eq$ ed ogni $a\in\U^\eq$ le seguenti affermazioni sono equivalenti
+\begin{itemize}
+\item[1.] $a$ \`e Galois-algebrico su $A$;
+\item[2.] $a$ \`e algebrico su $A$;
+\item[3.] $a$ \`e definibile su $M$ per ogni modello tale che $A\subseteq \dcl^\eq M$;
+\end{itemize}
+\end{theorem}
+\def\ceq#1#2#3{\parbox{20ex}{\hskip0pt #1}\llap{#2}\parbox{8ex}{\hfil #3}}
+\begin{proof} 
+Consideriamo prima il caso $a$ reale. (Con notazione leggermente diversa, questo caso \`e gi\`a stato considerato nel paragrafo~\ref{acl}. Rivediamo comunque l'argomento.) Per dimostrare l'implicazione \ssf{1}$\IMP$\ssf{2} assumiamo \ssf{1}. Quindi $p(x)=\tp(a/A)$ \`e un tipo algebrico. Per compattezza, $p(x)$ contiene una formula algebrica, quindi \ssf{2}.
+
+Dimostriamo \ssf{2}$\IMP$\ssf{3}. Supponiamo che $a$ sia algebrico su $A$. Sia $\phi(x)\in L(A)$ una formula algebrica soddisfatta da $a$. Per un qualche $n$ vale $\E^{=n}x\,\phi(x)$. Se $A\subseteq \dcl^\eq M$ allora $\phi(x)$ \`e equivalente ad una formula a parametri in $M$. Per l'algebricit\`a $\phi(M)=\phi(\U)$. Quindi $a\in M$.
+
+Per dimostrare \ssf{3}$\IMP$\ssf{1} assumiamo $\neg$\ssf{1}. Quindi  $\orbit(a/A)$ \`e infinita, e di conseguenza ha la stessa cardinalit\`a di $\U$. Fissiamo un arbitrario modello $M$ tale che $A\subseteq \dcl^\eq M$. Per ragioni di cardinalit\`a, $\orbit(a/A)\nsubseteq M$, e quindi esiste un automorfismo $f\in\Aut(\U/A)$ tale che $fa\notin M$. Allora $a\notin f^{-1}[M]$ quindi $\neg$\ssf{3}. (Cfr. esercizio~\ref{automorfismiemodellieq}.) 
+
+Ora consideriamo il caso $a$ immaginario. Dimostriamo \ssf{1}$\IMP$\ssf{2}. Supponiamo che $a$ sia definibile dalla formula $\sigma(x;b)$, per un qualche tupla reale $b$. Sia $p(w)=\tp(b/A)$. Per \ssf{1}, l'equivalenza
+
+\ceq{}{$\epsilon(w,z)$}{$=$}$\A x\  \Big[\sigma(x;w)\iff\sigma(x;z)\Big]$
+
+induce una partizione finita di $p(\U)$. Per il lemma~\ref{lemmapartizionetipo}, esiste un'equivalenza finita $\epsilon'(w,z)$ che coincide con $\epsilon(w,z)$ su $p(\U)$. Definiamo
+
+\ceq{}{$\psi(x;z)$}{$=$}$\E w\  \Big[\sigma(x;w)\wedge\epsilon'(w,z)\Big]$.
+
+Chiaramente $\psi(x;b)$ \`e equivalente a $\sigma(x;b)$, ma $\psi(x;c)$ definisce al variare di $c$ un numero finito di insiemi. Definiamo
+
+\ceq{}{$\eta(x,y)$}{$=$}$\A z\  \Big[\psi(x;z)\iff \psi(y;z)\Big]$.
+
+Questa \`e una relazione di equivalenza finita,  infatti se fissiamo $c_1,\dots,c_n$ tali che $\psi(x;c_i)$ definiscano tutti gli insiemi della forma $\psi(\U,c)$ otteniamo 
+
+\ceq{}{$\eta(x,y)$}{$\iff$}$\displaystyle\bigwedge^n_{i=1} \Big[\psi(x;c_i)\iff \psi(y;c_i)\Big]$.
+
+Quindi $\eta(x,y)$, in quanto intersezione di $n$ relazioni di equivalenza con $2$ classi ha al pi\`u $2^n$ classi. L'insieme $\psi(x;b)$ \`e unione di classi di $\eta(x,y)$. Infatti $\psi(x;b)$ \`e una classe di equivalenza di della relazione $\psi(x;b)\iff \psi(y;b)$ che \`e raffinata da $\eta(x,y)$.
+
+L'implicazione \ssf{2}$\IMP$\ssf{3} segue dalla seguente osservazione. Se $\epsilon(x,y)\in L(A)$ \`e un'equivalenza con $n$ classi, allora queste sono definibili su $A$ pi\`u un qualsiasi insieme di $n$ tuple tra loro non equivalenti. La formula 
+
+\hfil$\displaystyle\E x_1,\dots,x_n\ \bigwedge_{1\le i<j\le n}\neg\epsilon(x_i,x_j)$
+
+vale in $\U$ e, per elementarit\`a, vale in ogni modello che contiene $A$.
+
+L'argomento per dimostrare \ssf{3}$\IMP$\ssf{1} \`e lo stesso che nel caso reale. Fissiamo un modello $M$ tale che $A\subseteq\dcl^\eq M$. Per il lemma~\ref{cadinalitafinitasaturazioneimmaginari}, se $\orbit(a/A)$ \`e infinita allora ha la cardinalit\`a di $\U$ e per questioni di cardinalit\`a esiste un $f\in\Aut(\U/A)$ tale che $fa$ non \`e definibile su $M$. Quindi $a$ non \`e definibile su $f^{-1}[M]$.
+\end{proof}
+
+Lasciamo al lettore la dimostrazione della seguente proposizione.
+
+\begin{proposition}\label{acl123} Sia $A\subseteq\U^\eq$.
+\begin{itemize}
+\item[1.]  Se $a\in\acl\/^\eq A$ allora $a\in\acl\/^\eq B$ per un qualche $B\subseteq A$ finito.
+\item[2.]  $A\subseteq \acl\/^\eq A$.
+\item[3.]  $\acl\/^\eq A=\acl\/^\eq(\acl\/^\eq A)$.\QED
+\end{itemize} 
+\end{proposition}
+
+\begin{exercise} Mostrare che per ogni $A\subseteq\U^\eq$ e ogni coppia di tuple reali $a,b$, le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.]  $a\ \equiv_{\acl^\eq\! A}\,b$ ;
+\item[2.]  $\epsilon(a,b)$ per ogni $\epsilon(x,y)$ relazione di equivalenza finita a parametri in $A$.
+\end{itemize} 
+%SOLUZIONE
+Soluzione:  Supponiamo $\neg$\ssf{2} e fissiamo $\epsilon(x,y)$, un controesempio a \ssf{2}. Sia $d\in\acl^\eq A$ la classe di equivalenza di $a$. Allora $a\in d$ e $b\notin d$. Quindi  $\neg$\ssf{1}. Viceversa, se $\neg$\ssf{1}, fissiamo $\phi(x)$ una formula a parametri in $\acl^\eq A$ soddisfatta da $a$ e non da $b$. L'insieme definito da $\phi(x)$ appartiene ad $\acl^\eq A$ ed \`e quindi unione di classi di una equivalenza finita $\epsilon(x,y)$ a parametri in $A$. Quindi $\neg\epsilon(a,b)$ e cos\`i otteniamo $\neg$\ssf{2}.
+\QED
+\end{exercise}
+
+% \begin{exercise}\label{algebrichetuple}
+% Sia $a$ una tupla finita di elementi di $\acl^\eq A$, diciamo $a_1,\dots,a_n$ con $a_i\in\acl^\eq A$. Si dimostrino le seguenti affermazioni.
+% \begin{itemize}
+% \item[\re] Se $a$ \`e composta solo di elementi reali allora esiste una formula $\phi(x)$ a parametri in $A$ tale che $\phi(a)\wedge\E ^{=n}x\,\phi(x)$ per un qualche $n$. 
+% \item[im] Se $a$ \`e composta solo di elementi immaginari allora l'insieme $a_1\times\dots\times a_n$ \`e unione di classi di una qualche equivalenza finita definibile su $A$.\QED
+% \end{itemize}
+% \end{exercise}
+% 
+% \begin{exercise}\label{algebrichetuple}
+% Sia $A\subseteq\U^\eq$ e sia $a$ un elemento reale. Si dimostri che le seguenti affermazioni sono equivalenti
+% \begin{itemize}
+% \item[1.] $a$ \`e algebrico su $A$.
+% \item[2.] $\{a\}$ \`e algebrico su $A$.
+% \end{itemize}
+% Lo stesso vale anche con definibile al posto di algebrico.
+% \end{exercise}
+% 
+% \begin{exercise}\label{automorfismiemodellieq} Sia $A\subseteq\dcl^\eq M$ e sia $f\in\Aut(\U/A)$ allora  $A\subseteq\dcl^\eq (f[M])$.\QED
+% \end{exercise}
+
+%\begin{exercise} Dimostrare che $\dcl^\eq M\;=\;\acl^\eq M$ per ogni modello $M$.
+%\end{exercise}
+
+\begin{exercise}\label{exojkdnoi}
+Data una formula $\phi(z,x)$, definiamo $\epsilon(x,y)=\A z\ [\phi(z,x)\iff\phi(z,y)]$, chiaramente una relazione di equivalenza. Si dimostri che se $\epsilon(x,y)$ ha un numero finito di classi anche la relazione di equivalenza definita da $\eta(z,w)=\A x\ [\phi(z,x)\iff\phi(w,x)]$ ha un numero finito di classi.\QED
+\end{exercise}
+
+\begin{exercise} 
+Sia $\epsilon(x,y)$ una formula e sia $p(x)$ un tipo. Se $\epsilon(x,y)$ definisce una relazione di equivalenza su $p(\U)$, allora esiste una relazione di equivalenza $\eta(x,y)$ che coincide con $\epsilon(x,y)$ su $p(\U)$. (Tutto con parametri in un qualche $A\subseteq\U^\eq$.)\QED
+\end{exercise}
+
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Altro}
+%In questo paragrafo presentiamo il teorema delle equivalenze finite di Shelah. Questo che sta all'origine delle nozioni presentate in questo capitolo. 
+
+Sia $A\subseteq\U$ e sia $a$ un insieme definibile. In questo paragrafo considereremo orbite di insiemi della forma $a\cap A$ per automorfismi in $\Aut(\U/A)$. Quindi queste orbite sono insiemi di sottoinsiemi di $A$:
+
+\hfil $\orbit\big(a\cap A\,/A\big)\ \ =\ \ \Big\{ a\cap A \ \ :\ \ f\in\Aut(\U/A)\Big\}$
+
+Si faccia attenzione che $a\cap A$ non \`e mai un insieme definibile (a meno che $A$ non sia finito).
+
+\begin{proposition}\label{corolleqfinite}
+Sia $A\subseteq\U$ e sia $a$ un insieme definibile. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $\orbit\big(a\cap A\, / A\big)$ \`e finita;
+\item[2.] esiste un tipo $q(x)$ a parametri in $\acl^\eq\! A$ tale che $q(\U)\cap A=a\cap A$.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+L'implicazioni \ssf{2}$\,\IMP\,$\ssf{1} \`e ovvia. Dimostriamo \ssf{1}$\,\IMP\,$\ssf{2}. Assumiamo \ssf{1} e sia $\sigma(x;b)$ una qualsiasi definizione di $a$ e poniamo $p(z)=\tp(b/A)$.  Quindi esiste un insieme finito $B\subseteq A$ tale che l'equivalenza definita da
+
+\ceq{}{$\eta(y,z)$}{$\deq$}$\displaystyle\bigwedge_{c\in B}\big[\sigma(c,y)\iff\sigma(c,z)\big]$,
+
+se ristretta a $p(\U)$, ha un numero finito di classi. Per il lemma~\ref{lemmapartizionetipo} esiste una equivalenza finita $\eta'(y,z)$ che coincide con $\eta(y,z)$ su $p(\U)$. La formula $\eta'(y,z)$ \`e a parametri in $A$ quindi gli elementi della partizione indotta su $\U$ sono elementi di $\acl^\eq A$. Tra questi sia $d$ la classe che contiene $b$. Il tipo $q(x)$ richiesto \`e $\E z\,\big[p(z)\; \wedge\;  z\in d\; \wedge\; \sigma(x;z)\big]$.
+\end{proof}
+
+Diremo che la teoria $T$ \`e stabile se per ogni $A\subseteq\U$ ed ogni insieme definibile $a$, esiste un insieme definibile $b\in\acl^\eq(A)$ tale che $a\cap A=b\cap A$.  
+
+\begin{proposition}\label{thmeqfinite}
+Assumiamo $T$ stabile. Sia $A\subseteq\U$ e siano $a,b\in\acl^\eq(A)$ insiemi definibili. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $a=b$;
+\item[2.]$a\cap\acl A\ =\ b\cap\acl A$.
+\end{itemize}
+\end{proposition}
+
+
+
+\begin{proposition}\label{thmeqfinite}
+Sia $C$ un insieme di elementi reali o immaginari, sia $A\subseteq\dcl C$, e sia $b$ un insieme definibile e sia $a\in\acl^\eq\! C$.  Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $b\in \orbit(a/\!C)$;
+\item[2.] il numero dei $\hat b\in\orbit(b/\!C)$ tali che $a\cap A\ =\ A\cap \hat b$ \`e finito non nullo.
+\end{itemize}
+\end{proposition}
+
+
+\def\downfree{\mathop{\hskip1ex\mid\hskip.35ex\llap{\raisebox{-.7ex}{$\smile$}}}}
+
+Sia $A$ un insieme di elementi reali o immaginari. Diremo che $b\downfree_A c$ se per ogni $a\in\acl^\eq A$ 
+
+\hfil $b\cap \acl A\ \ =\ \ a\cap \acl A$\hskip5ex$\IMP$\hskip5ex  $b\cap \acl(A, c)\ \ =\ \ a\cap \acl(A, c)$
+
+Diremo che $b$ \`e stabile se per ogni insieme $A$ di elementi reali o immaginari esiste un $a\in\acl A$ tale che $b\cap \acl A\ \ =\ \ a\cap \acl A$.
+
+\begin{proposition}\label{thmeqfinite}
+Sia $A$ un insieme di elementi reali o immaginari e sia $b$ un insieme definibile. Se per ogni $f\in\Aut(\U/A)$ esiste un $a\in\dcl^\eq M$  tale che $M\cap fb=M\cap a$ allora esiste un modello $M$ tale che 
+\begin{itemize}
+\item[1.] Se per ogni modello $M$ 
+\item[2.] $b\in\acl^\eq\! C$.
+\end{itemize}
+\end{proposition}
+
+\end{comment}

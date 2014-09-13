@@ -1,0 +1,425 @@
+\chapter{Formule ed insiemi definibili}\label{formule}
+
+In questo capitolo introdurremo la semantica e la sintassi delle formule ripetendo, per quanto possibile, lo stesso schema usato per introdurre i termini nel capitolo~\ref{termini}. Questo capitolo ha due obbiettivi diversi. Il primo \`e dare una definizione matematicamente solida di formula e insieme definibile. Il secondo \`e far pratica con i linguaggi del prim'ordine.
+
+\section{La sintassi delle formule}\label{sintassformule}
+
+Le \emph{formule} sono \textit{nomi\/} per particolari sottoinsiemi delle strutture che chiameremo insiemi \emph{definibili}. Questi si ottengono a partire da alcuni insiemi \textit{atomici\/} con operazioni booleane e con l'operazione di proiezione. (N.B. per \textit{insiemi\/} intenderemo sempre insiemi di tuple di ariet\`a fissata $n$ che quindi possono essere proiettati su $n-1$ coordinate.) Come gi\`a fatto per i termini, le formule saranno delle sequenze di simboli che codificano il modo in cui gli insiemi definibili vengono costruiti.
+
+La scelta di come costruire gli insiemi definibili a partire da quelli atomici \`e abbastanza arbitraria e altre possibilit\`a sono degne di interesse. Per esempio, perch\'e non considerare anche unioni ed intersezioni numerabili come si fa con le $\sigma$-algebre? Quella che vedremo \`e la scelta che ha ricevuto maggiore attenzione e costituisce la cosiddetta \emph{logica del prim'ordine}.
+
+La scelta degli insiemi da considerare atomici \`e invece molto naturale. Consideriamo per esempio gli anelli ordinati. In questo caso gli insiemi definibili atomici sono gli insiemi del tipo $\{x:t(x)=s(x)\}$ e $\{x:t(x)<s(x)\}$, dove $t(x)$ ed $s(x)$ sono termini e $x$ \`e una tupla di variabili. Per codificare questi insiemi useremo le sequenze ottenute concatenando $=\,t\,s$,rispettivamente ${<}\,t\,s$. Dato un nome agli insiemi atomici daremo un nome a quelli ottenuti da questi con le operazioni descritte qui sopra (unione, intersezione, ecc.). Per esempio il nome che assegneremo all'unione dei due insiemi appena descritti \`e la sequenza ottenuta concatenando ${\vee}\,{=}\,t\,s\,{<}\,t\,s$. Con il simbolo $\neg$ indicheremo il complemento, per esempio concatenando ${\neg}\,{=}\,t\,s$\ codificheremo l'insieme $\{x:s(x)\neq t(x)\}$.
+
+Passiamo ad enunciare la definizione. Come fatto per i termini: fissiamo il linguaggio $L$, ed un insieme di variabili $V$. Una \emph{formula} \`e una sequenza finita di
+
+%Fin qui le cose sono abbastanza semplici: il potere espressivo delle operazioni booleane \`e ridotto. Il vero salto di qualit\`a avviene se introduciamo l'operazione di proiezione e  
+
+
+
+\begin{itemize}
+\item variabili
+\item simboli del linguaggio (funzioni, relazioni, ed eventuali parametri)
+\item \emph{connettivi logici}, ovvero uno dei seguenti:
+
+\begin{minipage}[t]{.499\textwidth}
+\begin{itemize}
+\item[$\doteq$]    \emph{uguaglianza};
+\item[$\bot$] \emph{contraddizione};
+\item[$\neg$] \emph{negazione};
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{.499\textwidth}
+\begin{itemize}
+\item[$\vee$] \emph{disgiunzione};
+\item[$\E$]   \emph{quantificatore esistenziale}.
+\end{itemize}
+\end{minipage}
+\end{itemize}
+
+Abbiamo usato il simbolo $\doteq$, per distinguerlo dall'uguale metalinguistico. Pi\`u avanti confonderemo i due simboli confidiamo che il lettore sapr\`a tenere comunque distinti i due livelli linguistici. 
+
+Qui sotto diamo la definizione di formula del prim'ordine. Useremo la notazione prefissa per i connettivi logici (scriveremo ${\doteq}\,t\,s$ e ${\wedge}\,\phi\,\psi$) perch\'e facilita le dimostrazioni sulla sintassi, ma in tutti gli esempi useremo la comune notazione infissa (scriveremo $t\doteq s$ e $\phi\vee\psi$).
+
+\begin{definition}\label{defformule} Le \emph{formule\/} sono tutte e sole le sequenze dei simboli elencati qui sopra che si ottengono con il seguente processo induttivo.
+
+Se $t_1,\dots,t_n, t, s$ sono termini in cui non occorrono variabili vincolate allora le seguenti sono formule, anche dette \emph{formule atomiche}:
+
+\begin{minipage}[t]{.499\textwidth}
+\begin{itemize} 
+\item[b1.]  ${\doteq}\,t\,s$;
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{.499\textwidth}
+\begin{itemize}
+\item[b2.] $r\,t_1\dots t_n$,
+\end{itemize}
+\end{minipage}
+
+dove $r$ \`e un predicato di ariet\`a $n$. Inoltre, se $\phi$ e $\psi$ sono formule allora anche le seguenti sono formule:
+
+\begin{minipage}[t]{.499\textwidth}
+\begin{itemize} 
+\item[i0.] $\bot$;
+\item[i1.] ${\neg}\,\phi$;
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{.499\textwidth}
+\begin{itemize}
+\item[i2.] ${\vee}\,\phi\,\psi$;
+\item[i3.] $\E x\,\phi$, dove $x$ \`e una variabile.\QED
+\end{itemize}
+\end{minipage}
+\end{definition}
+
+Useremo scrivere $\E x\,\phi$ anche quando $x$ \`e una tupla: se $x$ \`e la tupla di variabili $x_1,\dots,x_n$, con $\E x\,\phi$ intenderemo $\E x_1\dots\E x_n\,\phi$.
+
+Nel seguito useremo il simbolo $L$ per denotare (oltre al linguaggio) anche l'insieme delle formule, analogamente il simbolo $L(A)$ indicher\`a l'insieme delle formule con parametri in $A$. A parole diremo \emph{formula pura\/} per formula senza parametri. Formule costruite senza l'uso di \ssf{i3} si chiamano \emph{formule senza quantificatori}, in inglese \emph{quantifier free}. %Quelle dove non occorrono variabili libere si dicono \emph{formule chiuse} o anche \emph{enunciati}, in inglese: \emph{sencences}.
+
+\def\Vin{{\sf\small Vnl}}
+\def\Lib{{\small \sf Lbr}}
+Nelle definizioni che seguiranno \`e importante distinguere tra variabili libere e vincolate (cio\`e quantificate). La definizione precisa dev'essere data per induzione introducendo i seguenti insiemi:
+\begin{itemize}
+\item[b] Se $r$ \`e un predicato oppure $\doteq$ allora\\
+         $\Lib(r\,t_1\dots t_n)$ \`e l'insieme delle variabili che occorrono in  $t_1\dots t_n$;\\
+         $\Vin(r\,t_1\dots t_n)=\0$;
+\end{itemize}
+\begin{minipage}[t]{.499\textwidth}
+\begin{itemize}       
+\item[i0.] $\Lib(\bot)\ =\ \0$;\\
+           $\Vin(\bot)\ =\ \0$;
+\item[i1.] $\Lib(\neg\phi)\ =\ \Lib(\phi)$;\\
+           $\Vin(\neg\phi)\ =\ \Vin(\phi)$;
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{.499\textwidth}
+\begin{itemize}
+\item[i2.] $\Lib(\vee\,\phi\,\psi)\ =\ \Lib(\phi)\,\cup\,\Lib(\psi)$;\\
+           $\Vin(\vee\,\phi\,\psi)\ =\ \Vin(\phi)\,\cup\,\Vin(\psi)$;
+\item[i3.] $\Lib(\E u\,\phi)\ =\ \Lib(\phi)\sm\{u\}$;\\
+           $\Vin(\E u\,\phi)\ =\ \Vin(\phi)\,\cup\,\{u\}$.
+\end{itemize}
+\end{minipage}
+
+Se $x\in\Lib(\phi)$ diremo che $x$ \emph{occorre libera} in $\phi$. Se $x\in\Vin(\phi)$ diremo che \emph{occorre vincolata}. Si noti che \`e perfettamente ammissibile che $\Lib(\phi)\cap\Vin(\phi)\neq\0$.
+
+Una \emph{formula chiusa\/} \`e una formula senza variabili libere, ovvero tale che $\Lib(\phi)=\0$. Le formule chiuse si chiamano anche \emph{enunciati}. In inglese \emph{sentences}.
+
+
+\section{Operazioni sintattiche sulle formule}
+
+Come nel caso dei termini serve un lemma sulla leggibilit\`a unica delle formule: dobbiamo risalire univocamente da una formula, per esempio $\mathord\vee\,\phi\,\psi$, alle formule $\phi$ e $\psi$ che la compongono. La cosa non \`e ovvia perch\'e non c'\`e nulla di esplicito nella nostra grammatica che indichi il punto in cui finisce $\phi$ e comincia $\psi$. Si noti che se avessimo introdotto i connettivi con la notazione infissa, per esempio scrivendo $\phi\vee\psi$ al posto di $\mathord\vee\,\phi\,\psi$, avremmo solo aggravato il problema: non \`e possibile distinguere l'occorrenza di $\vee$ che sta tra $\phi$ e $\psi$ da eventuali altre occorrenze di $\vee$ nelle sequenze $\phi$ e $\psi$. Si avessimo definito le formule con notazione infissa, avremmo dovuto introdurre nella sintassi simboli per parentesi, complicando invece che semplificare la dimostrazione del lemma di leggibilit\`a univoca.
+
+\begin{lemma}[(leggibilit\`a univoca delle formule)]
+\label{lemmaformuleleggibilita}
+Sia $a$ una sequenza che pu\`o essere ottenuta sia concatenando le formule $\phi_1,\dots,\phi_n$ che concatenando  
+$\psi_1,\dots,\psi_m$. Allora $n=m$ e $\phi_i=\psi_i$.
+\end{lemma}
+\begin{proof}
+I dettagli della dimostrazione vengono lasciati ai lettori pi\`u volonterosi. Conviene dimostrare una proposizione leggermente pi\`u generale in cui a $\phi_i$ e $\psi_i$ si richiede di essere arbitrariamente formule o termini. In questo modo si dimostra simultaneamente l'univoca leggibili\`a dei termini e delle formule.
+\end{proof}
+
+Come fatto per i termini diamo la definizione per induzione dell'operazione di sostituzione.
+
+\begin{definition}\label{defsostituzioneformule}
+Sia $x$ \`e una tupla di variabili distinte ed $s$ \`e una tupla di termini della stessa lunghezza. Sia $\phi$ una formula in cui non occorre quantificata nessuna delle variabili che occorre in $s$. Definiamo l'operazione di sostituzione \emph{$\phi[x/s]$\/} per induzione sulla sintassi delle formule.
+\begin{itemize}
+\item[b] $(rt)[x/s]\ =\ r t[x/s]$, per $r$ un predicato oppure $\doteq$;
+\item[i0.] $\bot[x/s]\ =\ \bot$;
+\item[i1.] $(\neg\phi)[x/s]\ =\ \neg\phi[x/s]$;
+\item[i2.] $(\vee\,\phi\,\psi)[x/s]\ =\ \vee\,\phi[x/s]\,\psi[x/s]$;
+\item[i3.] $(\E u\,\phi)[x/s]\ =\ \E u\,\big(\phi[x'/s']\big)$ dove $x'$ ed $s'$ sono ottenute cancellando da $x$ l'eventuale occorrenza di $u$ e da $s$ la componente corrispondente.
+\end{itemize}
+La clausola \ssf{i2} usa implicitamente il lemma~\ref{lemmaformuleleggibilita} sulla leggibilit\`a univoca delle formule.\QED
+\end{definition}
+
+La dimostrazione dei seguenti due lemmi \`e lasciata al lettore.
+
+\begin{lemma} 
+Siano $x$, $s$ e $\phi$ come nella definizione~\ref{defsostituzioneformule}. Allora $\phi[x/t]$ \`e una formula.\QED
+\end{lemma}
+
+\begin{lemma}\label{rappresentazione formule con parametri}
+Sia $\phi$ una formula con parametri. Allora esiste una formula pura $\psi$, una tupla di parametri $a$ ed una tupla di variabili $x$ tale che $\phi=\psi[x/a]$.\QED
+\end{lemma}
+
+Se $\phi$ \`e una formula ed $x$ una tupla di variabili, scriveremo $\phi(x)$ per dichiarare che le variabili libere di $\phi$ sono al pi\`u quelle che occorrono nella tupla $x$. Se $x$ ed $y$ sono due tuple di variabili l'espressione $\phi(x,y)$ \`e sinonima $\phi(x\,y)$, dove $x\,y$ denota la concatenazione di $x$ ed $y$. Molto spesso, quando una formula $\phi$ \`e stata presentata come $\phi(x,y)$ scriveremo \emph{$\phi(t,y)$\/} invece che $\phi[x/t]$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{L'interpretazione: gli insiemi definibili}
+\label{idefinibili}
+
+Vogliamo introdurre un operatore $(x)^M$ che ad ogni formula $\phi$ con variabili libere tra quelle della tupla $x$ e parametri in $M$ assegni un insieme $\phi(x)^M\subseteq M^{|x|}$. Quest'insieme \`e l'interpretazione di $\phi(x)$, verr\`a chiamato insieme definito da $\phi(x)$. Quando la notazione non da adito ad ambiguit\`a $\phi(x)^M$ verr\`a denotato con \emph{$\phi(M)$}.
+
+
+% Nel primo caso scriveremo \emph{$M\models\phi$}, nel secondo \emph{$M\notmodels\phi$}. A parole diremo che \emph{$M$ modella $\phi$}, rispettivamente \emph{$M$ non modella $\phi$}.
+
+\begin{definition}\label{defverita} Per ogni formula $\phi$ con variabili libere tra quelle della tupla $x$ definiamo \emph{$\phi(x)^M$\/} per induzione sulla sintassi:
+\begin{itemize}
+\item[b1.] \hspace*{15ex}\llap{$({\doteq}\,t\,s)(x)^M$}\ \  =\ \ \  $\Big\{a\in M^{|x|}\ :\ t^M\!(a)=s^M\!(a) \Big\}$\medskip
+
+\item[b2.] \hspace*{15ex}\llap{$(r\,t_1\dots\,t_n)(x)^M$}\ \   =\ \ \ $\Big\{a\in M^{|x|}\ :\ \<t_1^M(\!a),\dots,t_n^M\!(a)\>\in r^M\Big\}$\medskip
+
+\item[i0.] \hspace*{15ex}\llap{$\bot(x)^M$}\ \  =\ \ \  $\0$\bigskip
+
+\item[i1.] \hspace*{15ex}\llap{$\big(\neg\xi\big)(x)^M$}\ \   =\ \ \  $M^{|x|}\smallsetminus\xi(x)^M$\bigskip
+
+\item[i2.] \hspace*{15ex}\llap{$\big(\vee\,\xi\,\psi\big)(x)^M$}\ \   =\ \ \  $\xi(x)^M\cup\;\psi(x)^M$\bigskip
+
+\item[i3.] \hspace*{15ex}\llap{$\big(\E u\,\phi\big)(x)^M$}\ \   =\ \ \ $\displaystyle\bigcup_{a\in M}\big(\phi[u/a]\big)(x)^M$
+\end{itemize}
+La condizione \ssf{i2} presuppone che  $\vee\,\xi\,\psi$ individui univocamente le formule $\phi$ e $\psi$, questo \`e garantito dal lemma~\ref{lemmaformuleleggibilita}. Analogamente, le condizioni \ssf{b1} e \ssf{b2} presuppongono il lemma~\ref{lemmaterminileggibilita}. 
+\end{definition}
+
+
+Il caso degenere in cui $x$ \`e la tupla vuota \`e degno di nota. In questo caso $\phi(\0)^M$ \`e un sottoinsieme di $M^0=\{\0\}$. Ci sono solo due possibilit\`a: $\{\0\}$ e $\0$ che leggeremo come due \emph{valori di verit\`a}: \emph{vero\/} e \emph{falso}. Se l'interpretazione di $\phi$ \`e $\{\0\}$ diremo che \emph{$\phi$ \`e vera in $M$}, se \`e $\0$ diremo che \emph{$\phi$ \`e falsa in $M$}. Nel seguito useremo la notazione \emph{$M\models\phi$}, rispettivamente, \emph{$M\notmodels\phi$}. A parole diremo che \emph{$M$ modella $\phi$}, rispettivamente \emph{$M$ non modella $\phi$}. \`E immediato verificare che 
+
+\hfil$\phi(x)^M=\big\{a\in M^{|x|}: M\models\phi(a)\big\}$.
+
+Il seguente teorema afferma che i connettivi logici hanno lo stesso significato dei corrispondenti connettivi del linguaggio naturale (\textit{naturale\/} per i matematici, si intende). La dimostrazione \`e immediata.
+
+
+\begin{theorem}\label{corrispondenzaconnettivi}
+Se $t,s,t_1,\dots,t_n$ sono termini chiusi e $\xi,\psi,\E x\,\phi$ sono formule chiuse. Valgono le seguenti equivalenze:
+\begin{itemize}\def\pp#1{\hspace*{1ex}\rlap{#1}\hspace{13ex}}
+\item[b1.] \pp{$M\models \,{\doteq}\,t\,s$} $\IFF$\hskip3ex $t^M=s^M$;
+\item[b2.] \pp{$M\models r\,t_1\dots t_n$} $\IFF$\hskip3ex $t^M_1\dots t^M_n\in r^M$;
+\item[i1.] \pp{$M\models\vee\,\xi\,\psi$} $\IFF$\hskip3ex $M\models\xi$ o $M\models\psi$;
+\item[i2.] \pp{$M\models\neg\phi$} $\IFF$\hskip3ex $M\notmodels\phi$;
+\item[i5.] \pp{$M\models\E x\,\phi$}  $\IFF$\hskip3ex $M\models\phi[x/a]$ un qualche $a\in M$.\QED
+\end{itemize}
+\end{theorem}
+% \begin{proof}
+% In tutti i casi la direzione $\PMI$ \`e inclusa nella definizione~\ref{defverita}, precisamente, dalla prima parte di ogni clausola. Dalla seconda parte di ogni clausola (`altrimenti \dots'), otteniamo la direzione opposta:
+% \begin{itemize}\def\pp#1{\hspace*{1ex}\rlap{#1}\hspace{16ex}}
+% \item[b1.] \pp{$M\notmodels \,=\,t\,s$} $\PMI$\hskip2ex $t^M\neq s^M$;
+% \item[b2.] \pp{$M\notmodels r\,t_1\dots t_n$} $\PMI$\hskip2ex $t^M_1\dots\ t^M_n\notin r^M$;
+% \item[i1.] \pp{$M\notmodels\vee\,\xi\,\psi$} $\PMI$\hskip2ex non ($M\models\xi$ o $M\models\psi$);
+% \item[i2.] \pp{$M\notmodels\neg\phi$} $\PMI$\hskip2ex non $M\notmodels\phi$;
+% \item[i3.] \pp{$M\notmodels\E u\,\phi[x/u]$}  $\PMI$\hskip2ex non ($M\models\phi[x/a]$ un qualche $a\in M$).
+% \end{itemize}
+% Questo dimostra il corollario. (Abbiamo usato solo il fatto che $M\notmodels\phi$ sia la negazione di $M\models\phi$. Questo \`e vero, ma non `ovviamente' vero. Se la definizione non fosse stata ben posta potrebbe non valere. Quindi ultima analisi questo \`e un corollario del lemma~\ref{lemmaformuleleggibilita}.)
+% \end{proof}
+
+\begin{example}
+Cominciamo col notare che, qualsiasi siano il linguaggio e la struttura $M$, l'insieme vuoto $\0$ \`e sempre definibile come anche l'insieme $M^n$. Rispettivamente dalle formule: $\bot$ e $\neg\bot$, quest'ultima considerata come formula di ariet\`a $n$.
+
+In ogni struttura tutti i sottoinsiemi finiti sono definibili con parametri nella struttura stessa. Per esempio, l'insieme $\{a_1,\dots,a_n\}\subseteq M$ \`e definito dalla formula $a_1\doteq x\vee \dots\vee a_n\doteq x$. Quindi anche tutti gli \emph{insiemi cofiniti\/}, cio\`e i complementari degli insiemi finiti, sono definibili.
+
+Senza specifiche informazioni sulla struttura $M$ non possiamo dire molto di pi\`u. La descrizione degli insiemi definibili di una struttura o classe di strutture \`e spesso un risultato importante. Ci si riesce in pochi casi particolari e generalmente con molta fatica. (Dicono: i  matematici si occupano sempre solo di casi particolari, perch\'e dei casi generali se ne occupano gi\`a i filosofi.)\QED
+\end{example}
+
+\begin{example}\label{definibilitaimmagine}
+Supponiamo che la segnatura di $M$ contenga un simbolo di funzione unaria $f$. Il grafo della funzione $f^M$ \`e definibile dalla formula $fx\doteq y$. L'immagine di $f^M$ \`e  definibile dalla formula $\E y\; fy\doteq x$. 
+
+Supponiamo che la segnatura di $M$ contenga anche un simbolo di funzione unaria $r$. L'insieme definito dalla formula $rfx$ \`e $(f^M)^{-1}[r^M]$ ovvero l'insieme degli elementi di $M$ che vengono mappati in $r^M$ dalla funzione $f^M$. L'immagine di $r^M$ secondo $f^M$ \`e anche un insieme definibile. \`E definibile dalla formula $\E y\,[r y\wedge fy\doteq x]$.\QED
+\end{example}
+
+%\begin{remark}
+%Immaginaimo di modifocare la definizione di $M\notmodels\phi$. Lasciando invariata la definizione di $M\models\phi$ e stipuliamo che $M\notmodels\phi$ sta per non $M\models\phi$. Un  lemma\ref{terminileggibilita} vale per definizione. La  definizione non \`e pi\`u una definizione per induzione di quelle viste fin'ora. Per sapere se  una definizione per 
+%\end{remark}
+
+\section{Altri connettivi}\label{Altriconnettivi}
+
+
+Useremo i seguenti connettivi come abbreviazioni:\bigskip
+
+\hspace*{8em}\llap{\emph{$\top$}}\hspace{2em} sta per\hspace{2em} $\neg\bot$ \hfill  \emph{tautologia}
+
+\hspace*{8em}\llap{\emph{$\phi\wedge\psi$}}\hspace{2em} sta per\hspace{2em} $\neg\big(\,\neg\phi\;\vee\;\neg\psi\big)$\hfill  \emph{congiunzione}
+
+\hspace*{8em}\llap{\emph{$\phi\imp\psi$}}\hspace{2em} sta per\hspace{2em} $\,\neg\phi\;\vee\;\psi$\hfill  \emph{implicazione}
+
+\hspace*{8em}\llap{\emph{$\phi\iff\psi$}}\hspace{2em} sta per\hspace{2em}  $[\phi\imp\psi]\ \wedge\ [\psi\imp\phi]$\hfill   \emph{bi-implicazione}
+
+\hspace*{8em}\llap{\emph{$\phi\niff\psi$}}\hspace{2em} sta per\hspace{2em}  $\neg[\phi\iff\psi]$\hfill   \emph{disgiunzione esclusiva}
+
+\hspace*{8em}\llap{\emph{$\A x\,\phi$}}\hspace{2em} sta per\hspace{2em}  $\neg\E x\neg\,\phi$\hfill   \emph{quantificatore universale}\bigskip
+
+Chiameremo $\A x\,\phi(x)$ la \emph{chiusura universale\/} di $\phi(x)$ e $\E x\,\phi(x)$ la \emph{chiusura esistenziale\/} di $\phi(x)$. Spesso diremo che la formula $\phi(x)$ \emph{vale\/} in $M$ per dire $M\models\A x\,\phi(x)$, cio\`e che la chiusura universale di $\phi(x)$ \`e vera in $M$. Per affermare $M\models\E x\,\phi(x)$, ovvero che la chiusura esistenziale di $\phi(x)$ \`e vera in $M$, potremo anche diremo che $\phi(x)$ \`e \emph{coerente\/} o \emph{consistente\/} in $M$. 
+
+Per omettere alcune parentesi, conveniamo che $\imp$ e $\iff$ connettivi leghino meno forte di $\wedge$ e $\vee$.  I quantificatori e negazione legano pi\`u dei connettivi binari. Per esempio,
+
+\hfil$\E x\,\phi \wedge \psi\ \imp\ \neg\xi\vee\theta$ \ \ \ si legge \ \ \ $\Big[\big[\E x\,\phi\big]\wedge\psi\Big]\ \imp\ \Big[\big[\neg\xi\big]\vee\theta\Big]$
+ 
+\`E bene sottolineare la differenza tra i simboli $\imp$ e $\iff$ ed i simboli $\IMP$ e $\IFF$. I primi sono abbreviazioni di espressioni del linguaggio formale. I secondi sono abbreviazioni di espressioni nel metalinguaggio. Esiste una ovvia corrispondenza tra questi:
+
+\begin{proposition} Per ogni struttura $M$ e tutti gli enunciati $\phi$, $\psi$ e $\A u\,\xi$ le seguenti affermazioni sono equivalenti a coppie (\ssf{ai}$\IFF$\ssf{bi}):
+\par\medskip
+\begin{minipage}[b]{.50\textwidth}
+\begin{itemize}
+\item[a1.] $M\models \phi\wedge\psi$;
+\item[b1.] $M\models \phi$\ \ e\ \  $M\models\psi$;
+\end{itemize}
+\end{minipage}
+%
+\begin{minipage}[b]{.49\textwidth}
+\begin{itemize}
+\item[a2.] $M\models \A u\,\xi$;
+\item[b2.] $M\models \xi[u/a]$ per ogni $a\in M$.
+\end{itemize}
+\end{minipage}
+\par\bigskip
+\begin{minipage}[b]{.50\textwidth}
+\begin{itemize}
+\item[a3.] $M\models \phi\imp\psi$;
+\item[b3.] $M\models \phi\ \ \IMP\ \ M\models\psi$;
+\end{itemize}
+\end{minipage}
+%
+\begin{minipage}[b]{.49\textwidth}
+\begin{itemize}
+\item[a4.] $M\models \phi\iff\psi$;
+\item[b4.] $M\models \phi\ \ \IFF\ \ M\models\psi$.
+\end{itemize}
+\end{minipage}\QED
+\end{proposition}
+
+Con l'implicazione e la bi-implicazione tra formule possiamo formalizzare con un enunciato del prim'ordine l'inclusione o l'uguaglianza di insiemi definibili.
+
+\begin{proposition} Per ogni struttura $M$ ed tutte le formule $\phi(x)$ e $\psi(x)$ le seguenti affermazioni sono equivalenti a coppie (\ssf{ai}$\IFF$\ssf{bi}):
+\par\medskip
+\begin{minipage}[b]{.50\textwidth}
+\begin{itemize}
+\item[a1.] $\phi(M)\subseteq\psi(M)$;
+\item[b1.] $M\models\A x\,[\phi(x)\imp\psi(x)]$;
+\end{itemize}
+\end{minipage}
+%
+\begin{minipage}[b]{.49\textwidth}
+\begin{itemize}
+\item[a2.] $\phi(M)=\psi(M)$;
+\item[b2.] $M\models\A x\,[\phi(x)\iff\psi(x)]$;
+\end{itemize}
+\end{minipage}
+\par\bigskip
+\begin{minipage}[b]{.50\textwidth}
+\begin{itemize}
+\item[a3.] $\phi(M)=\neg\psi(M)$;
+\item[b3.] $M\models\A x\,[\phi(x)\niff\psi(x)]$;
+\end{itemize}
+\end{minipage}
+%
+\begin{minipage}[b]{.49\textwidth}
+\begin{itemize}
+\item[a4.] $\phi(M)\neq\psi(M)$;
+\item[b4.] $M\models\E x\,[\phi(x)\niff\psi(x)]$.
+\end{itemize}
+\end{minipage}\QED
+\end{proposition}
+
+Il significato della formule in \ssf{b3} e \ssf{b4} si deduce immediatamente da quello delle formule in \ssf{b2}. \`E bene fare attenzione a non confonderle.
+
+\begin{definition}
+Due formule che in ogni modello $M$ definiscono lo stesso insieme si dicono \emph{logicamente equivalenti}. In particolare due enunciati  sono logicamente equivalenti se hanno lo stesso valore di verit\`a in tutti i modelli. Una formula logicamente equivalente a $\top$ si dice \emph{tautologia}. Una formula logicamente equivalente a $\bot$ si dice \emph{contraddizione}.\QED
+\end{definition}
+
+\begin{proposition} Per ogni coppia di formule $\phi$ e $\psi$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[a.] $\phi$ e $\psi$ sono logicamente equivalenti;
+\item[b.] $\phi\iff\psi$ \`e una tautologia.\QED
+\end{itemize}
+\end{proposition}
+
+Faremo spesso uso del fatto che la congiunzione e la disgiunzione sono commutative e associative e che una distribuisce sull'altra
+
+\begin{proposition}  Per tutte le formule $\xi$, $\phi$ e $\psi$, le seguenti sono tautologie
+\par\medskip
+\begin{minipage}[c]{.49\textwidth}
+\begin{itemize}
+\item[a.] $\phi\wedge\psi\ \ \iff\ \ \psi\wedge\phi$;
+\item[b.] $\phi\vee\psi\ \ \iff\ \ \psi\vee\phi$;
+\end{itemize}
+\end{minipage}
+Commutativit\`a di $\wedge$ e $\vee$\bigskip
+
+\begin{minipage}[c]{.49\textwidth}
+\begin{itemize}
+\item[c.] $\xi\wedge[\phi\wedge\psi]\ \ \iff\ \ [\xi\wedge\phi]\wedge\psi$;
+\item[d.] $\xi\vee[\phi\vee\psi]\ \ \iff\ \ [\xi\vee\phi]\vee\psi$;
+\end{itemize}
+\end{minipage}
+Associativit\`a  di $\wedge$ e $\vee$\bigskip
+
+\begin{minipage}[c]{.49\textwidth}
+\begin{itemize}
+\item[e.] $\xi\wedge[\phi\vee\psi]\ \ \iff\ \ [\xi\wedge\phi]\vee[\xi\wedge\psi]$;
+\item[f.] $\xi\vee[\phi\wedge\psi]\ \ \iff\ \ [\xi\vee\phi]\wedge[\xi\vee\psi]$.
+\end{itemize}
+\end{minipage}
+Distributivit\`a di $\wedge$ su $\vee$ e viceversa.\bigskip\QED
+\end{proposition}
+
+Quindi dato un insieme finito di formule $\{\phi_i:i\in I\}$ possiamo scrivere senza rischio di ambiguit\`a
+
+\hfil \emph{$\displaystyle\bigwedge_{i\in I}\phi_i$}\hfil \emph{$\displaystyle\bigvee_{i\in I}\phi_i$}
+
+con l'ovvio significato. 
+
+L'enunciato $\E x\,\phi(x)$ afferma che l'insieme $\phi(M)$ ha almeno un elemento. Esiste anche un enunciato che afferma che $\phi(M)$ ha almeno due elementi: $\E x,y\,[\phi(x)\wedge\phi(y)\wedge x\dot\neq y]$. In generale, scriveremo $\E^{\ge n}x\,\phi(x)$ per l'enunciato che dice che $\phi(M)$ ha almeno $n$ elementi:\smallskip
+
+\hspace*{15ex}\emph{$\E^{\ge n}x\;\phi(x)$}\ \ :=\ \ $\displaystyle\E x_1\dots\E x_n\,\Big[\bigwedge_{1\le i\le n}\phi(x_i)\ \ \wedge\ \bigwedge_{1\le i<j\le n} x_i\dot\neq x_j\Big]$.
+
+Quindi la formula\smallskip
+
+\hspace*{15ex}\emph{$\E^{=n}x\;\phi(x)$}\ \ :=\ \ $\E^{\ge n}x\;\phi(x)\ \wedge\ \neg\E^{\ge n+1}x\;\phi(x)$
+\smallskip
+
+vale in $M$ se e solo se $\phi(M)$ ha esattamente $n$ elementi.
+\begin{comment}
+\begin{remark}\label{infinitononprimordine}
+Vedremo pi\`u avanti che non esiste modo si esprimere al prim'ordine la propriet\`a `$\phi(M)$ ha infiniti elementi'. % (al momento non \`e nemmeno chiaro cosa si intenda con questa affermazione).%: se esiste un enunciato $\psi$ tale che in ogni struttura $M\models\psi$ se e solo se $\phi(M)$ \`e infinito allora esiste un $n$ tale che $\psi$ \`e logicamente equivalente a $\E^{\le n} x\neg\phi(x)$. Ovvero, l'unico modo per esprimere la 
+Al momento possiamo per\`o chiarire cosa intendiamo: nel caso di una fissata cardinalit\`a finita, diciamo $n$, noi siamo riusciti a trovare un enunciato $\psi$ tale che in  ogni struttura $M$ 
+
+\hfil$M\models\psi\ \ \IFF\ \ \phi(M)$ contiene almeno $n$ elementi.
+
+L'enunciato $\psi$ \`e quello che quello che abbiamo denotato con $\E^{\ge n}x\,\phi(x)$. Esprimere al prim'ordine la propriet\`a: $\phi(M)$ ha infiniti elementi, significa trovare un enunciato $\psi$ tale che $\psi$ \`e vera in $M$ quando $\phi(M)$ contiene infiniti elementi. Vedremo che per qualche formula $\phi(x)$ questo non \`e possibile. (Il risultato sar\`a ancora pi\`u preciso: faremo vedere per quali formule $\phi(x)$ questo \`e possibile, per quali non \`e possibile.)\QED
+\end{remark}
+
+Concludiamo il paragrafo con una breve nota, un dettaglio, su cui \`e per\`o \`e meglio non inciampare. \`E vero che $\E x\,\phi(x)$ \`e una conseguenza logica di $\A x\,\phi(x)$~? La risposta affermativa sembra scontata. Invece, la risposta \`e negativa: la struttura vuota \`e un (in effetti, l'unico) controesempio. In una struttura vuota tutti gli enunciati che cominciano con un quantificatore universale sono veri perch\'e non esiste nessun possibile controesempio. Invece tutti gli enunciati che cominciano con un quantificatore esistenziale sono falsi perch\'e non esiste nessun possibile testimone. Noi non abbiamo escluso la possibili\`a che le strutture abbiano dominio vuoto. Qualche autore invece esclude le strutture con dominio vuoto, per loro $\E x\,\phi(x)$ \`e quindi una conseguenza logica di $\A x\,\phi(x)$.
+\end{comment}
+\begin{exercise}
+Siano $\phi(x,y)$ e  $\psi(x,y)$ due formule che definiscono in $M$ il grafo delle funzioni $f$ e $g$. Si scriva una formula che definisce in $M$ il grafo della funzione $f\circ h$.
+\end{exercise}
+
+\begin{exercise}
+Sia $M$ una struttura arbitraria e sia  $\phi(x,y)$ una formula pura. Si scriva un enunciato puro vero in $M$ quando $\phi(x,y)$ definisce una relazione di equivalenza con esattamente $3$ classi.
+\end{exercise}
+
+\begin{exercise} 
+Sia $G$ una struttura in un linguaggio $L$ che contiene quello dei gruppi moltiplicativi e supponiamo che $G$ sia un gruppo. Sia $\phi(x)$ una formula che definisce $H$, un sottogruppo di $G$.
+\begin{itemize}
+\item[a.] Esiste una formula $\epsilon(x,y)$ che definisce la relazione di appartenere allo stesso laterale di $H$?
+\item[b.] Esiste una formula che dice che $H$ \`e sottogruppo normale?
+\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+Sia $M$ una struttura arbitraria e siano $\psi(x)$ e $\phi(x,y)$ formule pure. Si scriva un enunciato puro vero in $M$ quando
+\begin{itemize}
+\item[a.] $\psi(M)\ \in\ \{\phi(a,M): a\in M\}$;
+\item[b.] $\{\phi(a,M): a\in M\}$ contiene al pi\`u due elementi;
+\item[c.] $\{\phi(a,M): a\in M\}$ contiene almeno due elementi;
+\item[d.] $\{\phi(a,M): a\in M\}$ contiene insiemi a due a due disgiunti;
+\item[e.] $\{\phi(a,M): a\in M\}$ \`e una partizione di $M$.
+\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+Sia $M$ una struttura e $\psi(x)$ una formula a parametri in $M$.  La formula $\psi(x)\iff\psi(y)$ definisce  una relazione di equivalenza su $M$. Si pu\`o dire quante classi ha?
+\end{exercise}
+
+\begin{exercise}\label{ex_grafo_bipartito}
+Il linguaggio contiene solo un simbolo di relazione binaria $r$. Scrivere un enunciato $\psi$ tale che per ogni struttura $M$, 
+\begin{itemize} 
+\item[a.] $M\models\psi$ se e solo se esiste $A\subseteq M$ tale che $r^M\ \subseteq\ A\times\neg A$.
+\end{itemize}
+Osservazione: la richiesta in \ssf{a} \`e una versione asimmetrica di quella in \ssf{b}. In questo secondo caso la formula $\psi$ desiderata non esiste. 
+\begin{itemize} 
+\item[b.] $M\models\psi$ se e solo se esiste $A\subseteq M$ tale che $r^M\ \subseteq\ (A\times \neg A)\;\cup\;(\neg A\times A)$.
+\end{itemize}
+La propriet\`a che si legge in \ssf{b} corrisponde ad una ben nota dei grafi. Associamo alla formula $r(x,y)$ un grafo in cui i nodi sono gli elementi di $M$ e gli archi sono quelle coppie \textit{non\/} ordinate $\{a,b\}$ tali che $M\models r(a,b)\vee r(b,a)$. Allora \ssf{b} dice che questo \`e un \textit{grafo bipartito}, o equivalentemente che ha \textit{numero cromatico $2$}. Cio\`e, con due colori a disposizione, \`e possibile colorare tutti nodi in modo tale che non ci siano archi tra nodi dello stesso colore. 
+\end{exercise}

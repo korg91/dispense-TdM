@@ -1,0 +1,587 @@
+\chapter{Saturazione ed omogeneit\`a}
+%\setcounter{page}{1}
+\label{saturazione}
+ 
+\def\ceq#1#2#3{\parbox{20ex}{$\displaystyle #1$}\parbox{6ex}{\hfil$\displaystyle #2$}$\displaystyle  #3$}
+
+\section{Strutture sature}
+
+Un tipo $p(x)$ si dice \emph{finitamente consistente\/} (o \emph{finitamente coerente\/}) \emph{in $M$\/} se ogni formula $\phi(x)$, congiunzione di formule in $p(x)$, ha una soluzione in $M$. La consistenza finita \`e una propriet\`a elementare: se $A\subseteq M$ e $p(x)\subseteq L(A)$ \`e finitamente consistente in $M$ allora \`e finitamente consistente in qualsiasi $N\equiv_A M$. Questa osservazione si generalizza nella seguente che nel seguito applicheremo pi\`u volte senza ulteriore riferimento.
+
+\begin{remark}
+Sia $p(z,x)$ un tipo puro, sia $h:M\imp N$ una mappa elementare, e sia $a$ una tupla di elementi di $\dom h$. Se $p(a,x)$ \`e coerente in $M$ (ma \`e sufficiente anche solo \textit{finitamente\/} coerente) allora $p(ha,x)$ \`e finitamente coerente in $N$ (e qui finitamente \textit{non\/} si pu\`o omettere).\QED
+\end{remark}
+
+\begin{definition}
+Sia $x$ una singola variabile e sia $\lambda$ un cardinale infinito. Una struttura infinita $N$ si dice \emph{$\lambda$-satura} se realizza ogni tipo $p(x)$ tale che
+\begin{itemize}
+\item[1.] $p(x)\subseteq L(A)$ per qualche $A\subseteq N$ di cardinalit\`a $<\lambda$;
+\item[2.] $p(x)$ \`e finitamente coerente in $N$.
+\end{itemize}
+Diremo che $N$ \`e una struttura \emph{satura\/} tout court se \`e $\lambda$-satura per $\lambda$ la cardinalit\`a di $N$.
+\end{definition}
+
+Per enfasi, ripetiamo la definizione nel caso pi\`u frequentemente usato: la struttura infinita $N$ \`e \emph{$\omega$-satura} se realizza ogni tipo finitamente coerente con un numero finito di parametri in $N$. 
+
+\begin{exercise}
+Assumiamo $|L|\le\omega$. Se $M$ \`e un modello infinito ed $F$ un ultrafiltro non principale su $\omega$ allora $M^\omega/F$ \`e un modello $\omega_1$-saturo.
+
+Suggerimento. Sia $\hat c$ una tupla di lunghezza $\omega$ di elementi di $M^\omega$ e consideriamo un tipo $p(x)=\big\{\phi_i(x,[\hat c]_F):i<\omega\big\}$ finitamente consistente. Senza perdita di generalit\`a possiamo assumere che $\phi_{i+1}(x,z)\imp\phi_i(x,z)$. Sia  $\<X_i:i<\omega\>$ una catena strettamente decrescente di elementi di $F$ tali che $X_0=\omega$ e $X_{i+1}\subseteq\big\{j\;:\;\E x\;\phi_i(x,\hat cj)\big\}$. Definiamo $\hat a\in M^\omega$ in modo tale che $\phi_i(\hat aj,\hat cj)$ valga per ogni $j\in X_i\sm X_{i+1}$. Si verifichi che $[\hat a]_F$ realizza $p(x)$.\QED
+\end{exercise}
+
+Le questioni che riguardano l'esistenza di strutture sature, o anche solo $\lambda$-sature per $\lambda$ non numerabile sono un po' delicate. I prossimi due teoremi richiedono un minimo di familiarit\`a con l'aritmetica cardinale e con la nozione di cofinalit\`a. Comunque accettarli senza dimostrazione non compromette la comprensione di quanto segue. Ricordiamo che un cardinale $\kappa$ si dice inaccessibile se \`e sia un cardinale limite forte che regolare. Ovvero,
+\begin{itemize} 
+ \item[1.] $2^\lambda<\kappa$ per ogni $\lambda<\kappa$\hfill ($\kappa$ \`e limite forte)
+ \item[2.] $\bigcup A<\kappa$ per ogni $A\subseteq\kappa$ con $|A|<\kappa$\hfill ($\kappa$ \`e regolare)
+\end{itemize}
+
+\begin{theorem}\label{thm_esistenza_staturo_card_inacc}
+Sia $\kappa$ un cardinale inaccessibile tale che $|L|+\omega<\kappa$. Ogni struttura infinita $M$ di cardinalit\`a $\le\kappa$ ha un'estensione elementare satura di cardinalit\`a $\kappa$.
+\end{theorem}
+
+\begin{proof}
+Costruiamo una catena elementare $\<M_i : i<\kappa\>$ di modelli di cardinalit\`a $\le\kappa$. L'unione della catena $N$ \`e un'estensione richiesta. La catena parte con $M_0=M$ ed \`e l'unione ai passi limite. Dato $M_i$ prendiamo come $M_{i+1}$ un modello che realizza tutti i tipi su $M_i$ con $<\kappa$ parametri finitamente consistenti in $M_i$. Poich\'e $\kappa$ \`e limite forte,  $M_i$ ha $\le\kappa$ sottoinsiemi di cardinalit\`a $<\kappa$ e che, fissato un insieme di parametri di cardinalit\`a $<\kappa$ esistono $<\kappa$ tipi. Quindi $M_{i+1}$ pu\`o essere scelto di cardinalit\`a $\le\kappa$.
+
+Verifichiamo ora che $N$ \`e saturo. Sia $p(x)$ un tipo $A\subseteq N$ per qualche $|A|<\kappa$. Poich\'e $\kappa$ \`e un cardinale regolare esiste un $i<\kappa$ tale che $A\subseteq M_i$. Quindi $M_{i+1}$ realizza $p(x)$, e per elementarit\`a anche $N$.
+\end{proof}
+
+Con una costruzione simile si dimostra che se $2^\lambda=\lambda^+$, allora esistono modelli saturi di cardinalit\`a  $\le2^\lambda$. Precisamente, vale il seguente:
+
+\begin{theorem}
+Sia $\lambda$ un cardinale infinito $\ge|L|$. Ogni struttura infinita $M$ di cardinalit\`a $\le2^\lambda$ ha un'estensione elementare $\lambda^+\!\jj$satura di cardinalit\`a $\le2^\lambda$.
+\end{theorem}
+
+\begin{proof}
+Costruiamo una catena elementare $\<M_i : i<\lambda^+\>$ di modelli di cardinalit\`a $\le2^\lambda$. L'unione della catena $M_{\lambda^+}$ \`e un'estensione richiesta. La catena parte da $M_0=M$ ed \`e l'unione ai passi limite. Dato $M_i$ prendiamo come $M_{i+1}$ un modello che realizza tutti i tipi su $M_i$ con $\le\lambda$ parametri finitamente consistenti in $M_i$. Osserviamo che $M_i$ ha $|M_i|^\lambda\le2^\lambda$ sottoinsiemi di cardinalit\`a $\lambda$ e che, fissato un insieme di parametri di cardinalit\`a $\le\lambda$ esistono $2^\lambda$ tipi. Quindi $M_{i+1}$ pu\`o essere scelto di cardinalit\`a $\le2^\lambda$.
+
+Verifichiamo ora che $M_{\lambda^+}$ \`e saturo. Sia $p(x)$ un tipo $A\subseteq M_{\lambda^+}$ per qualche $|A|\le\lambda$. Poich\'e $\lambda^+$ \`e un cardinale regolare (i.e.\@ ha cardinalit\`a $\lambda^+$) esiste un $i<\lambda^+$ tale che $A\subseteq M_i$. Quindi $M_{i+1}$ realizza $p(x)$, e per elementarit\`a anche $M_{\lambda^+}$.
+\end{proof}
+
+\begin{corollary}
+Sia $\lambda$ un cardinale inaccessibile $>|L|+\omega$. Ogni struttura infinita $M$ di cardinalit\`a $\le\lambda$ ha un'estensione elementare satura di cardinalit\`a $\lambda$.
+\end{corollary}
+
+
+Nel caso $\lambda=\omega$, il seguente teorema ricorda i lemmi~\ref{lem_ordinericco} e \ref{lem_graforicco}. La differenza \`e che ora estendiamo mappe elementari invece di immersioni parziali.
+
+\begin{lemma}\label{saturo->ricco}
+Sia $\lambda$ un cardinale infinito $\ge|L|$. Sia $N$ una struttura infinita e sia $\M$ la classe dei modelli di $\Th(N)$. Le seguenti affermazioni sono equivalenti. 
+\begin{itemize}
+\item[1] $N$ \`e una struttura $\lambda$-satura;
+\item[2] $N$ \`e una struttura $\lambda$-ricca se come morfismi consideriamo le mappe elementari.
+\item[3] $N$ realizza tutti i tipi finitamente consistenti con $<\lambda$ parametri e $\le\lambda$ variabili.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Per dimostrare l'implicazione \ssf{1}$\IMP$\ssf{2} dobbiamo verificare che ogni mappa elementare $k:M\imp N$ tale che $|k|<\lambda$ ed $|M|\le\lambda$ si estende ad un'immersione elementare. Sia $\<a_i:i<\lambda\>$ un'enumerazione di $M$. Definiamo una catena di mappe elementari $h_i:M\imp N$ di cardinalit\`a $<\lambda$ e tali che $a_i\in\dom h_{i+1}$. Dall'unione della catena otteniamo l'immersione richiesta.
+
+La catena comincia con $h_0=k$. Agli ordinali limite la catena si estende prendendo l'unione. Ora vediamo come estenderla al passo $i+1$. Sia $a$ un'enumerazione di $\dom h_i$, quindi $|a|<\lambda$.  Vogliamo un elemento $c\in N$ per porre $h_{i+1}=h_i\cup\big\{\<a_i,c\>\big\}$. Sia $p(z,x)=\tp_M(a,a_i)$. Il tipo $p(a,x)$ \`e consistente in $M$ per costruzione e quindi il tipo $p(h_ia,\,x)$  \`e finitamente consistente in $N$. L'elemento $c$ cercato \`e una qualsiasi sua realizzazione, che esiste per saturazione. Per verificare che $h_{i+1}:M\imp N$ \`e elementare \`e sufficiente notare che il tipo $p(z,x)$ \`e completo ed \`e soddisfatto da $a,a_i$ in $M$ e da da $h_ia,c$ in $N$.
+
+Dimostriamo l'implicazione \ssf{2}$\IMP$\ssf{3}. Sia $x$ una tupla di variabili di lunghezza $\le\lambda$ e sia $p(x)$ un tipo a parametri in un qualche $A\subseteq N$ di cardinalit\`a $<\lambda$ e fintamente coerente in $N$. Sia $N'$ un'estensione elementare di $N$ che realizza $p(x)$, diciamo $N'\models p(b)$ per un qualche $b\in N^{|x|}$. Per L\"owenheim-Skolem esiste un modello $M\preceq N'$ che contiene $A,b$ ed ha cardinalit\`a $\le\lambda$. (Qui usiamo l'ipotesi $|L|\le\lambda$.) Applicando \ssf{2} con $k=\id_A$ e otteniamo un'immersione elementare $h:M\imp N$ che estende $\id_A$, ovvero fissa tutti i parametri che occorrono in $p(x)$, quindi da $M\models p(b)$ segue $N\models p(hb)$, ovvero $hb$ \`e la realizzazione richiesta.
+
+L'implicazione \ssf{3}$\IMP$\ssf{1} \`e ovvia. 
+\end{proof}
+
+% \begin{corollary}\label{corollariosaturo=ricco}
+% Per ogni cardinale infinito $\lambda$ tale che $|L|\le\lambda$.  Per ogni struttura $N$ infinita, le seguenti affermazioni sono equivalenti:
+% \begin{itemize}
+% \item[1] $N$ \`e una struttura $\lambda$-satura;
+% \end{itemize}
+% \end{corollary}
+% \begin{proof}
+% L'implicazione \ssf{3}$\IMP$\ssf{1} \`e ovvia. Dimostriamo l'implicazione \ssf{1}$\IMP$\ssf{3}. Ripetiamo la dimostrazione di \ssf{2}$\IMP$\ssf{1} del teorema~\ref{saturo=ricco} con $x$ una tupla di variabili di lunghezza $\le\lambda$.
+% \end{proof}
+
+Il seguente corollario \`e l'analogo del teorema~\ref{riccozigzag}. L'unica differenza \`e che qui i morfismi sono mappe elementari (il risultato \`e quindi pi\`u debole). La dimostrazione \`e comunque identica.
+
+\begin{theorem}\label{corollariosaturounico}
+Per ogni coppia di modelli saturi $M$ ed $N$ della stessa cardinalit\`a $\lambda$ e per ogni mappa $k:M\imp N$ di cardinalit\`a $<\lambda$ le seguenti affermazioni sono equivalenti:
+\begin{itemize} 
+\item[1.] $k:M\imp N$ \`e una mappa elementare; 
+\item[2.] esiste un isomorfismo $g:M\imp N$ che estende $k$.
+\end{itemize}
+\end{theorem}
+\begin{comment}
+\begin{proof}
+L'implicazione \ssf{2}$\IMP$\ssf{1} \`e ovvia. Per dimostrare \ssf{1}$\IMP$\ssf{2} fissiamo delle enumerazioni di $M$ ed $N$, diciamo $\<a_i\;\;i<\lambda\>$ rispettivamente $\<b_i\;\;i<\lambda\>$. Definiamo per induzione su $i$ una catena di mappe elementari $g_i:M\imp N$ di cardinalit\`a $<\lambda$ e tali che $a_i,b_i\in\dom g_{i+1}$.  L'unione della catena porge l'isomorfismo richiesto.
+
+La catena comincia con $g_0=k$ e agli ordinali limite si estende prendendo l'unione; quindi ora vediamo come estenderla al passo $i+1$. Questo si divide in due mezzi passi. Col primo mezzo passo estendiamo a $g_{i+^1\!/_2}$ in modo da ottenere $a_i\in\dom g_{i+^1\!/_2}$ col secondo estendiamo ulteriormente per ottenere $b_i\in\range g_{i+1}$. Per il lemma~\ref{saturo->ricco} esiste una mappa elementare $h:N\imp M$ che estende $g_i:N\imp M$ e ha come dominio $\dom g_i\cup\{a_i\}$. Definiamo quindi $g_{i+^1\!/_2}=g_i\cup\{\<a_i,ha_i\>\}$. Ora applichiamo lo stesso lemma alla mappa $\big(g_{i+^1\!/_2})^{-1}:N\to M$ per ottenere un'estensione totale $f:N\to M$. Definiamo $g_{i+1}=g_{i+^1\!/_2}\cup\{\<fb_i,b_i\>\}$.
+\end{proof}
+\end{comment}
+
+Ricordando che due modelli sono elementarmente equivalenti quando la mappa vuota \`e  elementare otteniamo il seguente corollario.
+
+\begin{corollary}\label{corollariosaturounico2}
+Due modelli saturi elementarmente equivalenti della stessa cardinalit\`a sono isomorfi.\QED
+\end{corollary}
+
+Quindi, da quanto visto nei capitoli~\ref{relazionali} e~\ref{algebra} otteniamo numerosi esempi di strutture sature.
+
+\begin{corollary}
+Una lista di teorie con modelli saturi:
+\begin{itemize}
+\item[1] ogni modello di $T_{\rm oldse}$ \`e $\omega$-saturo;
+\item[2] ogni modello di $T_{\rm rg}$ \`e $\omega$-saturo;
+\item[3] se $R$ dominio di integrit\`a e $T$ \`e la teoria degli $R$-moduli divisibili allora
+\begin{itemize}
+\item[a.]ogni modello di $T$ di rango infinito \`e $\omega$-saturo;
+\item[b.]ogni modello di cardinalit\`a $>|R|+\omega$ \`e saturo.
+\end{itemize} 
+\item[4a] ogni modello di $T_{\rm acf}$ con grado di trascendenza infinito \`e $\omega$-saturo;
+\item[4b] ogni modello  non numerabile di $T_{\rm acf}$ \`e saturo.
+\end{itemize}
+\end{corollary}
+\begin{proof}
+Lasciata al lettore. Serve usare: la caratterizzazione della saturazione data dal lemma~\ref{saturo->ricco} e l'eliminazione dei quantificatori, teorema~\ref{imparzialemappeelementari}.
+\end{proof}
+
+% \begin{exercise}
+% Mostrare che se $\omega<\lambda$ possiamo aggiungere un'altra affermazione equivalente al teorema~\ref{saturo=ricco} 
+% \begin{itemize}
+% \item[4] ogni mappa elementare $k:M\imp N$ tale che $|k|\le|M|<\lambda$ ha un'estensione ad un'immersione elementare
+% \end{itemize}
+% Evidenziare il punto della dimostrazione dove \`e necessaria l'ipotesi $\omega<\lambda$.
+% \end{exercise}
+
+
+
+\begin{exercise}\label{ricchezza_saturazione_EQ}
+Sia $N$ un modello ricco di $T$ (i morfismi sono le immersioni parziali). Si dimostri che le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] ogni modello saturo di $\Th(N)$ \`e ricco;
+\item[2.] $\Th(N)$ ha eliminazione dei quantificatori. 
+\end{itemize}
+Suggerimento: si usi il teorema~\ref{tutteleimmersionisonoelementari=eliminazioneqantificatori} e l'esercizio~\ref{ex_imparzialemappeelementari}.\QED
+\end{exercise}
+
+% \begin{proof}
+% Per l'implicazione \ssf{1}$\IMP$\ssf{2} basta dimostrare che ogni immersione parziale $k:M_1\imp M_2$ tra modelli di $\Th(N)$ \`e elementare. Siano $M_i\preceq M'_i$ modelli saturi della stessa cardinalit\`a maggiore di $|k|$. Estendendo $k$ ad un automrfismp  
+% \end{proof}
+
+\begin{exercise}
+Il linguaggio \`e quello dei gruppi moltiplicativi. Sia $G$ un gruppo $\omega$-saturo. Si dimostri che se $G$ \`e un gruppo di torsione (ossia, per ogni $g\in G$ esiste un intero positivo $n$ tale che $g^n=1$) allora allora $G$ ha esponente finito. Si ricorda che  l'esponente di un gruppo $G$ \`e, se esiste, il minimo $n$ tale che $g^n=1$ per ogni $g\in G$. Se questo $n$ non esiste si dice che il gruppo ha esponente infinito.\QED 
+\end{exercise}
+
+
+\begin{exercise}\label{ex_oldse+infiniti_colori}
+Si dimostri che i modelli $\omega\jj$ricchi della teoria $R_\omega$ nel paragrafo~\ref{eserciziorisolto} sono saturi.\QED
+\end{exercise}
+
+\begin{exercise}\label{ex_QQxZZ_saturo}
+Il linguaggio contiene $<$ e due simboli di funzione unaria che chiameremo successore e predecessore e indicheremo con $(x+1)$ ed $(x-1)$. Scriveremo $T$ per la teoria che estende $T_{\rm ol}$ con i seguenti assiomi:
+\begin{itemize}
+\item[1.] $(x+1)-1\ =\ (x-1)+1\ =\ x$;
+\item[2.] $x-1<x<x+1$;
+\item[3.] $x-1<z<x+1\ \imp\ x=z$.
+\end{itemize}
+Si dimostri che la struttura $\QQ\times\ZZ$ ordinata con l'\emph{ordine lessicografico\/} cio\`e 
+
+\ceq{\hfill (a_1,a_2)<(b_1,b_2)}{\dIFF}{a_1<b_1\ \ \textrm{oppure}\ \ a_1=b_1\ \textrm{e}\ a_2<b_2}
+
+e con la naturale interpretazione delle funzioni \`e un modello saturo di $T$.\QED 
+\end{exercise}
+
+\begin{exercise}
+Il linguaggio $L$ \`e quello dei grafi pi\`u infinite constanti $\{c_i:i<\omega\}$. Sia $T$ la teoria che contiene $T_{\rm rg}$ pi\`u gli assiomi $r(c_i, c_j)$ per ogni $i< j<\omega$. \`E $T$ una teoria completa? \`E $\omega\jj$categorica? Qual'\`e la cardinalit\`a minima dei modelli $\omega\jj$saturi di $T$?\QED 
+\end{exercise}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Strutture omogenee}
+Nella definizione~\ref{def_omogenea_universale} abbiamo introdotto i concetti di universalit\`a ed ultraomogeneit\`a. In questo paragrafo vedremo l'analogo elementare delle stesse nozioni. La seguente coincide con la definizione~\ref{def_omogenea_universale} se per $\M$ si prende la classe dei modelli di $\Th(N)$ e come morfismi le mappe elementari (invece delle immersioni parziali). 
+
+\begin{definition}
+Una struttura $N$ si dice \emph{(elementarmente) $\lambda$-universale\/} se per ogni $M\equiv N$ di cardinalit\`a $\le\lambda$ esiste una immersione elementare $h:M\imp N$. Si dice \emph{universale\/} tout court se \`e $\lambda$-universale con $\lambda$ la cardinalit\`a di $N$. 
+
+Una struttura $N$ si dice \emph{$\lambda$-omogenea\/} se ogni $k:N\to N$ mappa elementare di cardinalit\`a $<\lambda$ si estende ad un automorfismo di $N$. Equivalentemente, se per ogni coppia di tuple $a\equiv b$ di lunghezza $<\lambda$ esiste un automorfismo di $N$ che mappa $a$ in $b$. Diremo $N$ \`e \emph{omogeneo\/} tout court se \`e $\lambda$-omogeneo con $\lambda$ la cardinalit\`a di $N$.
+\end{definition}
+
+Sia $N$ una struttura e sia $A\subseteq N$ un insieme di parametri. Denotiamo con \emph{$\Aut(N/A)$\/} l'insieme degli automorfismi di $N$ che fissano $A$ puntualmente, cio\`e che sono l'identit\`a su $A$. Sia $a$ una tupla di elementi di $N$. L'insieme
+
+\hfil\emph{$\orbit_N(a/A)$}$\ \ =\ \ \{fa\;:\; f\in\Aut(N/A)\}$
+
+si chiamo l'\emph{orbita di $a$ su $A$ in $N$}. Quando il modello $N$ \`e chiaro dal contesto verr\`a omesso dalla notazione. 
+
+La convenienza di lavorare in modelli sufficientemente omogenei \`e che in questi modelli esiste un equivalente sintattico della nozione di orbita: le orbite coincidono con gli insiemi definibili da tipi. La seguente proposizione riporta l'enunciato preciso. La dimostrazione \`e immediata.
+
+%Anticipiamo una nozione che verr\`a studiata in dettaglio nel capitolo~\ref{capitoloimmaginari}. 
+
+
+\begin{proposition}\label{omogeneitaorbitetipi}
+Fissiamo una struttura $\lambda$-omogenea $N$, un insieme $A\subseteq N$ cardinalit\`a $<\lambda$, ed una tupla $a\in N^{<\lambda}$. Allora $\orbit(a/A)=p(N)$ dove $p(x)=\tp(a/A)$.\QED
+\end{proposition}
+
+
+\begin{theorem}\label{saturo<->omogeneo}
+Per ogni modello $N$ di cardinalit\`a $\ge|L|$, le seguenti affermazioni sono equivalenti:\nobreak
+\begin{itemize}
+\item[1.] $N$ \`e saturo
+\item[2.] $N$ \`e universale ed omogeneo.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Data l'equivalenza tra saturazione e ricchezza enunciata del teorema~\ref{saturo->ricco}, il teorema coincide con quella del teorema~\ref{ricco<->universaleomogeneo} a meno di sostituire le immersioni parziali con le mappe elementari.
+\end{proof}
+
+
+Il resto di questo paragrafo \`e dedicato ad uno studio approfondito del concetto di omogeneit\`a e di alcune sue varianti. Pu\`o essere considerato come un lungo esercizio risolto.
+
+Il prossimo obbiettivo \`e il teorema~\ref{saturo=universaledebolmenteomogeneo} che caratterizza la $\lambda$-saturazione nello stile del teorema~\ref{saturo<->omogeneo}. Purtroppo per ottenere una caratterizzazione che valga per ogni cardinale $\lambda$ dobbiamo indebolire la nozione di omogeneit\`a. Esistono varie nozioni di omogeneit\`a debole; la seguente \`e legata al concetto di andirivieni, qualcuno la chiama \textit{andirivieni-omogeneit\`a}.
+
+\begin{definition}
+Una struttura $N$ si dice \emph{debolmente $\lambda$-omogenea\/} se per ogni elemento $b\in N$ ogni mappa elementare $k:N\imp N$ di cardinalit\`a $<\lambda$ si estende ad una mappa elementare definita in $b$.
+\end{definition}
+
+\`E immediato che una struttura $\lambda$-omogenea \`e anche debolmente $\lambda$-omogenea. Mostriamo che le due varianti coincidono quando $\lambda$ \`e la cardinalit\`a di $N$:
+
+\begin{proposition}\label{omogeneo=debolmenteaomogeneo}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ \`e una struttura omogenea;
+\item[2.] $N$ \`e debolmente $\lambda$-omogenea per $\lambda$ la cardinalit\`a di $N$.
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Il verso \ssf{1}$\IMP$\ssf{2} \`e ovvio come gi\`a osservato. L'implicazione \ssf{2}$\IMP$\ssf{1} si dimostra con l'usuale costruzione ad andirivieni. Sia $\<a_i:i<\lambda\>$ un'enumerazione di $N$. Costruiamo una catena di mappe elementari $g_i:N\imp N$ tutte di cardinalit\`a $<\lambda$ e tali che $a_i\in\dom g_{i+1}\cap\range g_{i+1}$. L'unione della catena \`e l'immersione richiesta. La costruzione comincia con $g_0=k$ e agli ordinali limite \`e l'unione.  Il passo $i+1$ si divide in due mezzi passi. Col primo mezzo passo estendiamo a $g_{i+^1\!/_2}$ in modo da ottenere $a_i\in\dom g_{i+^1\!/_2}$ col secondo estendiamo ulteriormente per ottenere $a_i\in\range g_{i+1}$. L'omogeneit\`a debole assicura l'esistenza di una mappa elementare $h:N\imp N$ che estende $g_i:N\imp N$ ed ha come dominio $\dom g_i\cup\{a_i\}$. Definiamo quindi  $g_{i+^1\!/_2}=h$. Ora applichiamo nuovamente l'omogeneit\`a debole alla mappa $\big(g_{i+^1\!/_2})^{-1}:N\to N$ per ottenere un'estensione $f:N\to N$ con dominio $\range g_{i+^1\!/_2}\cup\{a_i\}$. Definiamo $g_{i+1}=f^{-1}$. Si noti che per poter applicare l'omogeneit\`a debole \`e necessario che la cardinalit\`a di $g_i$ non superi mai $\lambda$, e questo \`e garantito perch\'e $\lambda$ \`e la cardinalit\`a del modello.
+\end{proof}
+
+La dimostrazione del teorema~\ref{saturo=universaledebolmenteomogeneo} richiede il seguente lemma la cui dimostrazione combina due tecniche importanti: l'andirivieni e la costruzione usata per dimostrare il teorema di L\"owenheim-Skolem all'ingi\`u, precisamente, la seconda dimostrazione~\ref{lowenheimskolemallingiu}.
+
+\begin{lemma}\label{debolmenteomogeneoandirivieni}
+Sia $\lambda$ un cardinale infinito $\ge |L|$. Sia $N$ una struttura debolmente $\lambda$-omogenea e fissiamo un insieme $A\subseteq N$ di cardinalit\`a $\le\lambda$. Allora ogni mappa elementare $k:N\to N$ di cardinalit\`a $<\lambda$ si estende ad un automorfismo $h:M\to M$ dove $M$ \`e un modello tale che $A\subseteq M\preceq N$.
+\end{lemma}
+
+\begin{proof}
+Costruiamo simultaneamente un modello $A\subseteq M\preceq N$ ed $h:M\to M$, un automorfismo che estende $k$. Definiremo due catene, una catena $\<A_i:i<\lambda\>$ di sottoinsiemi di $N$ ed una catena di funzioni $\<h_i:i<\lambda\>$. Dall'unione di queste catene si ottengono il modello e l'automorfismo richiesti.
+
+Cominciamo col porre $h_0=k$ ed $A_0=A\cup\dom k\cup\range k$ e dichiarare che ai passi limite si prende l'unione. Al passo $i+1$ fissiamo un'enumerazione di $A_i$ ed un'enumerazione di tutte le formule consistenti a parametri in $A_i$. Entrambe le enumerazioni hanno lunghezza $\lambda$.  Sia $\<i_1,i_2\>$ la coppia $i$-esima di ordinali $<\lambda$ e sia $a$ una soluzione della $i_2$-esima formula in $A_{i_1}$. Sia $c$ l'elemento $i_2$-esimo in $A_{i_1}$.
+
+\hfil $A_{i+1}\ \ =\ \ A_i\cup\big\{a,b,d\big\}$\hfil  e\hfil  $h_{i+1}\ \ =\ \ h_i\,\cup\,\big\{\<c,b\>\big\}\,\cup\,\big\{\<d,c\>\big\}$ 
+
+per opportuni $b$ e $d$ che rendono $h_{i+1}:N\imp N$ una mappa elementare. Questi esistono perch\'e $N$ \`e debolmente $\lambda$-omogeneo per ipotesi (serve applicare questa ipotesi due volte, avanti e indietro, come nella dimostrazione della proposizione~\ref{omogeneo=debolmenteaomogeneo}).
+
+Usando il test di Tarski-Vaught, \`e immediato verificare che $M$ \`e un modello. Dalla costruzione \`e chiaro che $\dom h\subseteq M$ e $\range h\subseteq M$. Le verifiche della totalit\`a e suriettivit\`a sono anche immediate quindi concludiamo che $h:M\to M$ \`e l'automorfismo richiesto.
+\end{proof}
+
+
+Siamo pronti per dimostrare la promessa generalizzazione del teorema~\ref{saturo<->omogeneo}.
+
+
+\begin{theorem}\label{saturo=universaledebolmenteomogeneo}
+Sia $\lambda$ un cardinale infinito a $\ge|L|$.  Per ogni modello $N$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $N$ \`e $\lambda$-saturo
+\item[2.] $N$ \`e $\lambda$-universale e debolmente $\lambda$-omogeneo.
+\end{itemize}
+\end{theorem}
+
+\begin{proof} 
+Per dimostrare il verso \ssf{1}$\IMP$\ssf{2} osserviamo che l'universalit\`a segue dal punto \ssf{2} del lemma~\ref{saturo->ricco} prendendo come $k$ la funzione vuota. Per l'omogeneit\`a debole, fissiamo un elemento $b\in N$ ed una mappa elementare $k:N\imp N$ di cardinalit\`a $<\lambda$. Sia $a$ un enumerazione di $\dom k$. Sia $p(x,y)=\tp(a,b)$ quindi $p(ka,y)$ \`e finitamente consistente e per saturazione ha una realizzazione $c$. L'estensione richiesta \`e $k\cup\{\<b,c\>\}$.
+
+Per dimostrare la direzione \ssf{2}$\IMP$\ssf{1} useremo una immediata generalizzazione della costruzione usata per dimostrare il teorema~\ref{ricco<->universaleomogeneo}. Assumiamo \ssf{2} e dimostriamo l'affermazione \ssf{2} del teorema~\ref{saturo->ricco}. Sia $k:M\imp N$ una mappa elementare, con $|k|<\lambda$ ed $|M|\le\lambda$. Per l'universalit\`a esiste un'immersione  elementare $f:M\imp N$. La mappa $f\circ k^{-1}:N\imp N$ \`e una mappa elementare di cardinalit\`a $<\lambda$, quindi per il lemma~\ref{debolmenteomogeneoandirivieni}, esiste una struttura $N'$ tale che $\range k,\range f\subseteq N'\preceq N$ ed un  automorfismo $h:N'\imp N'$ che estende $k\circ f^{-1}$. \`E immediato verificare che $h\circ f:M\imp N$ estende $k$. Questa \`e dunque l'immersione richiesta.
+\end{proof}
+
+Se nella definizione $\lambda$-universalit\`a limitiamo la richiesta ai modelli $M$ di cardinalit\`a $<\lambda$ otteniamo una nozione interessante solo per $|L|<\lambda$. Per $\lambda=|L|$ la condizione potrebbe essere banalmente soddisfatta per l'assenza di modelli $M<\lambda$. La nozione di $\lambda$-saturazione debole \`e il giusto modo di formulare questa nozione in modo da renderla interessante per ogni cardinalit\`a  $|L|\le\lambda$.
+
+Una struttura infinita $N$ si dice \emph{debolmente $\lambda$-satura\/} se realizza tutti i tipi \textit{puri} con $<\lambda$ variabili e finitamente consistenti. 
+
+\begin{exercise}\label{saturazione debole}
+Si dimostri che per ogni modello $N$ di cardinalit\`a $\ge |L|$, le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1] $N$ \`e $\lambda$-saturo
+\item[2] $N$ \`e debolmente $\lambda$-saturo e debolmente $\lambda$-omogeneo.\QED 
+\end{itemize}
+\end{exercise}
+
+\begin{exercise}\label{exomogeneonumerabile}
+Sia $\lambda$ un cardinale regolare $\ge|L|$. Si dimostri che se $N$ \`e una struttura debolmente $\lambda$-omogenea allora per ogni $A\subseteq N$ di cardinalit\`a $\le\lambda$ esiste un modello $M$ omogeneo di cardinalit\`a $\le\lambda$ tale che $A\subseteq M\preceq N$.\QED 
+\end{exercise}
+
+
+\begin{exercise}[ (risolto)]\label{ojnb}
+Sia $N$ una struttura debolmente $\lambda$-omogenea. Sia $M$ una struttura di cardinalit\`a $\le\lambda$ tale che $M\models\E x\, p(x)\,\IMP\,N\models\E x\, p(x)$ per ogni tipo puro $p(x)$ con $|x|<\lambda$. (In particolare $M$ ed $N$ sono elementarmente equivalenti.) Si dimostri che ogni mappa elementare $k:M\imp N$ di cardinalit\`a $<\lambda$ si estende esiste un'immersione elementare di $h:M\to N$.
+\par
+%\newline 
+%\psscalebox{-1 1}{
+%\begin{minipage}{\textwidth} 
+Soluzione: la costruzione \`e simile a quella del teorema~\ref{saturo=universaledebolmenteomogeneo}. Costruiamo una catena di mappe elementari $h_i:M\imp N$ di cardinalit\`a $<\lambda$. L'unione di questa catena \`e l'immersione desiderata. Cominciamo col porre $h_0=k$. Ai passi limite prenderemo l'unione. Sia $b$ l'$i$-esimo elemento di $M$, sia $a$ un'enumerazione di $\dom h_i$ e sia $p(x,y)=\tp(a,b)$. Per ipotesi $p(x,y)$ \`e realizzato in $N$ diciamo da $c,d$. Poich\'e $c\equiv h_ia$, per il lemma~\ref{debolmenteomogeneoandirivieni}, esiste $N'\preceq N$ che contiene $h_ia,c,d$ ed un automorfismo $f:N'\imp N'$ tale che $fc=h_ia$. Allora $h_ia,fd$ realizza anche $p(x,y)$, quindi l'estensione cercata \`e $h_{i+1}=h_i\cup\{\<b,fd\>\}$.\QED 
+%\end{minipage}}\bigskip
+\end{exercise}
+
+
+\begin{exercise}
+Siano $M$ ed $N$ due strutture omogenee della stessa cardinalit\`a $\lambda$. Assumiamo che $M\models\E x\, p(x)\,\IFF\,N\models\E x\, p(x)$ per ogni tipo puro $p(x)$ con $|x|<\lambda$. Si dimostri che le due strutture sono isomorfe. Suggerimento: si pu\`o usare l'esercizio~\ref{ojnb} combinato con un andirivieni.\QED 
+\end{exercise}
+
+
+\begin{exercise}\label{vaughtesempio}
+Sia $L$ il linguaggio che estende quello degli ordini stretti con infinite costanti $\{c_i: i\in\omega\}$. Sia $T$ la teoria che contiene $T_{\rm oldse}$ e per ogni $i\in\omega$ l'enunciato $c_i<c_{i+1}$. Dimostrare che $T$ ha eliminazione dei quantificatori ed \`e completa (immediata conseguenza di~\ref{elimquanToldseTrg}). Esibire un modello saturo numerabile ed un modello numerabile non omogeneo.\QED 
+\end{exercise}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Il modello mostro}\label{mostro}
+
+\label{compattezzasaturazione}
+
+%In questo paragrafo mostriamo vari esempi di applicazione del concetto di saturazione e proponiamo altrettanti esercizi. Tutti fatti la cui dimostrazione nei testi pi\`u avanzati si riduce alla frase \textit{by a standard argument of compactness}.
+
+In questo paragrafo esponiamo le convenzioni comunemente adottate per lavorare con una teoria completa $T$ senza modelli finiti. Queste convenzioni hanno lo scopo semplificare l'esposizione. Generalmente si fissa un modello saturo $\U$ di cardinalit\`a $>|L|+\omega$. I pi\`u cauti richiedono solo che $\U$ sia un modello $\lambda$-saturo e $\lambda$-omogeneo, con $\lambda$ un cardinale regolare $>|L|+\omega$. Noi, per tagliare corto su dettagli di poco rilievo, richiediamo che $\U$ abbia cardinalit\`a inaccessibile. Il modello $\U$ \`e soprannominato \emph{modello mostro\/} proprio perch\'e potrebbe avere cardinalit\`a irragionevolmente grande. Il modello mostro non \`e oggetto diretto del nostro interesse \`e solo l'universo in cui poter immergere tutte le strutture prese in considerazione. Ha un po' la funzione di $\CC$ per chi studia campi numerici.
+
+
+\newcommand{\labellalunga}[1]{#1\hfill}
+\newenvironment{litemize}[1]
+   {\begin{list}{}{
+   \setlength{\parskip}{0mm}
+   \setlength{\topsep}{5mm}
+   \setlength{\partopsep}{0mm}
+   \setlength{\rightmargin}{0mm}
+   \setlength{\listparindent}{0mm}
+   \setlength{\itemindent}{0mm}
+   \setlength{\itemsep}{3mm}
+   \settowidth{\labelwidth}{#1}
+   \setlength{\parsep}{0mm}
+   \setlength{\partopsep}{0mm}
+   \setlength{\labelsep}{3mm}
+   \setlength{\leftmargin}{\labelwidth+\labelsep}
+   \let\makelabel\labellalunga}}{
+   \end{list}}
+
+Lavorando in $\U$, alcuni termini acquistano un significato particolare. E qui riassumiamo le convenzioni pi\`u usate.
+
+\begin{litemize}{{\bf piccolo/grande}}
+\item[\emph{piccolo/grande}] Le cardinalit\`a $<|\U|$ vengono dette piccole. 
+\item[\emph{modelli}] I modelli sono sottostrutture elementari di $\U$ di cardinalit\`a piccola. Le lettere $M$, $N$, $K$, e simili, denotano sempre solo modelli.
+\item[\emph{parametri}] I parametri sono tutti solo in $\U$. Le lettere $A$, $B$, $C$, ecc.\@ e simili denotano sempre solo insiemi di parametri di cardinalit\`a piccola (qui useremo caratteri corsivi $\Aa$, $\B$, $\C$, ecc.\@ per indicare insiemi di cardinalit\`a arbitraria).
+\item[\emph{tuple}] Tutte le tuple, di parametri, di variabili, o altro, hanno lunghezza $<|\U|$ se non diversamente specificato.
+%\item[\emph{tipi}] I tipi sono insiemi di formule in $L(\U)$ per un qualche insieme $A$ di parametri (quindi di cardinalit\`a  piccola). 
+\item[\emph{tipi globali}] Chiameremo tipi globali gli elementi di $S(\U)$ cio\`e i tipi completi su $\U$.
+\item[\emph{formule}] In questo contesto formule sono sempre formule con parametri (in $\U$, ovviamente).
+\item[\emph{definibili}] I definibili sono gli insiemi della forma $\phi(\U)$ dove $\phi(x)$ \`e una formula (con parametri in $\U$ quindi). Diremo $A$-definibile se $\phi(x)\in L(A)$.
+\item[\emph{elementarit\`a}] La notazione $a\equiv_A b$ abbrevia $\U,a \equiv_A \U,b$. 
+\item[\emph{morfismi}]  Diremo che $h$ \`e una mappa elementare, intendendo che $h:\U\imp\U$ \`e una mappa elementare.
+\end{litemize}
+
+
+Diamo ora una interpretazione topologica alla nozione di saturazione. Fissiamo un insieme di parametri $A\subseteq \U$. Introduciamo una topologia su $\U$ (o su una qualsiasi potenza cartesiana di $\U$) che chiameremo \emph{topologia indotta\/} da $A$. I chiusi di questa topologia sono gli insiemi della forma $p(\U)$ dove $p(x)$ \`e un tipo su $A$. 
+
+Gli insiemi definibili con parametri in $A$ sono quindi chiusi-aperti e viceversa (cfr.\@ esercizio~\ref{definibilitasaturazione}). I definibili su  $A$ formano una base della topologia indotta da $A$. La topologia \`e quindi \emph{zero-dimensionale\/} (ha una base di chiusi-aperti). 
+
+\`E immediato verificare che richiedere che $\U$ sia compatto rispetto alla topologia indotta da $A$ equivale a richiedere che $\U$ realizzi tutti gli tipi a parametri in $A$ finitamente consistenti. Infatti un'intersezione di chiusi di base \`e esattamente un insieme della forma $p(\U)$ dove $p(x)$ \`e un tipo. Quindi la $\lambda$-saturazione \`e equivalente alla compattezza rispetto a \textit{tutte\/} le topologie indotte da sottoinsiemi di cardinalit\`a $<\lambda$.
+
+Queste topologie non sono mai di Hausdorff: poich\'e $\U$ ha cardinalit\`a molto grande esiste sempre un tipo completo con pi\`u di una realizzazione. Due realizzazioni $a$ e $b$ dello stesso tipo completo non possono essere separate da due aperti (due formule). In realt\`a, la topologia non soddisfa nessun assioma di separazione, nemmeno $T_0$ perch\'e $a$ e $b$ hanno esattamente gli stessi intorni. 
+
+Spesso quindi si usa quozientare $\U$ con la relazione di equivalenza $A$-elementare. \`E immediato che $\U/\!\equiv_A$ \`e uno spazio di Hausdorff: se  $a\nequiv_Ab$ allora, presa una qualsiasi formula $\phi(x)$ soddisfatta da $a$ e non da $b$, otteniamo due aperti $\phi(\U)$ e $\neg\phi(\U)$ che separano $a$ e $b$. Gli elementi di questo spazio quoziente si identificano  con l'insieme dei tipi completi $p(x)$ a parametri in $A$ che si denota \emph{$S_x(A)$\/} o con \emph{$S_n(A)$} dove $|x|=n$. 
+
+\begin{exercise}\label{definibilitasaturazione}
+Fissiamo un insieme di parametri $A$. Sia $p(x,y)\subseteq L(A)$. Si dimostri che la formula infinitaria $\E y\,p(x,y)$ \`e equivalente ad un tipo, precisamente, al tipo 
+
+\hfill $q(x)\ \ =\ \ \big\{ \E y\,\phi(x,y)\ :\ \phi(x,y) \textrm{ congiunzione di formule in }  p(x,y)\big\}$.\QED 
+\end{exercise}
+
+\begin{exercise}
+Fissiamo un insieme di parametri $A$. Sia $p(x)\subseteq L(A)$ un tipo, si dimostri che se $\neg p(\U)$ \`e definibile da un tipo, allora $p(\U)$ \`e definibile. (Si confronti questo con la proposizione~\ref{Stone_aperti_chiusi}.)\QED 
+\end{exercise}
+
+\begin{exercise}
+Fissiamo un insieme di parametri $A$. Sia $p(x)\subseteq L(A)$ un tipo e $\phi(x)\in L(\U)$ una formula, si dimostri che se $p(x)\imp\phi(x)$, allora $\psi(x)\imp\phi(x)$ per qualche $\psi(x)$ congiunzione di formule in $p(x)$.\QED 
+\end{exercise}
+
+
+Il seguente esercizio \`e risolto. \`E un caso particolare del lemma~\ref{qfdefinability} di cui ricalca anche la dimostrazione che qui, grazie al modello mostro, \`e pi\`u facile da visualizzare.  Scriviamo \emph{$a\equiv_{\rm qf}b$\/} se le tuple $a$ e $b$ soddisfano le stesse formule libere.
+
+\begin{exercise}\label{qfdefinabilitysemplice}
+Sia $\phi(x)$ una formula pura. Si dimostri che le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1] $\phi(x)$ \`e equivalente ad una formula senza quantificatori;
+\item[2] $\phi(a)\iff\phi(b)$, per ogni coppia di tuple $a\equiv_{\rm qf} b$.
+\end{itemize}
+Soluzione. L'implicazione \ssf{1}$\IMP$\ssf{2} \`e ovvia. Dimostriamo \ssf{2}$\IMP$\ssf{1}. Da \ssf{2} abbiamo la seguente equivalenza:
+
+\hfil$\displaystyle\phi(x)\ \ \iff\ \ \bigvee_{p(x)\imp\phi(x)} p(x)$
+
+dove $p(x)$ corre su tutti i tipi puri senza quantificatori completi. Per compattezza possiamo riscrivere questa equivalenza come 
+
+\hfil$\displaystyle\phi(x)\ \ \iff\ \ \bigvee_{\psi(x)\imp\phi(x)} \psi(x)$
+
+dove $\psi(x)$ corre su tutte le formule pure e libere. Questa dice che $\neg\phi(x)$ \`e equivalente ad un tipo libero. Quindi, dall'esercizio~\ref{definibilitasaturazione}, otteniamo che $\phi(x)\iff\psi(x)$ per una qualche formula libera.\QED
+\end{exercise}
+
+
+
+\begin{exercise}
+Sia $\U$ un modello saturo, $A\subseteq\U$ un sottoinsieme di cardinalit\`a piccola,  e sia $\psi(x)\in L(\U)$. Si dimostri che se $\psi(\U)$ \`e invariante per automorfismi che fissano $A$, allora $\psi(x)$ \`e equivalente ad una formula in $L(A)$.
+\end{exercise}
+
+
+
+\begin{exercise} 
+Fissiamo un insieme di parametri $A$. Sia $p(x)\subseteq L(A)$ un tipo e sia $x$ una tupla finita. Si dimostri che se $p(\U)$ \`e definibile allora \`e definibile da una congiunzione di formule in $p(x)$.\QED 
+\end{exercise}
+
+\begin{exercise}\label{cadinalitafinitasaturazione}
+Fissiamo un insieme di parametri $A$. Sia $p(x)\subseteq L(A)$ un tipo e sia $x$ una tupla finita. Si dimostri che se $p(\U)$ \`e infinito allora ha la stessa cardinalit\`a di $\U$.\QED 
+\end{exercise}
+
+\begin{exercise}
+Si dimostri che l'affermazione dell'esercizio~\ref{cadinalitafinitasaturazione} non vale se la tupla $x$ ha lunghezza infinita. Suggerimento: si prenda un linguaggio con un predicato unario $r$ interpretato in un insieme di esattamente due elementi. Si costruisca un tipo $p(x)\subseteq L$, dove $|x|=\omega$, con esattamente $2^\omega$ soluzioni.\QED 
+\end{exercise}
+
+\begin{exercise}\label{cadinalitafinitasaturazioneinsiemi}
+Data $\phi(x,y)\in L(\U)$ supponiamo che $\big\{\phi(a,\U)\ :\ a\in\U^{|x|}\big\}$ sia un insieme infinito. Si dimostri che allora ha la cardinalit\`a di $\U$. Vale lo stesso se al posto della formula $\phi(x,y)$ prendiamo un tipo $p(x,y)\subseteq L(A)$, dove $A$ \`e un qualche insieme di parametri? \QED 
+\end{exercise}
+
+\begin{exercise}\label{exgrptor}
+Data $\phi(x,y)\in L(\U)$ si dimostri che se l'insieme delle tuple $a\in\U^{|x|}$ tali che $\big|\phi(a,\U)\big|<\omega$ \`e definibile allora esiste un $n$ tale che $\big|\phi(a,\U)\big|<\omega$ implica $\big|\phi(a,\U)\big|<n$.\QED 
+\end{exercise}
+
+\begin{exercise} 
+Si dimostri che per ogni formula $\phi(x,y)\in L(\U)$ le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] esiste una sequenza $\<a_i\,:\,i\in\omega\>$ tale che $\phi(\U,a_i)\subseteq\phi(\U,a_{i+1})$ per ogni $i\in\omega$. 
+\item[2.] esiste una sequenza $\<a_i\,:\,i\in\omega\>$ tale che $\phi(\U,a_{i+1})\subseteq\phi(\U,a_i)$ per ogni $i\in\omega$.\QED  
+\end{itemize}
+%Suggerimento: si ricordi che una struttura $\omega$-satura realizza tutti i tipi finitamente consistenti con $<\omega$ parametri e con $\le\omega$ variabili.
+\end{exercise}
+
+
+\begin{exercise}
+Fissiamo una teoria $T$ completa e senza modelli finiti. Fissiamo un insieme di parametri $A$ ed una formula $\phi(x)\in L(\U)$ (quindi con parametri non necessariamente in $A$). Si dimostri che le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] esiste un modello $M$ che contiene $A$ tale che $M\cap\phi(\U)=\0$;
+\item[2.] non esiste alcuna $\psi(z_1,\dots,z_n)\in L(A)$, dove $|z_i|=|x|$, tale che \smash{$\displaystyle\psi(z_1,\dots,z_n)\imp\bigwedge^n_{i=1}\phi(z_i)$}.
+\end{itemize}
+Suggerimento: sia $M$ un modello che contiene $A$ e sia $c=\<c_i:i<\lambda\>$ l'enumerazione di $M^{|x|}$. Sia $p(z)=\tp(c/A)$ dove  $z=\<z_i:i<\lambda\>$ una tupla di tuple di variabili. Si dimostri che \ssf{2} implica la consistenza del tipo $p(z)\cup \{\neg\phi(z_i)\ :\ i<\lambda\}$ e si deduca \ssf{1}.\QED 
+\end{exercise}
+% \begin{exercise}\label{exgrptor}
+% Si dimostri l'esistenza di due gruppi abeliani $H\preceq G$ tali che $H$ \`e un gruppo di torsione (per ogni $h\in H$ esiste un intero $n$ positivo tale che $n\,x=0$) e mentre $G$ non lo \`e.
+% \end{exercise}
+
+
+\begin{comment}
+\begin{exercise} 
+Sia $L$ il linguaggio che estende quello degli ordini stretti. Sia $\Z$ un modello con gli interi come dominio. Sia $\U$ un'estensione satura di $\Z$. 
+\begin{itemize}
+\item Sia $\psi(x,y)$ una formula tale che per ogni $n\in\Z$ esiste un $b\in\U$ tale che $\A y<n\,\psi(b,y)$. Segue che esiste un $b\in\U$ tale che $\U\models\A y<n\,\psi(b,y)$ per ogni $n\in\Z$? Segue anche che $\U\models\A y\,\psi(b,y)$?
+\item Sia $\phi(x,y)$ una formula tale che per ogni $a\in\U$ esiste un $n\in\Z$ tale che $\E y<n\,\phi(a,y)$. Dimostrare che esiste un $n\in\Z$ tale che $\U\models\A x\,\E y<n\,\phi(x,y)$. (La dimostrazione del teorema~\ref{fmequivalenzadefinizioni} pu\`o fornire ispirazione.)
+\end{itemize}
+\end{exercise}
+
+Una modello si dice \emph{minimale\/} se tutti i suoi sottoinsiemi di ariet\`a uno, definibili con parametri in $M$, sono finiti o cofiniti (cio\`e complemento di un insieme finito).
+
+\begin{lemma}
+Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1.] $M$ \`e minimale;
+\item[2.] se $a,b\in \U\sm M$ sono due elementi allora $a\equiv_M b$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Dimostriamo $\ssf{1}\IMP\ssf{2}$. Sia $\phi(x)$ una qualsiasi $M$-formula. Se $\phi(M)$ \`e finito allora $\phi(M)=\phi(\U)$ e quindi $\neg\phi(a)\wedge\neg\phi(b)$. Altrimenti $\neg\phi(M)$ \`e finito e quindi $\phi(a)\wedge\phi(b)$. Dimostriamo $\neg\ssf{1}\IMP\neg\ssf{2}$. Supponiamo che $M$ non sia minimale.  Fissiamo una $M$-formula $\phi(x)$.  Se $\phi(M)$ e $\neg\phi(M)$ sono entrambi infiniti il tipo 
+
+\hfil$p(x,y)\ \ =\ \ \{\phi(x),\,\neg\phi(y)\}\ \cup\ \{x\neq a\ :\ a\in M\}\ \cup\ \{y\neq a\ :\ a\in M\}$
+
+\`e finitamente consistente in $M$. Sar\`a quindi realizzato da una coppia di elementi $a,b$. Quindi $a\not\equiv_M b$.
+\end{proof}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Definibilit\`a nei modelli saturi}
+
+Per tutto questo paragrafo fissiamo una teoria completa $T$ ed un modello saturo $\U$ di cardinalit\`a $>\max\{|L|,\omega\}$. Assumiamo le convenzioni del paragrafo~\ref{mostro}
+
+\begin{lemma}\label{definibilitasaturazione}
+Per ogni tipo $p(x,y)$ la formula infinitaria $\E y\,p(x,y)$ \`e equivalente ad un tipo, precisamente $q(x)\ =\ \{ \E y\,\phi(x,y)\ :\ \phi(x,y) \textrm{ congiunzione di formule in }  p(x,y)\}$.
+
+\end{lemma}
+\begin{proof}
+La direzione $\E y\,p(x,y)\imp q(x)$ \`e ovvia, quindi mostriamo l'implicazione opposta. Sia $c$ una realizzazione di $q(x)$ verifichiamo che $\E y\,p(c,y)$. Il tipo $p(c,y)$ \`e finitamente consistente: $q(c)$ dice esattamente questo. Una qualsiasi realizzazione di $p(c,y)$ \`e un testimone per $\E y\,p(c,y)$. 
+\end{proof}
+
+Il seguente lemma \`e uno degli strumenti pi\`u semplici per ricavare propriet\`a di definibilit\`a. Dice: un insieme semidefinibile con complemento semidefinibile \`e definibile. \`E essenzialmente la stessa osservazione vista nel lemma~\ref{bisemidefinibile0}, ora modulo una teoria completa $T$.
+
+\begin{lemma}\label{definibilitasaturazione}
+Per ogni tipo $p(x)$, se $\neg p(x)$ \`e equivalente ad un tipo, allora $p(x)$ \`e equivalente ad una congiunzione di formule in $p(x)$.
+\end{lemma}
+
+\begin{proof}
+Sia $q(x)$ un tipo equivalente a $\neg p(x)$. Allora $p(x)\wedge q(x)$ \`e inconsistente e per saturazione esiste una congiunzione di formule in $p(x)$ tale che $\phi(x)\wedge q(x)$ \`e inconsistente. Quindi $\phi(x)\imp \neg q(x)$ ovvero $\phi(x)\imp p(x)$. L'implicazione inversa \`e ovvia.
+\end{proof}
+
+Si noti che dal lemma~\ref{definibilitasaturazione} non otteniamo solo la definibilit\`a di $p(x)$ ma abbiamo anche informazioni sulla formula che lo definisce: questa \`e una congiunzione delle formule in $p(x)$. L'utilit\`a di questa osservazione \`e dimostrata nel lemma~\ref{qfdefinabilitysemplice}. 
+
+Allo stssso modo otteniamo anche il seguente:
+
+% Osserviamo anche che la saturazione \`e un'ipotesi necessaria consideriamo $\Q$ nel linguaggio $L_{\rm os}$ quindi i tipi
+% 
+% \hfil $\displaystyle p(x)\ =\ \{x< r\ :\ \sqrt2<r\in\Q\}$
+% \hfil e\hfil 
+% $\displaystyle q(x)\ =\ \{s<x\ :\ s<\sqrt2,\ s\in\Q\}$.
+
+
+\begin{lemma}\label{definibilitasaturazione2}
+Sia $p(x)$ un tipo e $\psi(x)$ una formula se vale $p(x)\imp\psi(x)$ allora esiste una congiunzione di formule in $p(x)$ tale che vale $\phi(x)\imp\psi(x)$.\QED
+\end{lemma}
+
+Come esempio vediamo un caso particolare di un lemma che verr\`a dimostrato nel capitolo~\ref{eliminazione}. Scriviamo \emph{$a\equiv_{\rm qf}b$\/} se le tuple $a$ e $b$ soddisfano le stesse formule libere.
+
+\begin{lemma}\label{qfdefinabilitysemplice}
+Sia $\phi(x)$ una formula pura. Le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+\item[1] $\phi(x)$ \`e equivalente ad una formula senza quantificatori;
+\item[2] $\phi(a)\iff\phi(b)$, per ogni coppia di tuple $a\equiv_{\rm qf} b$.
+\end{itemize}
+\end{lemma}
+\begin{proof}
+Dimostriamo solo l'implicazione \ssf{2}$\IMP$\ssf{1}; l'implicazione \ssf{1}$\IMP$\ssf{2} \`e ovvia. Da \ssf{2} abbiamo la seguente equivalenza:
+
+\hfil$\displaystyle\phi(x)\ \ \iff\ \ \bigvee_{p(x)\imp\phi(x)} p(x)$
+
+dove $p(x)$ corre su tutti i tipi puri liberi completi. Per il lemma~\ref{definibilitasaturazione2} possiamo riscrivere questa equivalenza come 
+
+\hfil$\displaystyle\phi(x)\ \ \iff\ \ \bigvee_{\psi(x)\imp\phi(x)} \psi(x)$
+
+dove $\psi(x)$ corre su tutte le formule pure e libere. Questa dice che $\neg\phi(x)$ \`e equivalente ad un tipo libero. Quindi, per il lemma~\ref{definibilitasaturazione}, otteniamo che $\phi(x)\iff\psi(x)$ per una qualche formula libera.
+\end{proof}
+
+
+Mostriamo che la saturazione non concede agli insiemi semidefinibili infiniti di essere piccoli. Questo teorema non vale se la tupla di variabili $x$ \`	e infinita.
+
+\begin{theorem}\label{cadinalitafinitasaturazione}
+Sia $p(x)$ un tipo e sia $x$ una tupla finita. Allora le seguenti due alternative sono esaustive
+\begin{itemize}
+\item[1.] $p(\U)$ ha un numero finito di elementi; 
+\item[2.] $p(\U)$ ha la stessa cardinalit\`a di $\U$.
+\end{itemize} 
+\end{theorem}
+\begin{proof}
+Se $p(\U)$ ha meno di $|\U|$ elementi, l'insieme $p(x)\cup\{x\neq a\ :\ p(a)\}$ \`e un tipo. Poich\'e non pu\`o essere realizzato in $\U$, esiste un insieme finito $A\subseteq p(\U)$ tale che $\{x\neq a\ :\ a\in A\}$ non \`e consistente con $p(x)$. Ma questo vuol dire che $A$ contiene tutte le realizzazioni di $p(x)$.
+\end{proof}
+
+Si osservi che l'argomento usato nella dimostrazione del lemma~\ref{cadinalitafinitasaturazione} non sarebbe corretto se non avessimo richiesto che $x$ fosse una tupla finita. Infatti quando la lunghezza di $x$ \`e infinita, $x\neq a$ non \`e esprimibile con una formula del prim'ordine. 
+
+La seguente proposizione \`e un tipico esempio di come la saturazione produce risultati di uniformit\`a. 
+
+\begin{lemma}
+Supponiamo che per ogni $a$ l'insieme $\phi(a,\U)$ sia finito. Allora esiste un $n\in\omega$ tale che $\A x\,\E^{\le n}y\,\phi(x,y)$.
+\end{lemma}
+\begin{proof}
+Si consideri il tipo $p(x)=\{\E^{> n}y\,\phi(x,y)\ :\ n\in\omega\}$. Se non esiste un limite finito alla cardinalit\`a degli insiemi $\phi(a,\U)$ allora $p(x)$ \`e finitamente consistente. Se $b$ \`e una realizzazione di $p(x)$ allora  $\phi(b,\U)$ non pu\`o che avere cardinalit\`a infinita. 
+\end{proof}
+\end{comment}
+
